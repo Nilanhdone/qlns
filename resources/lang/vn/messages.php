@@ -11,4 +11,5 @@ return [
 	'header.email' => 'Xin nghỉ phép',
 	'header.language' => 'Ngôn ngữ',
 	'login.forget' => 'Quên mật khẩu',
+	'register.header' => 'Tao tai khoan moi',
 ];

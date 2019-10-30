@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Model\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -50,8 +50,16 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'regex:/[0-9]/', 'min:10', 'max:11'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'birthday' => ['required'],
+            'nationality' => ['required', 'string', 'max:255'],
+            'religion' => ['required', 'string', 'max:255'],
+            'hometown' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'identify_number' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string', 'min:8'],
+            'repassword' => ['required', 'string', 'min:8', 'same:password']
         ]);
     }
 
@@ -64,8 +72,19 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
+            'user_id' => $data['user_id'],
+            'gender' => $data['gender'],
+            'role' => $data['role'],
+            'degree' => $data['degree'],
             'name' => $data['name'],
+            'phone' => $data['phone'],
             'email' => $data['email'],
+            'birthday' => $data['birthday'],
+            'nationality' => $data['nationality'],
+            'religion' => $data['religion'],
+            'hometown' => $data['hometown'],
+            'address' => $data['address'],
+            'identify_number' => $data['identify_number'],
             'password' => Hash::make($data['password']),
         ]);
     }

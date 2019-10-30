@@ -10,7 +10,7 @@
             @include('layouts.mainheader')
 
             <section>
-                @yield('main-content')
+                @yield('content')
             </section>
 
             <!-- footer -->

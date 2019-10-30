@@ -15,8 +15,6 @@ Route::get('/','HomeController@index');
 
 Route::get('lang/{locale}','HomeController@lang');
 
-Route::get('/profile','HomeController@login');
+Auth::routes();
 
-Route::get('/get-regist','HomeController@getRegist');
-
-Route::get('/regist','HomeController@regist');
+Route::get('update','AdminController@update')->name('update');

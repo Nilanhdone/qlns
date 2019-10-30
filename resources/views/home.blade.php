@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('main-content')
+@section('content')
 <style type="text/css">
     .login_form {
         width: 500px;
