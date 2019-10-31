@@ -11,10 +11,22 @@
 |
 */
 
-Route::get('/','HomeController@index');
+Route::get('/','HomeController@index')->name('home');
 
 Route::get('lang/{locale}','HomeController@lang');
 
-Auth::routes();
+// Route::get('login', 'Auth\LoginController@showLoginForm');
+Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::get('logout','Auth\LoginController@logout')->name('logout');
 
-Route::get('update','AdminController@update')->name('update');
+// Register
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@create');
+
+Route::get('update','AdminController@showUpdateForm')->name('update');
+Route::post('update', 'AdminController@update');
+
+Route::get('change-password','HomeController@showChangePasswordForm')->name('change-password');
+Route::post('change-password', 'HomeController@changePassword');
+
+Route::get('profile','HomeController@showProfile')->name('profile');

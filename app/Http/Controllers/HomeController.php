@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user.admin.update');
+        return view('home');
     }
 
     /**
@@ -38,5 +38,36 @@ class HomeController extends Controller
         App::setLocale($locale);
         session()->put('locale', $locale);
         return redirect()->back();
+    }
+
+    /**
+     * Show profile view.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function showProfile()
+    {
+        return view('user.profile');
+    }
+
+    /**
+     * Show form to change password.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function showChangePasswordForm()
+    {
+        return view('user.change-password');
+    }
+
+    /**
+     * Check to change password.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function changePassword(Request $request)
+    {
+        //
     }
 }
