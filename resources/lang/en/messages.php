@@ -1,14 +1,31 @@
 <?php
 return [
-    'login.email' => 'Email',
-    'login.password' => 'Password',
-    'login.button' => 'Login',
-    'register.email' => 'Email',
-    'register.name' => 'Name',
-    'register.password' => 'Password',
-    'register.button' => 'Regist',
-    'header.search' => 'Search',
-    'header.email' => 'Vacation Email',
-    'header.language' => 'Language',
-    'login.forget' => 'Forget password',
+    'header' => [
+        'title' => 'Laos State Bank',
+        'login' => 'Login',
+        'change-password' => 'Change password',
+        'logout' => 'Logout',
+        'language' => 'Language',
+    ],
+    'login' => [
+        'email' => 'Email',
+        'password' => 'Password',
+        'button' => 'Login',     
+        'forget' => 'Forget password'
+    ],
+    'register' => [
+        'header' => 'Create new account',
+        'email' => 'Email',
+        'name' => 'Name',
+        'password' => 'Password',
+        'button' => 'Create new',
+    ],
+    'menu' => [
+        'profile' => 'Profile',
+        'create' => 'Create new account',
+        'update' => 'Update',
+        'search' => 'Search',
+        'leave' => 'Send a vacation',
+        'check-leave' => 'Check vacation',
+    ],
 ];

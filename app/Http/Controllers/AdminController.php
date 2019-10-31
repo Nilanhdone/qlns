@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Validator;
 class AdminController extends Controller
 {
     /**
+     * Show update form.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function showUpdateForm() {
+        return view('user.admin.update');
+    }
+
+    /**
      * update user information.
      *
      * @param Request $request

@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
+use Illuminate\Http\Request;
+use Validator;
+use App\Model\User;
 
 class LoginController extends Controller
 {
@@ -34,6 +38,62 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Show login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
+
+    /**
+     * Check input to login.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function login(Request $request)
+    {
+        $rules = [
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:6']
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $email = $request->email;
+        $password = $request->password;
+
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            $user = User::where('email', $email)->first();
+            $name = $user->name;
+            $role = $user->role;
+
+            setcookie('name', $name);
+            setcookie('role', $role);
+
+            return redirect()->route('profile');
+        } else {
+            return redirect()->back();
+        }
+    }
+
+    /**
+     * Logout.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function logout()
+    {
+        Auth::logout();
+       return redirect()->route('home');
     }
 }

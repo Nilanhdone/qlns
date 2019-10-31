@@ -1,15 +1,31 @@
 <?php
 return [
-	'login.email' => 'Tài khoản',
-	'login.password' => 'Mật khẩu',
-	'login.button' => 'Đăng nhập',
-	'register.email' => 'Tài khoản',
-    'register.name' => 'Họ tên',
-    'register.password' => 'Mật khẩu',
-    'register.button' => 'Đăng ký',
-	'header.search' => 'Tìm kiếm',
-	'header.email' => 'Xin nghỉ phép',
-	'header.language' => 'Ngôn ngữ',
-	'login.forget' => 'Quên mật khẩu',
-	'register.header' => 'Tao tai khoan moi',
+    'header' => [
+        'title' => 'Ngân hàng Nhà nước Lào',
+        'login' => 'Đăng nhập',
+        'change-password' => 'Đổi mật khẩu',
+        'logout' => 'Đăng xuất',
+        'language' => 'Ngôn ngữ',
+    ],
+    'login' => [
+        'email' => 'Tài khoản',
+        'password' => 'Mật khẩu',
+        'button' => 'Đăng nhập',       
+        'forget' => 'Quên mật khẩu',
+    ],
+    'register' => [
+        'header' => 'Tạo tài khoản mới',
+        'email' => 'Tài khoản',
+        'name' => 'Họ tên',
+        'password' => 'Mật khẩu',
+        'button' => 'Tạo mới',
+    ],
+    'menu' => [
+        'profile' => 'Trang cá nhân',
+        'create' => 'Tạo tài khoản',
+        'update' => 'Cập nhật',
+        'search' => 'Tìm kiếm',
+        'leave' => 'Xin nghỉ phép',
+        'check-leave' => 'Xem đơn nghỉ phép',
+    ],
 ];
