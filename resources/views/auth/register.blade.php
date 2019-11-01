@@ -8,6 +8,12 @@
                 <div class="card-header">{{ trans('messages.register.header') }}</div>
 
                 <div class="card-body">
+                    @if(Session::has('success'))
+                        <div class="alert alert-success"><i class="fas fa-check"></i>
+                            {!! Session::get('success') !!}
+                        </div>
+                    @endif
+                    
                     <form method="POST" action="{{ route('register') }}" id="register">
                         @csrf
 
@@ -255,7 +261,13 @@
                             </label>
 
                             <div class="col-md-6">
-                                <input type="password" class="form-control" name="repassword" required>
+                                <input type="password" class="form-control @error('repassword') is-invalid @enderror" name="repassword" required>
+
+                                @error('repassword')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

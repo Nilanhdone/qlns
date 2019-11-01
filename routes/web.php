@@ -21,7 +21,7 @@ Route::get('logout','Auth\LoginController@logout')->name('logout');
 
 // Register
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@create');
+Route::post('register', 'Auth\RegisterController@register');
 
 Route::get('update','AdminController@showUpdateForm')->name('update');
 Route::post('update', 'AdminController@update');

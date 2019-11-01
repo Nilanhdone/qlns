@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Model\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -50,52 +52,109 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'regex:/[0-9]/', 'min:10', 'max:11'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'birthday' => ['required'],
-            'nationality' => ['required', 'string', 'max:255'],
-            'religion' => ['required', 'string', 'max:255'],
-            'hometown' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-            'identify_number' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'min:8'],
-            'repassword' => ['required', 'string', 'min:8', 'same:password']
-        ]);
-    }
+    // /**
+    //  * Get a validator for an incoming registration request.
+    //  *
+    //  * @param  array  $data
+    //  * @return \Illuminate\Contracts\Validation\Validator
+    //  */
+    // protected function validator(array $data)
+    // {
+    //     return Validator::make($data, [
+    //         'name' => ['required', 'string', 'max:255'],
+    //         'phone' => ['required', 'regex:/[0-9]/', 'min:10', 'max:11'],
+    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+    //         'birthday' => ['required'],
+    //         'nationality' => ['required', 'string', 'max:255'],
+    //         'religion' => ['required', 'string', 'max:255'],
+    //         'hometown' => ['required', 'string', 'max:255'],
+    //         'address' => ['required', 'string', 'max:255'],
+    //         'identify_number' => ['required', 'string', 'max:255'],
+    //         'password' => ['required', 'string', 'min:6'],
+    //         'repassword' => ['required', 'string', 'min:6', 'same:password']
+    //     ]);
+    // }
+
+    // /**
+    //  * Create a new user instance after a valid registration.
+    //  *
+    //  * @param  array  $data
+    //  * @return \App\User
+    //  */
+    // protected function create(array $data)
+    // {
+    //     return User::create([
+    //         'user_id' => $request->user_id'],
+    //         'gender' => $request->gender'],
+    //         'role' => $request->role'],
+    //         'degree' => $request->degree'],
+    //         'name' => $request->name'],
+    //         'phone' => $request->phone'],
+    //         'email' => $request->email'],
+    //         'birthday' => $request->birthday'],
+    //         'nationality' => $request->nationality'],
+    //         'religion' => $request->religion'],
+    //         'hometown' => $request->hometown'],
+    //         'address' => $request->address'],
+    //         'identify_number' => $request->identify_number'],
+    //         'password' => Hash::make($request->password']),
+    //     ]);
+    // }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Check input to create a new user.
      *
-     * @param  array  $data
-     * @return \App\User
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
      */
-    protected function create(array $data)
+    protected function register(Request $request)
     {
-        return User::create([
-            'user_id' => $data['user_id'],
-            'gender' => $data['gender'],
-            'role' => $data['role'],
-            'degree' => $data['degree'],
-            'name' => $data['name'],
-            'phone' => $data['phone'],
-            'email' => $data['email'],
-            'birthday' => $data['birthday'],
-            'nationality' => $data['nationality'],
-            'religion' => $data['religion'],
-            'hometown' => $data['hometown'],
-            'address' => $data['address'],
-            'identify_number' => $data['identify_number'],
-            'password' => Hash::make($data['password']),
-        ]);
+        try {
+            DB::beginTransaction();
+
+            $rules = [
+                'name' => ['required', 'string', 'max:255'],
+                'phone' => ['required', 'regex:/[0-9]/', 'min:10', 'max:11'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'birthday' => ['required'],
+                'nationality' => ['required', 'string', 'max:255'],
+                'religion' => ['required', 'string', 'max:255'],
+                'hometown' => ['required', 'string', 'max:255'],
+                'address' => ['required', 'string', 'max:255'],
+                'identify_number' => ['required', 'string', 'max:255'],
+                'password' => ['required', 'string', 'min:6'],
+                'repassword' => ['required', 'string', 'min:6', 'same:password']
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+            User::create([
+                'user_id' => $request->user_id,
+                'gender' => $request->gender,
+                'role' => $request->role,
+                'degree' => $request->degree,
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'birthday' => $request->birthday,
+                'nationality' => $request->nationality,
+                'religion' => $request->religion,
+                'hometown' => $request->hometown,
+                'address' => $request->address,
+                'identify_number' => $request->identify_number,
+                'password' => Hash::make($request->password),
+            ]);
+
+            DB::commit();
+
+            return redirect()->back()->with('success', 'Successfull');
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('errors', $e->getMessage());
+        }
     }
 }
