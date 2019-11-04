@@ -20,7 +20,7 @@
                         <!-- User ID -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('User ID') }}
+                                {{ trans('messages.register.user-id') }}
                             </label>
 
                             <div class="col-md-6">
@@ -37,19 +37,19 @@
                         <!-- Gender -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Gender') }}
+                                {{ trans('messages.register.gender') }}
                             </label>
 
                             <div class="form-check col-md-4">
                                 <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
                                 <label class="form-check-label" for="male">
-                                    Nam
+                                    {{ trans('messages.register.male') }}
                                 </label>
                             </div>
                             <div class="form-check col-md-4">
                                 <input class="form-check-input" type="radio" name="gender" id="female" value="female">
                                 <label class="form-check-label" for="female">
-                                    Nu
+                                    {{ trans('messages.register.female') }}
                                 </label>
                             </div>
                         </div>
@@ -57,14 +57,14 @@
                         <!-- Role -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Role') }}
+                                {{ trans('messages.register.role') }}
                             </label>
 
                             <div class="col-md-6">
                                 <select name="role" form="register">
-                                    <option value="Employee">Employee</option>
-                                    <option value="Manager">Manager</option>
-                                    <option value="Admin">Admin</option>
+                                    <option value="employee">{{ trans('messages.register.employee') }}</option>
+                                    <option value="manager">{{ trans('messages.register.manager') }}</option>
+                                    <option value="admin">{{ trans('messages.register.admin') }}</option>
                                 </select>
                             </div>
                         </div>
@@ -72,15 +72,15 @@
                         <!-- Degree -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Degree') }}
+                                {{ trans('messages.register.header') }}
                             </label>
 
                             <div class="col-md-6">
                                 <select  name="degree" form="register">
-                                    <option value="Cu nhan">Cu nhan</option>
-                                    <option value="Ky su">Ky su</option>
-                                    <option value="Thac si">Thac si</option>
-                                    <option value="Tien si">Tien si</option>
+                                    <option value="bachelor">{{ trans('messages.register.bachelor') }}</option>
+                                    <option value="engineer">{{ trans('messages.register.engineer') }}</option>
+                                    <option value="master">{{ trans('messages.register.master') }}</option>
+                                    <option value="post-doctor">{{ trans('messages.register.post-doctor') }}</option>
                                 </select>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                         <!-- Name -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Name') }}
+                                {{ trans('messages.register.name') }}
                             </label>
 
                             <div class="col-md-6">
@@ -105,7 +105,7 @@
                           <!-- phone -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Phone') }}
+                                {{ trans('messages.register.phone') }}
                             </label>
 
                             <div class="col-md-6">
@@ -122,7 +122,7 @@
                         <!-- Email -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('E-Mail Address') }}
+                                {{ trans('messages.register.header') }}
                             </label>
 
                             <div class="col-md-6">
@@ -135,10 +135,11 @@
                                 @enderror
                             </div>
                         </div>
+                        
                           <!-- Birthday -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Birthday') }}
+                                {{ trans('messages.register.birthday') }}
                             </label>
 
                             <div class="col-md-6">
@@ -155,7 +156,7 @@
                           <!-- Nationality -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Nationality') }}
+                                {{ trans('messages.register.nationality') }}
                             </label>
 
                             <div class="col-md-6">
@@ -172,7 +173,7 @@
                           <!-- Religion -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Religion') }}
+                                {{ trans('messages.register.religion') }}
                             </label>
 
                             <div class="col-md-6">
@@ -189,7 +190,7 @@
                           <!-- Hometown -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Hometown') }}
+                                {{ trans('messages.register.hometown') }}
                             </label>
 
                             <div class="col-md-6">
@@ -206,7 +207,7 @@
                           <!-- Address -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Address') }}
+                                {{ trans('messages.register.address') }}s
                             </label>
 
                             <div class="col-md-6">
@@ -223,7 +224,7 @@
                           <!-- Identify_number -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Identify_number') }}
+                                {{ trans('messages.register.identify') }}
                             </label>
 
                             <div class="col-md-6">
@@ -240,7 +241,7 @@
                         <!-- Password -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Password') }}
+                                {{ trans('messages.register.password') }}
                             </label>
 
                             <div class="col-md-6">
@@ -257,7 +258,7 @@
                         <!-- Confirm Password -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Confirm Password') }}
+                                {{ trans('messages.register.repassword') }}
                             </label>
 
                             <div class="col-md-6">
@@ -274,7 +275,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ trans('messages.register.button') }}
                                 </button>
                             </div>
                         </div>

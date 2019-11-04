@@ -10,24 +10,22 @@
                 <div class="card-body">
                     <form method="get" action="{{ route('update') }}" id="update">
                         @csrf
-
-
                         <!-- Status -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Status') }}
+                                {{ trans('messages.update.header') }}
                             </label>
 
                             <div class="form-check col-md-4">
                                 <input class="form-check-input" type="radio" name="status" id="active" value="1" checked>
                                 <label class="form-check-label" for="active">
-                                    Active
+                                    {{ trans('messages.update.active') }}
                                 </label>
                             </div>
                             <div class="form-check col-md-4">
                                 <input class="form-check-input" type="radio" name="status" id="inactive" value="0">
                                 <label class="form-check-label" for="inactive">
-                                    Inactive
+                                    {{ trans('messages.update.inactive') }}
                                 </label>
                             </div>
                         </div>
@@ -35,7 +33,7 @@
                         <!-- Position -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Position') }}
+                                {{ trans('messages.update.position') }}
                             </label>
 
                             <div class="col-md-6">
@@ -51,7 +49,7 @@
                         <!-- Department -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Department') }}
+                                {{ trans('messages.update.department') }}
                             </label>
 
                             <div class="col-md-6">
@@ -68,16 +66,16 @@
                           <!-- Work unit -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Work unit') }}
+                                {{ trans('messages.update.work-unit') }}
                             </label>
 
                             <div class="col-md-6">
                                 <select  name="work_unit" form="update">
+                                    <option value="Champasak">Champasak</option>
                                     <option value="Luangprabang">Luangprabang</option>
                                     <option value="Oudomxay">Oudomxay</option>
-                                      <option value="Xiengkhoang">Xiengkhoang</option>
                                     <option value="Savannakhet">Savannakhet</option>
-                                    <option value="Champasak">Champasak</option>
+                                    <option value="Xiengkhoang">Xiengkhoang</option>
                                 </select>
                             </div>
                         </div>
@@ -85,7 +83,7 @@
                         <!-- Start day -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Start day') }}
+                                {{ trans('messages.update.start-day') }}
                             </label>
 
                             <div class="col-md-6">
@@ -102,7 +100,7 @@
                             <!-- End day -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('End day') }}
+                                {{ trans('messages.update.end-day') }}
                             </label>
 
                             <div class="col-md-6">
@@ -119,7 +117,7 @@
                                <!-- Salary -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Salary') }}
+                                {{ trans('messages.update.salary') }}
                             </label>
 
                             <div class="col-md-6">
@@ -138,7 +136,7 @@
                           <!-- Insurance number -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ __('Insurance number') }}
+                                {{ trans('messages.update.insurance') }}
                             </label>
 
                             <div class="col-md-6">
@@ -156,7 +154,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('update') }}
+                                    {{ trans('messages.update.button') }}
                                 </button>
                             </div>
                         </div>

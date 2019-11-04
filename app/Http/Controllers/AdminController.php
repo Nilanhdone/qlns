@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Model\UserInfo;
+use Auth;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
@@ -15,7 +16,8 @@ class AdminController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function showUpdateForm() {
-        return view('user.admin.update');
+        $user = Auth::user();
+        return view('user.admin.update', compact('user'));
     }
 
     /**

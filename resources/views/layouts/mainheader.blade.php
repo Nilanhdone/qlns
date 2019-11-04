@@ -8,7 +8,7 @@
             @if(Auth::check())
             <li class="nav-item mx-0 mx-lg-1 dropdown">
                 <a id="user" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user-circle mr-2"></i>{{ $_COOKIE['name'] }}
+                    <i class="fas fa-user-circle mr-2"></i>
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="user">

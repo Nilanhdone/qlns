@@ -73,14 +73,7 @@ class LoginController extends Controller
         $password = $request->password;
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            $user = User::where('email', $email)->first();
-            $name = $user->name;
-            $role = $user->role;
-
-            setcookie('name', $name);
-            setcookie('role', $role);
-
-            return redirect()->route('profile');
+            return redirect()->route('home');
         } else {
             return redirect()->back();
         }

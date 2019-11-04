@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\User;
+use Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -39,7 +40,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**
@@ -49,57 +50,9 @@ class RegisterController extends Controller
      */
     protected function showRegistrationForm()
     {
-        return view('auth.register');
+        $user = Auth::user();
+        return view('auth.register', compact('user'));
     }
-
-    // /**
-    //  * Get a validator for an incoming registration request.
-    //  *
-    //  * @param  array  $data
-    //  * @return \Illuminate\Contracts\Validation\Validator
-    //  */
-    // protected function validator(array $data)
-    // {
-    //     return Validator::make($data, [
-    //         'name' => ['required', 'string', 'max:255'],
-    //         'phone' => ['required', 'regex:/[0-9]/', 'min:10', 'max:11'],
-    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-    //         'birthday' => ['required'],
-    //         'nationality' => ['required', 'string', 'max:255'],
-    //         'religion' => ['required', 'string', 'max:255'],
-    //         'hometown' => ['required', 'string', 'max:255'],
-    //         'address' => ['required', 'string', 'max:255'],
-    //         'identify_number' => ['required', 'string', 'max:255'],
-    //         'password' => ['required', 'string', 'min:6'],
-    //         'repassword' => ['required', 'string', 'min:6', 'same:password']
-    //     ]);
-    // }
-
-    // /**
-    //  * Create a new user instance after a valid registration.
-    //  *
-    //  * @param  array  $data
-    //  * @return \App\User
-    //  */
-    // protected function create(array $data)
-    // {
-    //     return User::create([
-    //         'user_id' => $request->user_id'],
-    //         'gender' => $request->gender'],
-    //         'role' => $request->role'],
-    //         'degree' => $request->degree'],
-    //         'name' => $request->name'],
-    //         'phone' => $request->phone'],
-    //         'email' => $request->email'],
-    //         'birthday' => $request->birthday'],
-    //         'nationality' => $request->nationality'],
-    //         'religion' => $request->religion'],
-    //         'hometown' => $request->hometown'],
-    //         'address' => $request->address'],
-    //         'identify_number' => $request->identify_number'],
-    //         'password' => Hash::make($request->password']),
-    //     ]);
-    // }
 
     /**
      * Check input to create a new user.
