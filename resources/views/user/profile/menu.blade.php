@@ -1,8 +1,10 @@
 <div class="row">
     <div class="col-3">
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link active" id="v-pill-basic-tab" data-toggle="pill" href="#basic" role="tab" aria-controls="v-pill-basic" aria-selected="true">{{ trans('messages.profile.menu.basic') }}</a>
-            <a class="nav-link" id="v-pill-work-tab" data-toggle="pill" href="#work" role="tab" aria-controls="v-pill-work" aria-selected="false">{{ trans('messages.profile.menu.work') }}</a>
+            <a class="nav-link active" id="v-pill-basic-tab" data-toggle="pill" href="#basic" role="tab" aria-controls="v-pill-basic" aria-selected="true">
+            {{ trans('messages.profile.menu.basic') }}</a>
+            <a class="nav-link" id="v-pill-work-tab" data-toggle="pill" href="#work" role="tab" aria-controls="v-pill-work" aria-selected="false">
+            {{ trans('messages.profile.menu.work') }}</a>
         </div>
     </div>
     <div class="col-9">

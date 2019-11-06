@@ -24,7 +24,7 @@ return [
         'manager' => 'Manager',
         'admin' => 'Admin',
         'degree' => 'Degree',
-        'bachelor' => 'Cử nhân',
+        'bachelor' => 'Bachelor',
         'engineer' => 'Engineer',
         'master' => 'Master',
         'post-doctor' => 'Post Doctor',

@@ -238,16 +238,67 @@
                             </div>
                         </div>
 
-                        <!-- Password -->
+                        <!-- Position -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.register.password') }}
+                                {{ trans('messages.update.position') }}
                             </label>
 
                             <div class="col-md-6">
-                                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+                                <select name="position" form="update">
+                                    <option value="Employee">Ke toan</option>
+                                    <option value="Manager">Thuc tap sinh</option>
+                                    <option value="Admin">Chuyen vien</option>
+                                    <option value="Admin">Truong phong</option>
+                                </select>
+                            </div>
+                        </div>
 
-                                @error('password')
+                        <!-- Department -->
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.update.department') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <select  name="department" form="update">
+                                    <option value="Cu nhan">Phong tai chinh</option>
+                                    <option value="Ky su">Phong kinh doanh</option>
+                                    <option value="Thac si">Phong quan ly</option>
+                                    <option value="Tien si">Phong nhan su</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <!-- Work unit -->
+                          <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.update.work-unit') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <select  name="work_unit" form="update">
+                                    <option value="Champasak">Champasak</option>
+                                    <option value="Luangprabang">Luangprabang</option>
+                                    <option value="Oudomxay">Oudomxay</option>
+                                    <option value="Savannakhet">Savannakhet</option>
+                                    <option value="Xiengkhoang">Xiengkhoang</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <!-- Start day -->
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.update.start-day') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <input type="date" class="form-control @error('start_day') is-invalid @enderror" name="start_day" value="{{ old('start_day') }}" required>
+
+                                @error('start_day')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -255,16 +306,50 @@
                             </div>
                         </div>
 
-                        <!-- Confirm Password -->
-                        <div class="form-group row">
+                        <!-- End day -->
+                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.register.repassword') }}
+                                {{ trans('messages.update.end-day') }}
                             </label>
 
                             <div class="col-md-6">
-                                <input type="password" class="form-control @error('repassword') is-invalid @enderror" name="repassword" required>
+                                <input type="date" class="form-control @error('end_day') is-invalid @enderror" name="end_day" value="{{ old('end_day') }}">
 
-                                @error('repassword')
+                                @error('end_day')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Coefficients salary -->
+                         <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.update.salary') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error('salary') is-invalid @enderror" name="salary" value="{{ old('salary') }}" required>
+
+                                @error('salary')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Insurance number -->
+                         <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.update.insurance') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error('insurance_number') is-invalid @enderror" name="insurance_number" value="{{ old('insurance_number') }}" required>
+
+                                @error('insurance_number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
