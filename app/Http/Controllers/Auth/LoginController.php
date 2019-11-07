@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
 use Illuminate\Http\Request;
-use Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use App\Model\User;
+use Illuminate\Support\Facades\DB;
+use session;
 
 class LoginController extends Controller
 {
@@ -73,7 +76,15 @@ class LoginController extends Controller
         $password = $request->password;
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            return redirect()->route('home');
+            $user = User::where('email', $email)->first();
+            $first_login = $user->first_login;
+            if ($first_login == 1) {
+                return redirect()->route('home');
+            } else {
+                Auth::logout();
+                Session::flash('success', 'First login, please change your default password to login.');
+                return view('user.first-login', compact('email'));
+            }
         } else {
             return redirect()->back();
         }
@@ -88,5 +99,45 @@ class LoginController extends Controller
     {
         Auth::logout();
        return redirect()->route('home');
+    }
+
+    /**
+     * Check first login.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function changePassword(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+
+            $rules = [
+                'email' => ['required'],
+                'password' => ['required', 'string', 'min:6'],
+                'repassword' => ['required', 'string', 'min:6', 'same:password'],
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+            $email = $request->email;
+            $user = User::where('email', $email)->first();
+
+            $password = $request->password;
+            $user->password = Hash::make($password);
+            $user->first_login = 1;
+            $user->save();
+
+            DB::commit();
+
+            return redirect()->route('home');
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('errors', $e->getMessage());
+        }
     }
 }

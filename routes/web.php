@@ -29,6 +29,8 @@ Route::get('lang/{locale}','HomeController@lang');
     // Logout
     Route::get('logout','Auth\LoginController@logout')->name('logout');
     Route::get('profile','HomeController@showProfile')->name('profile');
+    // First login
+    Route::post('first-login','Auth\LoginController@changePassword')->name('first-login');
 
 // ADMIN
     // Register
@@ -39,3 +41,8 @@ Route::get('lang/{locale}','HomeController@lang');
     Route::post('update', 'AdminController@update');
     // Staff list
     Route::get('staff-list','AdminController@showStaffList')->name('staff-list');
+
+// EMPLOYEE
+    // send vacation leave
+    Route::get('send-vacation','EmployeeController@showVacationForm')->name('send-vacation');
+    Route::post('send-vacation', 'EmployeeController@sendVacation');

@@ -1,7 +1,7 @@
 <?php
 return [
     'header' => [
-        'title' => 'Laos State Bank',
+        'title' => 'Bank of the Lao P.D.R',
         'login' => 'Login',
         'change-password' => 'Change password',
         'logout' => 'Logout',

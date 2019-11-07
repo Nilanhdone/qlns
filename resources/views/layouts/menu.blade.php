@@ -35,7 +35,7 @@
                 </li>
             @elseif(($user->role) == 'employee')
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#leave">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="send-vacation">
                     <i class="fas fa-pen-nib mr-2"></i>{{ trans('messages.menu.leave') }}</a>
                 </li>
             @endif

@@ -5,24 +5,18 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header">{{ __('Change Password') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
+                    <form method="POST" action="{{ route('first-login') }}">
                         @csrf
-                        @if(Session::has('errors'))
+                        @if(Session::has('success'))
                             <div class="alert alert-success"><i class="fas fa-check"></i>
-                                {!! Session::get('errors') !!}
+                                {!! Session::get('success') !!}
                             </div>
                         @endif
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ $email }}" readonly>
-                            </div>
-                        </div>
-
+                        <input type="hidden" name="email" value="{{ $email }}">
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">{{ __('New password') }}</label>
 
@@ -54,7 +48,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
+                                    {{ __('Change Password') }}
                                 </button>
                             </div>
                         </div>

@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id')->unique();
             $table->integer('status')->default(1);
-            $table->integer('first_login')->default(1);
+            $table->integer('first_login')->default(0);
             $table->string('role');
             $table->string('name');
             $table->string('avatar');
