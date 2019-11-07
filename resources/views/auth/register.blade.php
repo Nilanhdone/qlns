@@ -34,54 +34,14 @@
                             </div>
                         </div>
 
-                        <!-- Gender -->
+                        <!-- Image -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.register.gender') }}
-                            </label>
-
-                            <div class="form-check col-md-4">
-                                <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
-                                <label class="form-check-label" for="male">
-                                    {{ trans('messages.register.male') }}
-                                </label>
-                            </div>
-                            <div class="form-check col-md-4">
-                                <input class="form-check-input" type="radio" name="gender" id="female" value="female">
-                                <label class="form-check-label" for="female">
-                                    {{ trans('messages.register.female') }}
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Role -->
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.register.role') }}
+                                {{ trans('messages.register.image') }}
                             </label>
 
                             <div class="col-md-6">
-                                <select name="role" form="register">
-                                    <option value="employee">{{ trans('messages.register.employee') }}</option>
-                                    <option value="manager">{{ trans('messages.register.manager') }}</option>
-                                    <option value="admin">{{ trans('messages.register.admin') }}</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- Degree -->
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.register.header') }}
-                            </label>
-
-                            <div class="col-md-6">
-                                <select  name="degree" form="register">
-                                    <option value="bachelor">{{ trans('messages.register.bachelor') }}</option>
-                                    <option value="engineer">{{ trans('messages.register.engineer') }}</option>
-                                    <option value="master">{{ trans('messages.register.master') }}</option>
-                                    <option value="post-doctor">{{ trans('messages.register.post-doctor') }}</option>
-                                </select>
+                                <input type="file" class="form-control-file" accept="image/jpeg, image/jpg, image/png" name="image" required>
                             </div>
                         </div>
 
@@ -102,7 +62,129 @@
                             </div>
                         </div>
 
-                          <!-- phone -->
+                        <!-- Gender -->
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.register.gender') }}
+                            </label>
+
+                            <div class="form-check col-md-4">
+                                <input class="form-check-input" type="radio" name="gender" id="male" value="male" checked>
+                                <label class="form-check-label" for="male">
+                                    {{ trans('messages.register.male') }}
+                                </label>
+                            </div>
+                            <div class="form-check col-md-4">
+                                <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                                <label class="form-check-label" for="female">
+                                    {{ trans('messages.register.female') }}
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Birthday -->
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.register.birthday') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <input type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" required>
+
+                                @error('birthday')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Identify_number -->
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.register.identify') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error('identify_number') is-invalid @enderror" name="identify_number" value="{{ old('identify_number') }}" required>
+
+                                @error('identify_number')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Nationality -->
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.register.nationality') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error('nationality') is-invalid @enderror" name="nationality" value="{{ old('nationality') }}" required>
+
+                                @error('nationality')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Religion -->
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.register.religion') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error('religion') is-invalid @enderror" name="religion" value="{{ old('religion') }}" required>
+
+                                @error('religion')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Hometown -->
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.register.hometown') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error('hometown') is-invalid @enderror" name="hometown" value="{{ old('hometown') }}" required>
+
+                                @error('hometown')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.register.address') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required>
+
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Phone number -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
                                 {{ trans('messages.register.phone') }}
@@ -122,7 +204,7 @@
                         <!-- Email -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.register.header') }}
+                                {{ trans('messages.register.email') }}
                             </label>
 
                             <div class="col-md-6">
@@ -135,121 +217,19 @@
                                 @enderror
                             </div>
                         </div>
-                        
-                          <!-- Birthday -->
+
+                        <!-- Degree -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.register.birthday') }}
+                                {{ trans('messages.register.degree') }}
                             </label>
 
                             <div class="col-md-6">
-                                <input type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" required>
-
-                                @error('birthday')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                          <!-- Nationality -->
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.register.nationality') }}
-                            </label>
-
-                            <div class="col-md-6">
-                                <input type="text" class="form-control @error('nationality') is-invalid @enderror" name="nationality" value="{{ old('nationality') }}" required>
-
-                                @error('nationality')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                          <!-- Religion -->
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.register.religion') }}
-                            </label>
-
-                            <div class="col-md-6">
-                                <input type="text" class="form-control @error('religion') is-invalid @enderror" name="religion" value="{{ old('religion') }}" required>
-
-                                @error('religion')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                          <!-- Hometown -->
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.register.hometown') }}
-                            </label>
-
-                            <div class="col-md-6">
-                                <input type="text" class="form-control @error('hometown') is-invalid @enderror" name="hometown" value="{{ old('hometown') }}" required>
-
-                                @error('hometown')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                          <!-- Address -->
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.register.address') }}s
-                            </label>
-
-                            <div class="col-md-6">
-                                <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required>
-
-                                @error('address')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                          <!-- Identify_number -->
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.register.identify') }}
-                            </label>
-
-                            <div class="col-md-6">
-                                <input type="text" class="form-control @error('identify_number') is-invalid @enderror" name="identify_number" value="{{ old('identify_number') }}" required>
-
-                                @error('identify_number')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <!-- Position -->
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.update.position') }}
-                            </label>
-
-                            <div class="col-md-6">
-                                <select name="position" form="update">
-                                    <option value="Employee">Ke toan</option>
-                                    <option value="Manager">Thuc tap sinh</option>
-                                    <option value="Admin">Chuyen vien</option>
-                                    <option value="Admin">Truong phong</option>
+                                <select class="btn btn-outline" name="degree" form="register">
+                                    <option value="bachelor">{{ trans('messages.register.bachelor') }}</option>
+                                    <option value="engineer">{{ trans('messages.register.engineer') }}</option>
+                                    <option value="master">{{ trans('messages.register.master') }}</option>
+                                    <option value="post-doctor">{{ trans('messages.register.post-doctor') }}</option>
                                 </select>
                             </div>
                         </div>
@@ -257,28 +237,35 @@
                         <!-- Department -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.update.department') }}
+                                {{ trans('messages.register.department') }}
                             </label>
 
                             <div class="col-md-6">
-                                <select  name="department" form="update">
-                                    <option value="Cu nhan">Phong tai chinh</option>
-                                    <option value="Ky su">Phong kinh doanh</option>
-                                    <option value="Thac si">Phong quan ly</option>
-                                    <option value="Tien si">Phong nhan su</option>
+                                <select class="btn btn-outline" name="department" form="register">
+                                    <option value="departments">
+                                        {{ trans('messages.register.departments') }}
+                                    </option>
+                                    <option value="equivalent-departments">
+                                        {{ trans('messages.register.equivalent-departments') }}
+                                    </option>
+                                    <option value="bol-branches">
+                                        {{ trans('messages.register.bol-branches') }}s
+                                    </option>
+                                    <option value="ED-under-BOL">
+                                        {{ trans('messages.register.ED-under-BOL') }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
 
-
                         <!-- Work unit -->
                           <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.update.work-unit') }}
+                                {{ trans('messages.register.work-unit') }}
                             </label>
 
                             <div class="col-md-6">
-                                <select  name="work_unit" form="update">
+                                <select class="btn btn-outline" name="work_unit" form="register">
                                     <option value="Champasak">Champasak</option>
                                     <option value="Luangprabang">Luangprabang</option>
                                     <option value="Oudomxay">Oudomxay</option>
@@ -288,11 +275,26 @@
                             </div>
                         </div>
 
+                        <!-- Position -->
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.register.position') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <select class="btn btn-outline" name="position" form="register">
+                                    <option value="Employee">Ke toan</option>
+                                    <option value="Manager">Thuc tap sinh</option>
+                                    <option value="Admin">Chuyen vien</option>
+                                    <option value="Admin">Truong phong</option>
+                                </select>
+                            </div>
+                        </div>
 
                         <!-- Start day -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.update.start-day') }}
+                                {{ trans('messages.register.start-day') }}
                             </label>
 
                             <div class="col-md-6">
@@ -309,7 +311,7 @@
                         <!-- End day -->
                          <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.update.end-day') }}
+                                {{ trans('messages.register.end-day') }}
                             </label>
 
                             <div class="col-md-6">
@@ -326,7 +328,7 @@
                         <!-- Coefficients salary -->
                          <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.update.salary') }}
+                                {{ trans('messages.register.salary') }}
                             </label>
 
                             <div class="col-md-6">
@@ -343,7 +345,7 @@
                         <!-- Insurance number -->
                          <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.update.insurance') }}
+                                {{ trans('messages.register.insurance') }}
                             </label>
 
                             <div class="col-md-6">
@@ -354,6 +356,21 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <!-- Role -->
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.register.role') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <select class="btn btn-outline" name="role" form="register">
+                                    <option value="employee">{{ trans('messages.register.employee') }}</option>
+                                    <option value="manager">{{ trans('messages.register.manager') }}</option>
+                                    <option value="admin">{{ trans('messages.register.admin') }}</option>
+                                </select>
                             </div>
                         </div>
 

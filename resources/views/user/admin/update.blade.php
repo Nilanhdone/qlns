@@ -10,23 +10,45 @@
                 <div class="card-body">
                     <form method="get" action="{{ route('update') }}" id="update">
                         @csrf
-                        <!-- Status -->
+
+                        <!-- Department -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.update.header') }}
+                                {{ trans('messages.update.department') }}
                             </label>
 
-                            <div class="form-check col-md-4">
-                                <input class="form-check-input" type="radio" name="status" id="active" value="1" checked>
-                                <label class="form-check-label" for="active">
-                                    {{ trans('messages.update.active') }}
-                                </label>
+                            <div class="col-md-6">
+                                <select class="btn btn-outline" name="department" form="register">
+                                    <option value="departments">
+                                        {{ trans('messages.update.departments') }}
+                                    </option>
+                                    <option value="equivalent-departments">
+                                        {{ trans('messages.update.equivalent-departments') }}
+                                    </option>
+                                    <option value="bol-branches">
+                                        {{ trans('messages.update.bol-branches') }}
+                                    </option>
+                                    <option value="ED-under-BOL">
+                                        {{ trans('messages.update.ED-under-BOL') }}
+                                    </option>
+                                </select>
                             </div>
-                            <div class="form-check col-md-4">
-                                <input class="form-check-input" type="radio" name="status" id="inactive" value="0">
-                                <label class="form-check-label" for="inactive">
-                                    {{ trans('messages.update.inactive') }}
-                                </label>
+                        </div>
+
+                        <!-- Work unit -->
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.update.work-unit') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <select class="btn btn-outline" name="work_unit" form="update">
+                                    <option value="Champasak">Champasak</option>
+                                    <option value="Luangprabang">Luangprabang</option>
+                                    <option value="Oudomxay">Oudomxay</option>
+                                    <option value="Savannakhet">Savannakhet</option>
+                                    <option value="Xiengkhoang">Xiengkhoang</option>
+                                </select>
                             </div>
                         </div>
 
@@ -37,45 +59,11 @@
                             </label>
 
                             <div class="col-md-6">
-                                <select name="position" form="update">
+                                <select class="btn btn-outline" name="position" form="update">
                                     <option value="Employee">Ke toan</option>
                                     <option value="Manager">Thuc tap sinh</option>
                                     <option value="Admin">Chuyen vien</option>
                                     <option value="Admin">Truong phong</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- Department -->
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.update.department') }}
-                            </label>
-
-                            <div class="col-md-6">
-                                <select  name="department" form="update">
-                                    <option value="Cu nhan">Phong tai chinh</option>
-                                    <option value="Ky su">Phong kinh doanh</option>
-                                    <option value="Thac si">Phong quan ly</option>
-                                    <option value="Tien si">Phong nhan su</option>
-                                </select>
-                            </div>
-                        </div>
-
-
-                          <!-- Work unit -->
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.update.work-unit') }}
-                            </label>
-
-                            <div class="col-md-6">
-                                <select  name="work_unit" form="update">
-                                    <option value="Champasak">Champasak</option>
-                                    <option value="Luangprabang">Luangprabang</option>
-                                    <option value="Oudomxay">Oudomxay</option>
-                                    <option value="Savannakhet">Savannakhet</option>
-                                    <option value="Xiengkhoang">Xiengkhoang</option>
                                 </select>
                             </div>
                         </div>
@@ -97,7 +85,7 @@
                             </div>
                         </div>
 
-                            <!-- End day -->
+                        <!-- End day -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
                                 {{ trans('messages.update.end-day') }}
@@ -114,7 +102,7 @@
                             </div>
                         </div>
 
-                               <!-- Salary -->
+                        <!-- Salary -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
                                 {{ trans('messages.update.salary') }}
@@ -130,10 +118,8 @@
                                 @enderror
                             </div>
                         </div>
-
                         
-
-                          <!-- Insurance number -->
+                        <!-- Insurance number -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
                                 {{ trans('messages.update.insurance') }}
@@ -150,7 +136,7 @@
                             </div>
                         </div>
 
-                        
+                        <!-- Button -->
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

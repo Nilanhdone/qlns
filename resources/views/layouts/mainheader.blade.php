@@ -1,7 +1,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg bg-light">
     <div class="container">
-        <img src="{{asset('img/logo.png')}}" height="70" width="70" alt="Small logo">
+        <a href="/"><img src="{{asset('img/logo.png')}}" height="70" width="70" alt="Small logo"></a>
         <h3 class="text-danger mr-auto text-uppercase">{{ trans('messages.header.title') }}</h3>
 
         <ul class="navbar-nav ml-auto text-uppercase">

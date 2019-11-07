@@ -19,29 +19,10 @@
                     <i class="fas fa-user-edit mr-2"></i>{{ trans('messages.menu.update') }}</a>
                 </li>
 
-                <li class="nav-item mx-0 mx-lg-1 dropdown">
-                <a id="list" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle text-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user-circle mr-2"></i>{{ trans('messages.menu.list') }}
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="list">
-                    <a class="dropdown-item text-primary" href="#"><i class="fas fa-university mr-2"></i>
-                        Champasak
-                    </a>
-                    <a class="dropdown-item text-primary" href="#"><i class="fas fa-university mr-2"></i>
-                        Luangprabang
-                    </a>
-                    <a class="dropdown-item text-primary" href="#"><i class="fas fa-university mr-2"></i>
-                        Oudomxay
-                    </a>
-                    <a class="dropdown-item text-primary" href="#"><i class="fas fa-university mr-2"></i>
-                        Savannakhet
-                    </a>
-                    <a class="dropdown-item text-primary" href="#"><i class="fas fa-university mr-2"></i>
-                        Xiengkhoang
-                    </a>
-                </div>
-            </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="staff-list">
+                    <i class="fas fa-users mr-2"></i>{{ trans('messages.menu.list') }}</a>
+                </li>
 
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#search">

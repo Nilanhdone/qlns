@@ -62,4 +62,14 @@ class AdminController extends Controller
             return redirect()->back()->with('error',$e->getMessage());
         }
     }
+
+    /**
+     * Show staff list.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function showStaffList() {
+        $user = Auth::user();
+        return view('user.admin.staff-list.main', compact('user'));
+    }
 }
