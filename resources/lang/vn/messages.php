@@ -5,7 +5,6 @@ return [
         'login' => 'Đăng nhập',
         'change-password' => 'Đổi mật khẩu',
         'logout' => 'Đăng xuất',
-        'language' => 'Ngôn ngữ',
     ],
     'login' => [
         'email' => 'Tài khoản',
@@ -62,7 +61,7 @@ return [
         'position' => 'Chức vụ',
         'start-day' => 'Ngày bắt đầu',
         'end-day' => 'Ngày kết thúc',
-        'salary' => 'Mức lương',
+        'salary' => 'Hệ số lương',
         'insurance' => 'Số bảo hiểm xã hội',
         'button' => 'Cập nhật',
     ],

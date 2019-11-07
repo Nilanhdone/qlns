@@ -44,7 +44,7 @@ class ForgotPasswordController extends Controller
      */
     public function sendResetLinkEmail(Request $request)
     {
-        $rule = [
+        $rules = [
             'email' => ['required', 'string', 'email'],
         ];
 
@@ -63,12 +63,13 @@ class ForgotPasswordController extends Controller
                 'token' => Str::random(60),
             ]);
             // send mail
-            $user->notify(new ResetPasswordRequest($passwordReset->token));
+            $user->notify(new ResetPasswordNotification($passwordReset->token));
 
-            $success = Lang::get('notify.success.reset_email');
-            return redirect()->back()->with('success', $success);
+            // $success = Lang::get('notify.success.reset_email');
+            // return redirect()->back()->with('success', $success);
+            return redirect()->back();
         } else {
-            $errors = Lang::get('notify.errors.reset');
+            $errors = "fails";
             return redirect()->back()->withErrors($errors)->withInput();
         }
     }

@@ -1,13 +1,13 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container">
-        <ul class="nav nav-tabs navbar-nav mr-auto text-uppercase">
+    <div class="container"  style="border-bottom: 2px solid rgba(0,0,0,.125);">
+        <ul class="nav navbar-nav mr-auto text-uppercase">
             <li class="nav-item mx-0 mx-lg-1 mr">
                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="profile">
                 <i class="fas fa-user-shield mr-2"></i>{{ trans('messages.menu.profile') }}</a>
             </li>
         </ul>
-        <ul class="nav nav-tabs navbar-nav ml-auto text-uppercase">
+        <ul class="nav navbar-nav ml-auto text-uppercase">
             @if(($user->role)  == 'admin')
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="register">

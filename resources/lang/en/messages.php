@@ -5,7 +5,6 @@ return [
         'login' => 'Login',
         'change-password' => 'Change password',
         'logout' => 'Logout',
-        'language' => 'Language',
     ],
     'login' => [
         'email' => 'Email',
@@ -43,7 +42,7 @@ return [
         'position' => 'Position',
         'start-day' => 'Start day',
         'end-day' => 'End day',
-        'salary' => 'Salary',
+        'salary' => 'Coefficients salary',
         'insurance' => 'Insurance number',
         'role' => 'Role',
         'employee' => 'Employee',

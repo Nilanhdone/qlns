@@ -14,7 +14,7 @@
                         </div>
                     @endif
                     
-                    <form method="POST" action="{{ route('register') }}" id="register">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" id="register">
                         @csrf
 
                         <!-- User ID -->
@@ -41,7 +41,13 @@
                             </label>
 
                             <div class="col-md-6">
-                                <input type="file" class="form-control-file" accept="image/jpeg, image/jpg, image/png" name="image" required>
+                                <input type="file" class="form-control-file @error('image') is-invalid @enderror" accept="image/jpeg, image/jpg, image/png" name="image" required>
+
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

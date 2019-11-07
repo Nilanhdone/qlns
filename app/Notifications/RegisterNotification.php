@@ -7,18 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ResetPasswordNotification extends Notification
+class RegisterNotification extends Notification
 {
     use Queueable;
-    protected $token;
+    protected $password;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($token)
+    public function __construct($password)
     {
-        $this->token = $token;
+        $this->password = $password;
     }
 
     /**
@@ -40,10 +41,11 @@ class ResetPasswordNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = url('password/reset/token='.$this->token);
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url($url))
+                    ->line('You have just been registered for an account on '.env('APP_NAME').'!')
+                    ->line('Your account is this email.')
+                    ->line('With password: '.$this->password)
+                    ->action('Click to login', url('/'))
                     ->line('Thank you for using our application!');
     }
 

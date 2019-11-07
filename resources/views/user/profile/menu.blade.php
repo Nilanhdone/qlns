@@ -1,5 +1,8 @@
 <div class="row">
     <div class="col-3">
+        <div class="text-center mb-2">
+            <img src="{{asset('img/avatar').'/'.$user->avatar}}" class="img-thumbnail">
+        </div>
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link active" id="v-pill-basic-tab" data-toggle="pill" href="#basic" role="tab" aria-controls="v-pill-basic" aria-selected="true">
             {{ trans('messages.profile.menu.basic') }}</a>
