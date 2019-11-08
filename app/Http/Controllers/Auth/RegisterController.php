@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\User;
 use App\Model\UserInfo;
+use App\Model\Unit;
+use App\Model\Position;
 use Auth;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Http\File;
@@ -56,7 +58,9 @@ class RegisterController extends Controller
     protected function showRegistrationForm()
     {
         $user = Auth::user();
-        return view('auth.register', compact('user'));
+        $units = Unit::all();
+        $positions = Position::all();
+        return view('auth.register', compact('user', 'units', 'positions'));
     }
 
     /**

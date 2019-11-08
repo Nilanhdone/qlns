@@ -19,13 +19,13 @@ Route::get('lang/{locale}','HomeController@lang');
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
     Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
     Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
-    Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+    Route::get('/password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('password.reset');
     // Change password
     Route::get('change-password','HomeController@showChangePasswordForm')->name('change-password');
-    Route::post('change-password', 'HomeController@changePassword');
+    Route::post('change-password','HomeController@changePassword');
     // Login
-    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-    Route::post('login', 'Auth\LoginController@login');
+    Route::get('login','Auth\LoginController@showLoginForm')->name('login');
+    Route::post('login','Auth\LoginController@login');
     // Logout
     Route::get('logout','Auth\LoginController@logout')->name('logout');
     Route::get('profile','HomeController@showProfile')->name('profile');
@@ -34,15 +34,21 @@ Route::get('lang/{locale}','HomeController@lang');
 
 // ADMIN
     // Register
-    Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-    Route::post('register', 'Auth\RegisterController@register');
+    Route::get('register','Auth\RegisterController@showRegistrationForm')->name('register');
+    Route::post('register','Auth\RegisterController@register');
     // Update
     Route::get('update','AdminController@showUpdateForm')->name('update');
-    Route::post('update', 'AdminController@update');
+    Route::post('update','AdminController@update');
     // Staff list
-    Route::get('staff-list','AdminController@showStaffList')->name('staff-list');
+    Route::get('staff','AdminController@showStaff')->name('staff');
+    Route::get('staff/{unit}','AdminController@showStaffDetail');
+
+    // Route::get('staff/{unit}', function () {
+    //     return redirect('staff-detail', ['unit'=>$unit]);
+    // });
+    // Route::get('staff-detail','AdminController@showStaffDetail');
 
 // EMPLOYEE
     // send vacation leave
     Route::get('send-vacation','EmployeeController@showVacationForm')->name('send-vacation');
-    Route::post('send-vacation', 'EmployeeController@sendVacation');
+    Route::post('send-vacation','EmployeeController@sendVacation');

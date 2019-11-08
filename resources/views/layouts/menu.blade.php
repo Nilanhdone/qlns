@@ -20,8 +20,8 @@
                 </li>
 
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="staff-list">
-                    <i class="fas fa-users mr-2"></i>{{ trans('messages.menu.list') }}</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="staff">
+                    <i class="fas fa-users mr-2"></i>{{ trans('messages.menu.staff') }}</a>
                 </li>
 
                 <li class="nav-item mx-0 mx-lg-1">

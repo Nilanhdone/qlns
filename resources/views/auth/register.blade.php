@@ -272,11 +272,11 @@
 
                             <div class="col-md-6">
                                 <select class="btn btn-outline" name="work_unit" form="register">
-                                    <option value="Champasak">Champasak</option>
-                                    <option value="Luangprabang">Luangprabang</option>
-                                    <option value="Oudomxay">Oudomxay</option>
-                                    <option value="Savannakhet">Savannakhet</option>
-                                    <option value="Xiengkhoang">Xiengkhoang</option>
+                                    @foreach ($units as $unit)
+                                    <option value="{{ $unit->unit }}">
+                                        {{ trans('messages.register.unit.'.$unit->unit) }}
+                                    </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -289,10 +289,11 @@
 
                             <div class="col-md-6">
                                 <select class="btn btn-outline" name="position" form="register">
-                                    <option value="Employee">Ke toan</option>
-                                    <option value="Manager">Thuc tap sinh</option>
-                                    <option value="Admin">Chuyen vien</option>
-                                    <option value="Admin">Truong phong</option>
+                                    @foreach ($positions as $position)
+                                    <option value="{{ $position->position }}">
+                                        {{ trans('messages.register.positions.'.$position->position) }}
+                                    </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
