@@ -41,12 +41,7 @@ Route::get('lang/{locale}','HomeController@lang');
     Route::post('update','AdminController@update');
     // Staff list
     Route::get('staff','AdminController@showStaff')->name('staff');
-    Route::get('staff/{unit}','AdminController@showStaffDetail');
-
-    // Route::get('staff/{unit}', function () {
-    //     return redirect('staff-detail', ['unit'=>$unit]);
-    // });
-    // Route::get('staff-detail','AdminController@showStaffDetail');
+    Route::get('{unit}','AdminController@showStaffDetail')->name('staff-unit');
 
 // EMPLOYEE
     // send vacation leave

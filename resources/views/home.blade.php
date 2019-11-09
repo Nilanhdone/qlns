@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
 <div style="float: left; width: 60%;">
     <div class="card ml-2">
         <div class="card-header text-primary text-uppercase"><i class="fas fa-user mr-2"></i>
@@ -18,9 +19,15 @@
         </div>
         <div class="card-body">
             Đơn xin nghỉ phép ...
-            <span class="badge badge-primary">waiting</span>
-            <span class="badge badge-success">accepted</span>
-            <span class="badge badge-pill badge-danger">rejected</span>
+            <span class="badge badge-pill badge-primary">
+                {{ trans('messages.home.waiting') }}<i class="fas fa-clock ml-2"></i>
+            </span>
+            <span class="badge badge-pill badge-success">
+                {{ trans('messages.home.accepted') }}<i class="fas fa-check ml-2"></i>
+            </span>
+            <span class="badge badge-pill badge-danger">
+                {{ trans('messages.home.rejected') }}<i class="fas fa-exclamation-circle ml-2"></i>
+            </span>
         </div>
 
         <div class="w-100"></div>
@@ -30,5 +37,5 @@
         </div>
         <div class="card-body"></div>
     </div>
-</div>
+</div></div>
 @endsection

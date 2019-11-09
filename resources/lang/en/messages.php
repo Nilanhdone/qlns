@@ -160,6 +160,9 @@ return [
         'profile' => 'Personal information',
         'vacation-leave' => 'Vacation leave',
         'work-calendar'=> 'Work calendar',
+        'waiting' => 'Waiting',
+        'accepted' => 'Accepted',
+        'rejected' => 'Rejected',
     ],
     'profile' => [
         'basic' => [
@@ -224,6 +227,29 @@ return [
             'ED-under-BOL' => [
                 'header' => 'Equivalent Department under BOL',
                 'dpo' => 'Depositor Protection Office',
+            ],
+        ],
+        'detail' => [
+            'positions' => [
+                'governor' => 'Governor',
+                'deputy-governor' => 'Deputy Governor',
+                'director-general' => 'Director General',
+                'acting-director' => 'Acting Director',
+                'deputy-director-general' => 'Deputy Director General',
+                'chairman-CEO' => 'Chairman and CEO',
+                'manager' => 'Manager',
+                'deputy-head' => 'Deputy Head',
+                'officials' => 'Officials',
+                'specialist' => 'The specialist',
+                'sp-staff' => 'Business Support Staff',
+                'staff' => 'Staff',
+                'interns' => 'Interns',
+            ],
+            'button' => [
+                'detail' => 'Detail',
+                'update' => 'Update',
+                'edit' => 'Edit',
+                'delete' => 'Delete',
             ],
         ],
     ],

@@ -100,6 +100,6 @@ class AdminController extends Controller
             $users[] = $user;
         }
         // dd($users);
-        return view('user.admin.staff-list.main', compact('user', 'users', 'departments', 'equivalent_departments', 'bol_branches', 'ED_under_BOLs'));
+        return view('user.admin.staff-list.detail', compact('user', 'users', 'lists', 'unit','departments', 'equivalent_departments', 'bol_branches', 'ED_under_BOLs'));
     }
 }

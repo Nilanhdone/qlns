@@ -1,6 +1,6 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container"  style="border-bottom: 2px solid rgba(0,0,0,.125);">
+    <div class="container" style="border-bottom: 2px solid rgba(0,0,0,.125);">
         <ul class="nav navbar-nav mr-auto text-uppercase">
             <li class="nav-item mx-0 mx-lg-1 mr">
                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="profile">

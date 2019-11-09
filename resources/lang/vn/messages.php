@@ -160,6 +160,10 @@ return [
         'profile' => 'Thông tin cá nhân',
         'vacation-leave' => 'Nghỉ phép',
         'work-calendar'=> 'Lịch công việc',
+        'work-calendar'=> 'Work calendar',
+        'waiting' => 'Đang chờ',
+        'accepted' => 'Chấp nhận',
+        'rejected' => 'Từ chối',
     ],
     'profile' => [
         'basic' => [
@@ -224,6 +228,29 @@ return [
             'ED-under-BOL' => [
                 'header' => 'Ủy ban tương đương dưới Ngân hàng Nhà nước',
                 'dpo' => 'Văn phòng bảo vệ người gửi tiền',
+            ],
+        ],
+        'detail' => [
+            'positions' => [
+                'governor' => 'Thống đốc',
+                'deputy-governor' => 'Phó Thống đốc',
+                'director-general' => 'Tổng Giám đốc',
+                'acting-director' => 'Quyền Giám đốc',
+                'deputy-director-general' => 'Phó Tổng Giám đốc',
+                'chairman-CEO' => 'Chủ tịch và Giám đốc điều hành',
+                'manager' => 'Trưởng phòng',
+                'deputy-head' => 'Phó phòng',
+                'officials' => 'Cán bộ',
+                'specialist' => 'Chuyên viên',
+                'sp-staff' => 'Nhân viên hỗ trợ kinh doanh',
+                'staff' => 'Nhân viên',
+                'interns' => 'Thực tập sinh',
+            ],
+            'button' => [
+                'detail' => 'Chi tiết',
+                'update' => 'Cập nhật',
+                'edit' => 'Chỉnh sửa',
+                'delete' => 'Xóa',
             ],
         ],
     ],
