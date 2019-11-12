@@ -13,6 +13,7 @@
 
 Route::get('/','HomeController@index')->name('home');
 Route::get('lang/{locale}','HomeController@lang');
+Route::get('update/lang/{locale}','HomeController@lang');
 
 // USER
     //Forget password
@@ -37,8 +38,8 @@ Route::get('lang/{locale}','HomeController@lang');
     Route::get('register','Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('register','Auth\RegisterController@register');
     // Update
-    Route::get('update','AdminController@showUpdateForm')->name('update');
-    Route::post('update','AdminController@update');
+    Route::post('update-info','AdminController@update')->name('update-info');
+    Route::get('update/{id}','AdminController@showUpdateForm')->name('update');
     // Staff list
     Route::get('staff','AdminController@showStaff')->name('staff');
     Route::get('{unit}','AdminController@showStaffDetail')->name('staff-unit');

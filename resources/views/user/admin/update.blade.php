@@ -8,9 +8,14 @@
                 <div class="card-header">{{ trans('messages.update.header') }}</div>
 
                 <div class="card-body">
-                    <form method="get" action="{{ route('update') }}" id="update">
+                    @if(Session::has('success'))
+                        <div class="alert alert-success"><i class="fas fa-check"></i>
+                            {!! Session::get('success') !!}
+                        </div>
+                    @endif
+                    <form method="POST" action="{{ route('update-info') }}" id="update">
                         @csrf
-
+                        <input type="hidden" name="user_id" value="{{ $user_id }}">
                         <!-- Department -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
@@ -18,7 +23,7 @@
                             </label>
 
                             <div class="col-md-6">
-                                <select class="btn btn-outline" name="department" form="register">
+                                <select class="btn btn-outline" name="department" form="update">
                                     <option value="departments">
                                         {{ trans('messages.update.departments') }}
                                     </option>
@@ -43,11 +48,11 @@
 
                             <div class="col-md-6">
                                 <select class="btn btn-outline" name="work_unit" form="update">
-                                    <option value="Champasak">Champasak</option>
-                                    <option value="Luangprabang">Luangprabang</option>
-                                    <option value="Oudomxay">Oudomxay</option>
-                                    <option value="Savannakhet">Savannakhet</option>
-                                    <option value="Xiengkhoang">Xiengkhoang</option>
+                                    @foreach ($units as $unit)
+                                    <option value="{{ $unit->unit }}">
+                                        {{ trans('messages.register.unit.'.$unit->unit) }}
+                                    </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -60,10 +65,11 @@
 
                             <div class="col-md-6">
                                 <select class="btn btn-outline" name="position" form="update">
-                                    <option value="Employee">Ke toan</option>
-                                    <option value="Manager">Thuc tap sinh</option>
-                                    <option value="Admin">Chuyen vien</option>
-                                    <option value="Admin">Truong phong</option>
+                                    @foreach ($positions as $position)
+                                    <option value="{{ $position->position }}">
+                                        {{ trans('messages.register.positions.'.$position->position) }}
+                                    </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

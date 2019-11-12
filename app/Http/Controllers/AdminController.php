@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Model\UserInfo;
 use App\Model\User;
 use App\Model\Unit;
+use App\Model\Position;
 use Auth;
 use Session;
 use Illuminate\Support\Facades\Validator;
@@ -18,9 +19,12 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function showUpdateForm() {
+    public function showUpdateForm($id) {
         $user = Auth::user();
-        return view('user.admin.update', compact('user'));
+        $user_id = $id;
+        $units = Unit::all();
+        $positions = Position::all();
+        return view('user.admin.update', compact('user', 'user_id', 'units', 'positions'));
     }
 
     /**
@@ -35,22 +39,27 @@ class AdminController extends Controller
             DB::beginTransaction();
             
             $rules = [
+                'user_id' => ['required'],
                 'start_day' => ['required'],
                 'salary' => ['required', 'regex:/[0-9]/'],
                 'insurance_number' => ['required', 'string'],
             ];
 
-            $validator = Validator::make($request->get(), $rules);
+            $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
             }
+            // dd($request->all()); exit();
+
+            $user_info = UserInfo::where('end_day', null)->first();
+            $user_info->end_day = $request->start_day;
+            $user_info->save();
 
             UserInfo::create([
-                'user_id' => 20190001,
-                'status' => $request->status,
-                'position' => $request->position,
+                'user_id' => $request->user_id,
                 'department' => $request->department,
                 'work_unit' => $request->work_unit,
+                'position' => $request->position,
                 'start_day' => $request->start_day,
                 'end_day' => $request->end_day,
                 'salary' => $request->salary,
@@ -58,7 +67,8 @@ class AdminController extends Controller
             ]);
 
             DB::commit();
-            
+
+            return redirect()->back()->with('success', 'Cập nhật thông tin thành công!');
         } catch (Exception $e) {
             DB::rollBack();
 
@@ -87,7 +97,7 @@ class AdminController extends Controller
      * @param $unit
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function showStaffDetail($unit) {
+    public function showStaffDetail($unit = null) {
         $user = Auth::user();
         $departments = Unit::where('department', 'departments')->get();
         $equivalent_departments = Unit::where('department', 'equivalent-departments')->get();

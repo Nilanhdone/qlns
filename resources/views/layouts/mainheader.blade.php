@@ -12,7 +12,8 @@
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="user">
-                    <a class="dropdown-item text-primary" href="change-password"><i class="fas fa-tools mr-2"></i>
+                    <a class="dropdown-item text-primary" href="{{ route('change-password') }}">
+                        <i class="fas fa-tools mr-2"></i>
                         {{ trans('messages.header.change-password') }}
                     </a>
                     <a class="dropdown-item text-primary" href="logout"><i class="fas fa-sign-out-alt mr-2"></i>

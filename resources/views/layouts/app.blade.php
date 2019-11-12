@@ -16,6 +16,7 @@
                 @yield('content')
             </section>
 
+            <!-- @include('layouts.footer') -->
             <!-- footer -->
         </div>
     </body>

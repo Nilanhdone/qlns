@@ -22,7 +22,7 @@
                 <a href="#" class="badge badge-pill badge-info">
                     {{ trans('messages.staff.detail.button.detail') }}
                 </a>
-                <a href="#" class="badge badge-pill badge-success">
+                <a href="update/{{ $user->user_id }}" class="badge badge-pill badge-success">
                     {{ trans('messages.staff.detail.button.update') }}
                 </a>
                 <a href="#" class="badge badge-pill badge-primary">
