@@ -153,7 +153,7 @@ return [
         'staff' => 'Staff list',
         'search' => 'Search',
         'leave' => 'Send a vacation',
-        'check-leave' => 'Check vacation',
+        'check-vacation' => 'Check vacation',
     ],
     'home' => [
         'profile' => 'Personal information',

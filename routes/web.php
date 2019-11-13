@@ -33,6 +33,16 @@ Route::get('update/lang/{locale}','HomeController@lang');
     // First login
     Route::post('first-login','Auth\LoginController@changePassword')->name('first-login');
 
+// EMPLOYEE
+    // send vacation leave
+    Route::get('send-vacation','EmployeeController@showVacationForm')->name('send-vacation');
+    Route::post('send-vacation','EmployeeController@sendVacation');
+
+// MANAGER
+    // check vacation leave
+    Route::get('check-vacation','ManagerController@showVacationList')->name('check-vacation');
+    Route::post('check-vacation','ManagerController@check');   
+
 // ADMIN
     // Register
     Route::get('register','Auth\RegisterController@showRegistrationForm')->name('register');
@@ -43,8 +53,3 @@ Route::get('update/lang/{locale}','HomeController@lang');
     // Staff list
     Route::get('staff','AdminController@showStaff')->name('staff');
     Route::get('{unit}','AdminController@showStaffDetail')->name('staff-unit');
-
-// EMPLOYEE
-    // send vacation leave
-    Route::get('send-vacation','EmployeeController@showVacationForm')->name('send-vacation');
-    Route::post('send-vacation','EmployeeController@sendVacation');

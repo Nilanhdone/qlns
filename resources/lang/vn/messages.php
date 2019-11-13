@@ -153,7 +153,7 @@ return [
         'staff' => 'Danh sách cán bộ',
         'search' => 'Tìm kiếm',
         'leave' => 'Xin nghỉ phép',
-        'check-leave' => 'Xem đơn nghỉ phép',
+        'check-vacation' => 'Xem đơn nghỉ phép',
     ],
     'home' => [
         'profile' => 'Thông tin cá nhân',

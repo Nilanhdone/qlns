@@ -18,16 +18,35 @@
             {{ trans('messages.home.vacation-leave') }}
         </div>
         <div class="card-body">
-            Đơn xin nghỉ phép ...
-            <span class="badge badge-pill badge-primary">
-                {{ trans('messages.home.waiting') }}<i class="fas fa-clock ml-2"></i>
-            </span>
-            <span class="badge badge-pill badge-success">
-                {{ trans('messages.home.accepted') }}<i class="fas fa-check ml-2"></i>
-            </span>
-            <span class="badge badge-pill badge-danger">
-                {{ trans('messages.home.rejected') }}<i class="fas fa-exclamation-circle ml-2"></i>
-            </span>
+            @if($flag)
+                @foreach($vacations as $vacation)
+                <div class="row">
+                    <div class="col-9">
+                        <p class="text-uppercase">{{ $vacation->title }}</p>
+                    </div>
+                    <div class="col-3">
+                        @if($vacation->status == 'waiting')
+                            <span class="badge badge-pill badge-primary">
+                                {{ trans('messages.home.waiting') }}
+                                <i class="fas fa-clock ml-2"></i>
+                            </span>
+                            @elseif($vacation->status == 'accepted')
+                            <span class="badge badge-pill badge-success">
+                                {{ trans('messages.home.accepted') }}
+                                <i class="fas fa-check ml-2"></i>
+                            </span>
+                            @elseif($vacation->status == 'rejected')
+                                <span class="badge badge-pill badge-danger">
+                                {{ trans('messages.home.rejected') }}
+                                <i class="fas fa-exclamation-circle ml-2"></i>
+                            </span>
+                        @endif
+                    </div>
+                </div>
+                @endforeach
+            @elseif(!$flag)
+                <p>No vacation leave</p>
+            @endif      
         </div>
 
         <div class="w-100"></div>

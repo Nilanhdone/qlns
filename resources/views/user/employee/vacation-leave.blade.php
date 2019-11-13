@@ -8,7 +8,12 @@
                 <div class="card-header">Send a vacation leave</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('change-password') }}">
+                    @if(Session::has('success'))
+                        <div class="alert alert-success"><i class="fas fa-check"></i>
+                            {!! Session::get('success') !!}
+                        </div>
+                    @endif
+                    <form method="POST" action="{{ route('send-vacation') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -17,9 +22,9 @@
                             </label>
 
                             <div class="col-md-6">
-                                <input class="form-control @error('old_password') is-invalid @enderror" name="old_password" required>
+                                <input class="form-control @error('title') is-invalid @enderror" name="title" required>
 
-                                @error('old_password')
+                                @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -33,10 +38,10 @@
                             </label>
 
                             <div class="col-md-6">
-                                <textarea type="textarea" class="form-control @error('new_password') is-invalid @enderror" name="new_password" required>
+                                <textarea type="textarea" class="form-control @error('reason') is-invalid @enderror" name="reason" required>
                                 </textarea>
 
-                                @error('new_password')
+                                @error('reason')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\Vacation;
 use App;
 use session;
 use Auth;
@@ -27,7 +28,15 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('home', compact('user'));
+        $vacations = Vacation::where('user_id', $user->user_id)->get();
+
+        if (isset($vacations) && !empty($vacations)) {
+            $flag = 1;
+            return view('home', compact('user', 'vacations', 'flag'));
+        } else {
+            $flag = 0;
+            return view('home', compact('user', 'flag'));
+        }
     }
 
     /**
