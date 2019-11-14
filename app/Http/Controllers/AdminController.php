@@ -19,7 +19,8 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function showUpdateForm($id) {
+    public function showUpdateForm($id)
+    {
         $user = Auth::user();
         $user_id = $id;
         $units = Unit::all();
@@ -49,7 +50,6 @@ class AdminController extends Controller
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
             }
-            // dd($request->all()); exit();
 
             $user_info = UserInfo::where('end_day', null)->first();
             $user_info->end_day = $request->start_day;
@@ -81,7 +81,8 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function showStaff() {
+    public function showStaff()
+    {
         $user = Auth::user();
         $departments = Unit::where('department', 'departments')->get();
         $equivalent_departments = Unit::where('department', 'equivalent-departments')->get();
@@ -92,24 +93,60 @@ class AdminController extends Controller
     }
 
     /**
-     * Show staff detail information.
+     * Show staff list of unit.
      *
      * @param $unit
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function showStaffDetail($unit = null) {
+    public function showUnitDetail($unit = null)
+    {
         $user = Auth::user();
         $departments = Unit::where('department', 'departments')->get();
         $equivalent_departments = Unit::where('department', 'equivalent-departments')->get();
         $bol_branches = Unit::where('department', 'bol-branches')->get();
         $ED_under_BOLs = Unit::where('department', 'ED-under-BOL')->get();
         $lists = UserInfo::where('work_unit', $unit)->get();
-        $users = array();
+        $staffs = array();
         foreach ($lists as $list) {
-            $user = User::where('user_id', $list->user_id)->first();
-            $users[] = $user;
+            $staff = User::where('user_id', $list->user_id)->first();
+            $staffs[] = $staff;
         }
-        // dd($users);
-        return view('user.admin.staff-list.detail', compact('user', 'users', 'lists', 'unit','departments', 'equivalent_departments', 'bol_branches', 'ED_under_BOLs'));
+
+        return view('user.admin.staff-list.detail', compact('user', 'staffs', 'lists', 'unit','departments', 'equivalent_departments', 'bol_branches', 'ED_under_BOLs'));
+    }
+
+    /**
+     * Show staff detail information.
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function showStaffDetail($id)
+    {
+        $user = Auth::user();
+        $staff = User::where('user_id', $id)->first();
+        $works = UserInfo::where('user_id', $id)->get();
+
+        return view('user.admin.detail', compact('user', 'staff', 'works'));
+    }
+
+    public function showEditBasicForm()
+    {
+
+    }
+
+    public function showEditWorkForm()
+    {
+
+    }
+
+    public function editBasic(Request $request)
+    {
+
+    }
+
+    public function editWork(Request $request)
+    {
+        
     }
 }

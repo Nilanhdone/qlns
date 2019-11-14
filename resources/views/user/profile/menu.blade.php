@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-4">
+    <div class="col-3">
         <div class="text-center mb-2">
             <img src="{{asset('img/avatar').'/'.$user->avatar}}" class="img-thumbnail" width="150px" height="150px">
         </div>
@@ -10,7 +10,7 @@
             {{ trans('messages.profile.menu.work') }}</a>
         </div>
     </div>
-    <div class="col-8">
+    <div class="col-9">
         <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="v-pill-basic-tab">
                 @include('user.profile.basic')

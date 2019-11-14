@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Vacation;
+use App\Model\UserInfo;
 use App;
 use session;
 use Auth;
@@ -28,14 +29,15 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $works = UserInfo::where('user_id', $user->user_id)->get();
         $vacations = Vacation::where('user_id', $user->user_id)->get();
 
         if (isset($vacations) && !empty($vacations)) {
             $flag = 1;
-            return view('home', compact('user', 'vacations', 'flag'));
+            return view('home', compact('user', 'works', 'vacations', 'flag'));
         } else {
             $flag = 0;
-            return view('home', compact('user', 'flag'));
+            return view('home', compact('user', 'works', 'flag'));
         }
     }
 
@@ -68,7 +70,8 @@ class HomeController extends Controller
      */
     public function showChangePasswordForm()
     {
-        return view('user.change-password');
+        $user = Auth::user();
+        return view('user.change-password', compact('user'));
     }
 
     /**
@@ -79,6 +82,31 @@ class HomeController extends Controller
      */
     public function changePassword(Request $request)
     {
-        //
+        try {
+            DB::beginTransaction();
+            
+            $rules = [
+                'old_password' => ['required', 'string', 'min:6'],
+                'new_password' => ['required', 'string', 'min:6'],
+                'repassword' => ['required', 'string', 'min:6', 'same:new_password'],
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+            $user = Auth::user();
+            $user->password = Hash::make($request->new_password);
+            $user->save();
+
+            DB::commit();
+
+            return redirect()->back()->with('success', 'Thay đổi mật khẩu thành công');
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('error',$e->getMessage());
+        }
     }
 }

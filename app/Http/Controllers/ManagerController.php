@@ -13,7 +13,7 @@ class ManagerController extends Controller
     {
         $user = Auth::user();
         $work_unit = $user->work_unit;
-        $vacations = Vacation::where('work_unit', $work_unit)->get();
+        $vacations = Vacation::where([['work_unit', $work_unit],['status', 'waiting']])->get();
 
         if (isset($vacations) && !empty($vacations)) {
             $flag =1;
@@ -31,8 +31,21 @@ class ManagerController extends Controller
         }   
     }
 
-    public function check()
+    public function accept($id)
     {
+        $vacation = Vacation::where('id', $id)->first();
+        $vacation->status = 'accepted';
+        $vacation->save();
 
+        return redirect()->back();
+    }
+
+    public function reject($id)
+    {
+        $vacation = Vacation::where('id', $id)->first();
+        $vacation->status = 'rejected';
+        $vacation->save();
+
+        return redirect()->back();
     }
 }

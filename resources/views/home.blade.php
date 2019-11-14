@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-<div style="float: left; width: 60%;">
+<div style="float: left; width: 70%;">
     <div class="card ml-2">
         <div class="card-header text-primary text-uppercase"><i class="fas fa-user mr-2"></i>
             {{ trans('messages.home.profile') }}
@@ -12,7 +11,7 @@
         </div>
     </div>
 </div>
-<div style="float: right; width: 40%;">
+<div style="float: right; width: 30%;">
     <div class="card mr-2">
         <div class="card-header text-primary text-uppercase"><i class="fas fa-plane-departure mr-2"></i>
             {{ trans('messages.home.vacation-leave') }}
@@ -21,10 +20,10 @@
             @if($flag)
                 @foreach($vacations as $vacation)
                 <div class="row">
-                    <div class="col-9">
+                    <div class="col-8">
                         <p class="text-uppercase">{{ $vacation->title }}</p>
                     </div>
-                    <div class="col-3">
+                    <div class="col-4">
                         @if($vacation->status == 'waiting')
                             <span class="badge badge-pill badge-primary">
                                 {{ trans('messages.home.waiting') }}
@@ -38,7 +37,7 @@
                             @elseif($vacation->status == 'rejected')
                                 <span class="badge badge-pill badge-danger">
                                 {{ trans('messages.home.rejected') }}
-                                <i class="fas fa-exclamation-circle ml-2"></i>
+                                <i class="fas fa-times ml-2"></i>
                             </span>
                         @endif
                     </div>
@@ -56,5 +55,5 @@
         </div>
         <div class="card-body"></div>
     </div>
-</div></div>
+</div>
 @endsection

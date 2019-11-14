@@ -14,6 +14,7 @@
 Route::get('/','HomeController@index')->name('home');
 Route::get('lang/{locale}','HomeController@lang');
 Route::get('update/lang/{locale}','HomeController@lang');
+Route::get('detail/lang/{locale}','HomeController@lang');
 
 // USER
     //Forget password
@@ -41,7 +42,8 @@ Route::get('update/lang/{locale}','HomeController@lang');
 // MANAGER
     // check vacation leave
     Route::get('check-vacation','ManagerController@showVacationList')->name('check-vacation');
-    Route::post('check-vacation','ManagerController@check');   
+    Route::get('accept/{id}','ManagerController@accept')->name('accept');
+    Route::get('reject/{id}','ManagerController@reject')->name('reject');
 
 // ADMIN
     // Register
@@ -50,6 +52,13 @@ Route::get('update/lang/{locale}','HomeController@lang');
     // Update
     Route::post('update-info','AdminController@update')->name('update-info');
     Route::get('update/{id}','AdminController@showUpdateForm')->name('update');
+    // View detail
+    Route::get('detail/{id}','AdminController@showStaffDetail')->name('detail');
+    Route::get('edit-basic/{id}','AdminController@showEditBasicForm')->name('edit-basic');
+    Route::post('edit-basic', 'AdminController@editBasic');
+    Route::post('edit-work', 'AdminController@editWork');
+    Route::get('edit-work/{id}','AdminController@showEditWorkForm')->name('edit-work');
+
     // Staff list
     Route::get('staff','AdminController@showStaff')->name('staff');
-    Route::get('{unit}','AdminController@showStaffDetail')->name('staff-unit');
+    Route::get('{unit}','AdminController@showUnitDetail')->name('staff-unit');
