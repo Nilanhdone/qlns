@@ -30,7 +30,7 @@
                             <td>
                                 <div class="btn-group dropright">
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        {{ trans('messages.vacation.header') }}
+                                        {{ trans('messages.vacation.button') }}
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item text-success" href="accept/{{ $vacation[0]->id }}">

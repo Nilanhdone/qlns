@@ -105,6 +105,7 @@ class AdminController extends Controller
         $equivalent_departments = Unit::where('department', 'equivalent-departments')->get();
         $bol_branches = Unit::where('department', 'bol-branches')->get();
         $ED_under_BOLs = Unit::where('department', 'ED-under-BOL')->get();
+        $staff_department = Unit::where('unit', $unit)->first()->department;
         $lists = UserInfo::where('work_unit', $unit)->get();
         $staffs = array();
         foreach ($lists as $list) {
@@ -112,7 +113,7 @@ class AdminController extends Controller
             $staffs[] = $staff;
         }
 
-        return view('user.admin.staff-list.detail', compact('user', 'staffs', 'lists', 'unit','departments', 'equivalent_departments', 'bol_branches', 'ED_under_BOLs'));
+        return view('user.admin.staff-list.detail', compact('user', 'staff_department', 'staffs', 'lists', 'unit','departments', 'equivalent_departments', 'bol_branches', 'ED_under_BOLs'));
     }
 
     /**

@@ -2,7 +2,7 @@
 
 @section('detail')
     <h3  class="text-uppercase text-danger mb-2 text-monospace">
-        {{ trans('messages.staff.main.departments.'.$unit) }}
+        {{ trans('messages.staff.main.'.$staff_department.'.'.$unit) }}
     </h3>
     <div style="border-bottom: 2px solid rgba(0,0,0,.125);"></div>
     <ul class="list-unstyled">
