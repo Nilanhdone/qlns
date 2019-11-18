@@ -44,6 +44,8 @@ Route::get('detail/lang/{locale}','HomeController@lang');
     Route::get('check-vacation','ManagerController@showVacationList')->name('check-vacation');
     Route::get('accept/{id}','ManagerController@accept')->name('accept');
     Route::get('reject/{id}','ManagerController@reject')->name('reject');
+    Route::get('add-work-calendar','ManagerController@showAddWorkCalendarForm')->name('add-work-calendar');
+    Route::post('add-work-calendar','ManagerController@addWorkCalendar');
 
 // ADMIN
     // Register

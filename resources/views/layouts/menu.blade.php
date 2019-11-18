@@ -25,8 +25,12 @@
                 </li>
             @elseif(($user->role) == 'manager')
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('check-vacation')}}">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('check-vacation') }}">
                     <i class="fas fa-check mr-2"></i>{{ trans('messages.menu.check-vacation') }}</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('add-work-calendar') }}">
+                    <i class="fas fa-calendar-plus mr-2"></i>Add work calendar</a>
                 </li>
             @elseif(($user->role) == 'employee')
                 <li class="nav-item mx-0 mx-lg-1">
