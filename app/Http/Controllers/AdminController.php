@@ -23,9 +23,10 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $user_id = $id;
+        $work_unit = User::where('user_id', $user_id)->first()->work_unit;
         $units = Unit::all();
         $positions = Position::all();
-        return view('user.admin.update', compact('user', 'user_id', 'units', 'positions'));
+        return view('user.admin.update', compact('user', 'user_id', 'work_unit', 'units', 'positions'));
     }
 
     /**
@@ -131,14 +132,30 @@ class AdminController extends Controller
         return view('user.admin.detail', compact('user', 'staff', 'works'));
     }
 
-    public function showEditBasicForm()
+    /**
+     * Show form to edit basic information.
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function showEditBasicForm($id)
     {
+        $user = Auth::user();
+        $staff = User::where('user_id', $id)->first();
 
+        return view('user.admin.edit-basic', compact('user', 'staff'));
     }
 
-    public function showEditWorkForm()
+    /**
+     * Show form to edit work process.
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function showEditWorkForm($id)
     {
-
+        $user = Auth::user();
+        return view('user.admin.edit-work', compact('user'));
     }
 
     public function editBasic(Request $request)
@@ -147,6 +164,11 @@ class AdminController extends Controller
     }
 
     public function editWork(Request $request)
+    {
+        
+    }
+
+    public function delete($id)
     {
         
     }

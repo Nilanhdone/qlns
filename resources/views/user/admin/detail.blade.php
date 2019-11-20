@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-        <div class="card ml-2">
+        <div class="card" style="margin-right: 100px; margin-left: 100px;">
             <div class="card-header text-primary text-uppercase">
                 <div class="row">
                     <div class="col-2 text-danger">

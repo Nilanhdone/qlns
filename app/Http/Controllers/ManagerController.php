@@ -48,4 +48,51 @@ class ManagerController extends Controller
 
         return redirect()->back();
     }
+
+    public function showAddWorkCalendarForm()
+    {
+        $user = Auth::user();
+        return view('user.manager.add-work-calendar', compact('user'));
+    }
+
+    public function addWorkCalender(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+            
+            $rules = [
+                'title' => ['required'],
+                'reason' => ['required'],
+                'start_day' => ['required'],
+                'end_day' => ['required'],
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+            $user_id = Auth::user()->user_id;
+            $work_unit = Auth::user()->work_unit;
+            $status = 'waiting';
+
+            Vacation::create([
+                'status' => $status,
+                'user_id' => $user_id,
+                'work_unit' => $work_unit,
+                'title' => $request->title,
+                'reason' => $request->reason,
+                'start_day' => $request->start_day,
+                'end_day' => $request->end_day,
+            ]);
+
+            DB::commit();
+
+            return redirect()->back()->with('success', 'Gửi xin phép thành công!');
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('error',$e->getMessage());
+        }
+    }
 }

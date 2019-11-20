@@ -28,9 +28,35 @@
                 <a class="badge badge-pill badge-primary" data-toggle="collapse" href="#edit{{ $staff->user_id }}" role="button" aria-expanded="false" aria-controls="edit">
                     {{ trans('messages.staff.detail.button.edit') }}
                 </a>
-                <a href="#" class="badge badge-pill badge-danger">
+                <a href="#" class="badge badge-pill badge-danger" data-toggle="modal" data-target="#exampleModalCenter">
                     {{ trans('messages.staff.detail.button.delete') }}
                 </a>
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">
+                                    {{ trans('messages.staff.detail.modal.title') }}
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body text-danger">
+                                {{ trans('messages.staff.detail.modal.body') }}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    {{ trans('messages.staff.detail.modal.cancel') }}
+                                </button>
+                                <button type="button" class="btn btn-danger">
+                                    <a href="{{ route('delete/{{ $staff->user_id }}') }}" class="text-white">
+                                    {{ trans('messages.staff.detail.modal.delete') }}</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="collapse" id="edit{{ $staff->user_id }}">
                     <div class="card" style="width: 50%">
                         <a href="edit-basic/{{ $staff->user_id }}">
