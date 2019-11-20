@@ -5,7 +5,18 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ trans('messages.update.header') }}</div>
+                <div class="card-header text-primary text-uppercase">
+                    <div class="row">
+                        <div class="col-3 text-danger">
+                            <a href="http://127.0.0.1:8000/{{ $work_unit }}">
+                                <i class="fas fa-reply mr-2"></i>{{ trans('messages.profile.menu.back') }}
+                            </a>
+                        </div>
+                        <div class="col-8 ml-auto">
+                            {{ trans('messages.update.header') }}
+                        </div>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     @if(Session::has('success'))

@@ -57,9 +57,10 @@ Route::get('detail/lang/{locale}','HomeController@lang');
     // View detail
     Route::get('detail/{id}','AdminController@showStaffDetail')->name('detail');
     Route::get('edit-basic/{id}','AdminController@showEditBasicForm')->name('edit-basic');
-    Route::post('edit-basic', 'AdminController@editBasic');
-    Route::post('edit-work', 'AdminController@editWork');
+    Route::post('edit-basic', 'AdminController@editBasic')->name('basic-edit');
+    Route::post('edit-work', 'AdminController@editWork')->name('work-edit');
     Route::get('edit-work/{id}','AdminController@showEditWorkForm')->name('edit-work');
+    Route::get('delete/{id}','AdminController@delete')->name('delete');
 
     // Staff list
     Route::get('staff','AdminController@showStaff')->name('staff');
