@@ -50,7 +50,7 @@
                                     {{ trans('messages.staff.detail.modal.cancel') }}
                                 </button>
                                 <button type="button" class="btn btn-danger">
-                                    <a href="{{ route('delete/{{ $staff->user_id }}') }}" class="text-white">
+                                    <a href="delete/{{ $staff->user_id }})" class="text-white">
                                     {{ trans('messages.staff.detail.modal.delete') }}</a>
                                 </button>
                             </div>

@@ -46,7 +46,7 @@
                             </label>
 
                             <div class="col-md-6">
-                                <input type="file" class="form-control-file @error('image') is-invalid @enderror" accept="image/jpeg, image/jpg, image/png" name="image" required>
+                                <input type="file" class="form-control-file @error('image') is-invalid @enderror" accept="image/jpeg, image/jpg, image/png" name="image">
 
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
@@ -246,7 +246,7 @@
 
                             <div class="col-md-6">
                                 <select class="btn btn-outline" name="degree" form="edit-basic">
-                                    <option disabled selected value="{{ $staff->degree }}">{{ trans('messages.staff.edit-basic.'.$staff->degree) }}</option>
+                                    <option selected value="{{ $staff->degree }}">{{ trans('messages.staff.edit-basic.'.$staff->degree) }}</option>
                                     <option value="bachelor">{{ trans('messages.staff.edit-basic.bachelor') }}</option>
                                     <option value="engineer">{{ trans('messages.staff.edit-basic.engineer') }}</option>
                                     <option value="master">{{ trans('messages.staff.edit-basic.master') }}</option>
@@ -263,7 +263,7 @@
 
                             <div class="col-md-6">
                                 <select class="btn btn-outline" name="role" form="edit-basic">
-                                    <option disabled selected value="{{ $staff->role }}">{{ trans('messages.staff.edit-basic.'.$staff->role) }}</option>
+                                    <option selected value="{{ $staff->role }}">{{ trans('messages.staff.edit-basic.'.$staff->role) }}</option>
                                     <option value="employee">{{ trans('messages.staff.edit-basic.employee') }}</option>
                                     <option value="manager">{{ trans('messages.staff.edit-basic.manager') }}</option>
                                     <option value="admin">{{ trans('messages.staff.edit-basic.admin') }}</option>

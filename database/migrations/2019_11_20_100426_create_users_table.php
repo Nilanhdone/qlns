@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('religion');
             $table->string('hometown');
             $table->string('address');
-            $table->integer('phone');
+            $table->string('phone');
             $table->string('email')->unique();
             $table->string('degree');
             $table->timestamp('email_verified_at')->nullable();

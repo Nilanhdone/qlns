@@ -255,7 +255,7 @@
                                         {{ trans('messages.register.equivalent-departments') }}
                                     </option>
                                     <option value="bol-branches">
-                                        {{ trans('messages.register.bol-branches') }}s
+                                        {{ trans('messages.register.bol-branches') }}
                                     </option>
                                     <option value="ED-under-BOL">
                                         {{ trans('messages.register.ED-under-BOL') }}

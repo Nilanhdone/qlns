@@ -135,7 +135,7 @@ class RegisterController extends Controller
                 'insurance_number' => $request->insurance_number,
             ]);
 
-            $user->notify(new RegisterNotification($password));
+            // $user->notify(new RegisterNotification($password));
 
             DB::commit();
 
