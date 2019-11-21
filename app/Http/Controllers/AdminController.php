@@ -250,4 +250,29 @@ class AdminController extends Controller
 
         return redirect()->back();
     }
+
+    public function showSearchForm()
+    {
+        $user = Auth::user();
+        return view('user.admin.search', compact('user'));
+    }
+
+    public function search(Request $request)
+    {
+        $user = Auth::user();
+        // duyệt các tìm trường kiếm, lấy ra các trường khác null
+        $inputs = array();
+        foreach ($request->all() as $key => $value) {
+            // nếu trường khác rỗng thì lấy
+            if ($value != null) {
+                // nếu tên trường khác _token thì lấy
+                if ($key != '_token') {
+                    $inputs[$key] = $value;
+                }
+            }
+        }
+
+        $staffs = User::where($inputs)->get();           
+        return view('user.admin.search-detail', compact('user', 'staffs'));
+    }
 }

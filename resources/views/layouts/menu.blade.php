@@ -20,7 +20,7 @@
                 </li>
 
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#search">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('search') }}">
                     <i class="fas fa-search mr-2"></i>{{ trans('messages.menu.search') }}</a>
                 </li>
             @elseif(($user->role) == 'manager')

@@ -55,6 +55,10 @@ Route::get('edit-basic/lang/{locale}','HomeController@lang');
     // Update
     Route::post('update-info','AdminController@update')->name('update-info');
     Route::get('update/{id}','AdminController@showUpdateForm')->name('update');
+    // Search
+    Route::get('search','AdminController@showSearchForm')->name('search');
+    Route::post('search-detail','AdminController@search')->name('search-detail');
+
     // View detail
     Route::get('detail/{id}','AdminController@showStaffDetail')->name('detail');
     Route::get('edit-basic/{id}','AdminController@showEditBasicForm')->name('edit-basic');
