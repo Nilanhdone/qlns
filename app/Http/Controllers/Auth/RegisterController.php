@@ -76,7 +76,7 @@ class RegisterController extends Controller
 
             $rules = [
                 'user_id' => ['required', 'string', 'max:255'],
-                'image' => ['required'],
+                // 'image' => ['required'],
                 'name' => ['required', 'string', 'max:255'],
                 'birthday' => ['required'],
                 'identify_number' => ['required', 'string', 'max:255'],
@@ -108,8 +108,10 @@ class RegisterController extends Controller
 
             $user = User::create([
                 'user_id' => $request->user_id,
-                'avatar' => $avatar,
+                // 'avatar' => $avatar,
                 'role' => $request->role,
+                'position' => $request->position,
+                'unit' => $request->branch.'-'.$request->unit,
                 'name' => $request->name,
                 'gender' => $request->gender,
                 'birthday' => $request->birthday,
@@ -126,8 +128,8 @@ class RegisterController extends Controller
 
             UserInfo::create([
                 'user_id' => $request->user_id,
-                'department' => $request->department,
-                'work_unit' => $request->work_unit,
+                'branch' => $request->branch,
+                'unit' => $request->branch.'-'.$request->unit,
                 'position' => $request->position,
                 'start_day' => $request->start_day,
                 'end_day' => $request->end_day,
@@ -135,7 +137,7 @@ class RegisterController extends Controller
                 'insurance_number' => $request->insurance_number,
             ]);
 
-            // $user->notify(new RegisterNotification($password));
+            $user->notify(new RegisterNotification($password));
 
             DB::commit();
 

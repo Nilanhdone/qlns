@@ -16,8 +16,8 @@ class CreateUserInfosTable extends Migration
         Schema::create('user_infos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
-            $table->string('department');
-            $table->string('work_unit');
+            $table->string('branch');
+            $table->string('unit');
             $table->string('position');
             $table->date('start_day');
             $table->date('end_day')->nullable();

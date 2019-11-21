@@ -12,6 +12,6 @@ class Unit extends Model
      * @var array
      */
     protected $fillable = [
-        'department', 'unit'
+        'branch', 'unit'
     ];
 }

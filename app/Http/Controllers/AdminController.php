@@ -26,10 +26,10 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $user_id = $id;
-        $work_unit = User::where('user_id', $user_id)->first()->work_unit;
+        $unit = User::where('user_id', $user_id)->first()->unit;
         $units = Unit::all();
         $positions = Position::all();
-        return view('user.admin.update', compact('user', 'user_id', 'work_unit', 'units', 'positions'));
+        return view('user.admin.update', compact('user', 'user_id', 'unit', 'units', 'positions'));
     }
 
     /**
@@ -61,8 +61,8 @@ class AdminController extends Controller
 
             UserInfo::create([
                 'user_id' => $request->user_id,
-                'department' => $request->department,
-                'work_unit' => $request->work_unit,
+                'branch' => $request->branch,
+                'unit' => $request->unit,
                 'position' => $request->position,
                 'start_day' => $request->start_day,
                 'end_day' => $request->end_day,
@@ -87,13 +87,16 @@ class AdminController extends Controller
      */
     public function showStaff()
     {
+        // lấy ra danh sách đơn vị làm việc để hiển thị ở sidebar
         $user = Auth::user();
-        $departments = Unit::where('department', 'departments')->get();
-        $equivalent_departments = Unit::where('department', 'equivalent-departments')->get();
-        $bol_branches = Unit::where('department', 'bol-branches')->get();
-        $ED_under_BOLs = Unit::where('department', 'ED-under-BOL')->get();
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
 
-        return view('user.admin.staff-list.main', compact('user', 'departments', 'equivalent_departments', 'bol_branches', 'ED_under_BOLs'));
+        return view('user.admin.staff-list.main', compact('user', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     /**
@@ -104,13 +107,19 @@ class AdminController extends Controller
      */
     public function showUnitDetail($unit = null)
     {
+        // lấy ra danh sách đơn vị làm việc để hiển thị ở sidebar
         $user = Auth::user();
-        $departments = Unit::where('department', 'departments')->get();
-        $equivalent_departments = Unit::where('department', 'equivalent-departments')->get();
-        $bol_branches = Unit::where('department', 'bol-branches')->get();
-        $ED_under_BOLs = Unit::where('department', 'ED-under-BOL')->get();
-        $staff_department = Unit::where('unit', $unit)->first()->department;
-        $lists = UserInfo::where('work_unit', $unit)->get();
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
+
+        $branch = Unit::where('unit', $unit)->first()->branch;
+
+        // lấy ra danh sách nhân viên ứng với $unit
+        $lists = UserInfo::where('unit', $unit)->get();
         $staffs = array();
         foreach ($lists as $list) {
             $staff = User::where('user_id', $list->user_id)->first();
@@ -119,7 +128,7 @@ class AdminController extends Controller
             }
         }
 
-        return view('user.admin.staff-list.detail', compact('user', 'staff_department', 'staffs', 'lists', 'unit','departments', 'equivalent_departments', 'bol_branches', 'ED_under_BOLs'));
+        return view('user.admin.staff-list.detail', compact('user', 'staffs', 'lists', 'branch' ,'unit', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     /**

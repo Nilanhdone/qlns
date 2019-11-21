@@ -7,8 +7,8 @@
             <div class="card">
                 <div class="card-header text-primary text-uppercase">
                     <div class="row">
-                        <div class="col-3 text-danger">
-                            <a href="http://127.0.0.1:8000/{{ $staff->work_unit }}">
+                        <div class="col-4 text-danger">
+                            <a href="http://127.0.0.1:8000/{{ $staff->unit }}">
                                 <i class="fas fa-reply mr-2"></i>{{ trans('messages.profile.menu.back') }}
                             </a>
                         </div>
@@ -246,11 +246,11 @@
 
                             <div class="col-md-6">
                                 <select class="btn btn-outline" name="degree" form="edit-basic">
-                                    <option selected value="{{ $staff->degree }}">{{ trans('messages.staff.edit-basic.'.$staff->degree) }}</option>
-                                    <option value="bachelor">{{ trans('messages.staff.edit-basic.bachelor') }}</option>
-                                    <option value="engineer">{{ trans('messages.staff.edit-basic.engineer') }}</option>
-                                    <option value="master">{{ trans('messages.staff.edit-basic.master') }}</option>
-                                    <option value="post-doctor">{{ trans('messages.staff.edit-basic.post-doctor') }}</option>
+                                    <option selected value="{{ $staff->degree }}">{{ trans('messages.degree.'.$staff->degree) }}</option>
+                                    <option value="bachelor">{{ trans('messages.degree.bachelor') }}</option>
+                                    <option value="engineer">{{ trans('messages.degree.engineer') }}</option>
+                                    <option value="master">{{ trans('messages.degree.master') }}</option>
+                                    <option value="post-doctor">{{ trans('messages.degree.post-doctor') }}</option>
                                 </select>
                             </div>
                         </div>
@@ -263,10 +263,10 @@
 
                             <div class="col-md-6">
                                 <select class="btn btn-outline" name="role" form="edit-basic">
-                                    <option selected value="{{ $staff->role }}">{{ trans('messages.staff.edit-basic.'.$staff->role) }}</option>
-                                    <option value="employee">{{ trans('messages.staff.edit-basic.employee') }}</option>
-                                    <option value="manager">{{ trans('messages.staff.edit-basic.manager') }}</option>
-                                    <option value="admin">{{ trans('messages.staff.edit-basic.admin') }}</option>
+                                    <option selected value="{{ $staff->role }}">{{ trans('messages.role.'.$staff->role) }}</option>
+                                    <option value="employee">{{ trans('messages.role.employee') }}</option>
+                                    <option value="manager">{{ trans('messages.role.manager') }}</option>
+                                    <option value="admin">{{ trans('messages.role.admin') }}</option>
                                 </select>
                             </div>
                         </div>

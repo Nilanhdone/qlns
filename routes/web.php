@@ -15,6 +15,7 @@ Route::get('/','HomeController@index')->name('home');
 Route::get('lang/{locale}','HomeController@lang');
 Route::get('update/lang/{locale}','HomeController@lang');
 Route::get('detail/lang/{locale}','HomeController@lang');
+Route::get('edit-basic/lang/{locale}','HomeController@lang');
 
 // USER
     //Forget password

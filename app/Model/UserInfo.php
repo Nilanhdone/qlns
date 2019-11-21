@@ -12,6 +12,6 @@ class UserInfo extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'department', 'work_unit', 'position', 'start_day' ,'end_day', 'salary', 'insurance_number'
+        'user_id', 'branch', 'unit', 'position', 'start_day' ,'end_day', 'salary', 'insurance_number'
     ];
 }

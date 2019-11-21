@@ -17,7 +17,7 @@ class CreateVacationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('status');
             $table->integer('user_id');
-            $table->string('work_unit');
+            $table->string('unit');
             $table->string('title');
             $table->string('reason');
             $table->date('start_day');

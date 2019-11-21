@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->integer('status')->default(1);
             $table->integer('first_login')->default(0);
             $table->string('role');
+            $table->string('position');
+            $table->string('unit');
             $table->string('name');
             $table->string('avatar');
             $table->string('gender');

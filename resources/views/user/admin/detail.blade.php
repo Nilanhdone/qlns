@@ -5,7 +5,7 @@
             <div class="card-header text-primary text-uppercase">
                 <div class="row">
                     <div class="col-2 text-danger">
-                        <a href="http://127.0.0.1:8000/{{ $staff->work_unit }}">
+                        <a href="http://127.0.0.1:8000/{{ $staff->unit }}">
                             <i class="fas fa-reply mr-2"></i>{{ trans('messages.profile.menu.back') }}
                         </a>
                     </div>
@@ -59,13 +59,13 @@
                                         <tr>
                                             <th scope="row">{{ trans('messages.profile.basic.degree') }}</th>
                                             @if(($staff->degree) == 'bachelor')
-                                            <td>{{ trans('messages.profile.basic.bachelor') }}</td>
+                                            <td>{{ trans('messages.degree.bachelor') }}</td>
                                             @elseif(($staff->degree) == 'engineer')
-                                            <td>{{ trans('messages.profile.basic.engineer') }}</td>
+                                            <td>{{ trans('messages.degree.engineer') }}</td>
                                             @elseif(($staff->degree) == 'master')
-                                            <td>{{ trans('messages.profile.basic.master') }}</td>
+                                            <td>{{ trans('messages.degree.master') }}</td>
                                             @elseif(($staff->degree) == 'post-doctor')
-                                            <td>{{ trans('messages.profile.basic.post-doctor') }}</td>
+                                            <td>{{ trans('messages.degree.post-doctor') }}</td>
                                             @endif
                                         </tr>
                                         <tr>
@@ -101,8 +101,8 @@
                                         <tr>
                                             <th scope="col">{{ trans('messages.profile.work.from') }}</th>
                                             <th scope="col">{{ trans('messages.profile.work.to') }}</th>
-                                            <th scope="col">{{ trans('messages.profile.work.department') }}</th>
-                                            <th scope="col">{{ trans('messages.profile.work.work-unit') }}</th>
+                                            <th scope="col">{{ trans('messages.profile.work.branch') }}</th>
+                                            <th scope="col">{{ trans('messages.profile.work.unit') }}</th>
                                             <th scope="col">{{ trans('messages.profile.work.position') }}</th>
                                             <th scope="col">{{ trans('messages.profile.work.salary') }}</th>
                                             <th scope="col">{{ trans('messages.profile.work.insurance') }}</th>
@@ -117,9 +117,9 @@
                                             @else
                                             <td>{{ $work->end_day }}</td>
                                             @endif
-                                            <td>{{ trans('messages.staff.main.'.$work->department.'.header') }}</td>
-                                            <td>{{ trans('messages.staff.main.'.$work->department.'.'.$work->work_unit) }}</td>
-                                            <td>{{ trans('messages.staff.detail.positions.'.$work->position) }}</td>
+                                            <td>{{ trans('messages.branchs.'.$work->branch) }}</td>
+                                            <td>{{ trans('messages.units.'.$work->unit) }}</td>
+                                            <td>{{ trans('messages.positions.'.$work->position) }}</td>
                                             <td>{{ $work->salary }}</td>
                                             <td>{{ $work->insurance_number }}</td>
                                         </tr>

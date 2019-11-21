@@ -12,6 +12,6 @@ class Vacation extends Model
      * @var array
      */
     protected $fillable = [
-        'status', 'user_id', 'work_unit', 'title', 'reason', 'start_day' ,'end_day'
+        'status', 'user_id', 'unit', 'title', 'reason', 'start_day' ,'end_day'
     ];
 }
