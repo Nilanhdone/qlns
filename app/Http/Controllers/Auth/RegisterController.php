@@ -93,6 +93,8 @@ class RegisterController extends Controller
                 'insurance_number' => ['required', 'string'],
             ];
 
+            // dd($request->all());
+
             // kiểm tra điều kiện của đầu vào, nếu không đúng thì in ra lỗi
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
@@ -117,7 +119,7 @@ class RegisterController extends Controller
             // lưu thông tin cơ bản
             $user = User::create([
                 'user_id' => $request->user_id,
-                // 'avatar' => $avatar,
+                'avatar' => $avatar,
                 'role' => $request->role,
                 'position' => $request->position,
                 'unit' => $request->unit,
@@ -148,7 +150,7 @@ class RegisterController extends Controller
             ]);
 
             // gửi email thông báo đăng ký tài khoản, kèm theo MẬT KHẨU
-            $user->notify(new RegisterNotification($password));
+            // $user->notify(new RegisterNotification($password));
 
             DB::commit();
 

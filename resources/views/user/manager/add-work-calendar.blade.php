@@ -17,16 +17,16 @@
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" id="register">
                         @csrf
 
-                        <!-- Birthday -->
+                        <!-- Time -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
                                 Time
                             </label>
 
                             <div class="col-md-6">
-                                <input type="date" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" required>
+                                <input type="date" class="form-control @error('time') is-invalid @enderror" name="time" value="{{ old('time') }}" required>
 
-                                @error('birthday')
+                                @error('time')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

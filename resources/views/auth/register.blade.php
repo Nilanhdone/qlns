@@ -40,7 +40,7 @@
                         </label>
 
                         <div class="col-md-6">
-                            <input type="file" class="form-control-file @error('image') is-invalid @enderror" accept="image/jpeg, image/jpg, image/png" name="image">
+                            <input type="file" class="form-control-file @error('image') is-invalid @enderror" accept="image/jpeg, image/jpg, image/png" name="image" required>
 
                             @error('image')
                                 <span class="invalid-feedback" role="alert">

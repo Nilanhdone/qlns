@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div style="float: left; width: 25%; border-right: 2px dashed #D3D3D3;">
+<div style="float: left; width: 25%;">
     <div class="accordion ml-2" id="staff">
         <div class="card">
             <div class="card-header" id="headingOne">
