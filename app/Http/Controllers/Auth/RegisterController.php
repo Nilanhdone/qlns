@@ -47,6 +47,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        // phải đăng nhập mới có thể sử dụng các chức năng
         // $this->middleware('auth');
     }
 
@@ -74,6 +75,7 @@ class RegisterController extends Controller
         try {
             DB::beginTransaction();
 
+            // các điều kiện đầu vào của form
             $rules = [
                 'user_id' => ['required', 'string', 'max:255'],
                 // 'image' => ['required'],
@@ -91,27 +93,34 @@ class RegisterController extends Controller
                 'insurance_number' => ['required', 'string'],
             ];
 
+            // kiểm tra điều kiện của đầu vào, nếu không đúng thì in ra lỗi
             $validator = Validator::make($request->all(), $rules);
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
             }
 
+            // kiểm tra nếu có hình ảnh thì lưu hình ảnh
             if ($request->hasFile('image')) {
-                $image = $request->image;
+                $image = $request->image; // lấy ảnh từ đầu vào
+
+                // tên ảnh = thời gian hiện tại + đuôi ảnh
                 $avatar = time().'.'.$image->getClientOriginalExtension();
-                $destinationPath = public_path('\img\avatar');
-                $image->move($destinationPath, $avatar);
+
+                // lưu ảnh vào thư mục public\img\avatar
+                $destinationPath = public_path('\img\avatar'); // lấy đường dẫn thư mục
+                $image->move($destinationPath, $avatar); // di chuyển ảnh vào
             }
 
-            // generate a random password
+            // tạo mật khẩu ngẫu nhiên cho tài khoản tạo mới
             $password = Str::random(6);
 
+            // lưu thông tin cơ bản
             $user = User::create([
                 'user_id' => $request->user_id,
                 // 'avatar' => $avatar,
                 'role' => $request->role,
                 'position' => $request->position,
-                'unit' => $request->branch.'-'.$request->unit,
+                'unit' => $request->unit,
                 'name' => $request->name,
                 'gender' => $request->gender,
                 'birthday' => $request->birthday,
@@ -126,10 +135,11 @@ class RegisterController extends Controller
                 'password' => Hash::make($password),
             ]);
 
+            // lưu quá trình công tác đầu tiên
             UserInfo::create([
                 'user_id' => $request->user_id,
-                'branch' => $request->branch,
-                'unit' => $request->branch.'-'.$request->unit,
+                'branch' => explode('-', $request->unit)[0], // tách chuỗi từ unit để lấy branch
+                'unit' => $request->unit,
                 'position' => $request->position,
                 'start_day' => $request->start_day,
                 'end_day' => $request->end_day,
@@ -137,14 +147,17 @@ class RegisterController extends Controller
                 'insurance_number' => $request->insurance_number,
             ]);
 
+            // gửi email thông báo đăng ký tài khoản, kèm theo MẬT KHẨU
             $user->notify(new RegisterNotification($password));
 
             DB::commit();
 
+            // quay lại và thông báo thành công
             return redirect()->back()->with('success', 'Successfull');
         } catch (Exception $e) {
             DB::rollBack();
 
+            //quay lại và thông báo lỗi
             return redirect()->back()->with('errors', $e->getMessage());
         }
     }

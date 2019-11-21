@@ -25,36 +25,8 @@
                 @endif
                 <form method="POST" action="{{ route('update-info') }}" id="update">
                     @csrf
+                    <!-- User ID -->
                     <input type="hidden" name="user_id" value="{{ $user_id }}">
-                    <!-- Department -->
-                    <div class="form-group row">
-                        <label class="col-md-4 col-form-label text-md-right">
-                            {{ trans('messages.update.branch') }}
-                        </label>
-
-                        <div class="col-md-6">
-                            <select class="btn btn-outline" name="branch" form="update">
-                                <option value="head">
-                                    {{ trans('messages.branchs.head') }}
-                                </option>
-                                <option value="ob">
-                                    {{ trans('messages.branchs.ob') }}
-                                </option>
-                                <option value="lb">
-                                    {{ trans('messages.branchs.lb') }}
-                                </option>
-                                <option value="sb">
-                                    {{ trans('messages.branchs.sb') }}
-                                </option>
-                                <option value="cb">
-                                    {{ trans('messages.branchs.cb') }}
-                                </option>
-                                <option value="xb">
-                                    {{ trans('messages.branchs.xb') }}
-                                </option>
-                            </select>
-                        </div>
-                    </div>
 
                     <!-- Unit -->
                     <div class="form-group row">

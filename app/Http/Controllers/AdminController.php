@@ -55,13 +55,14 @@ class AdminController extends Controller
                 return redirect()->back()->withErrors($validator)->withInput();
             }
 
+            // lưu ngày kết thúc ở quá trình trước bằng ngày bắt đầu ở quá trình sau
             $user_info = UserInfo::where('end_day', null)->first();
             $user_info->end_day = $request->start_day;
             $user_info->save();
 
             UserInfo::create([
                 'user_id' => $request->user_id,
-                'branch' => $request->branch,
+                'branch' => explode('-', $request->unit)[0], // tách chuỗi từ unit để lấy branch
                 'unit' => $request->unit,
                 'position' => $request->position,
                 'start_day' => $request->start_day,
@@ -194,7 +195,7 @@ class AdminController extends Controller
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
             }
-            // dd($request->all()); exit();
+
             // lấy ra user cần chỉnh sửa
             $user = User::where('user_id', $request->user_id)->first();
 
@@ -241,6 +242,7 @@ class AdminController extends Controller
 
     public function delete($id)
     {
+        // chuyển trường status của người dùng sang 0
         $status = 0;
         $user = User::where('user_id', $id)->first();
         $user->status = $status;
