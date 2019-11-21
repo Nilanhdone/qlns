@@ -11,14 +11,14 @@
         </tr>
     </thead>
     <tbody>
+        @foreach($staffs as $staff)
         <tr>
-            @foreach($staffs as $staff)
-            <th>{{ $staff->name }}</th>
-            <th>{{ trans('messages.positions.'.$staff->position) }}</th>
-            <th>{{ trans('messages.units.'.$staff->unit) }}</th>
-            <th>{{ $staff->birthday }}</th>
-            @endforeach
+            <td>{{ $staff->name }}</td>
+            <td>{{ trans('messages.positions.'.$staff->position) }}</td>
+            <td>{{ trans('messages.units.'.$staff->unit) }}</td>
+            <td>{{ $staff->birthday }}</td>
         </tr>
+        @endforeach
     </tbody>
 </table>
 @endsection

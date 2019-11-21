@@ -260,19 +260,35 @@ class AdminController extends Controller
     public function search(Request $request)
     {
         $user = Auth::user();
-        // duyệt các tìm trường kiếm, lấy ra các trường khác null
-        $inputs = array();
-        foreach ($request->all() as $key => $value) {
-            // nếu trường khác rỗng thì lấy
-            if ($value != null) {
-                // nếu tên trường khác _token thì lấy
-                if ($key != '_token') {
-                    $inputs[$key] = $value;
-                }
+        // // duyệt các tìm trường kiếm, lấy ra các trường khác null
+        // $inputs = array();
+        // foreach ($request->all() as $key => $value) {
+        //     // nếu trường khác rỗng thì lấy
+        //     if ($value != null) {
+        //         // nếu tên trường khác _token thì lấy
+        //         if ($key != '_token') {
+        //             $inputs[$key] = $value;
+        //         }
+        //     }
+        // }
+        // if ($inputs != null) {
+        //     $staffs = User::where($inputs)->get();           
+        //     return view('user.admin.search-detail', compact('user', 'staffs'));
+        // } else {
+        //     return redirect()->route('search');
+        // }
+        $name = strtoupper($request->name);
+        $staff_list = User::all();
+
+        $staffs = array();
+        foreach ($staff_list as $staff) {
+            $staff_name = '$'.strtoupper($staff->name);
+            $a = strpos($staff_name, $name);
+            if ($a) {
+                $staffs[] = $staff;
             }
         }
 
-        $staffs = User::where($inputs)->get();           
         return view('user.admin.search-detail', compact('user', 'staffs'));
     }
 }
