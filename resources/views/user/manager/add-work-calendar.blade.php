@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Add new calendar</div>
+                <div class="card-header">
+                    {{ trans('messages.work-calendar.header') }}
+                </div>
 
                 <div class="card-body">
                     @if(Session::has('success'))
@@ -14,13 +16,13 @@
                         </div>
                     @endif
                     
-                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" id="register">
+                    <form method="POST" action="{{ route('add-work-calendar') }}" enctype="multipart/form-data" id="register">
                         @csrf
 
                         <!-- Time -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                Time
+                                {{ trans('messages.work-calendar.time') }}
                             </label>
 
                             <div class="col-md-6">
@@ -34,16 +36,16 @@
                             </div>
                         </div>
 
-                        <!-- Nationality -->
+                        <!-- Title -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                Title
+                                {{ trans('messages.work-calendar.title') }}
                             </label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control @error('nationality') is-invalid @enderror" name="nationality" value="{{ old('nationality') }}" required>
+                                <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required>
 
-                                @error('nationality')
+                                @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -51,10 +53,10 @@
                             </div>
                         </div>
 
-                        <!-- description -->
+                        <!-- Description -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                Description
+                                {{ trans('messages.work-calendar.description') }}
                             </label>
 
                             <div class="col-md-6">
@@ -72,7 +74,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Add work calendar
+                                    {{ trans('messages.work-calendar.button') }}
                                 </button>
                             </div>
                         </div>

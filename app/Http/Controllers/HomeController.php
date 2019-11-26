@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Model\Vacation;
 use App\Model\UserInfo;
+use App\Model\Work;
 use App;
 use session;
 use Auth;
@@ -34,26 +35,9 @@ class HomeController extends Controller
         $user = Auth::user();
         $works = UserInfo::where('user_id', $user->user_id)->get();
         $vacations = Vacation::where('user_id', $user->user_id)->get();
+        $work_calendars = Work::where('unit', $user->unit)->get();
 
-        if (isset($vacations) && !empty($vacations)) {
-            $flag = 1;
-            return view('home', compact('user', 'works', 'vacations', 'flag'));
-        } else {
-            $flag = 0;
-            return view('home', compact('user', 'works', 'flag'));
-        }
-    }
-
-    /**
-     * Switch language and return back.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function lang($locale)
-    {
-        App::setLocale($locale);
-        session()->put('locale', $locale);
-        return redirect()->back();
+        return view('home', compact('user', 'works', 'vacations', 'work_calendars'));
     }
 
     /**
@@ -99,13 +83,22 @@ class HomeController extends Controller
                 return redirect()->back()->withErrors($validator)->withInput();
             }
 
+            // lấy ra người dùng hiện tại
             $user = Auth::user();
+            // kiểm tra nếu mật khẩu hiện tại không đúng
+            if (!Hash::check($request->old_password, $user->password)) {
+                // in ra lỗi
+                $errors = "Current password is incorrect!";
+                return redirect()->back()->withErrors($errors)->withInput();
+            }
+
+            // lưu mật khẩu mới
             $user->password = Hash::make($request->new_password);
             $user->save();
 
             DB::commit();
 
-            return redirect()->back()->with('success', 'Thay đổi mật khẩu thành công');
+            return redirect()->back()->with('success', 'Change password successfully!');
         } catch (Exception $e) {
             DB::rollBack();
 

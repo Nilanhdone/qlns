@@ -36,13 +36,13 @@ class EmployeeController extends Controller
             }
 
             $user_id = Auth::user()->user_id;
-            $work_unit = Auth::user()->work_unit;
+            $unit = Auth::user()->unit;
             $status = 'waiting';
 
             Vacation::create([
                 'status' => $status,
                 'user_id' => $user_id,
-                'work_unit' => $work_unit,
+                'unit' => $unit,
                 'title' => $request->title,
                 'reason' => $request->reason,
                 'start_day' => $request->start_day,
@@ -51,7 +51,7 @@ class EmployeeController extends Controller
 
             DB::commit();
 
-            return redirect()->back()->with('success', 'Gửi xin phép thành công!');
+            return redirect()->back()->with('success', 'Send vacation leave successfully!');
         } catch (Exception $e) {
             DB::rollBack();
 

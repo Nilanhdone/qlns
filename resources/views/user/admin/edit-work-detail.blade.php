@@ -5,8 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">
-                    {{ trans('messages.send-vacation.header') }}
+                <div class="card-header text-primary text-uppercase">
+                    <div class="row">
+                        <div class="col-4 text-danger">
+                            <a href="{{ url()->previous() }}">
+                                <i class="fas fa-reply mr-2"></i>{{ trans('messages.profile.menu.back') }}
+                            </a>
+                        </div>
+                        <div class="col-8 ml-auto">
+                            {{ trans('messages.staff.edit-work.header') }}
+                        </div>
+                    </div>
                 </div>
 
                 <div class="card-body">
@@ -15,52 +24,30 @@
                             {!! Session::get('success') !!}
                         </div>
                     @endif
-                    <form method="POST" action="{{ route('send-vacation') }}">
+                    
+                    <form method="POST" action="{{ route('work-edit') }}" id="edit-work">
                         @csrf
 
-                        <!-- Title -->
+                        <!-- User ID -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.send-vacation.title') }}
+                                {{ trans('messages.staff.edit-work.user-id') }}
                             </label>
 
                             <div class="col-md-6">
-                                <input class="form-control @error('title') is-invalid @enderror" name="title" required>
-
-                                @error('title')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input type="hidden" class="form-control" name="id" value="{{ $staff->id }}">
+                                <input type="text" class="form-control" name="user_id" value="{{ $staff->user_id }}" readonly>
                             </div>
                         </div>
 
-                        <!-- Reason -->
+                        <!-- Start_day -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.send-vacation.reason') }}
+                                {{ trans('messages.staff.edit-work.start_day') }}
                             </label>
 
                             <div class="col-md-6">
-                                <textarea type="textarea" class="form-control @error('reason') is-invalid @enderror" name="reason" required>
-                                </textarea>
-
-                                @error('reason')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <!-- Start day -->
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.send-vacation.start-day') }}
-                            </label>
-
-                            <div class="col-md-6">
-                                <input type="date" class="form-control @error('start_day') is-invalid @enderror" name="start_day" value="{{ old('start_day') }}" required>
+                                <input type="date" class="form-control @error('start_day') is-invalid @enderror" name="start_day" value="{{ $staff->start_day }}" required>
 
                                 @error('start_day')
                                     <span class="invalid-feedback" role="alert">
@@ -70,16 +57,33 @@
                             </div>
                         </div>
 
-                        <!-- End day -->
-                         <div class="form-group row">
+                        <!-- Salary -->
+                        <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.send-vacation.end-day') }}
+                                {{ trans('messages.staff.edit-work.salary') }}
                             </label>
 
                             <div class="col-md-6">
-                                <input type="date" class="form-control @error('end_day') is-invalid @enderror" name="end_day" value="{{ old('end_day') }}">
+                                <input type="text" class="form-control @error('salary') is-invalid @enderror" name="salary" value="{{ $staff->salary }}" required>
 
-                                @error('end_day')
+                                @error('salary')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        <!-- Insurance number -->
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.staff.edit-work.insurance') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error('insurance_number') is-invalid @enderror" name="insurance_number" value="{{ $staff->insurance_number }}" required>
+
+                                @error('insurance_number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -88,9 +92,9 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ trans('messages.send-vacation.button') }}
+                                    {{ trans('messages.staff.edit-work.button') }}
                                 </button>
                             </div>
                         </div>

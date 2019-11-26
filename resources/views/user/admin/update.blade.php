@@ -7,7 +7,7 @@
             <div class="card-header text-primary text-uppercase">
                 <div class="row">
                     <div class="col-4 text-danger">
-                        <a href="http://127.0.0.1:8000/{{ $unit }}">
+                        <a href="{{ url()->previous() }}">
                             <i class="fas fa-reply mr-2"></i>{{ trans('messages.profile.menu.back') }}
                         </a>
                     </div>
@@ -21,6 +21,12 @@
                 @if(Session::has('success'))
                     <div class="alert alert-success"><i class="fas fa-check"></i>
                         {!! Session::get('success') !!}
+                    </div>
+                @endif
+
+                @if(Session::has('fault'))
+                    <div class="alert alert-danger">
+                        {!! Session::get('fault') !!}
                     </div>
                 @endif
                 <form method="POST" action="{{ route('update-info') }}" id="update">

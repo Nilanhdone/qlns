@@ -19,18 +19,44 @@
                     <i class="fas fa-users mr-2"></i>{{ trans('messages.menu.staff') }}</a>
                 </li>
 
-                <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('search') }}">
-                    <i class="fas fa-search mr-2"></i>{{ trans('messages.menu.search') }}</a>
+                <li class="nav-item mx-0 mx-lg-1 dropdown">
+                    <a id="search" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-search mr-2"></i>{{ trans('messages.menu.search') }}</a>
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="search">
+                        <a class="dropdown-item text-primary" href="{{ route('search-by-name') }}">
+                            <i class="fas fa-search mr-2"></i>{{ trans('messages.menu.search-by-name') }}
+                        </a>
+                        <a class="dropdown-item text-primary" href="{{ route('multiple-search') }}">
+                            <i class="fas fa-search mr-2"></i>{{ trans('messages.menu.multiple-search') }}
+                        </a>
+                    </div>
                 </li>
             @elseif(($user->role) == 'manager')
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('check-vacation') }}">
                     <i class="fas fa-check mr-2"></i>{{ trans('messages.menu.check-vacation') }}</a>
                 </li>
+
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('add-work-calendar') }}">
-                    <i class="fas fa-calendar-plus mr-2"></i>Add work calendar</a>
+                    <i class="fas fa-calendar-plus mr-2"></i>{{ trans('messages.menu.add-work-calendar') }}</a>
+                </li>
+
+                <li class="nav-item mx-0 mx-lg-1 dropdown">
+                    <a id="search" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-search mr-2"></i>{{ trans('messages.menu.search') }}</a>
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="search">
+                        <a class="dropdown-item text-primary" href="{{ route('mana-search-by-name') }}">
+                            <i class="fas fa-search mr-2"></i>{{ trans('messages.menu.search-by-name') }}
+                        </a>
+                        <a class="dropdown-item text-primary" href="{{ route('mana-multiple-search') }}">
+                            <i class="fas fa-search mr-2"></i>{{ trans('messages.menu.multiple-search') }}
+                        </a>
+                    </div>
                 </li>
             @elseif(($user->role) == 'employee')
                 <li class="nav-item mx-0 mx-lg-1">

@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header">
+                    {{ trans('messages.reset.header') }}
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}">
@@ -16,7 +18,9 @@
                             </div>
                         @endif
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.reset.email') }}
+                            </label>
 
                             <div class="col-md-6">
                                 <input type="email" class="form-control" name="email" value="{{ $email }}" readonly>
@@ -24,7 +28,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">{{ __('New password') }}</label>
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.reset.password') }}
+                            </label>
 
                             <div class="col-md-6">
                                 <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
@@ -38,7 +44,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.reset.repassword') }}
+                            </label>
 
                             <div class="col-md-6">
                                 <input type="password" class="form-control @error('repassword') is-invalid @enderror" name="repassword" required>
@@ -54,7 +62,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
+                                    {{ trans('messages.reset.button-reset') }}
                                 </button>
                             </div>
                         </div>

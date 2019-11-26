@@ -57,6 +57,11 @@ class AdminController extends Controller
 
             // lưu ngày kết thúc ở quá trình trước bằng ngày bắt đầu ở quá trình sau
             $user_info = UserInfo::where('end_day', null)->first();
+
+            //so sánh thời gian trước khi lưu
+            if ($user_info->start_day > $request->start_day) {
+                return redirect()->back()->with('fault', 'Ngày không hợp lệ!');
+            }
             $user_info->end_day = $request->start_day;
             $user_info->save();
 
@@ -124,9 +129,7 @@ class AdminController extends Controller
         $staffs = array();
         foreach ($lists as $list) {
             $staff = User::where('user_id', $list->user_id)->first();
-            if ($staff->status == 1) {
                 $staffs[] = $staff;
-            }
         }
 
         return view('user.admin.staff-list.detail', compact('user', 'staffs', 'lists', 'branch' ,'unit', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
@@ -167,10 +170,25 @@ class AdminController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function showEditWorkForm($id)
+    public function showEditWorkForm($user_id)
     {
         $user = Auth::user();
-        return view('user.admin.edit-work', compact('user'));
+        $works = UserInfo::where('user_id', $user_id)->get();
+        return view('user.admin.edit-work', compact('user', 'works'));
+    }
+
+    /**
+     * Show form to edit work process.
+     *
+     * @param $id
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function showEditWorkDetailForm($user_id, $id, $key)
+    {
+        $user = Auth::user();
+        $work = UserInfo::where([['user_id', $user_id], ['id', $id]])->first();
+
+        return view('user.admin.edit-work', compact('user', 'works'));
     }
 
     public function editBasic(Request $request)
@@ -251,44 +269,73 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    public function showSearchForm()
+    public function restore($id)
     {
-        $user = Auth::user();
-        return view('user.admin.search', compact('user'));
+        // chuyển trường status của người dùng sang 1
+        $status = 1;
+        $user = User::where('user_id', $id)->first();
+        $user->status = $status;
+        $user->save();
+
+        return redirect()->back();
     }
 
-    public function search(Request $request)
+    public function showMultipleSearchForm()
     {
         $user = Auth::user();
-        // // duyệt các tìm trường kiếm, lấy ra các trường khác null
-        // $inputs = array();
-        // foreach ($request->all() as $key => $value) {
-        //     // nếu trường khác rỗng thì lấy
-        //     if ($value != null) {
-        //         // nếu tên trường khác _token thì lấy
-        //         if ($key != '_token') {
-        //             $inputs[$key] = $value;
-        //         }
-        //     }
-        // }
-        // if ($inputs != null) {
-        //     $staffs = User::where($inputs)->get();           
-        //     return view('user.admin.search-detail', compact('user', 'staffs'));
-        // } else {
-        //     return redirect()->route('search');
-        // }
-        $name = strtoupper($request->name);
-        $staff_list = User::all();
+        return view('user.admin.search.multiple-search', compact('user'));
+    }
 
-        $staffs = array();
-        foreach ($staff_list as $staff) {
-            $staff_name = '$'.strtoupper($staff->name);
-            $a = strpos($staff_name, $name);
-            if ($a) {
-                $staffs[] = $staff;
+    public function showSearchByNameForm()
+    {
+        $user = Auth::user();
+        return view('user.admin.search.search-by-name', compact('user'));
+    }
+
+    public function searchMultiple(Request $request)
+    {
+         $user = Auth::user();
+        // duyệt các tìm trường kiếm, lấy ra các trường khác null
+        $inputs = array();
+        foreach ($request->all() as $key => $value) {
+            // nếu trường khác rỗng thì lấy
+            if ($value != null) {
+                // nếu tên trường khác _token thì lấy
+                if ($key != '_token') {
+                    $inputs[$key] = $value;
+                }
             }
         }
+        if ($inputs != null) {
+            $staffs = User::where($inputs)->get();           
+            return view('user.admin.search.multiple-search-detail', compact('user', 'staffs'));
+        } else {
+            return redirect()->route('multiple-search');
+        }
+    }
 
-        return view('user.admin.search-detail', compact('user', 'staffs'));
+    public function searchByName(Request $request)
+    {
+        $user = Auth::user();
+        $name = strtoupper($request->name);
+
+        if ($name != null) {
+            // lấy ra tất cả các user
+            $staff_list = User::all();
+
+            $staffs = array();
+
+            //so sánh chuỗi nhập với tên user để lấy kết quả
+            foreach ($staff_list as $staff) {
+                $staff_name = '$'.strtoupper($staff->name);
+                $existName = strpos($staff_name, $name);
+                if ($existName) {
+                    $staffs[] = $staff;
+                }
+            }
+            return view('user.admin.search.search-by-name-detail', compact('user', 'staffs'));
+        } else {
+            return redirect()->route('search-by-name');
+        }
     }
 }

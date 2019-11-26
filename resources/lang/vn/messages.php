@@ -7,6 +7,7 @@ return [
         'logout' => 'Đăng xuất',
     ],
     'login' => [
+        'header' => 'Đăng nhập',
         'email' => 'Tài khoản',
         'password' => 'Mật khẩu',
         'button' => 'Đăng nhập',       
@@ -140,13 +141,35 @@ return [
         'insurance' => 'Số bảo hiểm xã hội',
         'button' => 'Cập nhật',
     ],
+    'search-by-name' => [
+        'header' => 'Tìm kiếm theo tên',
+        'name' => 'Tên',
+        'example' => 'Nhập tên hoặc kí tự có trong tên',
+        'button' => 'Tìm'
+    ],
+    'multiple-search' => [
+        'header' => 'Tìm kiếm nhiều trường',
+        'name' => 'Tên',
+        'birthday' => 'Ngày sinh',
+        'identify_number' => 'Số chứng minh nhân dân',
+        'button' => 'Tìm',
+    ],
+    'search-detail' => [
+        'name' => 'Tên',
+        'position' => 'Chức vị',
+        'unit' => 'Đơn vị công tác',
+        'birthday' => 'Ngày sinh',
+    ],
     'menu' => [
         'profile' => 'Trang cá nhân',
         'create' => 'Tạo tài khoản',
         'staff' => 'Danh sách cán bộ',
         'search' => 'Tìm kiếm',
+        'search-by-name' => 'Tìm kiếm theo tên',
+        'multiple-search' => 'Tìm kiếm nhiều trường',
         'leave' => 'Xin nghỉ phép',
         'check-vacation' => 'Xem đơn nghỉ phép',
+        'add-work-calendar' => 'Thêm lịch công việc',
     ],
     'home' => [
         'profile' => 'Thông tin cá nhân',
@@ -155,6 +178,8 @@ return [
         'waiting' => 'Đang chờ',
         'accepted' => 'Chấp nhận',
         'rejected' => 'Từ chối',
+        'see-more' => 'Bấm để xem chi tiết',
+        'modal-close' => 'Đóng',
     ],
     'profile' => [
         'menu' => [
@@ -198,12 +223,16 @@ return [
                 'edit-basic' => 'Chỉnh sửa thông tin cá nhân',
                 'edit-work' => 'Chỉnh sửa quá trình công tác',
                 'delete' => 'Xóa',
+                'restore' => 'Khôi phục',
             ],
             'modal' => [
-                'title' => 'Xóa tài khoản',
-                'body' => 'Xóa tài khoản này?',
+                'delete-title' => 'Xóa tài khoản',
+                'delete-body' => 'Xóa tài khoản này?',
+                'restore-title' => 'Khôi phục tài khoản',
+                'restore-body' => 'Khôi phục tài khoản này?',
                 'cancel' => 'Hủy',
                 'delete' => 'Xóa',
+                'restore' => 'Khôi phục',
             ],
         ],
         'edit-basic' => [
@@ -239,6 +268,21 @@ return [
         'accept' => 'Chấp nhận',
         'null' => 'Không có đơn xin nghỉ phép.',
     ],
+    'work-calendar' => [
+        'header' => 'Thêm lịch công việc mới',
+        'time' => 'Thời gian',
+        'title' => 'Tiêu đề',
+        'description' => 'Mô tả',
+        'button' => 'Thêm mới',
+    ],
+    'send-vacation' => [
+        'header' => 'Gửi đơn xin phép',
+        'title' => 'Tiêu đề',
+        'reason' => 'Lý do',
+        'start-day' => 'Ngày bắt đầu',
+        'end-day' => 'Ngày kết thúc',
+        'button' => 'Gửi',
+    ],
     'first-login' => [
         'header' => 'Lần đầu đăng nhập',
         'password' => 'Mật khẩu mới',
@@ -251,5 +295,13 @@ return [
         'new-password' => 'Mật khẩu mới',
         'repassword' => 'Xác nhận mật khẩu mới',
         'button' => 'Đổi mật khẩu',
+    ],
+    'reset-password' => [
+        'header' => 'Đặt lại mật khẩu',
+        'email' => 'Thư điện tử',
+        'password' => 'Mật khẩu mới',
+        'repassword' => 'Xác nhận mật khẩu',
+        'button-send-email' => 'Gửi đường dẫn đặt lại mật khẩu',
+        'button-reset' => 'Đặt lại mật khẩu',
     ],
 ];

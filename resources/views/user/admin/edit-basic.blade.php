@@ -8,7 +8,7 @@
                 <div class="card-header text-primary text-uppercase">
                     <div class="row">
                         <div class="col-4 text-danger">
-                            <a href="http://127.0.0.1:8000/{{ $staff->unit }}">
+                            <a href="{{ url()->previous() }}">
                                 <i class="fas fa-reply mr-2"></i>{{ trans('messages.profile.menu.back') }}
                             </a>
                         </div>

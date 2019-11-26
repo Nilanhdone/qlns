@@ -7,10 +7,11 @@ return [
         'logout' => 'Logout',
     ],
     'login' => [
+        'header' => 'Login',
         'email' => 'Email',
         'password' => 'Password',
         'button' => 'Login',     
-        'forget' => 'Forget password'
+        'forget' => 'Forget password',
     ],
     'register' => [
         'header' => 'Create new account',
@@ -140,13 +141,35 @@ return [
         'insurance' => 'Insurance number',
         'button' => 'Update',
     ],
+    'search-by-name' => [
+        'header' => 'Search by name',
+        'name' => 'Name',
+        'example' => 'Enter the name or letters contained in the name',
+        'button' => 'Search'
+    ],
+    'multiple-search' => [
+        'header' => 'Multiple search',
+        'name' => 'Name',
+        'birthday' => 'Birhtday',
+        'identify_number' => 'Identify number',
+        'button' => 'Search',
+    ],
+    'search-detail' => [
+        'name' => 'Name',
+        'position' => 'Position',
+        'unit' => 'Unit',
+        'birthday' => 'Birhtday',
+    ],
     'menu' => [
         'profile' => 'Profile',
         'create' => 'Create new account',
         'staff' => 'Staff list',
         'search' => 'Search',
+        'search-by-name' => 'Search by name',
+        'multiple-search' => 'Multiple search',
         'leave' => 'Send a vacation',
         'check-vacation' => 'Check vacation',
+        'add-work-calendar' => 'Add work calendar',
     ],
     'home' => [
         'profile' => 'Personal information',
@@ -155,6 +178,8 @@ return [
         'waiting' => 'Waiting',
         'accepted' => 'Accepted',
         'rejected' => 'Rejected',
+        'see-more' => 'Click to see more',
+        'modal-close' => 'Close',
     ],
     'profile' => [
         'menu' => [
@@ -198,12 +223,16 @@ return [
                 'edit-basic' => 'Edit basic information',
                 'edit-work' => 'Edit work process',
                 'delete' => 'Delete',
+                'restore' => 'Restore',
             ],
             'modal' => [
-                'title' => 'Delete account',
-                'body' => 'Delete this account?',
+                'delete-title' => 'Delete account',
+                'delete-body' => 'Delete this account?',
+                'restore-title' => 'Restore account',
+                'restore-body' => 'Restore this account?',
                 'cancel' => 'Cancel',
                 'delete' => 'Delete',
+                'restore' => 'Restore',
             ],
         ],
         'edit-basic' => [
@@ -239,6 +268,21 @@ return [
         'accept' => 'Accept',
         'null' => 'No vacation leave.',
     ],
+    'work-calendar' => [
+        'header' => 'Add new work calendar',
+        'time' => 'Time',
+        'title' => 'Title',
+        'description' => 'Description',
+        'button' => 'Add new',
+    ],
+    'send-vacation' => [
+        'header' => 'Send vacation leave',
+        'title' => 'Title',
+        'reason' => 'Reason',
+        'start-day' => 'Start day',
+        'end-day' => 'End day',
+        'button' => 'Send',
+    ],
     'first-login' => [
         'header' => 'First login',
         'password' => 'New password',
@@ -251,5 +295,13 @@ return [
         'new-password' => 'New password',
         'repassword' => 'Confirm new password',
         'button' => 'Change password',
+    ],
+    'reset-password' => [
+        'header' => 'Reset password',
+        'email' => 'Email',
+        'password' => 'New password',
+        'repassword' => 'Confirm password',
+        'button-send-email' => 'Send Password Reset Link',
+        'button-reset' => 'Reset password',
     ],
 ];
