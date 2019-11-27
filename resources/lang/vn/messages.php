@@ -160,6 +160,17 @@ return [
         'unit' => 'Đơn vị công tác',
         'birthday' => 'Ngày sinh',
     ],
+    'edit-work' => [
+        'header' => 'Sửa quá trình công tác',
+        'user-id' => 'Số hiệu nhân viên',
+        'unit' => 'Đơn vị công tác',
+        'position' => 'Chức vụ',
+        'start-day' => 'Ngày bắt đầu',
+        'end-day' => 'Ngày kết thúc',
+        'salary' => 'Hệ số lương',
+        'insurance' => 'Số bảo hiểm xã hội',,
+        'button' => 'Sửa',
+    ],
     'menu' => [
         'profile' => 'Trang cá nhân',
         'create' => 'Tạo tài khoản',
@@ -183,7 +194,7 @@ return [
     ],
     'profile' => [
         'menu' => [
-            'back' => 'Quay lại danh sách',
+            'back' => 'Quay lại',
             'basic' => 'Thông tin cơ bản',
             'work' => 'Quá trình công tác',
         ],

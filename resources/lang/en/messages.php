@@ -160,6 +160,17 @@ return [
         'unit' => 'Unit',
         'birthday' => 'Birhtday',
     ],
+    'edit-work' => [
+        'header' => 'Edit work process',
+        'user-id' => 'User ID',
+        'unit' => 'Work unit',
+        'position' => 'Position',
+        'start-day' => 'Start day',
+        'end-day' => 'End day',
+        'salary' => 'Coefficients salary',
+        'insurance' => 'Insurance number',
+        'button' => 'Edit',
+    ],
     'menu' => [
         'profile' => 'Profile',
         'create' => 'Create new account',
@@ -183,7 +194,7 @@ return [
     ],
     'profile' => [
         'menu' => [
-            'back' => 'Back to list',
+            'back' => 'Back',
             'basic' => 'Basic Information',
             'work' => 'Working Process',
         ],

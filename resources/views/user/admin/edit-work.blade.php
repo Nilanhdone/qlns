@@ -5,7 +5,7 @@
     <div class="card-header text-primary text-uppercase">
         <div class="row">
             <div class="col-2 text-danger">
-                <a href="{{ url()->previous() }}">
+                <a href="/staff{{ $unit }}">
                     <i class="fas fa-reply mr-2"></i>{{ trans('messages.profile.menu.back') }}
                 </a>
             </div>
@@ -29,7 +29,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($works as $key => $work)
+                @foreach($works as $work)
                 <tr>
                     <td>{{ $work->start_day }}</td>
                     @if($work->end_day == null)
@@ -42,7 +42,7 @@
                     <td>{{ trans('messages.positions.'.$work->position) }}</td>
                     <td>{{ $work->salary }}</td>
                     <td>{{ $work->insurance_number }}</td>
-                    <td><a href="edit-work-detail/{{ $work->user_id }}/{{ $work->id }}/{{ $key }}">Edit</a></td>
+                    <td><a href="/edit-work/{{ $work->user_id }}/{{ $work->id }}">Edit</a></td>
                 </tr>
                 @endforeach
             </tbody>

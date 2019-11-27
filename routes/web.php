@@ -71,7 +71,7 @@ Route::get('edit-basic/lang/{locale}','LangController@lang');
     Route::get('edit-basic/{id}','AdminController@showEditBasicForm')->name('edit-basic');
     Route::post('basic-edit', 'AdminController@editBasic')->name('basic-edit');
     Route::get('edit-work/{user_id}','AdminController@showEditWorkForm')->name('edit-work');
-    Route::get('edit-work-detail/{user_id}/{id}/{key}','AdminController@showEditWorkDetailForm')->name('edit-work-detail');
+    Route::get('edit-work/{user_id}/{id}','AdminController@showEditWorkDetailForm')->name('edit-work-detail');
     Route::post('work-edit', 'AdminController@editWork')->name('work-edit');
     Route::get('delete/{id}','AdminController@delete')->name('delete');
     Route::get('restore/{id}','AdminController@restore')->name('restore');

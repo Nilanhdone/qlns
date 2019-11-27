@@ -60,7 +60,7 @@ class AdminController extends Controller
 
             //so sánh thời gian trước khi lưu
             if ($user_info->start_day > $request->start_day) {
-                return redirect()->back()->with('fault', 'Ngày không hợp lệ!');
+                return redirect()->back()->with('fault', 'Invalid date!');
             }
             $user_info->end_day = $request->start_day;
             $user_info->save();
@@ -78,7 +78,7 @@ class AdminController extends Controller
 
             DB::commit();
 
-            return redirect()->back()->with('success', 'Cập nhật thông tin thành công!');
+            return redirect()->back()->with('success', 'Update information successfully!');
         } catch (Exception $e) {
             DB::rollBack();
 
@@ -144,10 +144,11 @@ class AdminController extends Controller
     public function showStaffDetail($id)
     {
         $user = Auth::user();
+        $unit = User::where('user_id', $id)->first()->unit;
         $staff = User::where('user_id', $id)->first();
         $works = UserInfo::where('user_id', $id)->get();
 
-        return view('user.admin.detail', compact('user', 'staff', 'works'));
+        return view('user.admin.detail', compact('user', 'unit', 'staff', 'works'));
     }
 
     /**
@@ -173,8 +174,9 @@ class AdminController extends Controller
     public function showEditWorkForm($user_id)
     {
         $user = Auth::user();
+        $unit = User::where('user_id', $user_id)->first()->unit;
         $works = UserInfo::where('user_id', $user_id)->get();
-        return view('user.admin.edit-work', compact('user', 'works'));
+        return view('user.admin.edit-work', compact('user', 'unit', 'works'));
     }
 
     /**
@@ -183,12 +185,14 @@ class AdminController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function showEditWorkDetailForm($user_id, $id, $key)
+    public function showEditWorkDetailForm($user_id, $id)
     {
         $user = Auth::user();
         $work = UserInfo::where([['user_id', $user_id], ['id', $id]])->first();
+        $units = Unit::all();
+        $positions = Position::all();
 
-        return view('user.admin.edit-work', compact('user', 'works'));
+        return view('user.admin.edit-work-detail', compact('user', 'work', 'units', 'positions'));
     }
 
     public function editBasic(Request $request)
@@ -255,7 +259,44 @@ class AdminController extends Controller
 
     public function editWork(Request $request)
     {
-        
+        try {
+            DB::beginTransaction();
+            
+            $rules = [
+                'id' => ['required'],
+                'user_id' => ['required'],
+                'start_day' => ['required'],
+                'salary' => ['required', 'regex:/[0-9]/'],
+                'insurance_number' => ['required', 'string'],
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+            //so sánh thời gian trước khi lưu
+            if ($request->end_day < $request->start_day) {
+                return redirect()->back()->with('fault', 'Invalid date!');
+            }
+
+            $user_info = UserInfo::where('id', $request->id)->first();
+            $user_info->unit = $request->unit;
+            $user_info->position = $request->position;
+            $user_info->start_day = $request->start_day;
+            $user_info->end_day = $request->end_day;
+            $user_info->salary = $request->salary;
+            $user_info->insurance_number = $request->insurance_number;
+            $user_info->save();
+
+            DB::commit();
+
+            return redirect()->back()->with('success', 'Edit work process successfully!');
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            return redirect()->back()->with('error',$e->getMessage());
+        }
     }
 
     public function delete($id)
