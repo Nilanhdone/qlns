@@ -2,7 +2,7 @@
 <html lang="en">
 
 @section('htmlheader')
-    @include('layouts.htmlheader') <!-- library -->
+    @include('layouts.htmlheader') <!-- Css-library -->
 @show
 
     <body>
@@ -19,5 +19,9 @@
             <!-- @include('layouts.footer') -->
             <!-- footer -->
         </div>
+
+        @section('scripts')
+            @include('layouts.scripts') <!-- JS -->
+        @show
     </body>
 </html>

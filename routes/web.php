@@ -52,6 +52,9 @@ Route::get('edit-basic/lang/{locale}','LangController@lang');
     Route::get('mana-search-by-name-detail','ManagerController@searchByName')->name('mana-search-by-name-detail');
     Route::get('mana-multiple-search','ManagerController@showMultipleSearchForm')->name('mana-multiple-search');
     Route::get('mana-multiple-search-detail','ManagerController@searchMultiple')->name('mana-multiple-search-detail');
+    //staff list
+    Route::get('mana-staff','ManagerController@showStaff')->name('mana-staff');
+    Route::get('mana-detail-{user_id}','ManagerController@showStaffDetail')->name('mana-detail');
 
 // ADMIN
     // Register

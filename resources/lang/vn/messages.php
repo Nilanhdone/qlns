@@ -168,7 +168,7 @@ return [
         'start-day' => 'Ngày bắt đầu',
         'end-day' => 'Ngày kết thúc',
         'salary' => 'Hệ số lương',
-        'insurance' => 'Số bảo hiểm xã hội',,
+        'insurance' => 'Số bảo hiểm xã hội',
         'button' => 'Sửa',
     ],
     'menu' => [
@@ -191,6 +191,15 @@ return [
         'rejected' => 'Từ chối',
         'see-more' => 'Bấm để xem chi tiết',
         'modal-close' => 'Đóng',
+    ],
+    'calendar' => [
+        'mon' => 'T2',
+        'tue' => 'T3',
+        'wed' => 'T4',
+        'thu' => 'T5',
+        'fri' => 'T6',
+        'sat' => 'T7',
+        'sun' => 'CN',
     ],
     'profile' => [
         'menu' => [

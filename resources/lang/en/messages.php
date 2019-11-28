@@ -192,6 +192,15 @@ return [
         'see-more' => 'Click to see more',
         'modal-close' => 'Close',
     ],
+    'calendar' => [
+        'mon' => 'MON',
+        'tue' => 'TUE',
+        'wed' => 'WED',
+        'thu' => 'THU',
+        'fri' => 'FRI',
+        'sat' => 'SAT',
+        'sun' => 'SUN',
+    ],
     'profile' => [
         'menu' => [
             'back' => 'Back',

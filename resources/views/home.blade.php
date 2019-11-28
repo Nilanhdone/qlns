@@ -55,42 +55,9 @@
             {{ trans('messages.home.work-calendar') }}
         </div>
         <div class="card-body">
-            @foreach($work_calendars as $work_calendar)
             <div class="row">
-                <div class="col-8">
-                    <p class="text-uppercase text-danger font-weight-bold" data-toggle="modal" data-target="#workCalendarModal">
-                        {{ $work_calendar->title }}
-                    </p>
-                    <small class="text-danger">{{ trans('messages.home.see-more') }}</small>
-                    <div class="modal fade" id="workCalendarModal" tabindex="-1" role="dialog" aria-labelledby="workCalendarModalTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="workCalendarModalTitle">
-                                        {{ $work_calendar->title }}
-                                    </h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <p>{{ $work_calendar->time }}</p>
-                                    <p>{{ $work_calendar->description }}</p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                        {{ trans('messages.home.modal-close') }}
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
-                    <p>{{ $work_calendar->time }}</p>
-                </div>
+                @include('calendar')
             </div>
-            @endforeach
         </div> <!-- End work calendar -->
     </div>
 </div>

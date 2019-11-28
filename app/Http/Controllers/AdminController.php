@@ -324,7 +324,8 @@ class AdminController extends Controller
     public function showMultipleSearchForm()
     {
         $user = Auth::user();
-        return view('user.admin.search.multiple-search', compact('user'));
+        $units = Unit::all();
+        return view('user.admin.search.multiple-search', compact('user', 'units'));
     }
 
     public function showSearchByNameForm()
@@ -335,7 +336,8 @@ class AdminController extends Controller
 
     public function searchMultiple(Request $request)
     {
-         $user = Auth::user();
+        $user = Auth::user();
+        $units = Unit::all();
         // duyệt các tìm trường kiếm, lấy ra các trường khác null
         $inputs = array();
         foreach ($request->all() as $key => $value) {
@@ -349,7 +351,7 @@ class AdminController extends Controller
         }
         if ($inputs != null) {
             $staffs = User::where($inputs)->get();           
-            return view('user.admin.search.multiple-search-detail', compact('user', 'staffs'));
+            return view('user.admin.search.multiple-search-detail', compact('user', 'staffs', 'units'));
         } else {
             return redirect()->route('multiple-search');
         }

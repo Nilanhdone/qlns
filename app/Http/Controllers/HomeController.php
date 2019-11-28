@@ -12,6 +12,7 @@ use App\Model\Work;
 use App;
 use session;
 use Auth;
+use DateTime;
 
 class HomeController extends Controller
 {
@@ -36,8 +37,86 @@ class HomeController extends Controller
         $works = UserInfo::where('user_id', $user->user_id)->get();
         $vacations = Vacation::where('user_id', $user->user_id)->get();
         $work_calendars = Work::where('unit', $user->unit)->get();
+        $month_works = array();
+        foreach ($work_calendars as $value) {
+            if (explode('-', $value->time)[0] == date('o') && explode('-', $value->time)[1] == date('m') )
+            $month_works[] = $value;
+        }
 
-        return view('home', compact('user', 'works', 'vacations', 'work_calendars'));
+        // in ra lịch của tháng hiện tại
+        // lấy ra ngày, tháng và năm hiện tại
+        $today = date('d'); // 27
+        $current_month = date('m'); // 11
+        $current_year = date('o'); // 2019
+        // chọn ngày đầu tiên của tháng đó
+        $first_day = new DateTime();
+        $first_day->setDate($current_year, $current_month, 1); //2019 - 11 - 1
+        // lấy ra số ngày trong tháng
+        $day_number = cal_days_in_month(CAL_GREGORIAN, $current_month, $current_year); // 30
+
+        // lấy thứ của ngày đầu tiên
+        $week_first_day = $first_day->format('N'); // 5 - thứ 6 (1 -7)
+        // lấy chênh lệch đầu tháng
+        $null_start_days = $week_first_day - 1; // 4 - trống 4 ngày ở đầu
+        // số ngày cuối cùng của tuần đầu tiên
+        $days_in_end_of_first_week = 7- $null_start_days; // 3
+        // lấy chênh lệch cuối tháng
+        if ($day_number == 28) {
+            $null_end_days = 7 - $null_start_days; // 3
+        } else if ($day_number == 29) {
+            $null_end_days = abs(6 - $null_start_days); // 2
+        } else if ($day_number == 30) {
+            $null_end_days = abs(5 - $null_start_days); // 1
+        } else if ($day_number == 31) {
+            $null_end_days = abs(4 - $null_start_days); // 0
+        }
+
+        // số ngày đầu tiên của tuần cuối cùng
+        $days_in_start_of_final_week = 7 - $null_end_days; // 6
+
+        // lấy số tuần
+        if ($week_first_day == 1 && $day_number == 28) {
+            $week_number = 4;
+            $week_1 = array(1,2,3,4,5,6,7);
+            $week_2 = array(8,9,10,11,12,13,14);
+            $week_3 = array(15,16,17,18,19,20,21);
+            $week_4 = array(22,23,24,25,26,27,28);
+            $week_5 = array();
+            $calendar = array($week_1,$week_2,$week_3,$week_4,$week_5);
+        } else {
+            $week_number = 5;
+            $week_1 = array();
+            for ($i = 0; $i < $null_start_days; $i++) { 
+                $week_1[] = null;
+            }
+            for ($i = 1; $i <= $days_in_end_of_first_week; $i++) { 
+                $week_1[] = $i;
+            }
+            $week_2 = array();
+            for ($i = 0; $i < 7; $i++) { 
+                $week_2[] = $i + $days_in_end_of_first_week + 1;
+            }
+            $week_3 = array();
+            for ($i = 0; $i < 7; $i++) { 
+                $week_3[] = $i + $days_in_end_of_first_week + 1 + 7;
+            }
+            $week_4 = array();
+            for ($i = 0; $i < 7; $i++) { 
+                $week_4[] = $i + $days_in_end_of_first_week + 1 + 7 + 7;
+            }
+            $week_5 = array();
+            for ($i = 0; $i < $days_in_start_of_final_week; $i++) { 
+                $week_5[] = $i + $days_in_end_of_first_week + 1 + 7 + 7 + 7;
+            }
+            for ($i = 0; $i < $null_end_days; $i++) { 
+                $week_5[] = null;
+            }
+
+            $calendar = array($week_1,$week_2,$week_3,$week_4,$week_5);
+        }
+        $now_day = $today.' - '.$current_month.' - '.$current_year;
+        // return view('calendar', compact('week_1', 'week_2', 'week_3', 'week_4', 'week_5'));
+        return view('home', compact('today', 'calendar', 'now_day' , 'user', 'works', 'vacations', 'month_works'));
     }
 
     /**
@@ -104,5 +183,10 @@ class HomeController extends Controller
 
             return redirect()->back()->with('error',$e->getMessage());
         }
+    }
+
+    public function getCalendar()
+    {
+
     }
 }

@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Model\Vacation;
 use App\Model\User;
+use App\Model\UserInfo;
 use App\Model\Work;
+use App\Model\Unit;
 
 class ManagerController extends Controller
 {
@@ -161,5 +163,28 @@ class ManagerController extends Controller
         } else {
             return redirect()->route('mana-search-by-name');
         }
+    }
+
+    public function showStaff()
+    {
+        // lấy ra đơn vị công tác và chi nhánh của manager
+        $user = Auth::user();
+        $unit = $user->unit;
+        $branch = Unit::where('unit', $unit)->first()->branch;
+
+        // lấy ra danh sách nhân viên cùng đơn vị của manager
+        $staffs = User::where('unit', $unit)->get();
+
+        return view('user.manager.staff-list.main', compact('user', 'unit', 'branch', 'staffs'));
+    }
+
+    public function showStaffDetail($user_id)
+    {
+        $user = Auth::user();
+        $unit = $user->unit;
+        $staff = User::where('user_id', $user_id)->first();
+        $works = UserInfo::where('user_id', $user_id)->get();
+
+        return view('user.manager.staff-list.detail', compact('user', 'unit', 'staff', 'works'));
     }
 }
