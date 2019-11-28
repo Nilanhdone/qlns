@@ -17,21 +17,37 @@
         @foreach($calendar as $week)
         <tr class="text-primary text-center">
             @foreach($week as $day)
-                @foreach($month_works as $month_work)
+                @if($month_works != null)
+                    @foreach($month_works as $month_work)
+                        @if($day == $today && $day != (explode('-', $month_work->time)[2]))
+                            <td class="font-weight-bold font-italic">{{ $day }}</td>
+                        @elseif($day == $today && $day == (explode('-', $month_work->time)[2]))
+                            <td class="border border-danger font-weight-bold font-italic" data-toggle="collapse" href="#calendar{{ $month_work->id }}" role="button" aria-expanded="false" aria-controls="calendar{{ $month_work->id }}">{{ $day }}</td>
+                            <div class="collapse" id="calendar{{ $month_work->id }}">
+                                <div class="card card-body alert alert-primary">
+                                    <p class="text-danger">{{ $month_work->title }}</p>
+                                    <p>{{ $month_work->description }}</p>
+                                </div>
+                            </div>
+                        @elseif($day == (explode('-', $month_work->time)[2]))
+                            <td class="border border-danger font-weight-bold font-italic" data-toggle="collapse" href="#calendar{{ $month_work->id }}" role="button" aria-expanded="false" aria-controls="calendar{{ $month_work->id }}">{{ $day }}</td>
+                            <div class="collapse" id="calendar{{ $month_work->id }}">
+                                <div class="card card-body alert alert-primary">
+                                    <p class="text-danger">{{ $month_work->title }}</p>
+                                    <p>{{ $month_work->description }}</p>
+                                </div>
+                            </div>
+                        @else
+                            <td>{{ $day }}</td>
+                        @endif
+                    @endforeach
+                @else
                     @if($day == $today)
                         <td class="font-weight-bold font-italic">{{ $day }}</td>
-                    @elseif($day == (explode('-', $month_work->time)[2]))
-                        <td class="border border-danger text-danger font-weight-bold font-italic" data-toggle="collapse" href="#calendar{{ $month_work->id }}" role="button" aria-expanded="false" aria-controls="calendar{{ $month_work->id }}">{{ $day }}</td>
-                        <div class="collapse" id="calendar{{ $month_work->id }}">
-                            <div class="card card-body alert alert-primary">
-                                <p class="text-danger">{{ $month_work->title }}</p>
-                                <p>{{ $month_work->description }}</p>
-                            </div>
-                        </div>
                     @else
                         <td>{{ $day }}</td>
                     @endif
-                @endforeach
+                @endif
             @endforeach
         </tr>
         @endforeach

@@ -39,7 +39,7 @@ class HomeController extends Controller
         $work_calendars = Work::where('unit', $user->unit)->get();
         $month_works = array();
         foreach ($work_calendars as $value) {
-            if (explode('-', $value->time)[0] == date('o') && explode('-', $value->time)[1] == date('m') )
+            if (explode('-', $value->time)[0] == date('o') && explode('-', explode('-', $value->time)[1])[0] == date('m') )
             $month_works[] = $value;
         }
 
@@ -74,9 +74,8 @@ class HomeController extends Controller
         // số ngày đầu tiên của tuần cuối cùng
         $days_in_start_of_final_week = 7 - $null_end_days; // 6
 
-        // lấy số tuần
+        // tạo các tuần để hiển thị
         if ($week_first_day == 1 && $day_number == 28) {
-            $week_number = 4;
             $week_1 = array(1,2,3,4,5,6,7);
             $week_2 = array(8,9,10,11,12,13,14);
             $week_3 = array(15,16,17,18,19,20,21);
@@ -84,7 +83,6 @@ class HomeController extends Controller
             $week_5 = array();
             $calendar = array($week_1,$week_2,$week_3,$week_4,$week_5);
         } else {
-            $week_number = 5;
             $week_1 = array();
             for ($i = 0; $i < $null_start_days; $i++) { 
                 $week_1[] = null;
@@ -114,6 +112,7 @@ class HomeController extends Controller
 
             $calendar = array($week_1,$week_2,$week_3,$week_4,$week_5);
         }
+        // dd($month_works); exit();
         $now_day = $today.' - '.$current_month.' - '.$current_year;
         // return view('calendar', compact('week_1', 'week_2', 'week_3', 'week_4', 'week_5'));
         return view('home', compact('today', 'calendar', 'now_day' , 'user', 'works', 'vacations', 'month_works'));
