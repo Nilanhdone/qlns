@@ -17,35 +17,53 @@
         @foreach($calendar as $week)
         <tr class="text-primary text-center">
             @foreach($week as $day)
-                @if($month_works != null)
-                    @foreach($month_works as $month_work)
-                        @if($day == $today && $day != (explode('-', $month_work->time)[2]))
-                            <td class="font-weight-bold font-italic">{{ $day }}</td>
-                        @elseif($day == $today && $day == (explode('-', $month_work->time)[2]))
-                            <td class="border border-danger font-weight-bold font-italic" data-toggle="collapse" href="#calendar{{ $month_work->id }}" role="button" aria-expanded="false" aria-controls="calendar{{ $month_work->id }}">{{ $day }}</td>
-                            <div class="collapse" id="calendar{{ $month_work->id }}">
-                                <div class="card card-body alert alert-primary">
-                                    <p class="text-danger">{{ $month_work->title }}</p>
-                                    <p>{{ $month_work->description }}</p>
-                                </div>
-                            </div>
-                        @elseif($day == (explode('-', $month_work->time)[2]))
-                            <td class="border border-danger font-weight-bold font-italic" data-toggle="collapse" href="#calendar{{ $month_work->id }}" role="button" aria-expanded="false" aria-controls="calendar{{ $month_work->id }}">{{ $day }}</td>
-                            <div class="collapse" id="calendar{{ $month_work->id }}">
-                                <div class="card card-body alert alert-primary">
-                                    <p class="text-danger">{{ $month_work->title }}</p>
-                                    <p>{{ $month_work->description }}</p>
-                                </div>
-                            </div>
-                        @else
-                            <td>{{ $day }}</td>
+                <!-- chỉ có công việc đơn -->
+                @if($aday_works != null && $days_works == null)
+                    @if($day == $today)
+                    <td id="day{{ $day }}" class="text-danger font-weight-bold">{{ $day }}</td>
+                    @else
+                    <td id="day{{ $day }}">{{ $day }}</td>
+                    @endif
+                    @foreach($aday_works as $work)
+                        @if($day == (explode('-', $work->start_day)[2]))
+                            <i class="workActice" name="day{{ $day }}" title="{{ $work->description }}"></i>
                         @endif
                     @endforeach
-                @else
+                <!-- chỉ có công việc kéo dài nhiều ngày -->
+                @elseif($aday_works == null && $days_works != null)
                     @if($day == $today)
-                        <td class="font-weight-bold font-italic">{{ $day }}</td>
+                    <td id="day{{ $day }}" class="text-danger font-weight-bold">{{ $day }}</td>
                     @else
-                        <td>{{ $day }}</td>
+                    <td id="day{{ $day }}">{{ $day }}</td>
+                    @endif
+                    @foreach($days_works as $work)
+                        @if($day >= (explode('-', $work->start_day)[2]) && $day <= (explode('-', $work->end_day)[2]))
+                            <i class="workActice" name="day{{ $day }}" title="{{ $work->description }}"></i>
+                        @endif
+                    @endforeach
+                <!-- // có cả công việc đơn và kéo dài -->
+                @elseif($aday_works != null && $days_works != null)
+                    @if($day == $today)
+                    <td id="day{{ $day }}" class="text-danger font-weight-bold">{{ $day }}</td>
+                    @else
+                    <td id="day{{ $day }}">{{ $day }}</td>
+                    @endif
+                     @foreach($days_works as $work)
+                        @if($day >= (explode('-', $work->start_day)[2]) && $day <= (explode('-', $work->end_day)[2]))
+                            <i class="workActice" name="day{{ $day }}" title="{{ $work->description }}"></i>
+                        @endif
+                    @endforeach
+                    @foreach($aday_works as $work)
+                        @if($day == (explode('-', $work->start_day)[2]))
+                            <i class="workActice" name="day{{ $day }}" title="{{ $work->description }}"></i>
+                        @endif
+                    @endforeach
+                <!-- không có công việc trong tháng -->
+                @elseif($aday_works == null && $days_works == null)
+                    @if($day == $today)
+                    <td id="day{{ $day }}" class="text-danger font-weight-bold">{{ $day }}</td>
+                    @else
+                    <td id="day{{ $day }}">{{ $day }}</td>
                     @endif
                 @endif
             @endforeach
@@ -53,3 +71,16 @@
         @endforeach
     </tbody>
 </table>
+
+<script type="text/javascript">
+    (function() {
+        var day = document.getElementsByClassName("workActice");
+        for (var i = 0; i < day.length; i++) {
+            var name = day[i].getAttribute("name");
+            var title = day[i].getAttribute("title");
+            var today = document.getElementById(name);
+            today.setAttribute("class", "border border-danger font-weight-bold font-italic");
+            today.setAttribute("title", title);
+        };
+    })();
+</script>

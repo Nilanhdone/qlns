@@ -66,7 +66,7 @@ class ManagerController extends Controller
             DB::beginTransaction();
             
             $rules = [
-                'time' => ['required'],
+                'start_day' => ['required'],
                 'title' => ['required'],
                 'description' => ['required'],
             ];
@@ -82,7 +82,8 @@ class ManagerController extends Controller
             Work::create([
                 'user_id' => $user_id,
                 'unit' => $unit,
-                'time' => $request->time,
+                'start_day' => $request->start_day,
+                'end_day' => $request->end_day,
                 'title' => $request->title,
                 'description' => $request->description,
             ]);

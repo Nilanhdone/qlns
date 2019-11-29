@@ -290,7 +290,8 @@ return [
     ],
     'work-calendar' => [
         'header' => 'Thêm lịch công việc mới',
-        'time' => 'Thời gian',
+        'start-day' => 'Ngày bắt đầu',
+        'end-day' => 'Ngày kết thúc',
         'title' => 'Tiêu đề',
         'description' => 'Mô tả',
         'button' => 'Thêm mới',

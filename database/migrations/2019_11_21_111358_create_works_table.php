@@ -15,7 +15,10 @@ class CreateWorksTable extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('time');
+            $table->integer('user_id');
+            $table->string('unit');
+            $table->date('start_day');
+            $table->date('end_day')->nullable();
             $table->string('title');
             $table->string('description');
             $table->timestamps();

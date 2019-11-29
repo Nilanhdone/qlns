@@ -12,6 +12,6 @@ class Work extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'unit', 'time', 'title', 'description',
+        'user_id', 'unit', 'start_day', 'end_day', 'title', 'description',
     ];
 }

@@ -15,20 +15,37 @@
                             {!! Session::get('success') !!}
                         </div>
                     @endif
-                    
-                    <form method="POST" action="{{ route('add-work-calendar') }}" enctype="multipart/form-data" id="register">
+
+                    <form method="POST" action="{{ route('add-work-calendar') }}">
                         @csrf
 
-                        <!-- Time -->
+                        <!-- Start day -->
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">
-                                {{ trans('messages.work-calendar.time') }}
+                                {{ trans('messages.work-calendar.start-day') }}
                             </label>
 
                             <div class="col-md-6">
-                                <input type="date" class="form-control @error('time') is-invalid @enderror" name="time" value="{{ old('time') }}" required>
+                                <input type="date" class="form-control @error('start_day') is-invalid @enderror" name="start_day" value="{{ old('start_day') }}" required>
 
-                                @error('time')
+                                @error('start_day')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- End day -->
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right">
+                                {{ trans('messages.work-calendar.end-day') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <input type="date" class="form-control @error('end_day') is-invalid @enderror" name="end_day" value="{{ old('end_day') }}">
+
+                                @error('end_day')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

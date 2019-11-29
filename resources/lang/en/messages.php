@@ -290,7 +290,8 @@ return [
     ],
     'work-calendar' => [
         'header' => 'Add new work calendar',
-        'time' => 'Time',
+        'start-day' => 'Start day',
+        'end-day' => 'End day',
         'title' => 'Title',
         'description' => 'Description',
         'button' => 'Add new',
