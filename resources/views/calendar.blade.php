@@ -19,13 +19,13 @@
             @foreach($week as $day)
                 @if($aday_works == null && $days_works == null) <!-- không có công việc trong tháng -->
                     @if($day == $today)
-                        <td id="day{{ $day }}" class="text-danger font-weight-bold">{{ $day }}</td>
+                        <td id="day{{ $day }}" class="text-success  font-weight-bold">{{ $day }}</td>
                         @else
                         <td id="day{{ $day }}">{{ $day }}</td>
                     @endif
                 @else <!-- có công việc trong tháng -->
                     @if($day == $today)
-                        <td id="day{{ $day }}" class="text-danger font-weight-bold">{{ $day }}</td>
+                        <td id="day{{ $day }}" class="text-success font-weight-bold">{{ $day }}</td>
                     @else
                         <td id="day{{ $day }}">{{ $day }}</td>
                     @endif
