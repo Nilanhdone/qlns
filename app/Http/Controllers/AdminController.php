@@ -25,11 +25,20 @@ class AdminController extends Controller
     public function showUpdateForm($id)
     {
         $user = Auth::user();
+
+        // show list work unit
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
+
         $user_id = $id;
         $unit = User::where('user_id', $user_id)->first()->unit;
         $units = Unit::all();
         $positions = Position::all();
-        return view('user.admin.update', compact('user', 'user_id', 'unit', 'units', 'positions'));
+        return view('user.admin.update', compact('user', 'user_id', 'unit', 'units', 'positions', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     /**
@@ -324,14 +333,30 @@ class AdminController extends Controller
     public function showMultipleSearchForm()
     {
         $user = Auth::user();
+
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
+
         $units = Unit::all();
-        return view('user.admin.search.multiple-search', compact('user', 'units'));
+        return view('user.admin.search.multiple-search', compact('user', 'units', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     public function showSearchByNameForm()
     {
         $user = Auth::user();
-        return view('user.admin.search.search-by-name', compact('user'));
+
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
+
+        return view('user.admin.search.search-by-name', compact('user', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     public function searchMultiple(Request $request)

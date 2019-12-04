@@ -58,10 +58,17 @@ class RegisterController extends Controller
      */
     protected function showRegistrationForm()
     {
-        $user = Auth::user();
+        // show list work unit
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
+
         $units = Unit::all();
         $positions = Position::all();
-        return view('auth.register', compact('user', 'units', 'positions'));
+        return view('auth.register', compact('user', 'units', 'positions', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     /**

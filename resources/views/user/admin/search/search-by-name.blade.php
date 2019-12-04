@@ -15,8 +15,8 @@
                     {{ trans('messages.search-by-name.name') }}
                 </label>
 
-                <div class="col-4">
-                    <input type="text" class="form-control" name="name" placeholder="{{ trans('messages.search-by-name.example') }}">
+                <div class="col-5">
+                    <input type="text" class="form-control border-primary" name="name" placeholder="{{ trans('messages.search-by-name.example') }}">
                 </div>
 
                 <div class="col-3">

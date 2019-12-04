@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ trans('messages.first-login.header') }}</div>
+                <div class="card-header text-primary text-uppercase">
+                    {{ trans('messages.first-login.header') }}
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('first-login') }}">

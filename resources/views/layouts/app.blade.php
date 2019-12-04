@@ -2,26 +2,29 @@
 <html lang="en">
 
 @section('htmlheader')
-    @include('layouts.htmlheader') <!-- Css-library -->
+    @include('layouts.partials.htmlheader')
 @show
 
     <body>
-        <div>
-            @include('layouts.mainheader') <!-- header -->
-
+        <div class="wrapper">
             @if(Auth::check())
-                @include('layouts.menu') <!-- user function -->
+                @include('layouts.partials.sidebar')
             @endif
-            <section>
-                @yield('content')
-            </section>
 
-            <!-- @include('layouts.footer') -->
-            <!-- footer -->
+            <div id="content">
+                @include('layouts.partials.mainheader')
+                <section>
+                    @yield('content')
+                </section>
+            </div>
+
+            <!-- footer here -->
         </div>
 
         @section('scripts')
-            @include('layouts.scripts') <!-- JS -->
+            @include('layouts.partials.scripts')
         @show
+
+        @yield('custom_js')
     </body>
 </html>

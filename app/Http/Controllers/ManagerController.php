@@ -16,24 +16,25 @@ class ManagerController extends Controller
 {
     public function showVacationList()
     {
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
+
         $user = Auth::user();
         $unit = $user->unit;
         $vacations = Vacation::where([['unit', $unit],['status', 'waiting']])->get();
 
-        if (isset($vacations) && !empty($vacations)) {
-            $flag =1;
-            $vacation_list = array();
-            foreach ($vacations as $key => $vacation) {
-                $user_name = User::where('user_id', $vacation->user_id)->first()->name;
-                $array = array($vacation, $user_name);
-                $vacation_list[] = $array;
-            }
-            
-            return view('user.manager.vacation-list', compact('user', 'vacation_list', 'flag'));
-        } else {
-            $flag = 0;
-            return view('user.manager.vacation-list', compact('user', 'flag'));
-        }   
+        $vacation_list = array();
+        foreach ($vacations as $key => $vacation) {
+            $user_name = User::where('user_id', $vacation->user_id)->first()->name;
+            $array = array($vacation, $user_name);
+            $vacation_list[] = $array;
+        }
+        
+        return view('user.manager.vacation-list', compact('user', 'vacation_list', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));  
     }
 
     public function accept($id)

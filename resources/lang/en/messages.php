@@ -3,8 +3,21 @@ return [
     'header' => [
         'title' => 'Bank of the Lao P.D.R',
         'login' => 'Login',
-        'change-password' => 'Change password',
         'logout' => 'Logout',
+    ],
+    'sidebar' => [
+        'header' => 'Bank of the Lao P.D.R',
+        'profile' => 'Profile',
+        'info' => 'Profile information',
+        'change-password' => 'Change password',
+        'function' => 'Function',
+        'search' => 'Search',
+        'search-name' => 'Search by name',
+        'multiple-search' => 'Multiple search',
+        'register' => 'Create new account',
+        'vacation-check' => 'Check vacation',
+        'vacation-leave' => 'Send vacation leave',
+        'staff-list' => 'Staff list',
     ],
     'login' => [
         'header' => 'Login',
@@ -52,7 +65,7 @@ return [
         'post-doctor' => 'Post Doctor',
     ],
     'branchs' => [
-        'head' => 'Head office of the State Bank of Laos',
+        'head' => 'Head office',
         'ob' => 'Oudomxay Branch',
         'lb' => 'Luangprabang Branch',
         'sb' => 'Savanakhet Branch',

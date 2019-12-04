@@ -3,8 +3,21 @@ return [
     'header' => [
         'title' => 'Ngân hàng Nhà nước Lào',
         'login' => 'Đăng nhập',
-        'change-password' => 'Đổi mật khẩu',
         'logout' => 'Đăng xuất',
+    ],
+    'sidebar' => [
+        'header' => 'Ngân hàng Nhà nước Lào',
+        'profile' => 'Hồ sơ',
+        'info' => 'Thông tin cá nhân',
+        'change-password' => 'Đổi mật khẩu',
+        'function' => 'Chức năng',
+        'search' => 'Tìm kiếm',
+        'search-name' => 'Tìm theo tên',
+        'multiple-search' => 'Tìm nhiều trường',
+        'register' => 'Tạo tài khoản',
+        'vacation-check' => 'Duyệt đơn nghỉ',
+        'vacation-leave' => 'Gửi đơn nghỉ',
+        'staff-list' => 'Danh sách nhân viên',
     ],
     'login' => [
         'header' => 'Đăng nhập',
@@ -52,7 +65,7 @@ return [
         'post-doctor' => 'Tiến sĩ',
     ],
     'branchs' => [
-        'head' => 'Trụ sở chính Ngân hàng Nhà nước Lào',
+        'head' => 'Trụ sở chính',
         'ob' => 'Chi nhánh tỉnh Oudomxay',
         'lb' => 'Chi nhánh tỉnh Luangprabang',
         'sb' => 'Chi nhánh tỉnh Savanakhet',

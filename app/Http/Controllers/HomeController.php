@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Model\Vacation;
 use App\Model\UserInfo;
 use App\Model\Work;
+use App\Model\Unit;
 use App;
 use session;
 use Auth;
@@ -175,6 +176,16 @@ class HomeController extends Controller
         $aday_works = $month_works[0];
         $days_works = $month_works[1];
 
+
+        // show list work unit
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
+
+
         // in ra lịch của tháng hiện tại
         // lấy ra ngày, tháng và năm hiện tại
         $today = date('d');
@@ -184,7 +195,7 @@ class HomeController extends Controller
         $calendar = $this->getWeekCalendar($current_month, $current_year);
         $now_day = $today.' - '.$current_month.' - '.$current_year;
         return view('home',
-            compact('today', 'calendar', 'now_day' , 'user', 'works', 'vacations', 'aday_works', 'days_works'));
+            compact('today', 'calendar', 'now_day' , 'user', 'works', 'vacations', 'aday_works', 'days_works', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     /**
@@ -194,7 +205,20 @@ class HomeController extends Controller
      */
     public function showProfile()
     {
-        return redirect()->route('home');
+        // show list work unit
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
+
+        $user = Auth::user();
+        $works = UserInfo::where('user_id', $user->user_id)->get();
+        $vacations = Vacation::where('user_id', $user->user_id)->get();
+
+        return view('user.profile.profile', compact('user', 'works', 'vacations', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
+        // return redirect()->route('home');
     }
 
     /**
@@ -204,8 +228,15 @@ class HomeController extends Controller
      */
     public function showChangePasswordForm()
     {
-        $user = Auth::user();
-        return view('user.change-password', compact('user'));
+        // show list work unit
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
+
+        return view('user.change-password', compact('user', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     /**
