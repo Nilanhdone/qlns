@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-6 text-uppercase">
                     @if($staff->status == 1)
-                    <a href="detail/{{ $staff->user_id }}" class="badge badge-pill badge-info">
+                    <a href="detail-{{ $staff->user_id }}" class="badge badge-pill badge-info">
                         {{ trans('messages.staff.detail.button.detail') }}
                     </a>
                     <a href="update/{{ $staff->user_id }}" class="badge badge-pill badge-success">
@@ -66,12 +66,16 @@
                         </div>
                     </div>
                     <div class="collapse" id="edit{{ $staff->user_id }}">
-                        <div class="card" style="width: 50%">
+                        <div class="card text-primary" style="width: 50%">
                             <a href="edit-basic/{{ $staff->user_id }}">
-                                {{ trans('messages.staff.detail.button.edit-basic') }}
+                                <span class="badge badge-primary">
+                                    {{ trans('messages.staff.detail.button.edit-basic') }}
+                                </span>
                             </a>
                             <a href="edit-work/{{ $staff->user_id }}">
-                                {{ trans('messages.staff.detail.button.edit-work') }}
+                                <span class="badge badge-primary">
+                                    {{ trans('messages.staff.detail.button.edit-work') }}
+                                </span>
                             </a>
                         </div>
                     </div>
@@ -112,6 +116,4 @@
         </ul>
     </div>
 </div>
-
-
 @endsection

@@ -11,6 +11,7 @@ return [
         'info' => 'Profile information',
         'change-password' => 'Change password',
         'function' => 'Function',
+        'timekeep' => 'Timekeeping',
         'search' => 'Search',
         'search-name' => 'Search by name',
         'multiple-search' => 'Multiple search',
@@ -316,6 +317,11 @@ return [
         'start-day' => 'Start day',
         'end-day' => 'End day',
         'button' => 'Send',
+    ],
+    'time' => [
+        'yes' => 'Present',
+        'no' => 'Absent',
+        'change' => 'Change',
     ],
     'first-login' => [
         'header' => 'First login',

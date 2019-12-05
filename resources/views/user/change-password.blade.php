@@ -16,7 +16,7 @@
             @csrf
 
             <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">
+                <label class="col-md-3 col-form-label text-md-right">
                     {{ trans('messages.change-password.current-password') }}
                 </label>
 
@@ -32,7 +32,7 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">
+                <label class="col-md-3 col-form-label text-md-right">
                     {{ trans('messages.change-password.new-password') }}
                 </label>
 
@@ -48,7 +48,7 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">
+                <label class="col-md-3 col-form-label text-md-right">
                     {{ trans('messages.change-password.repassword') }}
                 </label>
 
@@ -64,7 +64,7 @@
             </div>
 
             <div class="form-group row mb-0">
-                <div class="col-md-8 offset-md-4">
+                <div class="col-md-8 offset-md-3">
                     <button type="submit" class="btn btn-primary">
                         {{ trans('messages.change-password.button') }}
                     </button>

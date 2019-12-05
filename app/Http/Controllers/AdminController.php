@@ -34,11 +34,11 @@ class AdminController extends Controller
         $cbs = Unit::where('branch', 'cb')->get();
         $xbs = Unit::where('branch', 'xb')->get();
 
-        $user_id = $id;
-        $unit = User::where('user_id', $user_id)->first()->unit;
         $units = Unit::all();
         $positions = Position::all();
-        return view('user.admin.update', compact('user', 'user_id', 'unit', 'units', 'positions', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
+
+        return view('user.admin.staff.update',
+            compact('user', 'user_id', 'units', 'positions', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     /**
@@ -111,7 +111,8 @@ class AdminController extends Controller
         $cbs = Unit::where('branch', 'cb')->get();
         $xbs = Unit::where('branch', 'xb')->get();
 
-        return view('user.admin.staff-list.main', compact('user', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
+        return view('user.admin.staff-list.main',
+            compact('user', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     /**
@@ -120,7 +121,7 @@ class AdminController extends Controller
      * @param $unit
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function showUnitDetail($unit = null)
+    public function showUnitDetail($unit)
     {
         // lấy ra danh sách đơn vị làm việc để hiển thị ở sidebar
         $user = Auth::user();
@@ -141,7 +142,8 @@ class AdminController extends Controller
                 $staffs[] = $staff;
         }
 
-        return view('user.admin.staff-list.detail', compact('user', 'staffs', 'lists', 'branch' ,'unit', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
+        return view('user.admin.staff-list.detail',
+            compact('user', 'staffs', 'lists', 'branch' ,'unit', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     /**
@@ -152,12 +154,18 @@ class AdminController extends Controller
      */
     public function showStaffDetail($id)
     {
-        $user = Auth::user();
-        $unit = User::where('user_id', $id)->first()->unit;
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
+
         $staff = User::where('user_id', $id)->first();
         $works = UserInfo::where('user_id', $id)->get();
 
-        return view('user.admin.detail', compact('user', 'unit', 'staff', 'works'));
+        return view('user.admin.staff.detail',
+            compact('staff', 'works', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     /**
@@ -168,10 +176,17 @@ class AdminController extends Controller
      */
     public function showEditBasicForm($id)
     {
-        $user = Auth::user();
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
+
         $staff = User::where('user_id', $id)->first();
 
-        return view('user.admin.edit-basic', compact('user', 'staff'));
+        return view('user.admin.staff.edit-basic',
+            compact('staff', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     /**
@@ -182,10 +197,17 @@ class AdminController extends Controller
      */
     public function showEditWorkForm($user_id)
     {
-        $user = Auth::user();
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
+
         $unit = User::where('user_id', $user_id)->first()->unit;
         $works = UserInfo::where('user_id', $user_id)->get();
-        return view('user.admin.edit-work', compact('user', 'unit', 'works'));
+        return view('user.admin.staff.edit-work',
+            compact('unit', 'works', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     /**
@@ -196,12 +218,19 @@ class AdminController extends Controller
      */
     public function showEditWorkDetailForm($user_id, $id)
     {
-        $user = Auth::user();
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
+
         $work = UserInfo::where([['user_id', $user_id], ['id', $id]])->first();
         $units = Unit::all();
         $positions = Position::all();
 
-        return view('user.admin.edit-work-detail', compact('user', 'work', 'units', 'positions'));
+        return view('user.admin.staff.edit-work-detail',
+            compact('user', 'work', 'units', 'positions', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     public function editBasic(Request $request)
@@ -342,7 +371,8 @@ class AdminController extends Controller
         $xbs = Unit::where('branch', 'xb')->get();
 
         $units = Unit::all();
-        return view('user.admin.search.multiple-search', compact('user', 'units', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
+        return view('user.admin.search.multiple-search',
+            compact('user', 'units', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     public function showSearchByNameForm()
@@ -356,12 +386,21 @@ class AdminController extends Controller
         $cbs = Unit::where('branch', 'cb')->get();
         $xbs = Unit::where('branch', 'xb')->get();
 
-        return view('user.admin.search.search-by-name', compact('user', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
+        return view('user.admin.search.search-by-name',
+            compact('user', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     public function searchMultiple(Request $request)
     {
         $user = Auth::user();
+
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
+
         $units = Unit::all();
         // duyệt các tìm trường kiếm, lấy ra các trường khác null
         $inputs = array();
@@ -376,7 +415,7 @@ class AdminController extends Controller
         }
         if ($inputs != null) {
             $staffs = User::where($inputs)->get();           
-            return view('user.admin.search.multiple-search-detail', compact('user', 'staffs', 'units'));
+            return view('user.admin.search.multiple-search-detail', compact('user', 'staffs', 'units', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
         } else {
             return redirect()->route('multiple-search');
         }
@@ -385,6 +424,14 @@ class AdminController extends Controller
     public function searchByName(Request $request)
     {
         $user = Auth::user();
+
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
+
         $name = strtoupper($request->name);
 
         if ($name != null) {
@@ -401,7 +448,7 @@ class AdminController extends Controller
                     $staffs[] = $staff;
                 }
             }
-            return view('user.admin.search.search-by-name-detail', compact('user', 'staffs'));
+            return view('user.admin.search.search-by-name-detail', compact('user', 'staffs', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
         } else {
             return redirect()->route('search-by-name');
         }

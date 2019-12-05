@@ -215,10 +215,8 @@ class HomeController extends Controller
 
         $user = Auth::user();
         $works = UserInfo::where('user_id', $user->user_id)->get();
-        $vacations = Vacation::where('user_id', $user->user_id)->get();
 
-        return view('user.profile.profile', compact('user', 'works', 'vacations', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
-        // return redirect()->route('home');
+        return view('user.profile.profile', compact('user', 'works', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     /**

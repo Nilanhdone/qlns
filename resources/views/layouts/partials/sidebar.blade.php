@@ -39,39 +39,62 @@
             <i class="fas fa-user-cog mr-2"></i>{{ trans('messages.sidebar.function') }}
         </h4>
 
+        @if(Auth::user()->role == 'admin')
         <li>
-            <a href="#searchSidebar" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <i class="fas fa-search mr-2"></i>{{ trans('messages.sidebar.search') }}
+            <a class="nav-link" onclick="onTop()" href="{{ route('search-by-name') }}">
+                <i class="fas fa-search mr-2"></i>{{ trans('messages.sidebar.search-name') }}
             </a>
-            <ul class="collapse list-unstyled" id="searchSidebar">
-                <li>
-                    <a class="nav-link" onclick="onTop()" href="{{ route('search-by-name') }}">
-                        <i class="fas fa-user-check mr-2"></i>{{ trans('messages.sidebar.search-name') }}
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link" onclick="onTop()" href="{{ route('multiple-search') }}">
-                        <i class="fas fa-search-plus mr-2"></i>{{ trans('messages.sidebar.multiple-search') }}
-                    </a>
-                </li>
-            </ul>
+        </li>
+        <li>
+            <a class="nav-link" onclick="onTop()" href="{{ route('multiple-search') }}">
+                <i class="fas fa-search-plus mr-2"></i>{{ trans('messages.sidebar.multiple-search') }}
+            </a>
         </li>
 
         <li>
             <a class="nav-link" onclick="onTop()" href="{{ route('register') }}">
-                <i class="fas fa-user-plus"></i>{{ trans('messages.sidebar.register') }}
-            </a>
-        
-            <a class="nav-link" onclick="onTop()" href="{{ route('check-vacation') }}">
-                <i class="fas fa-file-alt"></i>{{ trans('messages.sidebar.vacation-check') }}
-            </a>
-        
-            <a class="nav-link" onclick="onTop()" href="{{ route('send-vacation') }}">
-                <i class="fas fa-paper-plane"></i>{{ trans('messages.sidebar.vacation-leave') }}
+                <i class="fas fa-user-plus mr-2"></i>{{ trans('messages.sidebar.register') }}
             </a>
         </li>
+        @elseif(Auth::user()->role == 'manager')
+        <li>
+            <a class="nav-link" onclick="onTop()" href="{{ route('check-vacation') }}">
+                <i class="fas fa-file-alt mr-2"></i>{{ trans('messages.sidebar.vacation-check') }}
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" onclick="onTop()" href="{{ route('mana-staff') }}">
+                <i class="fas fa-list mr-2"></i>{{ trans('messages.sidebar.staff-list') }}
+            </a>
+        </li>
+
+        <li>
+            <a href="#timeKeepSidebar" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-user-check mr-2"></i>{{ trans('messages.sidebar.timekeep') }}
+            </a>
+            <ul class="collapse list-unstyled" id="timeKeepSidebar">
+                <li>
+                    <a class="nav-link" onclick="onTop()" href="{{ route('timekeeping') }}">
+                        <i class="fas fa-user-check mr-2"></i>{{ trans('messages.sidebar.timekeep') }}
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link" onclick="onTop()" href="{{ route('timekeeping-search') }}">
+                        <i class="fas fa-search mr-2"></i>{{ trans('messages.sidebar.search') }}
+                    </a>
+                </li>
+            </ul>
+        </li>
+        @elseif(Auth::user()->role == 'employee')
+        <li>
+            <a class="nav-link" onclick="onTop()" href="{{ route('send-vacation') }}">
+                <i class="fas fa-paper-plane mr-2"></i>{{ trans('messages.sidebar.vacation-leave') }}
+            </a>
+        </li>
+        @endif
     </ul>
 
+    @if(Auth::user()->role == 'admin')
     <ul class="list-unstyled components">
         <h4 class="text-uppercase">
             <i class="fas fa-users mr-2"></i>{{ trans('messages.sidebar.staff-list') }}
@@ -99,7 +122,7 @@
             <ul class="collapse list-unstyled" id="obSidebar">
                 @foreach ($obs as $ob)
                 <li>
-                    <a class="nav-link" onclick="onTop()" href="staff{{ $head->unit }}">
+                    <a class="nav-link" onclick="onTop()" href="staff{{ $ob->unit }}">
                         {{ trans('messages.units.'.$ob->unit) }}
                     </a>
                 </li>
@@ -114,7 +137,7 @@
             <ul class="collapse list-unstyled" id="lbSidebar">
                 @foreach ($lbs as $lb)
                 <li>
-                    <a class="nav-link" onclick="onTop()" href="staff{{ $head->unit }}">
+                    <a class="nav-link" onclick="onTop()" href="staff{{ $lb->unit }}">
                         {{ trans('messages.units.'.$lb->unit) }}
                     </a>
                 </li>
@@ -129,7 +152,7 @@
             <ul class="collapse list-unstyled" id="sbSidebar">
                 @foreach ($sbs as $sb)
                 <li>
-                    <a class="nav-link" onclick="onTop()" href="staff{{ $head->unit }}">
+                    <a class="nav-link" onclick="onTop()" href="staff{{ $sb->unit }}">
                         {{ trans('messages.units.'.$sb->unit) }}
                     </a>
                 </li>
@@ -144,7 +167,7 @@
             <ul class="collapse list-unstyled" id="cbSidebar">
                 @foreach ($cbs as $cb)
                 <li>
-                    <a class="nav-link" onclick="onTop()" href="staff{{ $head->unit }}">
+                    <a class="nav-link" onclick="onTop()" href="staff{{ $cb->unit }}">
                         {{ trans('messages.units.'.$cb->unit) }}
                     </a>
                 </li>
@@ -159,7 +182,7 @@
             <ul class="collapse list-unstyled" id="xbSidebar">
                 @foreach ($xbs as $xb)
                 <li>
-                    <a class="nav-link" onclick="onTop()" href="staff{{ $head->unit }}">
+                    <a class="nav-link" onclick="onTop()" href="staff{{ $xb->unit }}">
                         {{ trans('messages.units.'.$xb->unit) }}
                     </a>
                 </li>
@@ -167,4 +190,5 @@
             </ul>
         </li>
     </ul>
+    @endif
 </nav>

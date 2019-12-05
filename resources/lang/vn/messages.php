@@ -11,6 +11,7 @@ return [
         'info' => 'Thông tin cá nhân',
         'change-password' => 'Đổi mật khẩu',
         'function' => 'Chức năng',
+        'timekeep' => 'Chấm công',
         'search' => 'Tìm kiếm',
         'search-name' => 'Tìm theo tên',
         'multiple-search' => 'Tìm nhiều trường',
@@ -316,6 +317,11 @@ return [
         'start-day' => 'Ngày bắt đầu',
         'end-day' => 'Ngày kết thúc',
         'button' => 'Gửi',
+    ],
+    'time' => [
+        'yes' => 'Có',
+        'no' => 'Vắng',
+        'change' => 'Thay đổi',
     ],
     'first-login' => [
         'header' => 'Lần đầu đăng nhập',

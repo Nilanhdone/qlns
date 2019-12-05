@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-body">
-        <form method="get" action="{{ route('multiple-search-detail') }}" id="multiple-search">
+        <form method="POST" action="{{ route('multiple-search-detail') }}" id="multiple-search">
             @csrf
 
             <div class="form-group row">
