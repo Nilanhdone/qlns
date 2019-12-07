@@ -85,6 +85,12 @@ class AdminController extends Controller
                 'insurance_number' => $request->insurance_number,
             ]);
 
+            $user_id = $user_info->user_id;
+            $user = User::where('user_id', $user_id)->first();
+            $user->unit = $request->unit;
+            $user->position = $request->position;
+            $user->save();
+
             DB::commit();
 
             return redirect()->back()->with('success', 'Update information successfully!');
@@ -135,15 +141,10 @@ class AdminController extends Controller
         $branch = Unit::where('unit', $unit)->first()->branch;
 
         // lấy ra danh sách nhân viên ứng với $unit
-        $lists = UserInfo::where('unit', $unit)->get();
-        $staffs = array();
-        foreach ($lists as $list) {
-            $staff = User::where('user_id', $list->user_id)->first();
-                $staffs[] = $staff;
-        }
+        $staffs = User::where('unit', $unit)->get();
 
         return view('user.admin.staff-list.detail',
-            compact('user', 'staffs', 'lists', 'branch' ,'unit', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
+            compact('user', 'staffs', 'branch' ,'unit', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     /**
@@ -314,7 +315,7 @@ class AdminController extends Controller
             }
 
             //so sánh thời gian trước khi lưu
-            if ($request->end_day < $request->start_day) {
+            if ($request->end_day != null && $request->end_day < $request->start_day) {
                 return redirect()->back()->with('fault', 'Invalid date!');
             }
 
@@ -326,6 +327,12 @@ class AdminController extends Controller
             $user_info->salary = $request->salary;
             $user_info->insurance_number = $request->insurance_number;
             $user_info->save();
+
+            $user_id = $user_info->user_id;
+            $user = User::where('user_id', $user_id)->first();
+            $user->unit = $request->unit;
+            $user->position = $request->position;
+            $user->save();
 
             DB::commit();
 

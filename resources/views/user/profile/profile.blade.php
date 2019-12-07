@@ -2,7 +2,16 @@
 
 @section('content')
 <div class="card-header text-primary text-uppercase">
-    {{ trans('messages.home.profile') }}
+    <div class="row">
+        <div class="col-auto mr-auto">
+            {{ trans('messages.home.profile') }}
+        </div>
+        <div class="col-auto">
+            <a href="/pdf" class="btn btn-primary" target="_blank">
+                <i class="fas fa-print mr-2"></i>{{ trans('messages.home.print') }}
+            </a>
+        </div>
+    </div>
 </div>
 
 <ul class="nav nav-tabs mt-2" id="myTab" role="tablist">

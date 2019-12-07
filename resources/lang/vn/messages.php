@@ -205,6 +205,7 @@ return [
         'rejected' => 'Từ chối',
         'see-more' => 'Bấm để xem chi tiết',
         'modal-close' => 'Đóng',
+        'print' => 'In hồ sơ',
     ],
     'calendar' => [
         'mon' => 'T2',

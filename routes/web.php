@@ -17,6 +17,8 @@ Route::get('update/lang/{locale}','LangController@lang');
 Route::get('detail/lang/{locale}','LangController@lang');
 Route::get('edit-basic/lang/{locale}','LangController@lang');
 
+Route::get('pdf','PDFController@index');
+
 // USER
     //Forget password
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');

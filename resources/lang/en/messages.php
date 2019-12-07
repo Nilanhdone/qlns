@@ -205,6 +205,7 @@ return [
         'rejected' => 'Rejected',
         'see-more' => 'Click to see more',
         'modal-close' => 'Close',
+        'print' => 'Print profile',
     ],
     'calendar' => [
         'mon' => 'MON',

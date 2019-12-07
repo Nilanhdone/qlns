@@ -101,7 +101,7 @@
                 </label>
 
                 <div class="col-md-7">
-                    <input type="date" class="form-control @error('end_day') is-invalid @enderror" name="end_day" value="{{ $work->end_day }}" required>
+                    <input type="date" class="form-control @error('end_day') is-invalid @enderror" name="end_day" value="{{ $work->end_day }}">
 
                     @error('end_day')
                         <span class="invalid-feedback" role="alert">
