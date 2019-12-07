@@ -147,10 +147,14 @@ class ManagerController extends Controller
         $timekeeps = Time::where([['date',$today],['unit',$unit]])->get();
         foreach ($staffs as $staff) {
             foreach ($timekeeps as $timekeep) {
-                $timekeep['name'] = $staff->name;
-                $timekeep['avatar'] = $staff->avatar;
+                if ($timekeep->user_id == $staff->user_id) {
+                    $timekeep['name'] = $staff->name;
+                    $timekeep['avatar'] = $staff->avatar;
+                }
             }
         }
+
+        // dd($timekeeps); exit();
 
         return view('user.manager.timekeeping', compact('unit', 'branch', 'timekeeps'));  
     }
@@ -266,8 +270,8 @@ class ManagerController extends Controller
                         }
                     }
                 }
+                $off_list[] = $staff_off;
             }
-            $off_list[] = $staff_off;
         } else {
             // lấy ra số ngày trong tháng đó
             $day_number = cal_days_in_month(CAL_GREGORIAN, $request->month, $year);
@@ -302,8 +306,9 @@ class ManagerController extends Controller
                         }
                     }
                 }
+
+                $off_list[] = $staff_off;
             }
-            $off_list[] = $staff_off;
         }
 
         return view('user.manager.search-month',

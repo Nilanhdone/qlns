@@ -10,7 +10,6 @@
     </div>
 
     <div class="card-body">
-        @foreach($staffs as $staff)
         <table class="table">
             <thead>
                 <tr>
@@ -92,7 +91,6 @@
                 @endforeach
             </tbody>
         </table>
-        @endforeach
     </div>
 </div>
 @endsection
