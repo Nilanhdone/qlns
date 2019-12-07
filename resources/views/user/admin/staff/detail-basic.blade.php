@@ -1,69 +1,69 @@
 <div class="row mt-4">
     <div class="col-3">
-        <img src="{{asset('img/avatar').'/'.$user->avatar}}" class="img-thumbnail">
+        <img src="{{asset('img/avatar').'/'.$staff->avatar}}" class="img-thumbnail">
     </div>
     <div class="col-9">
         <table class="table table-borderless">
             <tbody>
                 <tr>
                     <th scope="row">{{ trans('messages.profile.basic.user-id') }}</th>
-                    <td>{{ $user->user_id }}</td>
+                    <td>{{ $staff->user_id }}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{ trans('messages.profile.basic.name') }}</th>
-                    <td>{{ $user->name }}</td>
+                    <td>{{ $staff->name }}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{ trans('messages.profile.basic.gender') }}</th>
-                    @if(($user->gender) == 'male')
+                    @if(($staff->gender) == 'male')
                     <td>{{ trans('messages.profile.basic.male') }}</td>
-                    @elseif(($user->gender) == 'female')
+                    @elseif(($staff->gender) == 'female')
                     <td>{{ trans('messages.profile.basic.female') }}</td>
                     @endif
                 </tr>
                 <tr>
                     <th scope="row">{{ trans('messages.profile.basic.birthday') }}</th>
-                    <td>{{ $user->birthday }}</td>
+                    <td>{{ $staff->birthday }}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{ trans('messages.profile.basic.identify') }}</th>
-                    <td>{{ $user->identify_number }}</td>
+                    <td>{{ $staff->identify_number }}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{ trans('messages.profile.basic.degree') }}</th>
-                    @if(($user->degree) == 'bachelor')
+                    @if(($staff->degree) == 'bachelor')
                     <td>{{ trans('messages.degree.bachelor') }}</td>
-                    @elseif(($user->degree) == 'engineer')
+                    @elseif(($staff->degree) == 'engineer')
                     <td>{{ trans('messages.degree.engineer') }}</td>
-                    @elseif(($user->degree) == 'master')
+                    @elseif(($staff->degree) == 'master')
                     <td>{{ trans('messages.degree.master') }}</td>
-                    @elseif(($user->degree) == 'post-doctor')
+                    @elseif(($staff->degree) == 'post-doctor')
                     <td>{{ trans('messages.degree.post-doctor') }}</td>
                     @endif
                 </tr>
                 <tr>
                     <th scope="row">{{ trans('messages.profile.basic.phone') }}</th>
-                    <td>{{ $user->phone }}</td>
+                    <td>{{ $staff->phone }}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{ trans('messages.profile.basic.email') }}</th>
-                    <td>{{ $user->email }}</td>
+                    <td>{{ $staff->email }}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{ trans('messages.profile.basic.nationality') }}</th>
-                    <td>{{ $user->nationality }}</td>
+                    <td>{{ $staff->nationality }}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{ trans('messages.profile.basic.religion') }}</th>
-                    <td>{{ $user->religion }}</td>
+                    <td>{{ $staff->religion }}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{ trans('messages.profile.basic.hometown') }}</th>
-                    <td>{{ $user->hometown}}</td>
+                    <td>{{ $staff->hometown}}</td>
                 </tr>
                 <tr>
                     <th scope="row">{{ trans('messages.profile.basic.address') }}</th>
-                    <td>{{ $user->address }}</td>
+                    <td>{{ $staff->address }}</td>
                 </tr>
             </tbody>
         </table>

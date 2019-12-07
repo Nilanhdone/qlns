@@ -81,18 +81,18 @@
 </table>
 
 <script type="text/javascript">
-    (function() {
-        var day = document.getElementsByClassName("workActice");
-        for (var i = 0; i < day.length; i++) {
-            var name = day[i].getAttribute("name");
-            var title = day[i].getAttribute("title");
-            var data_toggle = day[i].getAttribute("data-toggle");
-            var data_target = day[i].getAttribute("data-target");
-            var today = document.getElementById(name);
-            today.setAttribute("class", "border border-danger font-weight-bold font-italic");
-            today.setAttribute("title", title);
-            today.setAttribute("data-toggle", data_toggle);
-            today.setAttribute("data-target", data_target);
-        };
-    })();
+(function() {
+    var day = document.getElementsByClassName("workActice");
+    for (var i = 0; i < day.length; i++) {
+        var name = day[i].getAttribute("name");
+        var title = day[i].getAttribute("title");
+        var data_toggle = day[i].getAttribute("data-toggle");
+        var data_target = day[i].getAttribute("data-target");
+        var today = document.getElementById(name);
+        today.setAttribute("class", "border border-danger font-weight-bold font-italic");
+        today.setAttribute("title", title);
+        today.setAttribute("data-toggle", data_toggle);
+        today.setAttribute("data-target", data_target);
+    };
+})();
 </script>

@@ -14,8 +14,15 @@ class EmployeeController extends Controller
 {
     public function showVacationForm()
     {
+        $heads = Unit::where('branch', 'head')->get();
+        $obs = Unit::where('branch', 'ob')->get();
+        $lbs = Unit::where('branch', 'lb')->get();
+        $sbs = Unit::where('branch', 'sb')->get();
+        $cbs = Unit::where('branch', 'cb')->get();
+        $xbs = Unit::where('branch', 'xb')->get();
+        
         $user = Auth::user();
-        return view('user.employee.vacation-leave', compact('user'));
+        return view('user.employee.vacation-leave', compact('user', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
     }
 
     public function sendVacation(Request $request)

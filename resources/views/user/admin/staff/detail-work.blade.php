@@ -1,4 +1,4 @@
-<table class="table mt-4">
+<table class="table">
     <thead>
         <tr>
             <th scope="col">{{ trans('messages.profile.work.from') }}</th>

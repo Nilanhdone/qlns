@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card" style="margin-right: 100px; margin-left: 100px;">
+<div class="card">
     <div class="card-header text-primary text-uppercase">
         <div class="row">
-            <div class="col-2 text-danger">
+            <div class="col-md-3 text-danger">
                 <a href="/staff{{ $unit }}">
-                    <i class="fas fa-reply mr-2"></i>{{ trans('messages.profile.menu.back') }}
+                    <i class="fas fa-chevron-left mr-2"></i>{{ trans('messages.profile.menu.back') }}
                 </a>
             </div>
-            <div class="col-8">
+            <div class="col-md-8">
                 {{ trans('messages.home.profile') }}
             </div>
         </div>
@@ -42,7 +42,13 @@
                     <td>{{ trans('messages.positions.'.$work->position) }}</td>
                     <td>{{ $work->salary }}</td>
                     <td>{{ $work->insurance_number }}</td>
-                    <td><a href="/edit-work/{{ $work->user_id }}/{{ $work->id }}">Edit</a></td>
+                    <td class="text-uppercase">
+                        <a href="/edit-work/{{ $work->user_id }}/{{ $work->id }}">
+                            <span class="badge badge-primary">
+                                {{ trans('messages.staff.detail.button.edit') }}
+                            </span>
+                        </a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

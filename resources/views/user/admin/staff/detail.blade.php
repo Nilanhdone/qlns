@@ -5,7 +5,7 @@
     <div class="card-header text-primary text-uppercase">
         <div class="row">
             <div class="col-2 text-danger">
-                <a href="/mana-staff">
+                <a href="/staff{{ $staff->unit }}">
                     <i class="fas fa-chevron-left mr-2"></i>{{ trans('messages.profile.menu.back') }}
                 </a>
             </div>

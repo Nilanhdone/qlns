@@ -17,6 +17,8 @@ Route::get('update/lang/{locale}','LangController@lang');
 Route::get('detail/lang/{locale}','LangController@lang');
 Route::get('edit-basic/lang/{locale}','LangController@lang');
 
+Route::get('pdf','PDFController@index');
+
 // USER
     //Forget password
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
@@ -55,6 +57,14 @@ Route::get('edit-basic/lang/{locale}','LangController@lang');
     //staff list
     Route::get('mana-staff','ManagerController@showStaff')->name('mana-staff');
     Route::get('mana-detail-{user_id}','ManagerController@showStaffDetail')->name('mana-detail');
+    //timekeeping
+    Route::get('timekeeping','ManagerController@showTimekeeping')->name('timekeeping');
+    Route::get('yes-{id}','ManagerController@timeYes')->name('yes-time');
+    Route::get('no-{id}','ManagerController@timeNo')->name('no-time');
+    Route::get('change-{id}','ManagerController@changeTimeStatus')->name('change-time');
+    Route::get('timekeeping-search','ManagerController@showTimekeepingSearch')->name('timekeeping-search');
+    Route::post('day-search','ManagerController@daySearch')->name('day-search');
+    Route::post('month-search','ManagerController@monthSearch')->name('month-search');
 
 // ADMIN
     // Register
@@ -65,12 +75,12 @@ Route::get('edit-basic/lang/{locale}','LangController@lang');
     Route::get('update/{id}','AdminController@showUpdateForm')->name('update');
     // Search
     Route::get('search-by-name','AdminController@showSearchByNameForm')->name('search-by-name');
-    Route::get('search-by-name-detail','AdminController@searchByName')->name('search-by-name-detail');
+    Route::post('search-by-name-detail','AdminController@searchByName')->name('search-by-name-detail');
     Route::get('multiple-search','AdminController@showMultipleSearchForm')->name('multiple-search');
-    Route::get('multiple-search-detail','AdminController@searchMultiple')->name('multiple-search-detail');
+    Route::post('multiple-search-detail','AdminController@searchMultiple')->name('multiple-search-detail');
 
     // View detail
-    Route::get('detail/{id}','AdminController@showStaffDetail')->name('detail');
+    Route::get('detail-{id}','AdminController@showStaffDetail')->name('detail');
     Route::get('edit-basic/{id}','AdminController@showEditBasicForm')->name('edit-basic');
     Route::post('basic-edit', 'AdminController@editBasic')->name('basic-edit');
     Route::get('edit-work/{user_id}','AdminController@showEditWorkForm')->name('edit-work');
