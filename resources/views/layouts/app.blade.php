@@ -13,6 +13,7 @@
 
             <div id="content">
                 @include('layouts.partials.mainheader')
+
                 <section>
                     @yield('content')
                 </section>

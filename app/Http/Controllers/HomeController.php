@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     private function  getWeekCalendar($current_month, $current_year)
@@ -168,6 +168,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        return view('account.create.create-account'); exit();
         $user = Auth::user();
         $works = UserInfo::where('user_id', $user->user_id)->get();
         $vacations = Vacation::where('user_id', $user->user_id)->get();

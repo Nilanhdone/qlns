@@ -11,11 +11,13 @@
         </button>
         @else
         <div class="media">
-            <img src="{{ asset('img/logo.png') }}" class="mr-3" width="80" height="80">
+            <a href="/"><img src="{{ asset('img/logo.png') }}" class="mr-3" width="80" height="80"></a>
             <div class="media-body">
-                <h3 class="mt-3 text-uppercase text-danger font-weight-bold">
-                    {{ trans('messages.header.title') }}
-                </h3>
+                <a href="/">
+                    <h3 class="mt-3 text-uppercase text-danger font-weight-bold">
+                        {{ trans('messages.header.title') }}
+                    </h3>
+                </a>
             </div>
         </div>
         @endif
@@ -29,11 +31,11 @@
                         </a>
                     </li>
                 @else
-                    <!-- <li class="nav-item mx-0 mx-lg-1">
+                    <li class="nav-item mx-0 mx-lg-1">
                         <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/login">
                             <i class="fas fa-sign-in-alt fa-lg mr-2"></i>{{ trans('messages.header.login') }}
                         </a>
-                    </li> -->
+                    </li>
                 @endif
 
                 <li class="nav-item mx-0 mx-lg-1 dropdown">
