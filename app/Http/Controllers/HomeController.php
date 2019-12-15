@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
-use App\Model\Vacation;
-use App\Model\UserInfo;
-use App\Model\Work;
 use App\Model\Unit;
+use App\Model\Position;
+use App\Model\User;
+use App\Model\Education;
+use App\Model\Training;
 use App;
 use session;
 use Auth;
@@ -168,25 +169,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        return view('account.create.create-account'); exit();
-        $user = Auth::user();
-        $works = UserInfo::where('user_id', $user->user_id)->get();
-        $vacations = Vacation::where('user_id', $user->user_id)->get();
-        $work_calendars = Work::where('unit', $user->unit)->get();
-        $month_works = $this->getWorkCalendar($work_calendars);
-        $aday_works = $month_works[0];
-        $days_works = $month_works[1];
-
-
-        // show list work unit
-        $heads = Unit::where('branch', 'head')->get();
-        $obs = Unit::where('branch', 'ob')->get();
-        $lbs = Unit::where('branch', 'lb')->get();
-        $sbs = Unit::where('branch', 'sb')->get();
-        $cbs = Unit::where('branch', 'cb')->get();
-        $xbs = Unit::where('branch', 'xb')->get();
-
+        $units = Unit::all();
+        $positions = Position::all();
+        return view('account.create.create-account', compact('units', 'positions'));
+        exit();
+        // $user = Auth::user();
+        // $month_works = $this->getWorkCalendar($work_calendars);
+        // $aday_works = $month_works[0];
+        // $days_works = $month_works[1];
 
         // in ra lịch của tháng hiện tại
         // lấy ra ngày, tháng và năm hiện tại
@@ -197,7 +187,7 @@ class HomeController extends Controller
         $calendar = $this->getWeekCalendar($current_month, $current_year);
         $now_day = $today.' - '.$current_month.' - '.$current_year;
         return view('home',
-            compact('today', 'calendar', 'now_day' , 'user', 'works', 'vacations', 'aday_works', 'days_works', 'heads', 'obs', 'lbs', 'sbs', 'cbs', 'xbs'));
+            compact('today', 'calendar', 'now_day' , 'user'));
     }
 
     /**

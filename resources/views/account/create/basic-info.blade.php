@@ -41,9 +41,9 @@
             </label>
 
             <div class="col-md-8">
-                <input type="text" class="form-control @error('name') is-invalid @enderror border border-primary" name="name" value="{{ old('name') }}" required>
+                <input type="text" class="form-control @error('fullname') is-invalid @enderror border border-primary" name="fullname" value="{{ old('fullname') }}" required>
 
-                @error('name')
+                @error('fullname')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -98,7 +98,7 @@
             </label>
 
             <div class="col-md-8">
-                <select class="btn border-primary" name="degree" form="register">
+                <select class="btn border-primary" name="degree" form="create">
                     <option value="bachelor">{{ trans('messages.degree.bachelor') }}</option>
                     <option value="engineer">{{ trans('messages.degree.engineer') }}</option>
                     <option value="master">{{ trans('messages.degree.master') }}</option>
@@ -115,9 +115,9 @@
             </label>
 
             <div class="col-md-8">
-                <input type="text" class="form-control @error('nationality') is-invalid @enderror border border-primary" name="nationality" value="{{ old('nationality') }}" required>
+                <input type="text" class="form-control @error('user_nationality') is-invalid @enderror border border-primary" name="user_nationality" value="{{ old('user_nationality') }}" required>
 
-                @error('nationality')
+                @error('user_nationality')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -166,9 +166,9 @@
             </label>
 
             <div class="col-md-8">
-                <input type="text" class="form-control @error('address') is-invalid @enderror border border-primary" name="address" value="{{ old('address') }}" required>
+                <input type="text" class="form-control @error('user_address') is-invalid @enderror border border-primary" name="user_address" value="{{ old('user_address') }}" required>
 
-                @error('address')
+                @error('user_address')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>

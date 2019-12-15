@@ -3,9 +3,9 @@
         <div class="form-group">
             <label>From</label>
 
-            <input type="date" class="form-control @error('start_day[]') is-invalid @enderror border border-primary" name="start_day[]" value="{{ old('start_day[]') }}" required>
+            <input type="date" class="form-control @error('com_start_day[]') is-invalid @enderror border border-primary" name="com_start_day[]" value="{{ old('com_start_day[]') }}" required>
 
-            @error('start_day[]')
+            @error('com_start_day[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -16,9 +16,9 @@
         <div class="form-group">
             <label>To</label>
 
-            <input type="date" class="form-control @error('end_day[]') is-invalid @enderror border border-primary" name="end_day[]" value="{{ old('end_day[]') }}" required>
+            <input type="date" class="form-control @error('com_end_day[]') is-invalid @enderror border border-primary" name="com_end_day[]" value="{{ old('com_end_day[]') }}" required>
 
-            @error('end_day[]')
+            @error('com_end_day[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -29,9 +29,9 @@
         <div class="form-group">
             <label>Company Name</label>
 
-            <input type="text" class="form-control @error('edu_name[]') is-invalid @enderror border border-primary" name="edu_name[]" value="{{ old('edu_name[]') }}" required>
+            <input type="text" class="form-control @error('com_name[]') is-invalid @enderror border border-primary" name="com_name[]" value="{{ old('com_name[]') }}" required>
 
-            @error('edu_name[]')
+            @error('com_name[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -42,9 +42,9 @@
         <div class="form-group">
             <label>Position</label>
 
-            <input type="text" class="form-control @error('edu_position[]') is-invalid @enderror border border-primary" name="edu_position[]" value="{{ old('edu_position[]') }}" required>
+            <input type="text" class="form-control @error('com_position[]') is-invalid @enderror border border-primary" name="com_position[]" value="{{ old('com_position[]') }}" required>
 
-            @error('edu_position[]')
+            @error('com_position[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

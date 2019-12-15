@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEduHissTable extends Migration
+class CreateLaudatorysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateEduHissTable extends Migration
      */
     public function up()
     {
-        Schema::create('edu_hiss', function (Blueprint $table) {
+        Schema::create('laudatorys', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('user_id');
-            $table->date('start_day');
-            $table->date('end_day');
-            $table->string('unit');
-            $table->string('address');
+            $table->string('title');
+            $table->string('year');
+            $table->string('organization');
+            $table->string('content');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateEduHissTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('edu_hiss');
+        Schema::dropIfExists('laudatorys');
     }
 }

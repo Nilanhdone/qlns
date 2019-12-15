@@ -16,9 +16,9 @@
         <div class="form-group">
             <label>Party unit</label>
 
-            <input type="text" class="form-control @error('edu_name[]') is-invalid @enderror border border-primary" name="edu_name[]" value="{{ old('edu_name[]') }}" required>
+            <input type="text" class="form-control @error('party_unit[]') is-invalid @enderror border border-primary" name="party_unit[]" value="{{ old('party_unit[]') }}" required>
 
-            @error('edu_name[]')
+            @error('party_unit[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -29,9 +29,9 @@
         <div class="form-group">
             <label>Party position</label>
 
-            <input type="text" class="form-control @error('edu_position[]') is-invalid @enderror border border-primary" name="edu_position[]" value="{{ old('edu_position[]') }}" required>
+            <input type="text" class="form-control @error('party_position[]') is-invalid @enderror border border-primary" name="party_position[]" value="{{ old('party_position[]') }}" required>
 
-            @error('edu_position[]')
+            @error('party_position[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

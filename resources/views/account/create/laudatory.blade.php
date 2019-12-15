@@ -3,9 +3,9 @@
         <div class="form-group">
             <label>Title</label>
 
-            <input type="text" class="form-control @error('join_day[]') is-invalid @enderror border border-primary" name="join_day[]" value="{{ old('join_day[]') }}" required>
+            <input type="text" class="form-control @error('title[]') is-invalid @enderror border border-primary" name="title[]" value="{{ old('title[]') }}" required>
 
-            @error('join_day[]')
+            @error('title[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -16,9 +16,9 @@
         <div class="form-group">
             <label>Year</label>
 
-            <input type="text" class="form-control @error('edu_name[]') is-invalid @enderror border border-primary" name="edu_name[]" value="{{ old('edu_name[]') }}" required>
+            <input type="text" class="form-control @error('lau_year[]') is-invalid @enderror border border-primary" name="lau_year[]" value="{{ old('lau_year[]') }}" required>
 
-            @error('edu_name[]')
+            @error('lau_year[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -27,11 +27,11 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>organization</label>
+            <label>Organization</label>
 
-            <input type="text" class="form-control @error('edu_position[]') is-invalid @enderror border border-primary" name="edu_position[]" value="{{ old('edu_position[]') }}" required>
+            <input type="text" class="form-control @error('lau_organization[]') is-invalid @enderror border border-primary" name="lau_organization[]" value="{{ old('lau_organization[]') }}" required>
 
-            @error('edu_position[]')
+            @error('lau_organization[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -42,9 +42,9 @@
         <div class="form-group">
             <label>Content</label>
 
-            <input type="text" class="form-control @error('edu_position[]') is-invalid @enderror border border-primary" name="edu_position[]" value="{{ old('edu_position[]') }}" required>
+            <input type="text" class="form-control @error('lau_content[]') is-invalid @enderror border border-primary" name="lau_content[]" value="{{ old('lau_content[]') }}" required>
 
-            @error('edu_position[]')
+            @error('lau_content[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

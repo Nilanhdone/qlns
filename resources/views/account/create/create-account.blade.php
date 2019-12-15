@@ -6,7 +6,25 @@
         {{ trans('messages.register.header') }}
     </div>
 
-    <form method="POST" action="{{ route('create-basic') }}" enctype="multipart/form-data" id="register">
+    @if(Session::has('success'))
+        <div class="alert alert-success"><i class="fas fa-check"></i>
+            {!! Session::get('success') !!}
+        </div>
+    @endif
+
+    @if(Session::has('errors'))
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li><i class="fa fa-exclamation-circle mr-2"></i>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form method="POST" action="{{ route('create-account') }}" enctype="multipart/form-data" id="create">
+        @csrf
+
         <div class="card-header text-uppercase text-primary font-weight-bolder">
             Basic Information
         </div>
@@ -86,7 +104,6 @@
         </div>
 
         <div class="card-body" id="foreignerRelationshipForm">
-
             <div id="newForeignerRela"></div>
             <a class="btn btn-primary text-white" id="addNewForeignerRela"><i class="fas fa-plus"></i></a>
             <a class="btn btn-primary text-white" id="removeForeignerRela"><i class="fas fa-minus"></i></a>
@@ -97,7 +114,6 @@
         </div>
 
         <div class="card-body" id="laudatoryForm">
-
             <div id="newLaudatory"></div>
             <a class="btn btn-primary text-white" id="addNewLaudatory"><i class="fas fa-plus"></i></a>
             <a class="btn btn-primary text-white" id="removeLaudatory"><i class="fas fa-minus"></i></a>
@@ -108,10 +124,23 @@
         </div>
 
         <div class="card-body" id="disciplineForm">
-
             <div id="newDiscipline"></div>
             <a class="btn btn-primary text-white" id="addNewDiscipline"><i class="fas fa-plus"></i></a>
             <a class="btn btn-primary text-white" id="removeDiscipline"><i class="fas fa-minus"></i></a>
+        </div>
+
+        <div class="card-header text-uppercase text-primary font-weight-bolder">
+            Position and Role
+        </div>
+
+        <div class="card-body" id="disciplineForm">
+            @include('account.create.position-role')
+        </div>
+
+        <div class="card-body row">
+            <div class="col-6 offset-4">
+                <button type="sumbit" class="btn btn-primary">Create</button>
+            </div>
         </div>
     </form>
 </div>
@@ -158,9 +187,8 @@ $("#addNewComHis").click(function() {
 // Company History remove
 $("#removeComHis").click(function() {
     $("form .companyForm").last().remove();
-    $("form .companyForm").last().remove();
 
-    $("#trainingHistoryForm").find(".companyForm").length > 0 ? $(this).css("display", "inline") : $(this).css("display", "none");
+    $("#companyHistoryForm").find(".companyForm").length > 0 ? $(this).css("display", "inline") : $(this).css("display", "none");
 });
 
 // Government History add

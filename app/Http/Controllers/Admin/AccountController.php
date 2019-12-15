@@ -5,11 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Model\UserInfo;
 use App\Model\User;
 use App\Model\Unit;
 use App\Model\Position;
-use App\Model\EduHis;
+use App\Model\Education;
+use App\Model\Training;
+use App\Model\Company;
+use App\Model\Government;
+use App\Model\Party;
+use App\Model\Family;
+use App\Model\Foreigner;
+use App\Model\Laudatory;
+use App\Model\Infringe;
 use Auth;
 use Session;
 use Illuminate\Http\UploadedFile;
@@ -17,30 +24,41 @@ use Illuminate\Http\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use App\Notifications\RegisterNotification;
 
 class AccountController extends Controller
 {
-    public function showCreateAccountForm()
+    public function showCreateAccount()
     {
-        return view('account.create.basic-info');
+        $units = Unit::all();
+        $positions = Position::all();
+        return view('account.create.create-account', compact('units', 'positions'));
     }
 
-    public function createBasicInfo(Request $request)
+    public function createAccount(Request $request)
     {
         // các điều kiện đầu vào của form
         $rules = [
             'user_id' => ['required', 'string', 'max:255'],
             'image' => ['required'],
-            'name' => ['required', 'string', 'max:255'],
+            'fullname' => ['required', 'string', 'max:255'],
             'birthday' => ['required'],
-            'nationality' => ['required', 'string', 'max:255'],
+            'user_nationality' => ['required', 'string', 'max:255'],
             'religion' => ['required', 'string', 'max:255'],
             'hometown' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-            // 'phone' => ['required', 'regex:/[0-9]/', 'min:10', 'max:11'],
-            'phone' => ['required', 'regex:/[0-9]/', 'max:11'],
+            'user_address' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'regex:/[0-9]/', 'min:10', 'max:11'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'edu_start_day' => ['required'],
+            'edu_end_day' => ['required'],
+            'edu_unit' => ['required'],
+            'edu_address' => ['required'],
+            'fa_name' => ['required'],
+            'fa_year' => ['required'],
+            'fa_rela' => ['required'],
+            'fa_address' => ['required'],
+            'salary' => ['required'],
+            'insurance' => ['required'],
         ];
 
         // kiểm tra điều kiện đầu vào
@@ -49,6 +67,7 @@ class AccountController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        // dd($request->edu_start_day); exit();
         // kiểm tra nếu có hình ảnh thì lưu hình ảnh
         if ($request->hasFile('image')) {
             $image = $request->image; // lấy ảnh từ đầu vào
@@ -65,134 +84,147 @@ class AccountController extends Controller
         $password = Str::random(6);
 
         $user_id = $request->user_id;
+
         // lưu thông tin cơ bản
         $user = User::create([
             'user_id' => $user_id,
+            'role' => $request->role,
+            'position' => $request->current_position,
+            'unit' => $request->current_unit,
             'avatar' => $avatar,
-            'name' => $request->name,
+            'name' => $request->fullname,
             'gender' => $request->gender,
             'birthday' => $request->birthday,
-            'nationality' => $request->nationality,
+            'nationality' => $request->user_nationality,
             'religion' => $request->religion,
             'hometown' => $request->hometown,
-            'address' => $request->address,
+            'address' => $request->user_address,
             'phone' => $request->phone,
             'email' => $request->email,
             'degree' => $request->degree,
+            'salary' => $request->salary,
+            'insurance' => $request->insurance,
             'password' => Hash::make($password),
         ]);
 
-        // return view('account.create.education.number', compact('user_id'));
-    }
-
-    public function showNumHisEdu($user_id)
-    {
-        
-    }
-
-    public function addNumHisEdu(Request $request)
-    {
-        $rules = [
-            'user_id' => ['required'],
-            'number' => ['required', 'numeric', 'min:4'],
-        ];
-
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        $user_id = $request->user_id;
-        $number = $request->number;
-        return view('account.create.education.history', compact('user_id','number'));
-    }
-
-    public function createHisEdu(Request $request)
-    {
-        $rules = [
-            'user_id' => ['required'],
-            'start_day' => ['required'],
-            'end_day' => ['required'],
-            'unit' => ['required', 'string'],
-            'address' => ['required', 'string'],
-        ];
-
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        $user_id = $request->user_id;
-        for ($i = 0; $i < count($request->start_day); $i++) {
-            EduHis::create([
+        // lưu lịch sử học tập
+        for ($i = 0; $i < count($request->edu_start_day); $i++) {
+            Education::create([
                 'user_id' => $user_id,
-                'start_day' => $request->start_day[$i],
-                'end_day' => $request->end_day[$i],
-                'unit' => $request->unit[$i],
-                'address' => $request->address[$i],
+                'start_day' => $request->edu_start_day[$i],
+                'end_day' => $request->edu_end_day[$i],
+                'unit' => $request->edu_unit[$i],
+                'address' => $request->edu_address[$i],
             ]);
         }
 
-        return view('account.create.training.number', compact('user_id'));
-    }
-
-    public function addNumHisTrain(Request $request)
-    {
-        $rules = [
-            'number' => ['required', 'numeric', 'min:0'],
-        ];
-
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+        //lưu lịch sử đào tạo nâng cao nếu có
+        if ($request->train_start_day != null) {
+            for ($i = 0; $i < count($request->train_start_day); $i++) {
+                Training::create([
+                    'user_id' => $user_id,
+                    'start_day' => $request->train_start_day[$i],
+                    'end_day' => $request->train_end_day[$i],
+                    'unit' => $request->train_unit[$i],
+                    'address' => $request->train_address[$i],
+                    'content' => $request->train_content[$i],
+                ]);
+            }
         }
 
-        $number = $request->number;
-        return view('account.create.history-training', compact('number'));
-    }
-
-    public function addNumHisCompany(Request $request)
-    {
-        $rules = [
-            'number' => ['required', 'numeric', 'min:0'],
-        ];
-
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+        // lưu lịch sử làm công ty ngoài nhà nước
+        if ($request->com_start_day != null) {
+            for ($i = 0; $i < count($request->com_start_day); $i++) {
+                Company::create([
+                    'user_id' => $user_id,
+                    'start_day' => $request->com_start_day[$i],
+                    'end_day' => $request->com_end_day[$i],
+                    'unit' => $request->com_name[$i],
+                    'position' => $request->com_position[$i],
+                ]);
+            }
         }
 
-        $number = $request->number;
-        return view('account.create.history-company', compact('number'));
-    }
-
-    public function addNumHisParty(Request $request)
-    {
-        $rules = [
-            'number' => ['required', 'numeric', 'min:3'],
-        ];
-
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+        //lưu lịch sử làm công ty nhà nước
+        if ($request->gov_start_day != null) {
+            for ($i = 0; $i < count($request->gov_start_day); $i++) {
+                Government::create([
+                    'user_id' => $user_id,
+                    'start_day' => $request->gov_start_day[$i],
+                    'end_day' => $request->gov_end_day[$i],
+                    'unit' => $request->gov_name[$i],
+                    'position' => $request->gov_position[$i],
+                ]);
+            }
         }
 
-        $number = $request->number;
-        return view('account.create.history-party', compact('number'));
-    }
-
-    public function addNumHisGov(Request $request)
-    {
-        $rules = [
-            'number' => ['required', 'numeric', 'min:0'],
-        ];
-
-        $validator = Validator::make($request->all(), $rules);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+        // lưu lịch sử tham gia đảng, đoàn thể
+        if ($request->join_day != null) {
+            for ($i = 0; $i < count($request->join_day); $i++) {
+                Party::create([
+                    'user_id' => $user_id,
+                    'join_day' => $request->join_day[$i],
+                    'unit' => $request->party_unit[$i],
+                    'position' => $request->party_position[$i],
+                ]);
+            }
         }
 
-        $number = $request->number;
-        return view('account.create.history-government', compact('number'));
+        // lưu mối quan hệ gia đình
+        for ($i = 0; $i < count($request->fa_name); $i++) {
+            Family::create([
+                'user_id' => $user_id,
+                'name' => $request->fa_name[$i],
+                'year' => $request->fa_year[$i],
+                'relationship' => $request->fa_rela[$i],
+                'address' => $request->fa_address[$i],
+            ]);
+        }
+
+        // lưu mối quan hệ với người nước ngoài
+        if ($request->fore_name != null) {
+            for ($i = 0; $i < count($request->fore_name); $i++) {
+                Foreigner::create([
+                    'user_id' => $user_id,
+                    'name' => $request->fore_name[$i],
+                    'year' => $request->fore_year[$i],
+                    'relationship' => $request->fore_rela[$i],
+                    'nationality' => $request->fore_nation[$i],
+                ]);
+            }
+        }
+
+
+        // lưu các khen thưởng
+        if ($request->title != null) {
+            for ($i = 0; $i < count($request->title); $i++) {
+                Laudatory::create([
+                    'user_id' => $user_id,
+                    'title' => $request->title[$i],
+                    'year' => $request->lau_year[$i],
+                    'organization' => $request->lau_organization[$i],
+                    'content' => $request->lau_content[$i],
+                ]);
+            }
+        }
+
+        // lưu các vi phạm kỉ luật
+        if ($request->infringe != null) {
+            for ($i = 0; $i < count($request->infringe); $i++) {
+                Infringe::create([
+                    'user_id' => $user_id,
+                    'infringe' => $request->infringe[$i],
+                    'year' => $request->inf_year[$i],
+                    'organization' => $request->inf_organization[$i],
+                    'method' => $request->inf_method[$i],
+                ]);
+            }
+        }
+
+        // gửi email thông báo đăng ký tài khoản, kèm theo MẬT KHẨU
+        $user->notify(new RegisterNotification($password));
+
+        // quay lại và thông báo thành công
+        return redirect()->back()->with('success', 'Successfull');
     }
 }

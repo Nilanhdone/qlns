@@ -18,18 +18,17 @@ Route::get('detail/lang/{locale}','LangController@lang');
 Route::get('edit-basic/lang/{locale}','LangController@lang');
 
 Route::get('pdf','PDFController@index');
-Route::post('create-basic', 'Admin\AccountController@createBasicInfo')->name('create-basic');
-Route::get('num-his-edu', 'Admin\AccountController@showNumHisEdu')->name('num-his-edu');
-Route::post('num-his-edu', 'Admin\AccountController@addNumHisEdu');
-Route::post('create-his-edu', 'Admin\AccountController@createHisEdu')->name('create-his-edu');
-Route::post('num-his-train', 'Admin\AccountController@addNumHisTrain')->name('num-his-train');
-Route::post('create-his-train', 'Admin\AccountController@createHisTrain')->name('create-his-train');
-Route::post('num-his-company', 'Admin\AccountController@addNumHisCompany')->name('num-his-company');
-Route::post('create-his-company', 'Admin\AccountController@createHisCompany')->name('create-his-company');
-Route::post('num-his-party', 'Admin\AccountController@addNumHisParty')->name('num-his-party');
-Route::post('create-his-party', 'Admin\AccountController@createHisParty')->name('create-his-party');
-Route::post('num-his-gov', 'Admin\AccountController@addNumHisGov')->name('num-his-gov');
-Route::post('create-his-gov', 'Admin\AccountController@createHisGov')->name('create-his-gov');
+Route::get('show-create-account', 'Admin\AccountController@showCreateAccount')->name('show-create-account');
+Route::post('create-account', 'Admin\AccountController@createAccount')->name('create-account');
+Route::get('show-search', 'Admin\SearchController@showSearchForm')->name('show-search');
+Route::get('search', 'Admin\SearchController@search')->name('search');
+
+Route::get('profile','Admin\UserController@showProfile')->name('profile');
+
+// Route::get('detail-{id}','Admin\EditAccountController@showDetailAccount')->name('detail');
+Route::get('detail-{id}-{component}','Admin\EditAccountController@showDetailAccount')->name('detail');
+Route::post('edit-basic-info','Admin\EditAccountController@editBasicInfo')->name('edit-basic-info');
+Route::post('edit-edu','Admin\EducationController@editEducation')->name('edit-edu');
 
 // USER
     //Forget password
@@ -45,7 +44,6 @@ Route::post('create-his-gov', 'Admin\AccountController@createHisGov')->name('cre
     Route::post('login','Auth\LoginController@login');
     // Logout
     Route::get('logout','Auth\LoginController@logout')->name('logout');
-    Route::get('profile','HomeController@showProfile')->name('profile');
     // First login
     Route::post('first-login','Auth\LoginController@changePassword')->name('first-login');
 
@@ -92,7 +90,7 @@ Route::post('create-his-gov', 'Admin\AccountController@createHisGov')->name('cre
     Route::post('multiple-search-detail','AdminController@searchMultiple')->name('multiple-search-detail');
 
     // View detail
-    Route::get('detail-{id}','AdminController@showStaffDetail')->name('detail');
+    // Route::get('detail-{id}','AdminController@showStaffDetail')->name('detail');
     Route::get('edit-basic/{id}','AdminController@showEditBasicForm')->name('edit-basic');
     Route::post('basic-edit', 'AdminController@editBasic')->name('basic-edit');
     Route::get('edit-work/{user_id}','AdminController@showEditWorkForm')->name('edit-work');

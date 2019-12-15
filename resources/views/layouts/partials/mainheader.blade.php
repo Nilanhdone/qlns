@@ -25,17 +25,54 @@
         <div class="collapse navbar-collapse text-uppercase" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 @if(Auth::check())
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/logout">
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Change password
+                    </a>
+                </li>
+
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/logout">
+                        <i class="fas fa-sign-out-alt mr-2"></i>{{ trans('messages.header.logout') }}
+                    </a>
+                </li>
+                @else
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/login">
+                        <i class="fas fa-sign-in-alt fa-lg mr-2"></i>{{ trans('messages.header.login') }}
+                    </a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1 dropdown">
+                    <a id="function" class="nav-link py-3 px-0 px-lg-5 rounded js-scroll-trigger dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-users-cog fa-lg mr-2"></i>Functions
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="function">
+                        <a class="dropdown-item" href="{{ route('show-create-account') }}">
+                            <i class="fas fa-user-plus mr-2"></i>Create account
+                        </a>
+                        <a class="dropdown-item" href="{{ route('show-search') }}">
+                            <i class="fas fa-search mr-2"></i>Search
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1 dropdown">
+                    <a id="profile" class="nav-link py-3 px-0 px-lg-5 rounded js-scroll-trigger dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-circle fa-lg mr-2"></i>User name
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="profile">
+                        <a class="dropdown-item" href="{{ route('profile') }}">
+                            <i class="fas fa-id-badge mr-2"></i>Profile
+                        </a>
+                        <a class="dropdown-item" href="{{ route('change-password') }}">
+                            <i class="fas fa-unlock-alt mr-2"></i>Change password
+                        </a>
+                        <a class="dropdown-item" href="/logout">
                             <i class="fas fa-sign-out-alt mr-2"></i>{{ trans('messages.header.logout') }}
                         </a>
-                    </li>
-                @else
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/login">
-                            <i class="fas fa-sign-in-alt fa-lg mr-2"></i>{{ trans('messages.header.login') }}
-                        </a>
-                    </li>
+                    </div>
+                </li>
                 @endif
 
                 <li class="nav-item mx-0 mx-lg-1 dropdown">

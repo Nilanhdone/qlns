@@ -18,9 +18,9 @@ class CreateUsersTable extends Migration
             $table->string('user_id')->unique();
             $table->string('status')->default('new');
             $table->integer('first_login')->default(0);
-            $table->string('role')->nullable();
-            $table->string('position')->nullable();
-            $table->string('unit')->nullable();
+            $table->string('role');
+            $table->string('position');
+            $table->string('unit');
             $table->string('name');
             $table->string('avatar');
             $table->string('gender');
@@ -32,6 +32,8 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('email')->unique();
             $table->string('degree');
+            $table->string('salary');
+            $table->string('insurance');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

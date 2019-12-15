@@ -3,9 +3,9 @@
         <div class="form-group">
             <label>Infringe</label>
 
-            <input type="text" class="form-control @error('join_day[]') is-invalid @enderror border border-primary" name="join_day[]" value="{{ old('join_day[]') }}" required>
+            <input type="text" class="form-control @error('infringe[]') is-invalid @enderror border border-primary" name="infringe[]" value="{{ old('infringe[]') }}" required>
 
-            @error('join_day[]')
+            @error('infringe[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -16,9 +16,9 @@
         <div class="form-group">
             <label>Year</label>
 
-            <input type="text" class="form-control @error('edu_name[]') is-invalid @enderror border border-primary" name="edu_name[]" value="{{ old('edu_name[]') }}" required>
+            <input type="text" class="form-control @error('inf_year[]') is-invalid @enderror border border-primary" name="inf_year[]" value="{{ old('inf_year[]') }}" required>
 
-            @error('edu_name[]')
+            @error('inf_year[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -27,11 +27,11 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>organization</label>
+            <label>Organization</label>
 
-            <input type="text" class="form-control @error('edu_position[]') is-invalid @enderror border border-primary" name="edu_position[]" value="{{ old('edu_position[]') }}" required>
+            <input type="text" class="form-control @error('inf_organization[]') is-invalid @enderror border border-primary" name="inf_organization[]" value="{{ old('inf_organization[]') }}" required>
 
-            @error('edu_position[]')
+            @error('inf_organization[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -42,9 +42,9 @@
         <div class="form-group">
             <label>Discipline method</label>
 
-            <input type="text" class="form-control @error('edu_position[]') is-invalid @enderror border border-primary" name="edu_position[]" value="{{ old('edu_position[]') }}" required>
+            <input type="text" class="form-control @error('inf_method[]') is-invalid @enderror border border-primary" name="inf_method[]" value="{{ old('inf_method[]') }}" required>
 
-            @error('edu_position[]')
+            @error('inf_method[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
