@@ -29,9 +29,9 @@
         <div class="form-group">
             <label>Company Name</label>
 
-            <input type="text" class="form-control @error('com_name[]') is-invalid @enderror border border-primary" name="com_name[]" value="{{ old('com_name[]') }}" required>
+            <input type="text" class="form-control @error('com_unit[]') is-invalid @enderror border border-primary" name="com_unit[]" value="{{ old('com_unit[]') }}" required>
 
-            @error('com_name[]')
+            @error('com_unit[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

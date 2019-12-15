@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label>From</label>
 
-                        <input type="date" class="form-control @error('gov_start_day[]') is-invalid @enderror border border-primary" name="gov_start_day[]" value="{{ $government->start_day }}" required>
+                        <input type="date" class="form-control @error('gov_start_day[]') is-invalid @enderror border border-primary" name="gov_start_day[]" value="{{ $government->start_day }}" readonly required>
 
                         @error('gov_start_day[]')
                             <span class="invalid-feedback" role="alert">
@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <label>To</label>
 
-                        <input type="date" class="form-control @error('gov_end_day[]') is-invalid @enderror border border-primary" name="gov_end_day[]" value="{{ $government->end_day }}" required>
+                        <input type="date" class="form-control @error('gov_end_day[]') is-invalid @enderror border border-primary" name="gov_end_day[]" value="{{ $government->end_day }}" readonly required>
 
                         @error('gov_end_day[]')
                             <span class="invalid-feedback" role="alert">
@@ -54,9 +54,9 @@
                     <div class="form-group">
                         <label>Government Name</label>
 
-                        <input type="text" class="form-control @error('gov_name[]') is-invalid @enderror border border-primary" name="gov_name[]" value="{{ $government->name }}" required>
+                        <input type="text" class="form-control @error('gov_unit[]') is-invalid @enderror border border-primary" name="gov_unit[]" value="{{ $government->unit }}" readonly required>
 
-                        @error('gov_name[]')
+                        @error('gov_unit[]')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <label>Position</label>
 
-                        <input type="text" class="form-control @error('gov_position[]') is-invalid @enderror border border-primary" name="gov_position[]" value="{{ $government->position }}" required>
+                        <input type="text" class="form-control @error('gov_position[]') is-invalid @enderror border border-primary" name="gov_position[]" value="{{ $government->position }}" readonly required>
 
                         @error('gov_position[]')
                             <span class="invalid-feedback" role="alert">

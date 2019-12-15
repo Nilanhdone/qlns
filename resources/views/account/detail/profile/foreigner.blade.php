@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label>Name</label>
 
-                        <input type="text" class="form-control @error('fore_name[]') is-invalid @enderror border border-primary" name="fore_name[]" value="{{ $foreigner->name }}" required>
+                        <input type="text" class="form-control @error('fore_name[]') is-invalid @enderror border border-primary" name="fore_name[]" value="{{ $foreigner->name }}" readonly required>
 
                         @error('fore_name[]')
                             <span class="invalid-feedback" role="alert">
@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <label>Year of birth</label>
 
-                        <input type="text" class="form-control @error('fore_year[]') is-invalid @enderror border border-primary" name="fore_year[]" value="{{ $foreigner->year }}" required>
+                        <input type="text" class="form-control @error('fore_year[]') is-invalid @enderror border border-primary" name="fore_year[]" value="{{ $foreigner->year }}" readonly required>
 
                         @error('fore_year[]')
                             <span class="invalid-feedback" role="alert">
@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label>Relationship</label>
 
-                        <input type="text" class="form-control @error('fore_rela[]') is-invalid @enderror border border-primary" name="fore_rela[]" value="{{ $foreigner->relationship }}" required>
+                        <input type="text" class="form-control @error('fore_rela[]') is-invalid @enderror border border-primary" name="fore_rela[]" value="{{ $foreigner->relationship }}" readonly required>
 
                         @error('fore_rela[]')
                             <span class="invalid-feedback" role="alert">
@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <label>Nationality</label>
 
-                        <input type="text" class="form-control @error('fore_nation[]') is-invalid @enderror border border-primary" name="fore_nation[]" value="{{ $foreigner->nationality }}" required>
+                        <input type="text" class="form-control @error('fore_nation[]') is-invalid @enderror border border-primary" name="fore_nation[]" value="{{ $foreigner->nationality }}" readonly required>
 
                         @error('fore_nation[]')
                             <span class="invalid-feedback" role="alert">

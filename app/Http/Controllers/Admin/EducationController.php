@@ -63,4 +63,33 @@ class EducationController extends Controller
             return redirect()->back()->with('error',$e->getMessage());
         }
     }
+
+    public function addEducation(Request $request)
+    {
+        $rules = [
+            'edu_start_day' => ['required'],
+            'edu_end_day' => ['required'],
+            'edu_unit' => ['required'],
+            'edu_address' => ['required'],
+        ];
+
+        // kiểm tra điều kiện đầu vào
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // lưu lịch sử học tập
+        for ($i = 0; $i < count($request->edu_start_day); $i++) {
+            Education::create([
+                'user_id' => $request->user_id,
+                'start_day' => $request->edu_start_day[$i],
+                'end_day' => $request->edu_end_day[$i],
+                'unit' => $request->edu_unit[$i],
+                'address' => $request->edu_address[$i],
+            ]);
+        }
+
+        return redirect()->back()->with('success', 'Add new successfully!');
+    }
 }

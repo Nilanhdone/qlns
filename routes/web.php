@@ -29,6 +29,7 @@ Route::get('profile','Admin\UserController@showProfile')->name('profile');
 Route::get('detail-{id}-{component}','Admin\EditAccountController@showDetailAccount')->name('detail');
 Route::post('edit-basic-info','Admin\EditAccountController@editBasicInfo')->name('edit-basic-info');
 Route::post('edit-edu','Admin\EducationController@editEducation')->name('edit-edu');
+Route::post('add-edu','Admin\EducationController@addEducation')->name('add-edu');
 
 // USER
     //Forget password

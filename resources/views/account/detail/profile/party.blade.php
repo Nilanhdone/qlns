@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label>Party position</label>
 
-                        <input type="text" class="form-control @error('party_position[]') is-invalid @enderror border border-primary" name="party_position[]" value="{{ $party->position }}" required>
+                        <input type="text" class="form-control @error('party_position[]') is-invalid @enderror border border-primary" name="party_position[]" value="{{ $party->position }}" readonly required>
 
                         @error('party_position[]')
                             <span class="invalid-feedback" role="alert">

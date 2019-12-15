@@ -29,9 +29,9 @@
         <div class="form-group">
             <label>Government Name</label>
 
-            <input type="text" class="form-control @error('gov_name[]') is-invalid @enderror border border-primary" name="gov_name[]" value="{{ old('gov_name[]') }}" required>
+            <input type="text" class="form-control @error('gov_unit[]') is-invalid @enderror border border-primary" name="gov_unit[]" value="{{ old('gov_unit[]') }}" required>
 
-            @error('gov_name[]')
+            @error('gov_unit[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

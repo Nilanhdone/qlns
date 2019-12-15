@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label>Infringe</label>
 
-                        <input type="text" class="form-control @error('infringe[]') is-invalid @enderror border border-primary" name="infringe[]" value="{{ $discipline->infringe }}" required>
+                        <input type="text" class="form-control @error('infringe[]') is-invalid @enderror border border-primary" name="infringe[]" value="{{ $discipline->infringe }}" readonly required>
 
                         @error('infringe[]')
                             <span class="invalid-feedback" role="alert">
@@ -41,7 +41,7 @@
                     <div class="form-group">
                         <label>Year</label>
 
-                        <input type="text" class="form-control @error('inf_year[]') is-invalid @enderror border border-primary" name="inf_year[]" value="{{ $discipline->year }}" required>
+                        <input type="text" class="form-control @error('inf_year[]') is-invalid @enderror border border-primary" name="inf_year[]" value="{{ $discipline->year }}" readonly required>
 
                         @error('inf_year[]')
                             <span class="invalid-feedback" role="alert">
@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label>Organization</label>
 
-                        <input type="text" class="form-control @error('inf_organization[]') is-invalid @enderror border border-primary" name="inf_organization[]" value="{{ $discipline->organization }}" required>
+                        <input type="text" class="form-control @error('inf_organization[]') is-invalid @enderror border border-primary" name="inf_organization[]" value="{{ $discipline->organization }}" readonly required>
 
                         @error('inf_organization[]')
                             <span class="invalid-feedback" role="alert">
@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <label>Discipline method</label>
 
-                        <input type="text" class="form-control @error('inf_method[]') is-invalid @enderror border border-primary" name="inf_method[]" value="{{ $discipline->method }}" required>
+                        <input type="text" class="form-control @error('inf_method[]') is-invalid @enderror border border-primary" name="inf_method[]" value="{{ $discipline->method }}" readonly required>
 
                         @error('inf_method[]')
                             <span class="invalid-feedback" role="alert">

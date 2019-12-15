@@ -139,7 +139,7 @@ class AccountController extends Controller
                     'user_id' => $user_id,
                     'start_day' => $request->com_start_day[$i],
                     'end_day' => $request->com_end_day[$i],
-                    'unit' => $request->com_name[$i],
+                    'unit' => $request->com_unit[$i],
                     'position' => $request->com_position[$i],
                 ]);
             }
@@ -152,7 +152,7 @@ class AccountController extends Controller
                     'user_id' => $user_id,
                     'start_day' => $request->gov_start_day[$i],
                     'end_day' => $request->gov_end_day[$i],
-                    'unit' => $request->gov_name[$i],
+                    'unit' => $request->gov_unit[$i],
                     'position' => $request->gov_position[$i],
                 ]);
             }

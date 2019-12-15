@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label>Training Unit</label>
 
-                        <input type="text" class="form-control @error('train_unit[]') is-invalid @enderror border border-primary" name="train_unit[]" value="{{ $training-unit }}" readonly required>
+                        <input type="text" class="form-control @error('train_unit[]') is-invalid @enderror border border-primary" name="train_unit[]" value="{{ $training->unit }}" readonly required>
 
                         @error('train_unit[]')
                             <span class="invalid-feedback" role="alert">
@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <label>Address</label>
 
-                        <input type="text" class="form-control @error('train_address[]') is-invalid @enderror border border-primary" name="train_address[]" value="{{ $training-address }}" readonly required>
+                        <input type="text" class="form-control @error('train_address[]') is-invalid @enderror border border-primary" name="train_address[]" value="{{ $training->address }}" readonly required>
 
                         @error('train_address[]')
                             <span class="invalid-feedback" role="alert">
@@ -85,7 +85,7 @@
                     <div class="form-group">
                         <label>Training Content</label>
 
-                        <input type="text" class="form-control @error('train_content[]') is-invalid @enderror border border-primary" name="train_content[]" value="{{ old('train_content[]') }}" required>
+                        <input type="text" class="form-control @error('train_content[]') is-invalid @enderror border border-primary" name="train_content[]" value="{{ $training->content }}" readonly required>
 
                         @error('train_content[]')
                             <span class="invalid-feedback" role="alert">
@@ -121,7 +121,7 @@
     $("#addNewTrainHis").click(function() {
         $("#newTrainHis").append(`@include('account.create.training')`);
 
-        $("#trainingHistoryForm").find(".trainingForm").length > $("#number").val() ? $("#removeTrainHis").css("display", "inline") : $("#removeTrainHis").css("display", "none");
+        $("#trainingHistoryForm").find(".trainingForm").length > $("#number").val()*2 ? $("#removeTrainHis").css("display", "inline") : $("#removeTrainHis").css("display", "none");
     });
 
     // Training History remove
@@ -129,7 +129,7 @@
         $("form .trainingForm").last().remove();
         $("form .trainingForm").last().remove();
 
-        $("#trainingHistoryForm").find(".trainingForm").length > $("#number").val() ? $(this).css("display", "inline") : $(this).css("display", "none");
+        $("#trainingHistoryForm").find(".trainingForm").length > $("#number").val()*2 ? $(this).css("display", "inline") : $(this).css("display", "none");
     });
 </script>
 @endsection

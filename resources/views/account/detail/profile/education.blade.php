@@ -2,7 +2,7 @@
 
 @section('custom_css')
 <style type="text/css">
-    #submitEduButton, #cancelEduButton {
+    #submitEduButton, #cancelEduButton, #removeEduHis, #addEduButton {
         display: none;
     }
 </style>
@@ -13,11 +13,14 @@
     <div class="card-header">
         <button id="editEduButton" class="btn btn-primary"><i class="fas fa-edit"></i></button>
         <button id="cancelEduButton" class="btn btn-secondary"><i class="fas fa-times"></i></button>
+        <button id="addNewEduHis" class="btn btn-primary"><i class="fas fa-plus"></i></button>
+        <button id="removeEduHis" class="btn btn-primary"><i class="fas fa-minus"></i></button>
     </div>
     <div class="card-body">
-        <form method="POST" action="{{ route('edit-edu') }}" id="eduForm">
+        <form method="POST" action="{{ route('edit-edu') }}">
             @csrf
             <input type="hidden" name="user_id" value="{{ $user_id }}">
+            <input type="hidden" value="{{ count($educations) }}" id="number">
             @foreach($educations as $education)
             <div class="row eduForm">
                 <input type="hidden" name="id[]" value="{{ $education->id }}">
@@ -84,6 +87,19 @@
                 </div>
             </div>
         </form>
+
+        <form method="POST" action="{{ route('add-edu') }}" id="educationHistoryForm">
+            @csrf
+
+            <input type="hidden" name="user_id" value="{{ $user_id }}">
+            <div id="newEduHis"></div>
+
+            <div class="form-group row">
+                <div class="col-md-8 offset-md-3">
+                    <button type="submit" class="btn btn-primary" id="addEduButton">Add new</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 @endsection
@@ -93,6 +109,7 @@
     $("#menuList").find(".nav-link:eq(1)").attr("class", "nav-link active");
 
     $("#editEduButton").click(function() {
+        $("#addNewEduHis").css("display", "none");
         $("#eduForm input").removeAttr("readonly");
 
         $("#submitEduButton").css("display", "inline");
@@ -101,11 +118,41 @@
     });
 
     $("#cancelEduButton").click(function() {
+        $("#addNewEduHis").css("display", "inline");
         $("#eduForm input").attr("readonly", "");
 
         $("#submitEduButton").css("display", "none");
         $("#editEduButton").css("display", "inline");
         $(this).css("display", "none");
+    });
+
+    $("#addNewEduHis").click(function() {
+        $("#newEduHis").append(`@include('account.create.education')`);
+
+        if ($("#educationHistoryForm").find(".eduForm").length > 0) {
+            $("#editEduButton").css("display", "none");
+            $("#removeEduHis").css("display", "inline");
+            $("#addEduButton").css("display", "inline");
+        } else {
+            $("#editEduButton").css("display", "inline");
+            $("#removeEduHis").css("display", "none");
+            $("#addEduButton").css("display", "none");
+        }
+    });
+
+    // Education History remove
+    $("#removeEduHis").click(function() {
+        $("#educationHistoryForm .eduForm").last().remove();
+
+        if ($("#educationHistoryForm").find(".eduForm").length > 0) {
+            $("#editEduButton").css("display", "none");
+            $(this).css("display", "inline");
+            $("#addEduButton").css("display", "inline");
+        } else {
+            $("#editEduButton").css("display", "inline");
+            $(this).css("display", "none");
+            $("#addEduButton").css("display", "none");
+        }
     });
 </script>
 @endsection
