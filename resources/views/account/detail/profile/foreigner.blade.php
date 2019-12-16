@@ -2,7 +2,7 @@
 
 @section('custom_css')
 <style type="text/css">
-    #submitForeignerButton, #cancelForeignerButton, #removeForeignerRela {
+    #submitForeignerButton, #cancelForeignerButton, #removeForeignerRela, #addForeignerButton {
         display: none;
     }
 </style>
@@ -19,61 +19,38 @@
         <button id="removeForeignerRela" class="btn btn-primary"><i class="fas fa-minus"></i></button>
     </div>
     <div class="card-body">
-        <form method="POST" action="#" id="ForeignerRelatoryForm">
+        <form method="POST" action="{{ route('edit-foreigner') }}">
             @csrf
-            <input type="hidden" value="{{ count($foreigners) }}" id="number">
+            <input type="hidden" name="user_id" value="{{ $user_id }}">
             @foreach($foreigners as $foreigner)
             <div class="row foreignerForm">
+                <input type="hidden" name="id[]" value="{{ $foreigner->id }}">
                 <div class="col-4">
                     <div class="form-group">
                         <label>Name</label>
 
-                        <input type="text" class="form-control @error('fore_name[]') is-invalid @enderror border border-primary" name="fore_name[]" value="{{ $foreigner->name }}" readonly required>
-
-                        @error('fore_name[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="fore_name[]" value="{{ $foreigner->name }}" readonly required>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-group">
                         <label>Year of birth</label>
 
-                        <input type="text" class="form-control @error('fore_year[]') is-invalid @enderror border border-primary" name="fore_year[]" value="{{ $foreigner->year }}" readonly required>
-
-                        @error('fore_year[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="fore_year[]" value="{{ $foreigner->year }}" readonly required>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-group">
                         <label>Relationship</label>
 
-                        <input type="text" class="form-control @error('fore_rela[]') is-invalid @enderror border border-primary" name="fore_rela[]" value="{{ $foreigner->relationship }}" readonly required>
-
-                        @error('fore_rela[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="fore_rela[]" value="{{ $foreigner->relationship }}" readonly required>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-group">
                         <label>Nationality</label>
 
-                        <input type="text" class="form-control @error('fore_nation[]') is-invalid @enderror border border-primary" name="fore_nation[]" value="{{ $foreigner->nationality }}" readonly required>
-
-                        @error('fore_nation[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="fore_nation[]" value="{{ $foreigner->nationality }}" readonly required>
                     </div>
                 </div>
             </div>
@@ -81,12 +58,24 @@
             <div class="w-100"></div>
             @endforeach
 
-            <div id="newForeignerRela"></div>
-
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="submitForeignerButton">
                         Update
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <form method="POST" action="{{ route('add-foreigner') }}" id="foreignerRelatoryForm">
+            @csrf
+            <input type="hidden" name="user_id" value="{{ $user_id }}">
+            <div id="newForeignerRela"></div>
+
+            <div class="form-group row">
+                <div class="col-8 offset-3">
+                    <button type="submit" class="btn btn-primary" id="addForeignerButton">
+                        Add new
                     </button>
                 </div>
             </div>
@@ -103,17 +92,34 @@ $("#menuList").find(".nav-link:eq(7)").attr("class", "nav-link active");
 $("#addNewForeignerRela").click(function() {
     $("#newForeignerRela").append(`@include('account.create.foreigner')`);
 
-    $("#ForeignerRelatoryForm").find(".foreignerForm").length > $("#number").val() ? $("#removeForeignerRela").css("display", "inline") : $("#removeForeignerRela").css("display", "none");
+    if ($("#foreignerRelatoryForm").find(".foreignerForm").length > 0) {
+        $("#editForeignerButton").css("display", "none");
+        $("#removeForeignerRela").css("display", "inline");
+        $("#addForeignerButton").css("display", "inline");
+    } else {
+        $("#editForeignerButton").css("display", "inline");
+        $("#removeForeignerRela").css("display", "none");
+        $("#addForeignerButton").css("display", "none");
+    }
 });
 
 // foreigner History remove
 $("#removeForeignerRela").click(function() {
     $("form .foreignerForm").last().remove();
 
-    $("#ForeignerRelatoryForm").find(".foreignerForm").length > $("#number").val() ? $(this).css("display", "inline") : $(this).css("display", "none");
+    if ($("#foreignerRelatoryForm").find(".foreignerForm").length > 0) {
+        $("#editForeignerButton").css("display", "none");
+        $(this).css("display", "inline");
+        $("#addForeignerButton").css("display", "inline");
+    } else {
+        $("#editForeignerButton").css("display", "inline");
+        $(this).css("display", "none");
+        $("#addForeignerButton").css("display", "none");
+    }
 });
 
 $("#editForeignerButton").click(function() {
+    $("#addNewForeignerRela").css("display", "none");
     $("form input").removeAttr("readonly");
 
     $("#submitForeignerButton").css("display", "inline");
@@ -122,6 +128,7 @@ $("#editForeignerButton").click(function() {
 });
 
 $("#cancelForeignerButton").click(function() {
+    $("#addNewForeignerRela").css("display", "inline");
     $("form input").attr("readonly", "");
 
     $("#submitForeignerButton").css("display", "none");

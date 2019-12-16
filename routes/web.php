@@ -40,6 +40,8 @@ Route::post('edit-party','Admin\PartyController@editParty')->name('edit-party');
 Route::post('add-party','Admin\PartyController@addParty')->name('add-party');
 Route::post('edit-family','Admin\FamilyController@editFamily')->name('edit-family');
 Route::post('add-family','Admin\FamilyController@addFamily')->name('add-family');
+Route::post('edit-foreigner','Admin\ForeignerController@editForeigner')->name('edit-foreigner');
+Route::post('add-foreigner','Admin\ForeignerController@addForeigner')->name('add-foreigner');
 
 // USER
     //Forget password
