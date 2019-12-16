@@ -18,10 +18,6 @@ use App\Model\Foreigner;
 use App\Model\Laudatory;
 use App\Model\Infringe;
 use Auth;
-use Session;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Http\File;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 

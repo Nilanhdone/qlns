@@ -2,7 +2,7 @@
 
 @section('custom_css')
 <style type="text/css">
-    #submitComButton, #cancelComButton, #removeComHis {
+    #submitComButton, #cancelComButton, #removeComHis, #addComButton {
         display: none;
     }
 </style>
@@ -19,61 +19,38 @@
         <button id="removeComHis" class="btn btn-primary"><i class="fas fa-minus"></i></button>
     </div>
     <div class="card-body">
-        <form method="POST" action="#" id="companyHistoryForm">
+        <form method="POST" action="{{ route('edit-com') }}">
             @csrf
-            <input type="hidden" value="{{ count($companys) }}" id="number">
+            <input type="hidden" name="user_id" value="{{ $user_id }}">
             @foreach($companys as $company)
             <div class="row companyForm">
+                <input type="hidden" name="id" value="{{ $company->id }}">
                 <div class="col-3">
                     <div class="form-group">
                         <label>From</label>
 
-                        <input type="date" class="form-control @error('com_start_day[]') is-invalid @enderror border border-primary" name="com_start_day[]" value="{{ $company->start_day }}" readonly required>
-
-                        @error('com_start_day[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="date" class="form-control border border-primary" name="com_start_day[]" value="{{ $company->start_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
                         <label>To</label>
 
-                        <input type="date" class="form-control @error('com_end_day[]') is-invalid @enderror border border-primary" name="com_end_day[]" value="{{ $company->end_day }}" readonly required>
-
-                        @error('com_end_day[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="date" class="form-control border border-primary" name="com_end_day[]" value="{{ $company->end_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
                         <label>Company Name</label>
 
-                        <input type="text" class="form-control @error('com_name[]') is-invalid @enderror border border-primary" name="com_name[]" value="{{ $company->name }}" readonly required>
-
-                        @error('com_name[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="com_unit[]" value="{{ $company->unit }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
                         <label>Position</label>
 
-                        <input type="text" class="form-control @error('com_position[]') is-invalid @enderror border border-primary" name="com_position[]" value="{{ $company->position }}" readonly required>
-
-                        @error('com_position[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="com_position[]" value="{{ $company->position }}" readonly required>
                     </div>
                 </div>
             </div>
@@ -81,12 +58,25 @@
             <div class="w-100"></div>
             @endforeach
 
-            <div id="newComHis"></div>
-
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="submitComButton">
                         Update
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <form method="POST" action="{{ route('add-com') }}" id="companyHistoryForm">
+            @csrf
+
+            <input type="hidden" name="user_id" value="{{ $user_id }}">
+            <div id="newComHis"></div>
+
+            <div class="form-group row">
+                <div class="col-8 offset-3">
+                    <button type="submit" class="btn btn-primary" id="addComButton">
+                        Add new
                     </button>
                 </div>
             </div>
@@ -103,17 +93,34 @@ $("#menuList").find(".nav-link:eq(3)").attr("class", "nav-link active");
 $("#addNewComHis").click(function() {
     $("#newComHis").append(`@include('account.create.company')`);
 
-    $("#companyHistoryForm").find(".companyForm").length > $("#number").val() ? $("#removeComHis").css("display", "inline") : $("#removeComHis").css("display", "none");
+    if ($("#companyHistoryForm").find(".companyForm").length > 0) {
+        $("#editComButton").css("display", "none");
+        $("#removeComHis").css("display", "inline");
+        $("#addComButton").css("display", "inline");
+    } else {
+        $("#editComButton").css("display", "inline");
+        $("#removeComHis").css("display", "none");
+        $("#addComButton").css("display", "none");
+    }
 });
 
 // Company History remove
 $("#removeComHis").click(function() {
     $("form .companyForm").last().remove();
 
-    $("#companyHistoryForm").find(".companyForm").length > $("#number").val() ? $(this).css("display", "inline") : $(this).css("display", "none");
+    if ($("#companyHistoryForm").find(".companyForm").length > 0) {
+        $("#editComButton").css("display", "none");
+        $(this).css("display", "inline");
+        $("#addComButton").css("display", "inline");
+    } else {
+        $("#editComButton").css("display", "inline");
+        $(this).css("display", "none");
+        $("#addComButton").css("display", "none");
+    }
 });
 
 $("#editComButton").click(function() {
+    $("#addNewComHis").css("display", "none");
     $("form input").removeAttr("readonly");
 
     $("#submitComButton").css("display", "inline");
@@ -122,6 +129,7 @@ $("#editComButton").click(function() {
 });
 
 $("#cancelComButton").click(function() {
+    $("#addNewComHis").css("display", "inline");
     $("form input").attr("readonly", "");
 
     $("#submitComButton").css("display", "none");
