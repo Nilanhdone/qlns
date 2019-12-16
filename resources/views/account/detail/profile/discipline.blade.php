@@ -2,7 +2,7 @@
 
 @section('custom_css')
 <style type="text/css">
-    #submitDisciplineButton, #cancelDisciplineButton, #removeDiscipline {
+    #submitDisciplineButton, #cancelDisciplineButton, #removeDiscipline, #addDisciplineButton {
         display: none;
     }
 </style>
@@ -19,69 +19,44 @@
         <button id="removeDiscipline" class="btn btn-primary"><i class="fas fa-minus"></i></button>
     </div>
     <div class="card-body">
-        <form method="POST" action="#" id="disciplineHistoryForm">
+        <form method="POST" action="{{ route('edit-discipline') }}">
             @csrf
-            <input type="hidden" value="{{ count($disciplines) }}" id="number">
+            <input type="hidden" name="user_id" value="{{ $user_id }}">
             @foreach($disciplines as $discipline)
             <div class="row disciplineForm">
+                <input type="hidden" name="id[]" value="{{ $discipline->id }}">
                 <div class="col-4">
                     <div class="form-group">
                         <label>Infringe</label>
 
-                        <input type="text" class="form-control @error('infringe[]') is-invalid @enderror border border-primary" name="infringe[]" value="{{ $discipline->infringe }}" readonly required>
-
-                        @error('infringe[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="infringe[]" value="{{ $discipline->infringe }}" readonly required>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-group">
                         <label>Year</label>
 
-                        <input type="text" class="form-control @error('inf_year[]') is-invalid @enderror border border-primary" name="inf_year[]" value="{{ $discipline->year }}" readonly required>
-
-                        @error('inf_year[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="inf_year[]" value="{{ $discipline->year }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
                         <label>Organization</label>
 
-                        <input type="text" class="form-control @error('inf_organization[]') is-invalid @enderror border border-primary" name="inf_organization[]" value="{{ $discipline->organization }}" readonly required>
-
-                        @error('inf_organization[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="inf_organization[]" value="{{ $discipline->organization }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
                         <label>Discipline method</label>
 
-                        <input type="text" class="form-control @error('inf_method[]') is-invalid @enderror border border-primary" name="inf_method[]" value="{{ $discipline->method }}" readonly required>
-
-                        @error('inf_method[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="inf_method[]" value="{{ $discipline->method }}" readonly required>
                     </div>
                 </div>
             </div>
 
             <div class="w-100"></div>
             @endforeach
-
-            <div id="newDiscipline"></div>
 
             <div class="form-group row">
                 <div class="col-8 offset-3">
@@ -90,6 +65,21 @@
                     </button>
                 </div>
             </div>
+        </form>
+
+        <form method="POST" action="{{ route('add-discipline') }}" id="disciplineHistoryForm">
+            @csrf
+            <input type="hidden" name="user_id" value="{{ $user_id }}">
+            <div id="newDiscipline"></div>
+
+            <div class="form-group row">
+                <div class="col-8 offset-3">
+                    <button type="submit" class="btn btn-primary" id="addDisciplineButton">
+                        Add new
+                    </button>
+                </div>
+            </div>
+
         </form>
     </div>
 </div>
@@ -102,16 +92,33 @@ $("#menuList").find(".nav-link:eq(9)").attr("class", "nav-link active");
 $("#addNewDiscipline").click(function() {
     $("#newDiscipline").append(`@include('account.create.discipline')`);
 
-    $("#disciplineHistoryForm").find(".disciplineForm").length > $("#number").val() ? $("#removeDiscipline").css("display", "inline") : $("#removeDiscipline").css("display", "none");
+    if ($("#disciplineHistoryForm").find(".disciplineForm").length > 0) {
+        $("#editDisciplineButton").css("display", "none");
+        $("#removeDiscipline").css("display", "inline");
+        $("#addDisciplineButton").css("display", "inline");
+    } else {
+        $("#editDisciplineButton").css("display", "inline");
+        $("#removeDiscipline").css("display", "none");
+        $("#addDisciplineButton").css("display", "none");
+    }
 });
 
 $("#removeDiscipline").click(function() {
     $("form .disciplineForm").last().remove();
 
-    $("#disciplineHistoryForm").find(".disciplineForm").length > $("#number").val() ? $(this).css("display", "inline") : $(this).css("display", "none");
+    if ($("#disciplineHistoryForm").find(".disciplineForm").length > 0) {
+        $("#editDisciplineButton").css("display", "none");
+        $(this).css("display", "inline");
+        $("#addDisciplineButton").css("display", "inline");
+    } else {
+        $("#editDisciplineButton").css("display", "inline");
+        $(this).css("display", "none");
+        $("#addDisciplineButton").css("display", "none");
+    }
 });
 
 $("#editDisciplineButton").click(function() {
+    $("#addNewDiscipline").css("display", "none");
     $("form input").removeAttr("readonly");
 
     $("#submitDisciplineButton").css("display", "inline");
@@ -120,6 +127,7 @@ $("#editDisciplineButton").click(function() {
 });
 
 $("#cancelDisciplineButton").click(function() {
+    $("#addNewDiscipline").css("display", "inline");
     $("form input").attr("readonly", "");
 
     $("#submitDisciplineButton").css("display", "none");

@@ -45,7 +45,7 @@ Route::post('add-foreigner','Admin\ForeignerController@addForeigner')->name('add
 Route::post('edit-laudatory','Admin\LaudatoryController@editLaudatory')->name('edit-laudatory');
 Route::post('add-laudatory','Admin\LaudatoryController@addLaudatory')->name('add-laudatory');
 Route::post('edit-discipline','Admin\DisciplineController@editDiscipline')->name('edit-discipline');
-Route::post('add-discipline','Admin\DisciplineController@addDiscipline')->name('add-discipliner');
+Route::post('add-discipline','Admin\DisciplineController@addDiscipline')->name('add-discipline');
 
 // USER
     //Forget password

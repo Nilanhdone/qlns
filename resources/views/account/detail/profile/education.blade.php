@@ -27,52 +27,28 @@
                     <div class="form-group">
                         <label>From</label>
 
-                        <input type="date" class="form-control @error('edu_start_day[]') is-invalid @enderror border border-primary" name="edu_start_day[]" value="{{ $education->start_day }}" readonly required>
-
-                        @error('edu_start_day[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="date" class="form-control border border-primary" name="edu_start_day[]" value="{{ $education->start_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
                         <label>To</label>
 
-                        <input type="date" class="form-control @error('edu_end_day[]') is-invalid @enderror border border-primary" name="edu_end_day[]" value="{{ $education->end_day }}" readonly required>
-
-                        @error('edu_end_day[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="date" class="form-control border border-primary" name="edu_end_day[]" value="{{ $education->end_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
                         <label>Education unit</label>
 
-                        <input type="text" class="form-control @error('edu_unit[]') is-invalid @enderror border border-primary" name="edu_unit[]" value="{{ $education->unit }}" readonly required>
-
-                        @error('edu_unit[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="edu_unit[]" value="{{ $education->unit }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
                         <label>Address</label>
 
-                        <input type="text" class="form-control @error('edu_address[]') is-invalid @enderror border border-primary" name="edu_address[]" value="{{ $education->address }}" readonly required>
-
-                        @error('edu_address[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="edu_address[]" value="{{ $education->address }}" readonly required>
                     </div>
                 </div>
             </div>

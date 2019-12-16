@@ -29,52 +29,28 @@
                     <div class="form-group">
                         <label>From</label>
 
-                        <input type="date" class="form-control @error('train_start_day[]') is-invalid @enderror border border-primary" name="train_start_day[]" value="{{ $training->start_day }}" readonly required>
-
-                        @error('train_start_day[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="date" class="form-control border border-primary" name="train_start_day[]" value="{{ $training->start_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
                         <label>To</label>
 
-                        <input type="date" class="form-control @error('train_end_day[]') is-invalid @enderror border border-primary" name="train_end_day[]" value="{{ $training->end_day }}" readonly required>
-
-                        @error('train_end_day[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="date" class="form-control border border-primary" name="train_end_day[]" value="{{ $training->end_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
                         <label>Training Unit</label>
 
-                        <input type="text" class="form-control @error('train_unit[]') is-invalid @enderror border border-primary" name="train_unit[]" value="{{ $training->unit }}" readonly required>
-
-                        @error('train_unit[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="train_unit[]" value="{{ $training->unit }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
                         <label>Address</label>
 
-                        <input type="text" class="form-control @error('train_address[]') is-invalid @enderror border border-primary" name="train_address[]" value="{{ $training->address }}" readonly required>
-
-                        @error('train_address[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="train_address[]" value="{{ $training->address }}" readonly required>
                     </div>
                 </div>
             </div>
@@ -86,13 +62,7 @@
                     <div class="form-group">
                         <label>Training Content</label>
 
-                        <input type="text" class="form-control @error('train_content[]') is-invalid @enderror border border-primary" name="train_content[]" value="{{ $training->content }}" readonly required>
-
-                        @error('train_content[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="train_content[]" value="{{ $training->content }}" readonly required>
                     </div>
                 </div>
             </div>
