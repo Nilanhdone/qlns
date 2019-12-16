@@ -2,7 +2,7 @@
 
 @section('custom_css')
 <style type="text/css">
-    #submitLaudatoryButton, #cancelLaudatoryButton, #removeLaudatory {
+    #submitLaudatoryButton, #cancelLaudatoryButton, #removeLaudatory, #addLaudatoryButton {
         display: none;
     }
 </style>
@@ -19,11 +19,12 @@
         <button id="removeLaudatory" class="btn btn-primary"><i class="fas fa-minus"></i></button>
     </div>
     <div class="card-body">
-        <form method="POST" action="#" id="LaudatorytoryForm">
+        <form method="POST" action="{{ route('edit-laudatory') }}">
             @csrf
-            <input type="hidden" value="{{ count($laudatorys) }}" id="number">
+            <input type="hidden" name="user_id" value="{{ $user_id}}">
             @foreach($laudatorys as $laudatory)
             <div class="row laudatoryForm">
+                <input type="hidden" name="id[]" value="{{ $laudatory->id }}">
                 <div class="col-4">
                     <div class="form-group">
                         <label>Title</label>
@@ -81,12 +82,24 @@
             <div class="w-100"></div>
             @endforeach
 
-            <div id="newLaudatory"></div>
-
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="submitLaudatoryButton">
                         Update
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <form method="POST" action="{{ route('add-laudatory') }}" id="laudatorytoryForm">
+            @csrf
+            <input type="hidden" name="user_id" value="{{ $user_id}}">
+            <div id="newLaudatory"></div>
+
+            <div class="form-group row">
+                <div class="col-8 offset-3">
+                    <button type="submit" class="btn btn-primary" id="addLaudatoryButton">
+                        Add new
                     </button>
                 </div>
             </div>
@@ -103,17 +116,34 @@ $("#menuList").find(".nav-link:eq(8)").attr("class", "nav-link active");
 $("#addNewLaudatory").click(function() {
     $("#newLaudatory").append(`@include('account.create.laudatory')`);
 
-    $("#LaudatorytoryForm").find(".laudatoryForm").length > $("#number").val() ? $("#removeLaudatory").css("display", "inline") : $("#removeLaudatory").css("display", "none");
+    if ($("#laudatorytoryForm").find(".laudatoryForm").length > 0) {
+        $("#editLaudatoryButton").css("display", "none");
+        $("#removeLaudatory").css("display", "inline");
+        $("#addLaudatoryButton").css("display", "inline");
+    } else {
+        $("#editLaudatoryButton").css("display", "inline");
+        $("#removeLaudatory").css("display", "none");
+        $("#addLaudatoryButton").css("display", "none");
+    }
 });
 
 // laudatory History remove
 $("#removeLaudatory").click(function() {
     $("form .laudatoryForm").last().remove();
 
-    $("#LaudatorytoryForm").find(".laudatoryForm").length > $("#number").val() ? $(this).css("display", "inline") : $(this).css("display", "none");
+    if ($("#laudatorytoryForm").find(".laudatoryForm").length > 0) {
+        $("#editLaudatoryButton").css("display", "none");
+        $(this).css("display", "inline");
+        $("#addLaudatoryButton").css("display", "inline");
+    } else {
+        $("#editLaudatoryButton").css("display", "inline");
+        $(this).css("display", "none");
+        $("#addLaudatoryButton").css("display", "none");
+    }
 });
 
 $("#editLaudatoryButton").click(function() {
+    $("#addNewLaudatory").css("display", "none");
     $("form input").removeAttr("readonly");
 
     $("#submitLaudatoryButton").css("display", "inline");
@@ -122,6 +152,7 @@ $("#editLaudatoryButton").click(function() {
 });
 
 $("#cancelLaudatoryButton").click(function() {
+    $("#addNewLaudatory").css("display", "inline");
     $("form input").attr("readonly", "");
 
     $("#submitLaudatoryButton").css("display", "none");

@@ -42,6 +42,10 @@ Route::post('edit-family','Admin\FamilyController@editFamily')->name('edit-famil
 Route::post('add-family','Admin\FamilyController@addFamily')->name('add-family');
 Route::post('edit-foreigner','Admin\ForeignerController@editForeigner')->name('edit-foreigner');
 Route::post('add-foreigner','Admin\ForeignerController@addForeigner')->name('add-foreigner');
+Route::post('edit-laudatory','Admin\LaudatoryController@editLaudatory')->name('edit-laudatory');
+Route::post('add-laudatory','Admin\LaudatoryController@addLaudatory')->name('add-laudatory');
+Route::post('edit-discipline','Admin\DisciplineController@editDiscipline')->name('edit-discipline');
+Route::post('add-discipline','Admin\DisciplineController@addDiscipline')->name('add-discipliner');
 
 // USER
     //Forget password

@@ -43,12 +43,12 @@ class ForeignerController extends Controller
             }
 
             for ($i = 0; $i < count($request->fore_name); $i++) {
-                $family = Foreigner::where([['user_id', $request->user_id], ['id', $request->id[$i]]])->first();
-                $family->name = $request->fore_name[$i];
-                $family->year = $request->fore_year[$i];
-                $family->relationship = $request->fore_rela[$i];
-                $family->nationality = $request->fore_nation[$i];
-                $family->save();
+                $foreigner = Foreigner::where([['user_id', $request->user_id], ['id', $request->id[$i]]])->first();
+                $foreigner->name = $request->fore_name[$i];
+                $foreigner->year = $request->fore_year[$i];
+                $foreigner->relationship = $request->fore_rela[$i];
+                $foreigner->nationality = $request->fore_nation[$i];
+                $foreigner->save();
             }
 
             DB::commit();
