@@ -1,5 +1,5 @@
 <div class="row governmentForm">
-    <div class="col-2">
+    <div class="col-3">
         <div class="form-group">
             <label>From</label>
 
@@ -12,7 +12,7 @@
             @enderror
         </div>
     </div>
-    <div class="col-2">
+    <div class="col-3">
         <div class="form-group">
             <label>To</label>
 
@@ -25,7 +25,7 @@
             @enderror
         </div>
     </div>
-    <div class="col-4">
+    <div class="col-3">
         <div class="form-group">
             <label>Government Name</label>
 
@@ -38,7 +38,7 @@
             @enderror
         </div>
     </div>
-    <div class="col-4">
+    <div class="col-3">
         <div class="form-group">
             <label>Position</label>
 

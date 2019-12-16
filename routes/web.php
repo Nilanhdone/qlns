@@ -34,6 +34,8 @@ Route::post('edit-train','Admin\TrainingController@editTrain')->name('edit-train
 Route::post('add-train','Admin\TrainingController@addTrain')->name('add-train');
 Route::post('edit-com','Admin\CompanyController@editCompany')->name('edit-com');
 Route::post('add-com','Admin\CompanyController@addCompany')->name('add-com');
+Route::post('edit-gov','Admin\GovernmentController@editGov')->name('edit-gov');
+Route::post('add-gov','Admin\GovernmentController@addGov')->name('add-gov');
 
 // USER
     //Forget password
