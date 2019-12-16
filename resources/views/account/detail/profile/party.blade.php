@@ -2,7 +2,7 @@
 
 @section('custom_css')
 <style type="text/css">
-    #submitPartyButton, #cancelPartyButton, #removePartyHis {
+    #submitPartyButton, #cancelPartyButton, #removePartyHis, #addPartyButton {
         display: none;
     }
 </style>
@@ -19,48 +19,31 @@
         <button id="removePartyHis" class="btn btn-primary"><i class="fas fa-minus"></i></button>
     </div>
     <div class="card-body">
-        <form method="POST" action="#" id="partyHistoryForm">
+        <form method="POST" action="{{ route('edit-party') }}">
             @csrf
-            <input type="hidden" value="{{ count($partys) }}" id="number">
+            <input type="hidden" name="user_id" value="{{ $user_id }}">
             @foreach($partys as $party)
             <div class="row partyForm">
+                <input type="hidden" name="id[]" value="{{ $party->id }}">
                 <div class="col-3">
                     <div class="form-group">
                         <label>Join day</label>
 
-                        <input type="date" class="form-control @error('join_day[]') is-invalid @enderror border border-primary" name="join_day[]" value="{{ $party->join_day }}" readonly required>
-
-                        @error('join_day[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="date" class="form-control border border-primary" name="join_day[]" value="{{ $party->join_day }}" readonly required>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                     <div class="form-group">
                         <label>Party unit</label>
 
-                        <input type="text" class="form-control @error('party_unit[]') is-invalid @enderror border border-primary" name="party_unit[]" value="{{ $party->unit }}" readonly required>
-
-                        @error('party_unit[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="party_unit[]" value="{{ $party->unit }}" readonly required>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                     <div class="form-group">
                         <label>Party position</label>
 
-                        <input type="text" class="form-control @error('party_position[]') is-invalid @enderror border border-primary" name="party_position[]" value="{{ $party->position }}" readonly required>
-
-                        @error('party_position[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="party_position[]" value="{{ $party->position }}" readonly required>
                     </div>
                 </div>
             </div>
@@ -68,12 +51,24 @@
             <div class="w-100"></div>
             @endforeach
 
-            <div id="newPartyHis"></div>
-
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="submitPartyButton">
                         Update
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <form method="POST" action="{{ route('add-party') }}" id="partyHistoryForm">
+            @csrf
+            <input type="hidden" name="user_id" value="{{ $user_id }}">
+            <div id="newPartyHis"></div>
+
+            <div class="form-group row">
+                <div class="col-8 offset-3">
+                    <button type="submit" class="btn btn-primary" id="addPartyButton">
+                        Add new
                     </button>
                 </div>
             </div>
@@ -90,17 +85,34 @@ $("#menuList").find(".nav-link:eq(5)").attr("class", "nav-link active");
 $("#addNewPartyHis").click(function() {
     $("#newPartyHis").append(`@include('account.create.party')`);
 
-    $("#partyHistoryForm").find(".partyForm").length > $("#number").val() ? $("#removePartyHis").css("display", "inline") : $("#removePartyHis").css("display", "none");
+    if ($("#partyHistoryForm").find(".partyForm").length > 0) {
+        $("#editPartyButton").css("display", "none");
+        $("#removePartyHis").css("display", "inline");
+        $("#addPartyButton").css("display", "inline");
+    } else {
+        $("#editPartyButton").css("display", "inline");
+        $("#removePartyHis").css("display", "none");
+        $("#addPartyButton").css("display", "none");
+    }
 });
 
 // party History remove
 $("#removePartyHis").click(function() {
     $("form .partyForm").last().remove();
 
-    $("#partyHistoryForm").find(".partyForm").length > $("#number").val() ? $(this).css("display", "inline") : $(this).css("display", "none");
+    if ($("#partyHistoryForm").find(".partyForm").length > 0) {
+        $("#editPartyButton").css("display", "none");
+        $(this).css("display", "inline");
+        $("#addPartyButton").css("display", "inline");
+    } else {
+        $("#editPartyButton").css("display", "inline");
+        $(this).css("display", "none");
+        $("#addPartyButton").css("display", "none");
+    }
 });
 
 $("#editPartyButton").click(function() {
+    $("#addNewPartyHis").css("display", "none");
     $("form input").removeAttr("readonly");
 
     $("#submitPartyButton").css("display", "inline");
@@ -109,6 +121,7 @@ $("#editPartyButton").click(function() {
 });
 
 $("#cancelPartyButton").click(function() {
+    $("#addNewPartyHis").css("display", "inline");
     $("form input").attr("readonly", "");
 
     $("#submitPartyButton").css("display", "none");

@@ -1,5 +1,5 @@
 <div class="row partyForm">
-    <div class="col-2">
+    <div class="col-3">
         <div class="form-group">
             <label>Join day</label>
 

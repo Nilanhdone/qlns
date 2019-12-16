@@ -36,6 +36,8 @@ Route::post('edit-com','Admin\CompanyController@editCompany')->name('edit-com');
 Route::post('add-com','Admin\CompanyController@addCompany')->name('add-com');
 Route::post('edit-gov','Admin\GovernmentController@editGov')->name('edit-gov');
 Route::post('add-gov','Admin\GovernmentController@addGov')->name('add-gov');
+Route::post('edit-party','Admin\PartyController@editParty')->name('edit-party');
+Route::post('add-party','Admin\PartyController@addParty')->name('add-party');
 
 // USER
     //Forget password
