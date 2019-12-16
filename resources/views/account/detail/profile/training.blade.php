@@ -2,7 +2,7 @@
 
 @section('custom_css')
 <style type="text/css">
-    #submitTrainButton, #cancelTrainButton, #removeTrainHis {
+    #submitTrainButton, #cancelTrainButton, #removeTrainHis, #addTrainButton {
         display: none;
     }
 </style>
@@ -19,12 +19,13 @@
         <button id="removeTrainHis" class="btn btn-primary"><i class="fas fa-minus"></i></button>
     </div>
     <div class="card-body">
-        <form method="POST" action="#" id="trainingHistoryForm">
+        <form method="POST" action="{{ route('edit-train') }}">
             @csrf
-            <input type="hidden" value="{{ count($trainings) }}" id="number">
+            <input type="hidden" name="user_id" value="{{ $user_id }}">
             @foreach($trainings as $training)
             <div class="row trainingForm">
-                <div class="col-2">
+                <input type="hidden" name="id[]" value="{{ $training->id }}">
+                <div class="col-3">
                     <div class="form-group">
                         <label>From</label>
 
@@ -37,7 +38,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-3">
                     <div class="form-group">
                         <label>To</label>
 
@@ -50,7 +51,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <div class="form-group">
                         <label>Training Unit</label>
 
@@ -63,7 +64,7 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <div class="form-group">
                         <label>Address</label>
 
@@ -99,8 +100,6 @@
             <div class="w-100"></div>
             @endforeach
 
-            <div id="newTrainHis"></div>
-
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="submitTrainButton">
@@ -109,6 +108,21 @@
                 </div>
             </div>
         </form>
+
+        <form method="POST" action="{{ route('add-train') }}" id="trainingHistoryForm">
+            @csrf
+
+            <input type="hidden" name="user_id" value="{{ $user_id }}">
+            <div id="newTrainHis"></div>
+
+            <div class="form-group row">
+                <div class="col-8 offset-3">
+                    <button type="submit" class="btn btn-primary" id="addTrainButton">
+                        Add new
+                    </button>
+                </div>
+            </div>
+        <form>
     </div>
 </div>
 @endsection
@@ -117,11 +131,37 @@
 <script type="text/javascript">
     $("#menuList").find(".nav-link:eq(2)").attr("class", "nav-link active");
 
+    $("#editTrainButton").click(function() {
+        $("#addNewTrainHis").css("display", "none");
+        $(".trainingForm input").removeAttr("readonly");
+
+        $("#submitTrainButton").css("display", "inline");
+        $("#cancelTrainButton").css("display", "inline");
+        $(this).css("display", "none");
+    });
+
+    $("#cancelTrainButton").click(function() {
+        $("#addNewTrainHis").css("display", "inline");
+        $(".trainingForm input").attr("readonly", "");
+
+        $("#submitTrainButton").css("display", "none");
+        $("#editTrainButton").css("display", "inline");
+        $(this).css("display", "none");
+    });
+
     // Training History add
     $("#addNewTrainHis").click(function() {
         $("#newTrainHis").append(`@include('account.create.training')`);
 
-        $("#trainingHistoryForm").find(".trainingForm").length > $("#number").val()*2 ? $("#removeTrainHis").css("display", "inline") : $("#removeTrainHis").css("display", "none");
+        if ($("#trainingHistoryForm").find(".trainingForm").length > 0) {
+            $("#editTrainButton").css("display", "none");
+            $("#removeTrainHis").css("display", "inline");
+            $("#addTrainButton").css("display", "inline");
+        } else {
+            $("#editTrainButton").css("display", "inline");
+            $("#removeTrainHis").css("display", "none");
+            $("#addTrainButton").css("display", "none");
+        }
     });
 
     // Training History remove
@@ -129,7 +169,15 @@
         $("form .trainingForm").last().remove();
         $("form .trainingForm").last().remove();
 
-        $("#trainingHistoryForm").find(".trainingForm").length > $("#number").val()*2 ? $(this).css("display", "inline") : $(this).css("display", "none");
+        if ($("#trainingHistoryForm").find(".trainingForm").length > 0) {
+            $("#editTrainButton").css("display", "none");
+            $(this).css("display", "inline");
+            $("#addTrainButton").css("display", "inline");
+        } else {
+            $("#editTrainButton").css("display", "inline");
+            $(this).css("display", "none");
+            $("#addTrainButton").css("display", "none");
+        }
     });
 </script>
 @endsection

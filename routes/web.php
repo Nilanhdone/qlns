@@ -30,6 +30,8 @@ Route::get('detail-{id}-{component}','Admin\EditAccountController@showDetailAcco
 Route::post('edit-basic-info','Admin\EditAccountController@editBasicInfo')->name('edit-basic-info');
 Route::post('edit-edu','Admin\EducationController@editEducation')->name('edit-edu');
 Route::post('add-edu','Admin\EducationController@addEducation')->name('add-edu');
+Route::post('edit-train','Admin\TrainingController@editTrain')->name('edit-train');
+Route::post('add-train','Admin\TrainingController@addTrain')->name('add-train');
 
 // USER
     //Forget password

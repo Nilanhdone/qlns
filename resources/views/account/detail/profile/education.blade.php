@@ -20,7 +20,6 @@
         <form method="POST" action="{{ route('edit-edu') }}">
             @csrf
             <input type="hidden" name="user_id" value="{{ $user_id }}">
-            <input type="hidden" value="{{ count($educations) }}" id="number">
             @foreach($educations as $education)
             <div class="row eduForm">
                 <input type="hidden" name="id[]" value="{{ $education->id }}">
