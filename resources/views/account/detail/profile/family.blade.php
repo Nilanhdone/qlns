@@ -2,7 +2,7 @@
 
 @section('custom_css')
 <style type="text/css">
-    #submitFamilyButton, #cancelFamilyButton, #removeFamilyRela {
+    #submitFamilyButton, #cancelFamilyButton, #removeFamilyRela, #addFamilyButton {
         display: none;
     }
 </style>
@@ -19,61 +19,38 @@
         <button id="removeFamilyRela" class="btn btn-primary"><i class="fas fa-minus"></i></button>
     </div>
     <div class="card-body">
-        <form method="POST" action="#" id="FamilyRelatoryForm">
+        <form method="POST" action="{{ route('edit-family') }}">
             @csrf
-            <input type="hidden" value="{{ count($familys) }}" id="number">
+            <input type="hidden" name="user_id" value="{{ $user_id }}">
             @foreach($familys as $family)
             <div class="row familyForm">
+                <input type="hidden" name="id[]" value="{{ $family->id }}">
                 <div class="col-4">
                     <div class="form-group">
                         <label>Name</label>
 
-                        <input type="text" class="form-control @error('fa_name[]') is-invalid @enderror border border-primary" name="fa_name[]" value="{{ $family->name }}" readonly required>
-
-                        @error('fa_name[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="fa_name[]" value="{{ $family->name }}" readonly required>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-group">
                         <label>Year of birth</label>
 
-                        <input type="text" class="form-control @error('fa_year[]') is-invalid @enderror border border-primary" name="fa_year[]" value="{{ $family->year }}" readonly required>
-
-                        @error('fa_year[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="fa_year[]" value="{{ $family->year }}" readonly required>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-group">
                         <label>Relationship</label>
 
-                        <input type="text" class="form-control @error('fa_rela[]') is-invalid @enderror border border-primary" name="fa_rela[]" value="{{ $family->relationship }}" readonly required>
-
-                        @error('fa_rela[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="fa_rela[]" value="{{ $family->relationship }}" readonly required>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-group">
                         <label>Address</label>
 
-                        <input type="text" class="form-control @error('fa_address[]') is-invalid @enderror border border-primary" name="fa_address[]" value="{{ $family->address }}" readonly required>
-
-                        @error('fa_address[]')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                        <input type="text" class="form-control border border-primary" name="fa_address[]" value="{{ $family->address }}" readonly required>
                     </div>
                 </div>
             </div>
@@ -81,12 +58,24 @@
             <div class="w-100"></div>
             @endforeach
 
-            <div id="newFamilyRela"></div>
-
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="submitFamilyButton">
                         Update
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <form method="POST" action="{{ route('add-family') }}" id="familyRelatoryForm">
+            @csrf
+            <input type="hidden" name="user_id" value="{{ $user_id }}">
+            <div id="newFamilyRela"></div>
+
+            <div class="form-group row">
+                <div class="col-8 offset-3">
+                    <button type="submit" class="btn btn-primary" id="addFamilyButton">
+                        Add new
                     </button>
                 </div>
             </div>
@@ -103,17 +92,34 @@ $("#menuList").find(".nav-link:eq(6)").attr("class", "nav-link active");
 $("#addNewFamilyRela").click(function() {
     $("#newFamilyRela").append(`@include('account.create.family')`);
 
-    $("#FamilyRelatoryForm").find(".familyForm").length > $("#number").val() ? $("#removeFamilyRela").css("display", "inline") : $("#removeFamilyRela").css("display", "none");
+    if ($("#familyRelatoryForm").find(".familyForm").length > 0) {
+        $("#editFamilyButton").css("display", "none");
+        $("#removeFamilyRela").css("display", "inline");
+        $("#addFamilyButton").css("display", "inline");
+    } else {
+        $("#editFamilyButton").css("display", "inline");
+        $("#removeFamilyRela").css("display", "none");
+        $("#addFamilyButton").css("display", "none");
+    }
 });
 
 // family History remove
 $("#removeFamilyRela").click(function() {
     $("form .familyForm").last().remove();
 
-    $("#FamilyRelatoryForm").find(".familyForm").length > $("#number").val() ? $(this).css("display", "inline") : $(this).css("display", "none");
+    if ($("#familyRelatoryForm").find(".familyForm").length > 0) {
+        $("#editFamilyButton").css("display", "none");
+        $(this).css("display", "inline");
+        $("#addFamilyButton").css("display", "inline");
+    } else {
+        $("#editFamilyButton").css("display", "inline");
+        $(this).css("display", "none");
+        $("#addFamilyButton").css("display", "none");
+    }
 });
 
 $("#editFamilyButton").click(function() {
+    $("#addNewFamilyRela").css("display", "none");
     $("form input").removeAttr("readonly");
 
     $("#submitFamilyButton").css("display", "inline");
@@ -122,6 +128,7 @@ $("#editFamilyButton").click(function() {
 });
 
 $("#cancelFamilyButton").click(function() {
+    $("#addNewFamilyRela").css("display", "inline");
     $("form input").attr("readonly", "");
 
     $("#submitFamilyButton").css("display", "none");

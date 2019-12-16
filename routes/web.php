@@ -38,6 +38,8 @@ Route::post('edit-gov','Admin\GovernmentController@editGov')->name('edit-gov');
 Route::post('add-gov','Admin\GovernmentController@addGov')->name('add-gov');
 Route::post('edit-party','Admin\PartyController@editParty')->name('edit-party');
 Route::post('add-party','Admin\PartyController@addParty')->name('add-party');
+Route::post('edit-family','Admin\FamilyController@editFamily')->name('edit-family');
+Route::post('add-family','Admin\FamilyController@addFamily')->name('add-family');
 
 // USER
     //Forget password
