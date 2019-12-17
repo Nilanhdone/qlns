@@ -46,6 +46,11 @@ Route::post('edit-laudatory','Admin\LaudatoryController@editLaudatory')->name('e
 Route::post('add-laudatory','Admin\LaudatoryController@addLaudatory')->name('add-laudatory');
 Route::post('edit-discipline','Admin\DisciplineController@editDiscipline')->name('edit-discipline');
 Route::post('add-discipline','Admin\DisciplineController@addDiscipline')->name('add-discipline');
+Route::get('edit-{id}','Admin\ProcessController@showEditProcess')->name('show-edit');
+Route::post('edit-pr','Admin\ProcessController@editProcess')->name('edit-pr');
+
+Route::post('update-pr','Admin\ProcessController@updateProcess')->name('update-pr');
+Route::get('update-{user_id}','Admin\ProcessController@showUpdateProcess')->name('show-update');
 
 // USER
     //Forget password

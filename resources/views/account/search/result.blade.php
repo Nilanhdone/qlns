@@ -14,6 +14,7 @@
                 <th>Position</th>
                 <th>Phone number</th>
                 <th>Email</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,11 @@
                 <td>{{ trans('messages.positions.'.$user->position) }}</td>
                 <td>{{ $user->phone}}</td>
                 <td>{{ $user->email}}</td>
+                <td>
+                    <a href="update-{{ $user->user_id }}" class="badge badge-success text-uppercase" target="_blank">Update</a>
+                    <a href="#" class="badge badge-primary text-uppercase" target="_blank">Application</a>
+                    <a href="#" class="badge badge-danger text-uppercase">Delete</a>
+                </td>
             </tr>
             @endforeach
         </tbody>

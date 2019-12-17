@@ -24,7 +24,7 @@
             <input type="hidden" name="user_id" value="{{ $user_id }}">
             @foreach($governments as $government)
             <div class="row governmentForm">
-                <input type="hidden" name="id" value="{{ $government->id }}">
+                <input type="hidden" name="id[]" value="{{ $government->id }}">
                 <div class="col-3">
                     <div class="form-group">
                         <label>From</label>

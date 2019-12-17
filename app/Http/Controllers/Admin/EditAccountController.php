@@ -17,6 +17,7 @@ use App\Model\Family;
 use App\Model\Foreigner;
 use App\Model\Laudatory;
 use App\Model\Infringe;
+use App\Model\Process;
 use Auth;
 use Session;
 use Illuminate\Http\UploadedFile;
@@ -59,6 +60,9 @@ class EditAccountController extends Controller
         } else if ($component == 'disciplines') {
             $disciplines = Infringe::where('user_id', $user_id)->get();
             return view('account.detail.profile.discipline', compact('disciplines', 'user_id'));
+        } else if ($component == 'processs') {
+            $processs = Process::where('user_id', $user_id)->get();
+            return view('account.detail.profile.process', compact('processs', 'user_id'));
         }
     }
 

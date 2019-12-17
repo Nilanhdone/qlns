@@ -24,7 +24,7 @@
             <input type="hidden" name="user_id" value="{{ $user_id }}">
             @foreach($companys as $company)
             <div class="row companyForm">
-                <input type="hidden" name="id" value="{{ $company->id }}">
+                <input type="hidden" name="id[]" value="{{ $company->id }}">
                 <div class="col-3">
                     <div class="form-group">
                         <label>From</label>

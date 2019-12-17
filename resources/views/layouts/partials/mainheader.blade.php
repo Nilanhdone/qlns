@@ -1,15 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
 
-        @if(Auth::check())
-        <button type="button" id="sidebarCollapse" class="btn btn-secondary">
+        <!-- <button type="button" id="sidebarCollapse" class="btn btn-secondary">
             <i class="fas fa-align-left"></i>
-            <!-- <span>Toggle Sidebar</span> -->
-        </button>
-        <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        </button> -->
+        <!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-align-justify"></i>
-        </button>
-        @else
+        </button> -->
         <div class="media">
             <a href="/"><img src="{{ asset('img/logo.png') }}" class="mr-3" width="80" height="80"></a>
             <div class="media-body">
@@ -20,28 +17,11 @@
                 </a>
             </div>
         </div>
-        @endif
 
         <div class="collapse navbar-collapse text-uppercase" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 @if(Auth::check())
-                <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#">
-                        <i class="fas fa-sign-out-alt mr-2"></i>Change password
-                    </a>
-                </li>
-
-                <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/logout">
-                        <i class="fas fa-sign-out-alt mr-2"></i>{{ trans('messages.header.logout') }}
-                    </a>
-                </li>
-                @else
-                <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/login">
-                        <i class="fas fa-sign-in-alt fa-lg mr-2"></i>{{ trans('messages.header.login') }}
-                    </a>
-                </li>
+                @if(Auth::user()->role == 'admin')
                 <li class="nav-item mx-0 mx-lg-1 dropdown">
                     <a id="function" class="nav-link py-3 px-0 px-lg-5 rounded js-scroll-trigger dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-users-cog fa-lg mr-2"></i>Functions
@@ -54,11 +34,15 @@
                         <a class="dropdown-item" href="{{ route('show-search') }}">
                             <i class="fas fa-search mr-2"></i>Search
                         </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-search mr-2"></i>Timekeeping
+                        </a>
                     </div>
                 </li>
+                @endif
                 <li class="nav-item mx-0 mx-lg-1 dropdown">
                     <a id="profile" class="nav-link py-3 px-0 px-lg-5 rounded js-scroll-trigger dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user-circle fa-lg mr-2"></i>User name
+                        <i class="fas fa-user-circle fa-lg mr-2"></i>{{ Auth::user()->name }}
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="profile">
@@ -72,6 +56,12 @@
                             <i class="fas fa-sign-out-alt mr-2"></i>{{ trans('messages.header.logout') }}
                         </a>
                     </div>
+                </li>
+                @else
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/login">
+                        <i class="fas fa-sign-in-alt fa-lg mr-2"></i>{{ trans('messages.header.login') }}
+                    </a>
                 </li>
                 @endif
 

@@ -1,3 +1,29 @@
+<div class="form-group row">
+    <label class="col-md-4 col-form-label text-md-right">
+        Start day
+    </label>
+
+    <div class="col-md-4">
+        <input type="date" class="form-control @error('pr_start_day') is-invalid @enderror border-primary" name="pr_start_day" value="{{ old('pr_start_day') }}" required>
+
+        @error('pr_start_day')
+            <span class="invalid-feedback" role="alert"></span>
+        @enderror
+    </div>
+</div>
+<div class="form-group row">
+    <label class="col-md-4 col-form-label text-md-right">
+        End day
+    </label>
+
+    <div class="col-md-4">
+        <input type="date" class="form-control @error('pr_end_day') is-invalid @enderror border-primary" name="pr_end_day" value="{{ old('pr_end_day') }}" required>
+
+        @error('pr_end_day')
+            <span class="invalid-feedback" role="alert"></span>
+        @enderror
+    </div>
+</div>
 <!-- Unit -->
 <div class="form-group row">
     <label class="col-md-4 col-form-label text-md-right">
@@ -52,9 +78,7 @@
         <input type="text" class="form-control @error('salary') is-invalid @enderror border-primary" name="salary" value="{{ old('salary') }}" required>
 
         @error('salary')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
+            <span class="invalid-feedback" role="alert"></span>
         @enderror
     </div>
 </div>
@@ -67,9 +91,7 @@
         <input type="text" class="form-control @error('insurance') is-invalid @enderror border-primary" name="insurance" value="{{ old('insurance') }}" required>
 
         @error('insurance')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
+            <span class="invalid-feedback" role="alert"></span>
         @enderror
     </div>
 </div>

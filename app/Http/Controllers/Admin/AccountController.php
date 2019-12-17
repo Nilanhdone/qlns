@@ -17,6 +17,7 @@ use App\Model\Family;
 use App\Model\Foreigner;
 use App\Model\Laudatory;
 use App\Model\Infringe;
+use App\Model\Process;
 use Auth;
 use Session;
 use Illuminate\Http\UploadedFile;
@@ -57,6 +58,7 @@ class AccountController extends Controller
             'fa_year' => ['required'],
             'fa_rela' => ['required'],
             'fa_address' => ['required'],
+            'pr_start_day' => ['required'],
             'salary' => ['required'],
             'insurance' => ['required'],
         ];
@@ -105,6 +107,17 @@ class AccountController extends Controller
             'salary' => $request->salary,
             'insurance' => $request->insurance,
             'password' => Hash::make($password),
+        ]);
+
+        Process::create([
+            'user_id' => $user_id,
+            'start_day' => $request->pr_start_day,
+            'end_day' => $request->pr_end_day,
+            'branch' => explode('-', $request->current_unit)[0],
+            'position' => $request->current_position,
+            'unit' => $request->current_unit,
+            'salary' => $request->salary,
+            'insurance' => $request->insurance,
         ]);
 
         // lưu lịch sử học tập

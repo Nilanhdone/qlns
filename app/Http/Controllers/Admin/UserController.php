@@ -26,8 +26,8 @@ class UserController extends Controller
 {
     public function showProfile()
     {
-        // $user = Auth::user();
-        $user_id = 2019001;
+        $user = Auth::user();
+        $user_id = $user->user_id;
         $user = User::where('user_id', $user_id)->first();
         $educations = Education::where('user_id', $user_id)->get();
         $trainings = Training::where('user_id', $user_id)->get();

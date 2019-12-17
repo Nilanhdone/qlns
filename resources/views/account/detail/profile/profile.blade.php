@@ -46,6 +46,9 @@
                     <a class="nav-link" href="/detail-{{ $user_id }}-disciplines">
                         Discipline
                     </a>
+                    <a class="nav-link" href="/detail-{{ $user_id }}-processs">
+                        Process
+                    </a>
                 </div>
             </div>
             <div class="col-10">

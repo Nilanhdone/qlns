@@ -133,8 +133,8 @@
             Position and Role
         </div>
 
-        <div class="card-body" id="disciplineForm">
-            @include('account.create.position-role')
+        <div class="card-body">
+            @include('account.create.process')
         </div>
 
         <div class="card-body row">

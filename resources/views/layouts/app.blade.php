@@ -7,10 +7,6 @@
 
     <body>
         <div class="wrapper">
-            @if(Auth::check())
-                @include('layouts.partials.sidebar')
-            @endif
-
             <div id="content">
                 @include('layouts.partials.mainheader')
 
