@@ -52,6 +52,10 @@ Route::post('edit-pr','Admin\ProcessController@editProcess')->name('edit-pr');
 Route::post('update-pr','Admin\ProcessController@updateProcess')->name('update-pr');
 Route::get('update-{user_id}','Admin\ProcessController@showUpdateProcess')->name('show-update');
 
+Route::get('calendar','CalendarController@showCalendar')->name('calendar');
+Route::get('get-calendar','CalendarController@getCalendar')->name('get-calendar');
+Route::get('get-time-{day}-{month}-{year}','CalendarController@getTimeDay')->name('get-time');
+
 // USER
     //Forget password
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');

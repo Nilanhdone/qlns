@@ -34,7 +34,7 @@
                         <a class="dropdown-item" href="{{ route('show-search') }}">
                             <i class="fas fa-search mr-2"></i>Search
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('calendar') }}">
                             <i class="fas fa-search mr-2"></i>Timekeeping
                         </a>
                     </div>

@@ -11,6 +11,7 @@ use App\Model\Position;
 use App\Model\User;
 use App\Model\Education;
 use App\Model\Training;
+use App\Model\Timekeep;
 use App;
 use session;
 use Auth;
@@ -129,17 +130,154 @@ class CalendarController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function showCalendar()
     {
         // in ra lịch của tháng hiện tại
         // lấy ra ngày, tháng và năm hiện tại
         $today = date('d');
-        $current_month = date('m');
-        $current_year = date('o');
+        $month = date('m');
+        $year = date('o');
+        $value = $year.'-'.$month;
         // các tuần có trong tháng hiện tại
-        $calendar = $this->getWeekCalendar($current_month, $current_year);
-        $now_day = $today.' - '.$current_month.' - '.$current_year;
-        return view('home',
-            compact('today', 'calendar', 'now_day'));
+        $calendar = $this->getWeekCalendar($month, $year);
+
+        // lấy tất cả bản ghi trong tháng
+            $all_times = array();
+            for ($i=1; $i <=  $today; $i++) {
+                if ($i < 10) {
+                    $day = $year.'-'.$month.'-0'.$i;
+                } else {
+                    $day = $year.'-'.$month.'-'.$i;
+                }
+                $timekeeps = Timekeep::where('day',$day)->get();
+                $all_times[] = $timekeeps;
+            }
+            $staffs = User::all();
+            $off_list = array();
+            
+            foreach ($staffs as $staff) {
+                $staff_off = array();
+                $staff_off['user_id'] = $staff->user_id;
+                $staff_off['name'] = $staff->name;
+                $staff_off['numbers'] = 0;
+                foreach ($all_times as $all_time) {
+                    foreach ($all_time as $time) {
+                        if ($time->user_id == $staff->user_id && $time->status == 'absent') {
+                            $staff_off['numbers'] = $staff_off['numbers'] + 1;
+                        }
+                    }
+                }
+                $off_list[] = $staff_off;
+            }
+
+        return view('account.timekeeping.timekeep-month',
+            compact('today', 'calendar', 'month', 'year', 'value', 'off_list'));
+    }
+
+    public function getCalendar(Request $request)
+    {
+        // dd($request->all()); exit();
+        $value = $request->month;
+
+        $year = explode('-', $request->month)[0];
+        $month = explode('-', $request->month)[1];
+
+        if ($month == date('m') && $year == date('o')) {
+            $today = date('d');
+        } else {
+            $today = 0;
+        }
+
+        $calendar = $this->getWeekCalendar($month, $year);
+
+        // nếu tháng cần tìm là tháng hiện tại
+        if($month == date('m') && $year == date('o')) {
+            $today =  date('d');
+            // lấy tất cả bản ghi trong tháng
+            $all_times = array();
+            for ($i=1; $i <=  $today; $i++) {
+                if ($i < 10) {
+                    $day = $year.'-'.$month.'-0'.$i;
+                } else {
+                    $day = $year.'-'.$month.'-'.$i;
+                }
+                $timekeeps = Timekeep::where('day',$day)->get();
+                $all_times[] = $timekeeps;
+            }
+            $staffs = User::all();
+            $off_list = array();
+            
+            foreach ($staffs as $staff) {
+                $staff_off = array();
+                $staff_off['user_id'] = $staff->user_id;
+                $staff_off['name'] = $staff->name;
+                $staff_off['numbers'] = 0;
+                foreach ($all_times as $all_time) {
+                    foreach ($all_time as $time) {
+                        if ($time->user_id == $staff->user_id && $time->status == 'absent') {
+                            $staff_off['numbers'] = $staff_off['numbers'] + 1;
+                        }
+                    }
+                }
+                $off_list[] = $staff_off;
+            }
+        } else {
+            // lấy ra số ngày trong tháng đó
+            $day_number = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+
+            $staffs = User::all();
+            $off_list = array();
+            $all_times = array();
+            for ($i=1; $i <=  $day_number; $i++) {
+                if ($i < 10) {
+                    $day = $year.'-'.$month.'-0'.$i;
+                } else {
+                    $day = $year.'-'.$month.'-'.$i;
+                }
+                $timekeeps = Timekeep::where('day',$day)->get();
+                $all_times[] = $timekeeps;
+            }
+
+            foreach ($staffs as $staff) {
+                $staff_off = array();
+                $staff_off['user_id'] = $staff->user_id;
+                $staff_off['name'] = $staff->name;
+                $staff_off['numbers'] = 0;
+                foreach ($all_times as $all_time) {
+                    foreach ($all_time as $time) {
+                        if ($time->user_id == $staff->user_id && $time->status == 'absent') {
+                            $staff_off['numbers'] = $staff_off['numbers'] + 1;
+                        }
+                    }
+                }
+                $off_list[] = $staff_off;
+            }
+        }
+
+        return view('account.timekeeping.timekeep-month',
+            compact('today', 'calendar', 'month', 'year', 'value', 'off_list'));
+    }
+
+    public function getTimeDay($day, $month, $year)
+    {
+        // echo $day.'-'.$month.'-'.$year; exit();
+        if ($day < 10) {
+            $date = $year.'-'.$month.'-0'.$day;
+        } else {
+            $date = $year.'-'.$month.'-'.$day;
+        }
+
+        if ($month == date('m') && $year == date('o')) {
+            $today = date('d');
+        } else {
+            $today = 0;
+        }
+
+        $timekeeps = Timekeep::where('day', $date)->get();
+        $calendar = $this->getWeekCalendar($month, $year);
+        $value = $year.'-'.$month;
+
+        return view('account.timekeeping.timekeep-day',
+            compact('day', 'today', 'calendar', 'month', 'year', 'value', 'timekeeps'));
     }
 }
