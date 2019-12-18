@@ -37,7 +37,6 @@ class SearchController extends Controller
     {
         $units = Unit::all();
         $positions = Position::all();
-        $staffs = array();
 
         // kiểm tra số hiệu nhân viên
         if ($request->user_id != null) {
@@ -66,16 +65,21 @@ class SearchController extends Controller
 
         // kiểm tra tên
         if ($request->name != null) {
+            $ids = array();
             //so sánh chuỗi nhập với tên user để lấy kết quả
             foreach ($users as $staff) {
                 $staff_name = '$'.strtoupper($staff->name);
-                $existName = strpos($staff_name, $name);
-                if ($existName) {
-                    $staffs[] = $staff;
+                $existName = strpos($staff_name, strtoupper($request->name));
+                if (!$existName) {
+                    $ids[] = $staff->user_id;
                 }
+            }
+
+            for ($i = 0; $i < count($ids); $i ++) {
+                $users = $users->where('user_id', '!=' , $ids[$i]);
             }
         }
 
-        return view('account.search.result', compact('users', 'staffs', 'units', 'positions'));
+        return view('account.search.result', compact('users', 'units', 'positions'));
     }
 }

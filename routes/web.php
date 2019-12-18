@@ -56,6 +56,10 @@ Route::get('calendar','CalendarController@showCalendar')->name('calendar');
 Route::get('get-calendar','CalendarController@getCalendar')->name('get-calendar');
 Route::get('get-time-{day}-{month}-{year}','CalendarController@getTimeDay')->name('get-time');
 
+Route::post('export', 'ExcelController@export')->name('export');
+
+Route::get('show-app-{user_id}', 'Admin\ApplicationController@showAppForm')->name('show-app');
+Route::post('get-app', 'Admin\ApplicationController@getApp')->name('get-app');
 // USER
     //Forget password
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');

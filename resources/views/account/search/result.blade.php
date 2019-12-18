@@ -2,7 +2,27 @@
 
 @section('result')
 <div class="card-header text-primary font-weight-bolder">
-    {{ count($users) }} results
+    <div class="row">
+        <div class="col-auto mr-auto">
+            {{ count($users) }} results
+        </div>
+        <div class="col-auto">
+            <form method="POST" action="{{ route('export') }}">
+                @csrf
+
+                @foreach($users as $user)
+                <input type="hidden" name="user_name[]" value="{{ $user->name }}">
+                <input type="hidden" name="user_unit[]" value="{{ $user->unit }}">
+                <input type="hidden" name="user_position[]" value="{{ $user->position }}">
+                <input type="hidden" name="user_phone[]" value="{{ $user->phone }}">
+                <input type="hidden" name="user_email[]" value="{{ $user->email }}">
+                @endforeach
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-file-export"></i>
+                </button>
+            </form>
+        </div>
+    </div>
 </div>
 
 <div class="card-body">
@@ -31,7 +51,7 @@
                 <td>{{ $user->email}}</td>
                 <td>
                     <a href="update-{{ $user->user_id }}" class="badge badge-success text-uppercase" target="_blank">Update</a>
-                    <a href="#" class="badge badge-primary text-uppercase" target="_blank">Application</a>
+                    <a href="/show-app-{{ $user->user_id }}" class="badge badge-primary text-uppercase" target="_blank">Application</a>
                     <a href="#" class="badge badge-danger text-uppercase">Delete</a>
                 </td>
             </tr>

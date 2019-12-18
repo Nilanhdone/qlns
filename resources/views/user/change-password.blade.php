@@ -21,7 +21,7 @@
                 </label>
 
                 <div class="col-md-6">
-                    <input class="form-control @error('old_password') is-invalid @enderror" name="old_password" required>
+                    <input type="password" class="form-control @error('old_password') is-invalid @enderror" name="old_password" required>
 
                     @error('old_password')
                         <span class="invalid-feedback" role="alert">
