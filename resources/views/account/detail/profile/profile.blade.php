@@ -3,7 +3,16 @@
 @section('content')
 <div class="card">
     <div class="card-header text-uppercase text-primary font-weight-bolder">
-        Profile
+        <div class="row">
+            <div class="col-auto mr-auto">
+                Profile
+            </div>
+            <div class="col-auto">
+                <a href="/print-{{ $user->user_id }}" class="btn btn-primary" target="_blank">
+                    <i class="fas fa-print"></i>
+                </a>
+            </div>
+        </div>
     </div>
 
     @if(Session::has('success'))

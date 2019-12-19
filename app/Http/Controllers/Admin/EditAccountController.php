@@ -115,4 +115,30 @@ class EditAccountController extends Controller
             return redirect()->back()->with('error',$e->getMessage());
         }
     }
+
+    public function printProfile($user_id)
+    {
+        $user = User::where('user_id', $user_id)->first();
+        $educations = Education::where('user_id', $user_id)->get();
+        $trainings = Training::where('user_id', $user_id)->get();
+        $companys = Company::where('user_id', $user_id)->get();
+        $governments = Government::where('user_id', $user_id)->get();
+        $partys = Party::where('user_id', $user_id)->get();
+        $familys = Family::where('user_id', $user_id)->get();
+        $foreigners = Foreigner::where('user_id', $user_id)->get();
+        $laudatorys = Laudatory::where('user_id', $user_id)->get();
+        $disciplines = Infringe::where('user_id', $user_id)->get();
+        $processs = Process::where('user_id', $user_id)->get();
+        $applications = Application::where('user_id', $user_id)->get();
+
+        $avatar = public_path('img/avatar/'.$user->avatar);
+        $logo = public_path('img/logo.png');
+
+        $footertext = '{DATE Y-m-j} from BANK OF THE LAO P.D.R System';
+        $mpdf = new \Mpdf\Mpdf();
+        $mpdf->SetFooter($footertext);
+        $mpdf->WriteHTML(\View::make('account.profile-pdf', compact('user', 'avatar', 'logo','educations', 'trainings', 'companys', 'governments', 'partys', 'familys', 'foreigners', 'laudatorys', 'disciplines', 'processs', 'applications')));
+        $mpdf->debug = true;
+        $mpdf->Output();
+    }
 }
