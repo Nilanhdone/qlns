@@ -18,6 +18,7 @@ use App\Model\Foreigner;
 use App\Model\Laudatory;
 use App\Model\Infringe;
 use App\Model\Process;
+use App\Model\Application;
 use Auth;
 use Session;
 use Illuminate\Http\UploadedFile;
@@ -30,39 +31,43 @@ class EditAccountController extends Controller
 {
     public function showDetailAccount($user_id, $component)
     {
+        $user = User::where('user_id', $user_id)->first();
         if ($component == 'basic') {
-            $user = User::where('user_id', $user_id)->first();
+            // $user = User::where('user_id', $user_id)->first();
             return view('account.detail.profile.basic-info', compact('user', 'user_id'));
         } else if ($component == 'educations') {
             $educations = Education::where('user_id', $user_id)->get();
-            return view('account.detail.profile.education', compact('educations', 'user_id'));
+            return view('account.detail.profile.education', compact('educations', 'user', 'user_id'));
         } else if ($component == 'trainings') {
             $trainings = Training::where('user_id', $user_id)->get();
-            return view('account.detail.profile.training', compact('trainings', 'user_id'));
+            return view('account.detail.profile.training', compact('trainings', 'user', 'user_id'));
         } else if ($component == 'companys') {
             $companys = Company::where('user_id', $user_id)->get();
-            return view('account.detail.profile.company', compact('companys', 'user_id'));
+            return view('account.detail.profile.company', compact('companys', 'user', 'user_id'));
         } else if ($component == 'governments') {
             $governments = Government::where('user_id', $user_id)->get();
-            return view('account.detail.profile.government', compact('governments', 'user_id'));
+            return view('account.detail.profile.government', compact('governments', 'user', 'user_id'));
         } else if ($component == 'partys') {
             $partys = Party::where('user_id', $user_id)->get();
-            return view('account.detail.profile.party', compact('partys', 'user_id'));
+            return view('account.detail.profile.party', compact('partys', 'user', 'user_id'));
         } else if ($component == 'familys') {
             $familys = Family::where('user_id', $user_id)->get();
-            return view('account.detail.profile.family', compact('familys', 'user_id'));
+            return view('account.detail.profile.family', compact('familys', 'user', 'user_id'));
         } else if ($component == 'foreigners') {
             $foreigners = Foreigner::where('user_id', $user_id)->get();
-            return view('account.detail.profile.foreigner', compact('foreigners', 'user_id'));
+            return view('account.detail.profile.foreigner', compact('foreigners', 'user', 'user_id'));
         } else if ($component == 'laudatorys') {
             $laudatorys = Laudatory::where('user_id', $user_id)->get();
-            return view('account.detail.profile.laudatory', compact('laudatorys', 'user_id'));
+            return view('account.detail.profile.laudatory', compact('laudatorys', 'user', 'user_id'));
         } else if ($component == 'disciplines') {
             $disciplines = Infringe::where('user_id', $user_id)->get();
-            return view('account.detail.profile.discipline', compact('disciplines', 'user_id'));
+            return view('account.detail.profile.discipline', compact('disciplines', 'user', 'user_id'));
         } else if ($component == 'processs') {
             $processs = Process::where('user_id', $user_id)->get();
-            return view('account.detail.profile.process', compact('processs', 'user_id'));
+            return view('account.detail.profile.process', compact('processs', 'user', 'user_id'));
+        } else if ($component == 'applications') {
+            $applications = Application::where('user_id', $user_id)->get();
+            return view('account.detail.profile.application', compact('applications', 'user', 'user_id'));
         }
     }
 

@@ -11,7 +11,7 @@
         @if(count($infringes) > 0)
             @foreach($infringes as $infringe)
             <tr>
-                <td>{{ $infringe->title }}</td>
+                <td>{{ $infringe->infringe }}</td>
                 <td>{{ $infringe->year }}</td>
                 <td>{{ $infringe->organization }}</td>
                 <td>{{ $infringe->method }}</td>

@@ -48,6 +48,7 @@ Route::post('edit-discipline','Admin\DisciplineController@editDiscipline')->name
 Route::post('add-discipline','Admin\DisciplineController@addDiscipline')->name('add-discipline');
 Route::get('edit-{id}','Admin\ProcessController@showEditProcess')->name('show-edit');
 Route::post('edit-pr','Admin\ProcessController@editProcess')->name('edit-pr');
+Route::post('edit-application','Admin\ApplicationController@editApp')->name('edit-application');
 
 Route::post('update-pr','Admin\ProcessController@updateProcess')->name('update-pr');
 Route::get('update-{user_id}','Admin\ProcessController@showUpdateProcess')->name('show-update');

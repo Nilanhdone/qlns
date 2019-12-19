@@ -8,6 +8,14 @@
                 <div class="card-header text-primary text-uppercase">
                     {{ trans('messages.login.header') }}
                 </div>
+ 
+                @if($errors->any())
+                    <ul class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <li><i class="fa fa-exclamation-circle mr-2"></i>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">

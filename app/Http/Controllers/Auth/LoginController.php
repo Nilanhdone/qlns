@@ -86,7 +86,8 @@ class LoginController extends Controller
                 return view('user.first-login', compact('email'));
             }
         } else {
-            return redirect()->back();
+            $errors = "Email or password is incorrect, try again!";
+            return redirect()->back()->withErrors($errors)->withInput();
         }
     }
 
