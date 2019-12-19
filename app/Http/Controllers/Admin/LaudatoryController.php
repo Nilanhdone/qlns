@@ -88,4 +88,12 @@ class LaudatoryController extends Controller
 
         return redirect()->back()->with('success', 'Add new successfully!');
     }
+
+    public function delete($id)
+    {
+        $laudatory = Laudatory::where('id', $id)->first();
+        $laudatory->delete();
+
+        return redirect()->back()->with('success', 'Delete successfully!');
+    }
 }

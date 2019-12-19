@@ -89,4 +89,12 @@ class FamilyController extends Controller
 
         return redirect()->back()->with('success', 'Add new successfully!');
     }
+
+    public function delete($id)
+    {
+        $family= Family::where('id', $id)->first();
+        $family->delete();
+
+        return redirect()->back()->with('success', 'Delete successfully!');
+    }
 }

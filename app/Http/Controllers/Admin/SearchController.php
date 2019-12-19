@@ -40,17 +40,17 @@ class SearchController extends Controller
 
         // kiểm tra số hiệu nhân viên
         if ($request->user_id != null) {
-            $users = User::where('user_id', $request->user_id)->first();
+            $users = User::where([['user_id', $request->user_id], ['status', 'new']])->first();
             return view('account.search.result', compact('users', 'staffs', 'units', 'positions'));
         }
 
         // kiểm tra giới tính
         if ($request->gender == 'both') {
-            $users = User::all();
+            $users = User::where('status', 'new')->get();
         } else if ($request->gender == 'male') {
-            $users = User::where('gender', 'male')->get();
+            $users = User::where([['gender', 'male'], ['status', 'new']])->get();
         } else if ($request->gender == 'female') {
-            $users = User::where('gender', 'female')->get();
+            $users = User::where([['gender', 'female'], ['status', 'new']])->get();
         }
 
         // kiểm tra đơn vị công tác

@@ -92,4 +92,12 @@ class TrainingController extends Controller
 
         return redirect()->back()->with('success', 'Add new successfully!');
     }
+
+    public function delete($id)
+    {
+        $training = Training::where('id', $id)->first();
+        $training->delete();
+
+        return redirect()->back()->with('success', 'Delete successfully!');
+    }
 }

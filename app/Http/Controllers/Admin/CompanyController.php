@@ -89,4 +89,12 @@ class CompanyController extends Controller
 
         return redirect()->back()->with('success', 'Add new successfully!');
     }
+
+    public function delete($id)
+    {
+        $company = Company::where('id', $id)->first();
+        $company->delete();
+
+        return redirect()->back()->with('success', 'Delete successfully!');
+    }
 }

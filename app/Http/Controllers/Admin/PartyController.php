@@ -85,4 +85,12 @@ class PartyController extends Controller
 
         return redirect()->back()->with('success', 'Add new successfully!');
     }
+
+    public function delete($id)
+    {
+        $party = Party::where('id', $id)->first();
+        $party->delete();
+
+        return redirect()->back()->with('success', 'Delete successfully!');
+    }
 }

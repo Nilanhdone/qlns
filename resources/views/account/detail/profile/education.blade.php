@@ -54,6 +54,37 @@
             </div>
 
             <div class="w-100"></div>
+
+            <div class="row">
+                <div class="col-auto mr-auto"></div>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{ $education->id }}">
+                        Delete
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="del{{ $education->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">
+                                        Delete this education history?
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <a href="/del-edu-{{ $education->id }}" class="btn btn-danger">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-100"></div>
             @endforeach
 
             <div class="form-group row">
@@ -85,7 +116,7 @@
 
     $("#editEduButton").click(function() {
         $("#addNewEduHis").css("display", "none");
-        $("#eduForm input").removeAttr("readonly");
+        $("form input").removeAttr("readonly");
 
         $("#submitEduButton").css("display", "inline");
         $("#cancelEduButton").css("display", "inline");
@@ -94,7 +125,7 @@
 
     $("#cancelEduButton").click(function() {
         $("#addNewEduHis").css("display", "inline");
-        $("#eduForm input").attr("readonly", "");
+        $("form input").attr("readonly", "");
 
         $("#submitEduButton").css("display", "none");
         $("#editEduButton").css("display", "inline");

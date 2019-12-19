@@ -88,4 +88,12 @@ class DisciplineController extends Controller
 
         return redirect()->back()->with('success', 'Add new successfully!');
     }
+
+    public function delete($id)
+    {
+        $discipline = Infringe::where('id', $id)->first();
+        $discipline->delete();
+
+        return redirect()->back()->with('success', 'Delete successfully!');
+    }
 }

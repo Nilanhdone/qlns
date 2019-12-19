@@ -52,7 +52,7 @@
                 <td>
                     <a href="update-{{ $user->user_id }}" class="badge badge-success text-uppercase" target="_blank">Update</a>
                     <a href="/show-app-{{ $user->user_id }}" class="badge badge-primary text-uppercase" target="_blank">Application</a>
-                    <a href="#" class="badge badge-danger text-uppercase">Delete</a>
+                    @include('account.search.delete-modal')
                 </td>
             </tr>
             @endforeach

@@ -92,4 +92,12 @@ class EducationController extends Controller
 
         return redirect()->back()->with('success', 'Add new successfully!');
     }
+
+    public function delete($id)
+    {
+        $education = Education::where('id', $id)->first();
+        $education->delete();
+
+        return redirect()->back()->with('success', 'Delete successfully!');
+    }
 }

@@ -141,4 +141,14 @@ class EditAccountController extends Controller
         $mpdf->debug = true;
         $mpdf->Output();
     }
+
+    public function deleteAccount($user_id)
+    {
+        $status = 'delete';
+        $user = User::where('user_id', $user_id)->first();
+        $user->status = $status;
+        $user->save();
+
+        return redirect()->back();
+    }
 }

@@ -23,7 +23,7 @@
 
             <input type="hidden" name="id[]" value="{{ $application->id }}">
             <div class="row">
-                <div class="col">
+                <div class="col-5">
                     <!-- Title -->
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label text-md-right">
@@ -76,7 +76,7 @@
                     </div>
                 </div>
 
-                <div class="col">
+                <div class="col-5">
                     <!-- Reason -->
                     <div class="form-group row">
                         <label class="col-md-3 col-form-label text-md-right">
@@ -92,6 +92,32 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-2">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{ $application->id }}">
+                        Delete
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="del{{ $application->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">
+                                        Delete this application?
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <a href="/del-app-{{ $application->id }}" class="btn btn-danger">Delete</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

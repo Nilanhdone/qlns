@@ -76,4 +76,12 @@ class ApplicationController extends Controller
             return redirect()->back()->with('error',$e->getMessage());
         }
     }
+
+    public function delete($id)
+    {
+        $application = Application::where('id', $id)->first();
+        $application->delete();
+
+        return redirect()->back()->with('success', 'Delete successfully!');
+    }
 }

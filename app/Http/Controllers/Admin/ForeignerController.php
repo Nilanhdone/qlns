@@ -88,4 +88,12 @@ class ForeignerController extends Controller
 
         return redirect()->back()->with('success', 'Add new successfully!');
     }
+
+    public function delete($id)
+    {
+        $foreigner = Foreigner::where('id', $id)->first();
+        $foreigner->delete();
+
+        return redirect()->back()->with('success', 'Delete successfully!');
+    }
 }
