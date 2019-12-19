@@ -6,7 +6,7 @@
             <!-- User ID -->
             <div class="form-group row">
                 <label class="col-md-3 col-form-label text-md-right">
-                    {{ trans('messages.register.user-id') }}
+                    {{ trans('bank.search.user-id') }}
                 </label>
 
                 <div class="col-md-8">
@@ -17,7 +17,7 @@
             <!-- Name -->
             <div class="form-group row">
                 <label class="col-md-3 col-form-label text-md-right">
-                    {{ trans('messages.register.name') }}
+                    {{ trans('bank.search.name') }}
                 </label>
 
                 <div class="col-md-8">
@@ -28,28 +28,28 @@
             <!-- Gender -->
             <div class="form-group row">
                 <label class="col-md-3 col-form-label text-md-right">
-                    {{ trans('messages.register.gender') }}
+                    {{ trans('bank.search.gender') }}
                 </label>
 
                 <div class="col-md-8">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="gender" id="both" value="both" checked>
                         <label class="form-check-label">
-                            Both
+                            {{ trans('bank.search.both') }}
                         </label>
                     </div>
 
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="gender" id="male" value="male">
                         <label class="form-check-label" for="male">
-                            {{ trans('messages.register.male') }}
+                            {{ trans('bank.search.male') }}
                         </label>
                     </div>
 
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="gender" id="female" value="female">
                         <label class="form-check-label" for="female">
-                            {{ trans('messages.register.female') }}
+                            {{ trans('bank.search.female') }}
                         </label>
                     </div>
                 </div>
@@ -60,13 +60,13 @@
             <!-- Unit -->
             <div class="form-group row">
                 <label class="col-md-4 col-form-label text-md-right">
-                    {{ trans('messages.register.unit') }}
+                    {{ trans('bank.search.work-unit') }}
                 </label>
 
                 <div class="col-md-8">
                     <select class="btn border-primary" name="unit" form="search">
                         <option value="">
-                            No choose
+                            {{ trans('bank.search.nochoose') }}
                         </option>
                         @foreach ($units as $unit)
                         <option value="{{ $unit->unit }}">
@@ -79,13 +79,13 @@
             <!-- Position -->
             <div class="form-group row">
                 <label class="col-md-4 col-form-label text-md-right">
-                    {{ trans('messages.register.position') }}
+                    {{ trans('bank.search.position') }}
                 </label>
 
                 <div class="col-md-8">
                     <select class="btn border-primary" name="position" form="search">
                         <option value="">
-                            No choose
+                            {{ trans('bank.search.nochoose') }}
                         </option>
                         @foreach ($positions as $position)
                         <option value="{{ $position->position }}">
@@ -99,7 +99,7 @@
             <div class="form-group">
                 <div class="col-md-3 offset-md-4">
                     <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-search mr-2"></i>Search
+                        <i class="fas fa-search mr-2"></i>{{ trans('bank.search.search') }}
                     </button>
                 </div>
             </div>

@@ -26,14 +26,14 @@
         @csrf
 
         <div class="card-header text-uppercase text-primary font-weight-bolder">
-            Basic Information
+            {{ trans('bank.create.basic') }}
         </div>
         <div class="card-body">
             @include('account.create.basic-info')
         </div>
 
         <div class="card-header text-uppercase text-primary font-weight-bolder" id="educationHeader">
-            Education History
+            {{ trans('bank.create.edu') }}
         </div>
 
         <div class="card-body" id="educationHistoryForm">
@@ -47,7 +47,7 @@
         </div>
 
         <div class="card-header text-uppercase text-primary font-weight-bolder">
-            Training History
+            {{ trans('bank.create.train') }}
         </div>
 
         <div class="card-body" id="trainingHistoryForm">
@@ -57,7 +57,7 @@
         </div>
 
         <div class="card-header text-uppercase text-primary font-weight-bolder">
-            Company History
+            {{ trans('bank.create.com') }}
         </div>
 
         <div class="card-body" id="companyHistoryForm">
@@ -67,7 +67,7 @@
         </div>
 
         <div class="card-header text-uppercase text-primary font-weight-bolder">
-            Government History
+            {{ trans('bank.create.gov') }}
         </div>
 
         <div class="card-body" id="governmentHistoryForm">
@@ -77,7 +77,7 @@
         </div>
 
         <div class="card-header text-uppercase text-primary font-weight-bolder">
-            Join Party History
+            {{ trans('bank.create.party') }}
         </div>
 
         <div class="card-body" id="partyHistoryForm">
@@ -87,7 +87,7 @@
         </div>
 
         <div class="card-header text-uppercase text-primary font-weight-bolder">
-            Family Relationship
+            {{ trans('bank.create.fami') }}
         </div>
 
         <div class="card-body" id="familyRelationshipForm">
@@ -100,7 +100,7 @@
         </div>
 
         <div class="card-header text-uppercase text-primary font-weight-bolder">
-            Foreigner Relationship
+            {{ trans('bank.create.fore') }}
         </div>
 
         <div class="card-body" id="foreignerRelationshipForm">
@@ -110,7 +110,7 @@
         </div>
 
         <div class="card-header text-uppercase text-primary font-weight-bolder">
-            Laudatory
+            {{ trans('bank.create.lau') }}
         </div>
 
         <div class="card-body" id="laudatoryForm">
@@ -120,7 +120,7 @@
         </div>
 
         <div class="card-header text-uppercase text-primary font-weight-bolder">
-            Discipline
+            {{ trans('bank.create.dis') }}
         </div>
 
         <div class="card-body" id="disciplineForm">
@@ -130,7 +130,7 @@
         </div>
 
         <div class="card-header text-uppercase text-primary font-weight-bolder">
-            Position and Role
+            {{ trans('bank.create.po-ro') }}
         </div>
 
         <div class="card-body">
@@ -139,7 +139,9 @@
 
         <div class="card-body row">
             <div class="col-6 offset-4">
-                <button type="sumbit" class="btn btn-primary">Create</button>
+                <button type="sumbit" class="btn btn-primary">
+                    {{ trans('bank.create.create') }}
+                </button>
             </div>
         </div>
     </form>

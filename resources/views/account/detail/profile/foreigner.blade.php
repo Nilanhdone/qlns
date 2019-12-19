@@ -27,28 +27,28 @@
                 <input type="hidden" name="id[]" value="{{ $foreigner->id }}">
                 <div class="col-4">
                     <div class="form-group">
-                        <label>Name</label>
+                        <label>{{ trans('bank.create.name') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="fore_name[]" value="{{ $foreigner->name }}" readonly required>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-group">
-                        <label>Year of birth</label>
+                        <label>{{ trans('bank.create.yaer-birth') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="fore_year[]" value="{{ $foreigner->year }}" readonly required>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-group">
-                        <label>Relationship</label>
+                        <label>{{ trans('bank.create.relationship') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="fore_rela[]" value="{{ $foreigner->relationship }}" readonly required>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-group">
-                        <label>Nationality</label>
+                        <label>{{ trans('bank.create.nationality') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="fore_nation[]" value="{{ $foreigner->nationality }}" readonly required>
                     </div>
@@ -61,7 +61,7 @@
                 <div class="col-auto mr-auto"></div>
                 <div class="col-auto">
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{ $foreigner->id }}">
-                        Delete
+                        {{ trans('bank.modal.delete') }}
                     </button>
 
                     <!-- Modal -->
@@ -70,15 +70,19 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalCenterTitle">
-                                        Delete this foreigner relationship?
+                                        {{ trans('bank.modal.fore') }}
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <a href="/del-foreigner-{{ $foreigner->id }}" class="btn btn-danger">Delete</a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        {{ trans('bank.modal.close') }}
+                                    </button>
+                                    <a href="/del-foreigner-{{ $foreigner->id }}" class="btn btn-danger">
+                                        {{ trans('bank.modal.delete') }}
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +97,7 @@
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="submitForeignerButton">
-                        Update
+                        {{ trans('bank.create.edit') }}
                     </button>
                 </div>
             </div>
@@ -107,7 +111,7 @@
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="addForeignerButton">
-                        Add new
+                        {{ trans('bank.create.add') }}
                     </button>
                 </div>
             </div>

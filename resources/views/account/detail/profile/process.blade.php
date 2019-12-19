@@ -11,13 +11,13 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">From</th>
-                    <th scope="col">To</th>
-                    <th scope="col">Branch</th>
-                    <th scope="col">Unit</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Salary</th>
-                    <th scope="col">Insurance number</th>
+                    <th scope="col">{{ trans('bank.create.from') }}</th>
+                    <th scope="col">{{ trans('bank.create.to') }}</th>
+                    <th scope="col">{{ trans('messages.register.branch') }}</th>
+                    <th scope="col">{{ trans('messages.register.unit') }}</th>
+                    <th scope="col">{{ trans('messages.register.position') }}</th>
+                    <th scope="col">{{ trans('messages.register.salary') }}</th>
+                    <th scope="col">{{ trans('messages.register.insurance') }}</th>
                     <th></th>
                 </tr>
             </thead>
@@ -32,7 +32,9 @@
                     <td>{{ $process->salary }}</td>
                     <td>{{ $process->insurance }}</td>
                     <td>
-                        <a href="edit-{{ $process->id }}" class="badge badge-primary text-uppercase">Edit</a>
+                        <a href="edit-{{ $process->id }}" class="badge badge-primary text-uppercase">
+                            {{ trans('bank.create.edit') }}
+                        </a>
                     </td>
                 </tr>
                 @endforeach

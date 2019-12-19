@@ -27,21 +27,21 @@
                 <input type="hidden" name="id[]" value="{{ $party->id }}">
                 <div class="col-3">
                     <div class="form-group">
-                        <label>Join day</label>
+                        <label>{{ trans('bank.create.join') }}</label>
 
                         <input type="date" class="form-control border border-primary" name="join_day[]" value="{{ $party->join_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-group">
-                        <label>Party unit</label>
+                        <label>{{ trans('bank.create.unit') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="party_unit[]" value="{{ $party->unit }}" readonly required>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-group">
-                        <label>Party position</label>
+                        <label>{{ trans('bank.create.position') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="party_position[]" value="{{ $party->position }}" readonly required>
                     </div>
@@ -54,7 +54,7 @@
                 <div class="col-auto mr-auto"></div>
                 <div class="col-auto">
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{ $party->id }}">
-                        Delete
+                        {{ trans('bank.modal.delete') }}
                     </button>
 
                     <!-- Modal -->
@@ -63,15 +63,19 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalCenterTitle">
-                                        Delete this join party history?
+                                        {{ trans('bank.modal.party') }}
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <a href="/del-party-{{ $party->id }}" class="btn btn-danger">Delete</a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        {{ trans('bank.modal.close') }}
+                                    </button>
+                                    <a href="/del-party-{{ $party->id }}" class="btn btn-danger">
+                                        {{ trans('bank.modal.delete') }}
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +90,7 @@
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="submitPartyButton">
-                        Update
+                        {{ trans('bank.create.edit') }}
                     </button>
                 </div>
             </div>
@@ -100,7 +104,7 @@
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="addPartyButton">
-                        Add new
+                        {{ trans('bank.create.add') }}
                     </button>
                 </div>
             </div>

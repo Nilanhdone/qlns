@@ -1,7 +1,7 @@
 <div class="row eduForm">
     <div class="col-3">
         <div class="form-group">
-            <label>From</label>
+            <label>{{ trans('bank.create.from') }}</label>
 
             <input type="date" class="form-control @error('edu_start_day[]') is-invalid @enderror border border-primary" name="edu_start_day[]" value="{{ old('edu_start_day[]') }}" required>
 
@@ -14,7 +14,7 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>To</label>
+            <label>{{ trans('bank.create.to') }}</label>
 
             <input type="date" class="form-control @error('edu_end_day[]') is-invalid @enderror border border-primary" name="edu_end_day[]" value="{{ old('edu_end_day[]') }}" required>
 
@@ -27,7 +27,7 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>Education unit</label>
+            <label>{{ trans('bank.create.unit') }}</label>
 
             <input type="text" class="form-control @error('edu_unit[]') is-invalid @enderror border border-primary" name="edu_unit[]" value="{{ old('edu_unit[]') }}" required>
 
@@ -40,7 +40,7 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>Address</label>
+            <label>{{ trans('bank.create.address') }}</label>
 
             <input type="text" class="form-control @error('edu_address[]') is-invalid @enderror border border-primary" name="edu_address[]" value="{{ old('edu_address[]') }}" required>
 

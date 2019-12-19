@@ -1,7 +1,7 @@
 <div class="row partyForm">
     <div class="col-3">
         <div class="form-group">
-            <label>Join day</label>
+            <label>{{ trans('bank.create.join') }}</label>
 
             <input type="date" class="form-control @error('join_day[]') is-invalid @enderror border border-primary" name="join_day[]" value="{{ old('join_day[]') }}" required>
 
@@ -14,7 +14,7 @@
     </div>
     <div class="col-4">
         <div class="form-group">
-            <label>Party unit</label>
+            <label>{{ trans('bank.create.unit') }}</label>
 
             <input type="text" class="form-control @error('party_unit[]') is-invalid @enderror border border-primary" name="party_unit[]" value="{{ old('party_unit[]') }}" required>
 
@@ -27,7 +27,7 @@
     </div>
     <div class="col-4">
         <div class="form-group">
-            <label>Party position</label>
+            <label>{{ trans('bank.create.position') }}</label>
 
             <input type="text" class="form-control @error('party_position[]') is-invalid @enderror border border-primary" name="party_position[]" value="{{ old('party_position[]') }}" required>
 

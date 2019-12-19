@@ -5,11 +5,11 @@
     <div class="card-header text-uppercase text-primary font-weight-bolder">
         <div class="row">
             <div class="col-auto mr-auto">
-                Profile
+                {{ trans('bank.header.profile') }}
             </div>
             <div class="col-auto">
                 <a href="/print-{{ $user->user_id }}" class="btn btn-primary" target="_blank">
-                    <i class="fas fa-print"></i>
+                    <i class="fas fa-print mr-2"></i>{{ trans('bank.create.print') }}
                 </a>
             </div>
         </div>
@@ -32,40 +32,40 @@
                 
                 <div class="row nav flex-column nav-pills" id="menuList">
                     <a class="nav-link" href="/detail-{{ $user_id }}-basic">
-                        Basic Information
+                        {{ trans('bank.create.basic') }}
                     </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-educations">
-                        Education History
+                        {{ trans('bank.create.edu') }}
                     </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-trainings">
-                        Traning History
+                        {{ trans('bank.create.train') }}
                     </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-companys">
-                        Company History
+                        {{ trans('bank.create.com') }}
                     </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-governments">
-                        Government History
+                        {{ trans('bank.create.gov') }}
                     </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-partys">
-                        Join Party History
+                        {{ trans('bank.create.party') }}
                     </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-familys">
-                        Family Relationship
+                        {{ trans('bank.create.fami') }}
                     </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-foreigners">
-                        Foreigner Relationship
+                        {{ trans('bank.create.fore') }}
                     </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-laudatorys">
-                        Laudatory
+                        {{ trans('bank.create.lau') }}
                     </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-disciplines">
-                        Discipline
+                        {{ trans('bank.create.dis') }}
                     </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-processs">
-                        Process
+                        {{ trans('bank.create.process') }}
                     </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-applications">
-                        Application
+                        {{ trans('bank.create.application') }}
                     </a>
                 </div>
             </div>

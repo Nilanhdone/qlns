@@ -27,28 +27,28 @@
                 <input type="hidden" name="id[]" value="{{ $discipline->id }}">
                 <div class="col-4">
                     <div class="form-group">
-                        <label>Infringe</label>
+                        <label>{{ trans('bank.create.dis') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="infringe[]" value="{{ $discipline->infringe }}" readonly required>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-group">
-                        <label>Year</label>
+                        <label>{{ trans('bank.create.year') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="inf_year[]" value="{{ $discipline->year }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>Organization</label>
+                        <label>{{ trans('bank.create.org') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="inf_organization[]" value="{{ $discipline->organization }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>Discipline method</label>
+                        <label>{{ trans('bank.create.method') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="inf_method[]" value="{{ $discipline->method }}" readonly required>
                     </div>
@@ -61,7 +61,7 @@
                 <div class="col-auto mr-auto"></div>
                 <div class="col-auto">
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{ $discipline->id }}">
-                        Delete
+                        {{ trans('bank.modal.delete') }}
                     </button>
 
                     <!-- Modal -->
@@ -70,15 +70,19 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalCenterTitle">
-                                        Delete this discipline?
+                                        {{ trans('bank.modal.dis') }}
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <a href="/del-discipline-{{ $discipline->id }}" class="btn btn-danger">Delete</a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        {{ trans('bank.modal.close') }}
+                                    </button>
+                                    <a href="/del-discipline-{{ $discipline->id }}" class="btn btn-danger">
+                                        {{ trans('bank.modal.delete') }}
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +97,7 @@
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="submitDisciplineButton">
-                        Update
+                        {{ trans('bank.create.edit') }}
                     </button>
                 </div>
             </div>
@@ -107,7 +111,7 @@
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="addDisciplineButton">
-                        Add new
+                        {{ trans('bank.create.add') }}
                     </button>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 <div class="row laudatoryForm">
     <div class="col-4">
         <div class="form-group">
-            <label>Title</label>
+            <label>{{ trans('bank.create.title') }}</label>
 
             <input type="text" class="form-control @error('title[]') is-invalid @enderror border border-primary" name="title[]" value="{{ old('title[]') }}" required>
 
@@ -14,7 +14,7 @@
     </div>
     <div class="col-2">
         <div class="form-group">
-            <label>Year</label>
+            <label>{{ trans('bank.create.year') }}</label>
 
             <input type="text" class="form-control @error('lau_year[]') is-invalid @enderror border border-primary" name="lau_year[]" value="{{ old('lau_year[]') }}" required>
 
@@ -27,7 +27,7 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>Organization</label>
+            <label>{{ trans('bank.create.org') }}</label>
 
             <input type="text" class="form-control @error('lau_organization[]') is-invalid @enderror border border-primary" name="lau_organization[]" value="{{ old('lau_organization[]') }}" required>
 
@@ -40,7 +40,7 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>Content</label>
+            <label>{{ trans('bank.create.content') }}</label>
 
             <input type="text" class="form-control @error('lau_content[]') is-invalid @enderror border border-primary" name="lau_content[]" value="{{ old('lau_content[]') }}" required>
 

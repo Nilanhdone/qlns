@@ -27,28 +27,28 @@
                 <input type="hidden" name="id[]" value="{{ $company->id }}">
                 <div class="col-3">
                     <div class="form-group">
-                        <label>From</label>
+                        <label>{{ trans('bank.create.from') }}</label>
 
                         <input type="date" class="form-control border border-primary" name="com_start_day[]" value="{{ $company->start_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>To</label>
+                        <label>{{ trans('bank.create.to') }}</label>
 
                         <input type="date" class="form-control border border-primary" name="com_end_day[]" value="{{ $company->end_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>Company Name</label>
+                        <label>{{ trans('bank.create.com-name') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="com_unit[]" value="{{ $company->unit }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>Position</label>
+                        <label>{{ trans('bank.create.position') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="com_position[]" value="{{ $company->position }}" readonly required>
                     </div>
@@ -61,7 +61,7 @@
                 <div class="col-auto mr-auto"></div>
                 <div class="col-auto">
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{ $company->id }}">
-                        Delete
+                        {{ trans('bank.modal.delete') }}
                     </button>
 
                     <!-- Modal -->
@@ -70,15 +70,19 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalCenterTitle">
-                                        Delete this company work history?
+                                        {{ trans('bank.modal.com') }}
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <a href="/del-com-{{ $company->id }}" class="btn btn-danger">Delete</a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        {{ trans('bank.modal.close') }}
+                                    </button>
+                                    <a href="/del-com-{{ $company->id }}" class="btn btn-danger">
+                                        {{ trans('bank.modal.delete') }}
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +97,7 @@
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="submitComButton">
-                        Update
+                        {{ trans('bank.create.edit) }}
                     </button>
                 </div>
             </div>
@@ -108,7 +112,7 @@
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="addComButton">
-                        Add new
+                        {{ trans('bank.create.add') }}
                     </button>
                 </div>
             </div>

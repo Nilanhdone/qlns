@@ -23,7 +23,8 @@ class ProcessController extends Controller
 
         $process = Process::where('id', $id)->first();
         $user_id = $process->user_id;
-        return view('account.detail.process.edit', compact('user_id', 'process', 'units', 'positions'));
+        $user = User::where('user_id', $user_id)->first();
+        return view('account.detail.process.edit', compact('user','user_id', 'process', 'units', 'positions'));
     }
 
     public function editProcess(Request $request)

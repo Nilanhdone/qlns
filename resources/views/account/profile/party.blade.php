@@ -1,9 +1,9 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Join day</th>
-            <th scope="col">Unit</th>
-            <th scope="col">Position</th>
+            <th scope="col">{{ trans('bank.create.join') }}</th>
+            <th scope="col">{{ trans('bank.create.unit') }}</th>
+            <th scope="col">{{ trans('bank.create.position') }}</th>
         </tr>
     </thead>
     <tbody>
@@ -17,7 +17,7 @@
             @endforeach
         @else
             <tr>
-                <td colspan="3" class="text-center">No data</td>
+                <td colspan="3" class="text-center">{{ trans('bank.create.nodata') }}</td>
             </tr>
         @endif
     </tbody>

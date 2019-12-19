@@ -1,10 +1,10 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Year of birth</th>
-            <th scope="col">Relationship</th>
-            <th scope="col">Nationality</th>
+            <th scope="col">{{ trans('bank.create.name') }}</th>
+            <th scope="col">{{ trans('bank.create.year-birth') }}</th>
+            <th scope="col">{{ trans('bank.create.relationship') }}</th>
+            <th scope="col">{{ trans('bank.create.nationality') }}</th>
         </tr>
     </thead>
     <tbody>
@@ -19,7 +19,7 @@
             @endforeach
         @else
             <tr>
-                <td colspan="4" class="text-center">No data</td>
+                <td colspan="4" class="text-center">{{ trans('bank.create.nodata') }}</td>
             </tr>
         @endif
     </tbody>

@@ -1,10 +1,10 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Year of birth</th>
-            <th scope="col">Relationship</th>
-            <th scope="col">Address</th>
+            <th scope="col">{{ trans('bank.create.name') }}</th>
+            <th scope="col">{{ trans('bank.create.year-birth') }}</th>
+            <th scope="col">{{ trans('bank.create.relationship') }}</th>
+            <th scope="col">{{ trans('bank.create.address') }}</th>
         </tr>
     </thead>
     <tbody>

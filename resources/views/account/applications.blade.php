@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-header text-primary text-uppercase font-weight-bolder">
-        {{ trans('messages.send-vacation.header') }}
+        {{ trans('bank.create.app-header') }}
     </div>
 
     <div class="card-body">

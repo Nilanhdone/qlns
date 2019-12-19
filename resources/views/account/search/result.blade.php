@@ -4,7 +4,7 @@
 <div class="card-header text-primary font-weight-bolder">
     <div class="row">
         <div class="col-auto mr-auto">
-            {{ count($users) }} results
+            {{ count($users) }} {{ trans('bank.search.results') }}
         </div>
         <div class="col-auto">
             <form method="POST" action="{{ route('export') }}">
@@ -18,7 +18,7 @@
                 <input type="hidden" name="user_email[]" value="{{ $user->email }}">
                 @endforeach
                 <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-file-export"></i>
+                    <i class="fas fa-file-export mr-2"></i>{{ trans('bank.search.export') }}
                 </button>
             </form>
         </div>
@@ -29,11 +29,11 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Unit</th>
-                <th>Position</th>
-                <th>Phone number</th>
-                <th>Email</th>
+                <th>{{ trans('bank.search.name') }}</th>
+                <th>{{ trans('bank.search.work-unit') }}</th>
+                <th>{{ trans('bank.search.position') }}</th>
+                <th>{{ trans('bank.search.phone') }}</th>
+                <th>{{ trans('bank.search.email') }}</th>
                 <th></th>
             </tr>
         </thead>
@@ -50,8 +50,8 @@
                 <td>{{ $user->phone}}</td>
                 <td>{{ $user->email}}</td>
                 <td>
-                    <a href="update-{{ $user->user_id }}" class="badge badge-success text-uppercase" target="_blank">Update</a>
-                    <a href="/show-app-{{ $user->user_id }}" class="badge badge-primary text-uppercase" target="_blank">Application</a>
+                    <a href="update-{{ $user->user_id }}" class="badge badge-success text-uppercase" target="_blank">{{ trans('bank.search.update') }}</a>
+                    <a href="/show-app-{{ $user->user_id }}" class="badge badge-primary text-uppercase" target="_blank">{{ trans('bank.search.application') }}</a>
                     @include('account.search.delete-modal')
                 </td>
             </tr>

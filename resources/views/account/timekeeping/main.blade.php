@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-header text-uppercase text-primary font-weight-bolder">
-        Timekeeping Calendar
+        {{ trans('bank.time.header') }}
     </div>
 
     <div class="card-body">

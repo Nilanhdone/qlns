@@ -1,6 +1,6 @@
 <div class="form-group row">
     <label class="col-md-4 col-form-label text-md-right">
-        Start day
+        {{ trans('bank.create.start-day') }}
     </label>
 
     <div class="col-md-4">
@@ -13,7 +13,7 @@
 </div>
 <div class="form-group row">
     <label class="col-md-4 col-form-label text-md-right">
-        End day
+        {{ trans('bank.create.end-day') }}
     </label>
 
     <div class="col-md-4">

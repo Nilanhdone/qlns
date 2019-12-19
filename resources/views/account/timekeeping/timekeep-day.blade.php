@@ -5,8 +5,8 @@
 <table class="table">
     <thead>
         <tr>
-            <th>User ID</th>
-            <th>Status</th>
+            <th>{{ trans('bank.time.user_id') }}</th>
+            <th>{{ trans('bank.time.status') }}</th>
         </tr>
     </thead>
     <tbody>
@@ -16,12 +16,12 @@
             <td>
                 <a class="text-primary font-weight-bolder" href="/detail-{{ $timekeep->user_id }}-basic" target="_blank">{{ $timekeep->user_id }}</a>
             </td>
-            <td>{{ $timekeep->status }}</td>
+            <td>{{ trans('bank.time.'.$timekeep->status) }}</td>
         </tr>
         @endforeach
         @else
         <tr>
-            <td colspan="2" class="text-center">Nodata</td>
+            <td colspan="2" class="text-center">{{ trans('bank.time.nodata') }}</td>
         </tr>
         @endif
     </tbody>

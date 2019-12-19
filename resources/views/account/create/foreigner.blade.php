@@ -1,7 +1,7 @@
 <div class="row foreignerForm">
     <div class="col-4">
         <div class="form-group">
-            <label>Name</label>
+            <label>{{ trans('bank.create.name') }}</label>
 
             <input type="text" class="form-control @error('fore_name[]') is-invalid @enderror border border-primary" name="fore_name[]" value="{{ old('fore_name[]') }}" required>
 
@@ -14,7 +14,7 @@
     </div>
     <div class="col-2">
         <div class="form-group">
-            <label>Year of birth</label>
+            <label>{{ trans('bank.create.year-birth') }}</label>
 
             <input type="text" class="form-control @error('fore_year[]') is-invalid @enderror border border-primary" name="fore_year[]" value="{{ old('fore_year[]') }}" required>
 
@@ -27,7 +27,7 @@
     </div>
     <div class="col-2">
         <div class="form-group">
-            <label>Relationship</label>
+            <label>{{ trans('bank.create.relationship') }}</label>
 
             <input type="text" class="form-control @error('fore_rela[]') is-invalid @enderror border border-primary" name="fore_rela[]" value="{{ old('fore_rela[]') }}" required>
 
@@ -40,7 +40,7 @@
     </div>
     <div class="col-4">
         <div class="form-group">
-            <label>Nationality</label>
+            <label>{{ trans('bank.create.nationality') }}</label>
 
             <input type="text" class="form-control @error('fore_nation[]') is-invalid @enderror border border-primary" name="fore_nation[]" value="{{ old('fore_nation[]') }}" required>
 

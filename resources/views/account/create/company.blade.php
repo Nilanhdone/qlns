@@ -1,7 +1,7 @@
 <div class="row companyForm">
     <div class="col-3">
         <div class="form-group">
-            <label>From</label>
+            <label>{{ trans('bank.create.from') }}</label>
 
             <input type="date" class="form-control @error('com_start_day[]') is-invalid @enderror border border-primary" name="com_start_day[]" value="{{ old('com_start_day[]') }}" required>
 
@@ -14,7 +14,7 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>To</label>
+            <label>{{ trans('bank.create.to') }}</label>
 
             <input type="date" class="form-control @error('com_end_day[]') is-invalid @enderror border border-primary" name="com_end_day[]" value="{{ old('com_end_day[]') }}" required>
 
@@ -27,7 +27,7 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>Company Name</label>
+            <label>{{ trans('bank.create.com-name') }}</label>
 
             <input type="text" class="form-control @error('com_unit[]') is-invalid @enderror border border-primary" name="com_unit[]" value="{{ old('com_unit[]') }}" required>
 
@@ -40,7 +40,7 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>Position</label>
+            <label>{{ trans('bank.create.position') }}</label>
 
             <input type="text" class="form-control @error('com_position[]') is-invalid @enderror border border-primary" name="com_position[]" value="{{ old('com_position[]') }}" required>
 

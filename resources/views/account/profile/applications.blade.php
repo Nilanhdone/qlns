@@ -1,10 +1,10 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Reason</th>
-            <th scope="col">Start day</th>
-            <th scope="col">End day</th>
+            <th scope="col">{{ trans('bank.create.title-app') }}</th>
+            <th scope="col">{{ trans('bank.create.reason') }}</th>
+            <th scope="col">{{ trans('bank.create.start-day') }}</th>
+            <th scope="col">{{ trans('bank.create.end-day') }}</th>
         </tr>
     </thead>
     <tbody>

@@ -1,10 +1,10 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">From</th>
-            <th scope="col">To</th>
-            <th scope="col">Company name</th>
-            <th scope="col">Position</th>
+            <th scope="col">{{ trans('bank.create.from') }}</th>
+            <th scope="col">{{ trans('bank.create.to') }}</th>
+            <th scope="col">{{ trans('bank.create.com-name') }}</th>
+            <th scope="col">{{ trans('bank.create.position') }}</th>
         </tr>
     </thead>
     <tbody>
@@ -19,7 +19,7 @@
             @endforeach
         @else
             <tr>
-                <td colspan="4" class="text-center">No data</td>
+                <td colspan="4" class="text-center">{{ trans('bank.create.nodata') }}</td>
             </tr>
         @endif
     </tbody>

@@ -98,7 +98,7 @@
 
                 <div class="col-2">
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{ $application->id }}">
-                        Delete
+                        {{ trans('bank.modal.delete') }}
                     </button>
 
                     <!-- Modal -->
@@ -107,15 +107,19 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalCenterTitle">
-                                        Delete this application?
+                                        {{ trans('bank.modal.app') }}
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <a href="/del-app-{{ $application->id }}" class="btn btn-danger">Delete</a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        {{ trans('bank.modal.close') }}
+                                    </button>
+                                    <a href="/del-app-{{ $application->id }}" class="btn btn-danger">
+                                        {{ trans('bank.modal.delete') }}
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +130,9 @@
 
             <div class="form-group row">
                 <div class="col-md-8 offset-md-3">
-                    <button type="submit" class="btn btn-primary" id="submitBasicButton">Edit</button>
+                    <button type="submit" class="btn btn-primary" id="submitBasicButton">
+                        {{ trans('bank.create.edit') }}
+                    </button>
                 </div>
             </div>
         </form>

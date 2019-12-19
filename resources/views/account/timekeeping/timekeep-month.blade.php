@@ -4,9 +4,9 @@
 <table class="table">
     <thead>
         <tr>
-            <th>User ID</th>
-            <th>Name</th>
-            <th>Total absent</th>
+            <th>{{ trans('bank.time.user_id') }}</th>
+            <th>{{ trans('bank.time.name') }}</th>
+            <th>{{ trans('bank.time.total') }}</th>
         </tr>
     </thead>
     <tbody>
@@ -22,7 +22,7 @@
         @endforeach
         @else
         <tr>
-            <td colspan="3" class="text-center">Nodata</td>
+            <td colspan="3" class="text-center">{{ trans('bank.time.nodata') }}</td>
         </tr>
         @endif
     </tbody>

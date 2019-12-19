@@ -1,7 +1,7 @@
 <div class="row trainingForm">
     <div class="col-3">
         <div class="form-group">
-            <label>From</label>
+            <label>{{ trans('bank.create.from') }}</label>
 
             <input type="date" class="form-control @error('train_start_day[]') is-invalid @enderror border border-primary" name="train_start_day[]" value="{{ old('train_start_day[]') }}" required>
 
@@ -14,7 +14,7 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>To</label>
+            <label>{{ trans('bank.create.to') }}</label>
 
             <input type="date" class="form-control @error('train_end_day[]') is-invalid @enderror border border-primary" name="train_end_day[]" value="{{ old('train_end_day[]') }}" required>
 
@@ -27,7 +27,7 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>Training Unit</label>
+            <label>{{ trans('bank.create.unit') }}</label>
 
             <input type="text" class="form-control @error('train_unit[]') is-invalid @enderror border border-primary" name="train_unit[]" value="{{ old('train_unit[]') }}" required>
 
@@ -40,7 +40,7 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>Address</label>
+            <label>{{ trans('bank.create.address') }}</label>
 
             <input type="text" class="form-control @error('train_address[]') is-invalid @enderror border border-primary" name="train_address[]" value="{{ old('train_address[]') }}" required>
 
@@ -58,7 +58,7 @@
 <div class="row trainingForm">
     <div class="col-12">
         <div class="form-group">
-            <label>Training Content</label>
+            <label>{{ trans('bank.create.content') }}</label>
 
             <input type="text" class="form-control @error('train_content[]') is-invalid @enderror border border-primary" name="train_content[]" value="{{ old('train_content[]') }}" required>
 

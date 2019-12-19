@@ -3,7 +3,7 @@
 @section('content')
 <div class="card">
     <div class="card-header text-uppercase text-primary font-weight-bolder">
-        Update process
+        {{ trans('bank.create.update-header') }}
     </div>
 
     <div class="card-body">
@@ -28,7 +28,7 @@
             <input type="hidden" name="user_id" value="{{ $user_id }}">
             <div class="form-group row">
                 <label class="col-md-4 col-form-label text-md-right">
-                    Start day
+                    {{ trans('bank.create.start-day') }}
                 </label>
 
                 <div class="col-md-4">
@@ -41,7 +41,7 @@
             </div>
             <div class="form-group row">
                 <label class="col-md-4 col-form-label text-md-right">
-                    End day
+                    {{ trans('bank.create.end-day') }}
                 </label>
 
                 <div class="col-md-4">
@@ -113,7 +113,9 @@
 
             <div class="form-group row">
                 <div class="col-6 offset-4">
-                    <button type="sumbit" class="btn btn-primary">Update</button>
+                    <button type="sumbit" class="btn btn-primary">
+                        {{ trans('bank.create.update') }}
+                    </button>
                 </div>
             </div>
         </form>

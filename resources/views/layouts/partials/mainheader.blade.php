@@ -24,18 +24,18 @@
                 @if(Auth::user()->role == 'admin')
                 <li class="nav-item mx-0 mx-lg-1 dropdown">
                     <a id="function" class="nav-link py-3 px-0 px-lg-5 rounded js-scroll-trigger dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-users-cog fa-lg mr-2"></i>Functions
+                        <i class="fas fa-users-cog fa-lg mr-2"></i>{{ trans('bank.header.functions') }}
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="function">
                         <a class="dropdown-item" href="{{ route('show-create-account') }}">
-                            <i class="fas fa-user-plus mr-2"></i>Create account
+                            <i class="fas fa-user-plus mr-2"></i>{{ trans('bank.header.create') }}
                         </a>
                         <a class="dropdown-item" href="{{ route('show-search') }}">
-                            <i class="fas fa-search mr-2"></i>Search
+                            <i class="fas fa-search mr-2"></i>{{ trans('bank.header.search') }}
                         </a>
                         <a class="dropdown-item" href="{{ route('calendar') }}">
-                            <i class="fas fa-clipboard-list mr-2"></i>Timekeeping
+                            <i class="fas fa-clipboard-list mr-2"></i>{{ trans('bank.header.timekeep') }}
                         </a>
                     </div>
                 </li>
@@ -47,10 +47,10 @@
 
                     <div class="dropdown-menu" aria-labelledby="profile">
                         <a class="dropdown-item" href="{{ route('profile') }}">
-                            <i class="fas fa-id-badge mr-2"></i>Profile
+                            <i class="fas fa-id-badge mr-2"></i>{{ trans('bank.header.profile') }}
                         </a>
                         <a class="dropdown-item" href="{{ route('change-password') }}">
-                            <i class="fas fa-unlock-alt mr-2"></i>Change password
+                            <i class="fas fa-unlock-alt mr-2"></i>{{ trans('bank.header.change-pass') }}
                         </a>
                         <a class="dropdown-item" href="/logout">
                             <i class="fas fa-sign-out-alt mr-2"></i>{{ trans('messages.header.logout') }}

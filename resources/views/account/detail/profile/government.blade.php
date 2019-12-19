@@ -27,28 +27,28 @@
                 <input type="hidden" name="id[]" value="{{ $government->id }}">
                 <div class="col-3">
                     <div class="form-group">
-                        <label>From</label>
+                        <label>{{ trans('bank.create.from') }}</label>
 
                         <input type="date" class="form-control border border-primary" name="gov_start_day[]" value="{{ $government->start_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>To</label>
+                        <label>{{ trans('bank.create.to') }}</label>
 
                         <input type="date" class="form-control border border-primary" name="gov_end_day[]" value="{{ $government->end_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>Government Name</label>
+                        <label>{{ trans('bank.create.gov-name') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="gov_unit[]" value="{{ $government->unit }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>Position</label>
+                        <label>{{ trans('bank.create.position') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="gov_position[]" value="{{ $government->position }}" readonly required>
                     </div>
@@ -61,7 +61,7 @@
                 <div class="col-auto mr-auto"></div>
                 <div class="col-auto">
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del{{ $government->id }}">
-                        Delete
+                        {{ trans('bank.modal.delete') }}
                     </button>
 
                     <!-- Modal -->
@@ -70,15 +70,19 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalCenterTitle">
-                                        Delete this government work history?
+                                        {{ trans('bank.modal.gov') }}
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <a href="/del-gov-{{ $government->id }}" class="btn btn-danger">Delete</a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        {{ trans('bank.modal.close') }}
+                                    </button>
+                                    <a href="/del-gov-{{ $government->id }}" class="btn btn-danger">
+                                        {{ trans('bank.modal.delete') }}
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +97,7 @@
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="submitGovButton">
-                        Update
+                        {{ trans('bank.create.edit') }}
                     </button>
                 </div>
             </div>
@@ -108,7 +112,7 @@
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="addGovButton">
-                        Add new
+                        {{ trans('bank.create.add') }}
                     </button>
                 </div>
             </div>
