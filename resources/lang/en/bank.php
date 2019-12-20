@@ -5,6 +5,7 @@ return [
         'create' => 'Create account',
         'search' => 'Search',
         'timekeep' => 'Timekeeping',
+        'report' => 'Report',
         'profile' => 'Profile',
         'change-pass' => 'Change password',
     ],
@@ -98,5 +99,9 @@ return [
         'lau' => 'Delete this laudatory?',
         'dis' => 'Delete this discipline?',
         'app' => 'Delete this application?',
+    ],
+    'report' => [
+        'header' => 'Export Report',
+        'staff' => 'Staff list Report',
     ],
 ];

@@ -13,6 +13,8 @@
 
 Route::get('/','HomeController@index')->name('home');
 Route::get('lang/{locale}','LangController@lang');
+Route::get('password/lang/{locale}', 'LangController@lang');
+Route::get('password/reset/lang/{locale}', 'LangController@lang');
 Route::get('update/lang/{locale}','LangController@lang');
 Route::get('detail/lang/{locale}','LangController@lang');
 Route::get('edit-basic/lang/{locale}','LangController@lang');
@@ -81,6 +83,8 @@ Route::get('get-calendar','CalendarController@getCalendar')->name('get-calendar'
 Route::get('get-time-{day}-{month}-{year}','CalendarController@getTimeDay')->name('get-time');
 
 Route::post('export', 'ExcelController@export')->name('export');
+Route::get('show-report', 'Report\ReportController@showReport')->name('show-report');
+Route::get('export-staff-{type}', 'Report\StaffReportController@export')->name('export-staff');
 
 Route::get('show-app-{user_id}', 'Admin\ApplicationController@showAppForm')->name('show-app');
 Route::post('get-app', 'Admin\ApplicationController@getApp')->name('get-app');

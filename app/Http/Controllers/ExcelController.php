@@ -7,9 +7,10 @@ use Excel;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use App\Model\User;
 
-class ExcelController extends Controller implements FromCollection, WithHeadings
+class ExcelController extends Controller implements FromCollection, WithHeadings, ShouldAutoSize
 {
     use Exportable;
 

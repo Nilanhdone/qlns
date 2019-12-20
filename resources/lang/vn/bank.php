@@ -5,6 +5,7 @@ return [
         'create' => 'Tạo tài khoản',
         'search' => 'Tìm kiếm',
         'timekeep' => 'Chấm công',
+        'report' => 'Báo cáo',
         'profile' => 'Hồ sơ',
         'change-pass' => 'Đổi mật khẩu',
     ],
@@ -98,5 +99,9 @@ return [
         'lau' => 'Xóa khen thưởng này?',
         'dis' => 'Xóa vi phạm này?',
         'app' => 'Xóa đơn phép này?',
+    ],
+    'report' => [
+        'header' => 'Xuất báo cáo',
+        'staff' => 'Báo cáo danh sách nhân viên',
     ],
 ];
