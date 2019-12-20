@@ -337,7 +337,7 @@ return [
         'repassword' => 'Xác nhận mật khẩu mới',
         'button' => 'Đổi mật khẩu',
     ],
-    'reset-password' => [
+    'reset' => [
         'header' => 'Đặt lại mật khẩu',
         'email' => 'Thư điện tử',
         'password' => 'Mật khẩu mới',

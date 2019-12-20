@@ -337,7 +337,7 @@ return [
         'repassword' => 'Confirm new password',
         'button' => 'Change password',
     ],
-    'reset-password' => [
+    'reset' => [
         'header' => 'Reset password',
         'email' => 'Email',
         'password' => 'New password',

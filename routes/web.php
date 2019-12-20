@@ -13,12 +13,81 @@
 
 Route::get('/','HomeController@index')->name('home');
 Route::get('lang/{locale}','LangController@lang');
+Route::get('password/lang/{locale}', 'LangController@lang');
+Route::get('password/reset/lang/{locale}', 'LangController@lang');
 Route::get('update/lang/{locale}','LangController@lang');
 Route::get('detail/lang/{locale}','LangController@lang');
 Route::get('edit-basic/lang/{locale}','LangController@lang');
 
 Route::get('pdf','PDFController@index');
+Route::get('show-create-account', 'Admin\AccountController@showCreateAccount')->name('show-create-account');
+Route::post('create-account', 'Admin\AccountController@createAccount')->name('create-account');
+Route::get('show-search', 'Admin\SearchController@showSearchForm')->name('show-search');
+Route::get('search', 'Admin\SearchController@search')->name('search');
 
+Route::get('profile','Admin\UserController@showProfile')->name('profile');
+
+// Route::get('detail-{id}','Admin\EditAccountController@showDetailAccount')->name('detail');
+Route::get('detail-{id}-{component}','Admin\EditAccountController@showDetailAccount')->name('detail');
+Route::post('edit-basic-info','Admin\EditAccountController@editBasicInfo')->name('edit-basic-info');
+
+Route::post('edit-edu','Admin\EducationController@editEducation')->name('edit-edu');
+Route::post('add-edu','Admin\EducationController@addEducation')->name('add-edu');
+Route::get('del-edu-{id}','Admin\EducationController@delete')->name('del-edu');
+
+Route::post('edit-train','Admin\TrainingController@editTrain')->name('edit-train');
+Route::post('add-train','Admin\TrainingController@addTrain')->name('add-train');
+Route::get('del-train-{id}','Admin\TrainingController@delete')->name('del-train');
+
+Route::post('edit-com','Admin\CompanyController@editCompany')->name('edit-com');
+Route::post('add-com','Admin\CompanyController@addCompany')->name('add-com');
+Route::get('del-com-{id}','Admin\CompanyController@delete')->name('del-com');
+
+Route::post('edit-gov','Admin\GovernmentController@editGov')->name('edit-gov');
+Route::post('add-gov','Admin\GovernmentController@addGov')->name('add-gov');
+Route::get('del-gov-{id}','Admin\GovernmentController@delete')->name('del-gov');
+
+Route::post('edit-party','Admin\PartyController@editParty')->name('edit-party');
+Route::post('add-party','Admin\PartyController@addParty')->name('add-party');
+Route::get('del-party-{id}','Admin\PartyController@delete')->name('del-party');
+
+Route::post('edit-family','Admin\FamilyController@editFamily')->name('edit-family');
+Route::post('add-family','Admin\FamilyController@addFamily')->name('add-family');
+Route::get('del-family-{id}','Admin\FamilyController@delete')->name('del-family');
+
+Route::post('edit-foreigner','Admin\ForeignerController@editForeigner')->name('edit-foreigner');
+Route::post('add-foreigner','Admin\ForeignerController@addForeigner')->name('add-foreigner');
+Route::get('del-foreigner-{id}','Admin\ForeignerController@delete')->name('del-foreigner');
+
+Route::post('edit-laudatory','Admin\LaudatoryController@editLaudatory')->name('edit-laudatory');
+Route::post('add-laudatory','Admin\LaudatoryController@addLaudatory')->name('add-laudatory');
+Route::get('del-laudatory-{id}','Admin\LaudatoryController@delete')->name('del-laudatory');
+
+Route::post('edit-discipline','Admin\DisciplineController@editDiscipline')->name('edit-discipline');
+Route::post('add-discipline','Admin\DisciplineController@addDiscipline')->name('add-discipline');
+Route::get('del-discipline-{id}','Admin\DisciplineController@delete')->name('del-discipline');
+
+Route::get('edit-{id}','Admin\ProcessController@showEditProcess')->name('show-edit');
+Route::post('edit-pr','Admin\ProcessController@editProcess')->name('edit-pr');
+Route::post('edit-application','Admin\ApplicationController@editApp')->name('edit-application');
+Route::get('del-app-{id}','Admin\ApplicationController@delete')->name('del-app');
+
+Route::get('print-{user_id}','Admin\EditAccountController@printProfile')->name('print');
+Route::get('delete-{user_id}','Admin\EditAccountController@deleteAccount')->name('delete-account');
+
+Route::post('update-pr','Admin\ProcessController@updateProcess')->name('update-pr');
+Route::get('update-{user_id}','Admin\ProcessController@showUpdateProcess')->name('show-update');
+
+Route::get('calendar','CalendarController@showCalendar')->name('calendar');
+Route::get('get-calendar','CalendarController@getCalendar')->name('get-calendar');
+Route::get('get-time-{day}-{month}-{year}','CalendarController@getTimeDay')->name('get-time');
+
+Route::post('export', 'ExcelController@export')->name('export');
+Route::get('show-report', 'Report\ReportController@showReport')->name('show-report');
+Route::get('export-staff-{type}', 'Report\StaffReportController@export')->name('export-staff');
+
+Route::get('show-app-{user_id}', 'Admin\ApplicationController@showAppForm')->name('show-app');
+Route::post('get-app', 'Admin\ApplicationController@getApp')->name('get-app');
 // USER
     //Forget password
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
@@ -33,7 +102,6 @@ Route::get('pdf','PDFController@index');
     Route::post('login','Auth\LoginController@login');
     // Logout
     Route::get('logout','Auth\LoginController@logout')->name('logout');
-    Route::get('profile','HomeController@showProfile')->name('profile');
     // First login
     Route::post('first-login','Auth\LoginController@changePassword')->name('first-login');
 
@@ -80,7 +148,7 @@ Route::get('pdf','PDFController@index');
     Route::post('multiple-search-detail','AdminController@searchMultiple')->name('multiple-search-detail');
 
     // View detail
-    Route::get('detail-{id}','AdminController@showStaffDetail')->name('detail');
+    // Route::get('detail-{id}','AdminController@showStaffDetail')->name('detail');
     Route::get('edit-basic/{id}','AdminController@showEditBasicForm')->name('edit-basic');
     Route::post('basic-edit', 'AdminController@editBasic')->name('basic-edit');
     Route::get('edit-work/{user_id}','AdminController@showEditWorkForm')->name('edit-work');
