@@ -28,6 +28,8 @@ return [
         'cancel' => 'Cancel',
         'modal' => 'Delete this account?',
         'export' => 'Export results',
+        'age' => 'Age from',
+        'to' => 'to',
     ],
     'create' => [
         'basic' => 'Basic Information',

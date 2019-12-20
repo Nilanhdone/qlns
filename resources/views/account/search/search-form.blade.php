@@ -54,6 +54,23 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Age -->
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label text-md-right">
+                    {{ trans('bank.search.age') }}
+                </label>
+
+                <div class="col-md-3">
+                    <input type="number" class="form-control border border-primary" name="agefrom">
+                </div>
+                <label class="col-md-2 col-form-label text-center">
+                    {{ trans('bank.search.to') }}
+                </label>
+                <div class="col-md-3">
+                    <input type="number" class="form-control border border-primary" name="ageto">
+                </div>
+            </div>
         </div>
 
         <div class="col-8">
@@ -92,6 +109,25 @@
                             {{ trans('messages.positions.'.$position->position) }}
                         </option>
                         @endforeach
+                    </select>
+                </div>
+            </div>
+
+            <!-- Degree -->
+            <div class="form-group row">
+                <label class="col-md-4 col-form-label text-md-right">
+                    {{ trans('messages.register.degree') }}
+                </label>
+
+                <div class="col-md-8">
+                    <select class="btn border-primary" name="degree" form="search">
+                        <option value="">
+                            {{ trans('bank.search.nochoose') }}
+                        </option>
+                        <option value="bachelor">{{ trans('messages.degree.bachelor') }}</option>
+                        <option value="engineer">{{ trans('messages.degree.engineer') }}</option>
+                        <option value="master">{{ trans('messages.degree.master') }}</option>
+                        <option value="post-doctor">{{ trans('messages.degree.post-doctor') }}</option>
                     </select>
                 </div>
             </div>

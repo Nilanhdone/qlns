@@ -28,6 +28,8 @@ return [
         'cancel' => 'Hủy',
         'modal' => 'Xóa tài khoản này?',
         'export' => 'Xuất bảng kết quả',
+        'age' => 'Tuổi từ',
+        'to' => 'đến',
     ],
     'create' => [
         'basic' => 'Thông tin cơ bản',

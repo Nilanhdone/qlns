@@ -63,6 +63,28 @@ class SearchController extends Controller
             $users = $users->where('position', $request->position);
         }
 
+        // kiểm tra trình độ
+        if ($request->degree != null) {
+            $users = $users->where('degree', $request->degree);
+        }
+
+        if ($request->agefrom != null && $request->ageto == null) {
+            $time =  mktime(0,0,0, date('m'), date('d'), (date('Y') - $request->agefrom));
+            $age = date('Y-m-d', $time);
+            $users = $users->where('birthday', '<=', $age);
+        } else if ($request->agefrom == null && $request->ageto != null) {
+            $time =  mktime(0,0,0, date('m'), date('d'), (date('Y') - $request->ageto));
+            $age = date('Y-m-d', $time);
+            $users = $users->where('birthday', '>=', $age);
+        } else if ($request->agefrom != null && $request->ageto != null) {
+            $time =  mktime(0,0,0, date('m'), date('d'), (date('Y') - $request->agefrom));
+            $age = date('Y-m-d', $time);
+            $users = $users->where('birthday', '<=', $age);
+            $time =  mktime(0,0,0, date('m'), date('d'), (date('Y') - $request->ageto));
+            $age = date('Y-m-d', $time);
+            $users = $users->where('birthday', '>=', $age);
+        }
+
         // kiểm tra tên
         if ($request->name != null) {
             $ids = array();
