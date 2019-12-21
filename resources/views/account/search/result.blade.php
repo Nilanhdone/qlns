@@ -4,18 +4,14 @@
 <div class="card-header text-primary font-weight-bolder">
     <div class="row">
         <div class="col-auto mr-auto">
-            {{ count($users) }} {{ trans('bank.search.results') }}
+            {{ trans('bank.search.results', [ 'users' => count($users), 'male' => $male, 'female' => $female ]) }}
         </div>
         <div class="col-auto">
             <form method="POST" action="{{ route('export') }}">
                 @csrf
 
                 @foreach($users as $user)
-                <input type="hidden" name="user_name[]" value="{{ $user->name }}">
-                <input type="hidden" name="user_unit[]" value="{{ $user->unit }}">
-                <input type="hidden" name="user_position[]" value="{{ $user->position }}">
-                <input type="hidden" name="user_phone[]" value="{{ $user->phone }}">
-                <input type="hidden" name="user_email[]" value="{{ $user->email }}">
+                <input type="hidden" name="user_id[]" value="{{ $user->user_id }}">
                 @endforeach
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-file-export mr-2"></i>{{ trans('bank.search.export') }}

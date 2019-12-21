@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Illuminate\Support\Facades\Lang;
 use App\Model\User;
 
 class ExcelController extends Controller implements FromCollection, WithHeadings, ShouldAutoSize
@@ -23,15 +24,27 @@ class ExcelController extends Controller implements FromCollection, WithHeadings
 
     public function collection()
     {
-        $users = $this->users;
+        $users = array();
 
-        for ($i=0; $i < count($users['user_name']) ; $i++) { 
+        for ($i = 0; $i < count($this->users['user_id']) ; $i++) {
+            $users[] = User::where('user_id', $this->users['user_id'][$i])->first();
+        }
+
+        foreach ($users as $row) {
             $user[] = array(
-                '0' => $users['user_name'][$i],
-                '1' => $users['user_unit'][$i],
-                '2' => $users['user_position'][$i],
-                '3' => $users['user_phone'][$i],
-                '4' => $users['user_email'][$i],
+                '0' => $row->user_id,
+                '1' => $row->name,
+                '2' => Lang::get('messages.profile.basic.'.$row->gender),
+                '3' => $row->birthday,
+                '4' => Lang::get('messages.degree.'.$row->degree),
+                '5' => $row->nationality,
+                '6' => $row->religion,
+                '7' => $row->hometown,
+                '8' => $row->address,
+                '9' => $row->phone,
+                '10' => $row->email,
+                '11' => Lang::get('messages.units.'.$row->unit),
+                '12' => Lang::get('messages.positions.'.$row->position),
             );
         }
 
@@ -41,11 +54,19 @@ class ExcelController extends Controller implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
-            'Full name',
-            'Unit',
-            'Positiin',
-            'Phone',
-            'Email',
+            Lang::get('messages.register.user-id'),
+            Lang::get('messages.register.name'),
+            Lang::get('messages.register.gender'),
+            Lang::get('messages.register.birthday'),
+            Lang::get('messages.register.degree'),
+            Lang::get('messages.register.nationality'),
+            Lang::get('messages.register.religion'),
+            Lang::get('messages.register.hometown'),
+            Lang::get('messages.register.address'),
+            Lang::get('messages.register.phone'),
+            Lang::get('messages.register.email'),
+            Lang::get('messages.register.unit'),
+            Lang::get('messages.register.position'),
         ];
     }
 

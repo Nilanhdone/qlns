@@ -20,7 +20,7 @@ return [
         'position' => 'Chức vụ',
         'nochoose' => 'không chọn',
         'search' => 'Tìm kiếm',
-        'results' => 'kết quả',
+        'results' => ':users kết quả, bao gồm :male nam và :female nữ',
         'phone' => 'Số điện thoại',
         'email' => 'Thư điện tử',
         'update' => 'Cập nhật',
@@ -31,6 +31,9 @@ return [
         'export' => 'Xuất bảng kết quả',
         'age' => 'Tuổi từ',
         'to' => 'đến',
+        'staffs' => 'Danh sách nhân viên trong (năm)',
+        'new-staffs' => 'Danh sách nhân viên mới trong (năm)',
+        'retire-staffs' => 'Danh sách nhân viên sẽ nghỉ hưu trong (năm)',
     ],
     'create' => [
         'basic' => 'Thông tin cơ bản',

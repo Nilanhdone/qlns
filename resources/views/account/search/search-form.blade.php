@@ -76,11 +76,11 @@
         <div class="col-8">
             <!-- Unit -->
             <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">
+                <label class="col-md-5 col-form-label text-md-right">
                     {{ trans('bank.search.work-unit') }}
                 </label>
 
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <select class="btn border-primary" name="unit" form="search">
                         <option value="">
                             {{ trans('bank.search.nochoose') }}
@@ -95,11 +95,11 @@
             </div>
             <!-- Position -->
             <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">
+                <label class="col-md-5 col-form-label text-md-right">
                     {{ trans('bank.search.position') }}
                 </label>
 
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <select class="btn border-primary" name="position" form="search">
                         <option value="">
                             {{ trans('bank.search.nochoose') }}
@@ -115,11 +115,11 @@
 
             <!-- Degree -->
             <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right">
+                <label class="col-md-5 col-form-label text-md-right">
                     {{ trans('messages.register.degree') }}
                 </label>
 
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <select class="btn border-primary" name="degree" form="search">
                         <option value="">
                             {{ trans('bank.search.nochoose') }}
@@ -129,6 +129,39 @@
                         <option value="master">{{ trans('messages.degree.master') }}</option>
                         <option value="post-doctor">{{ trans('messages.degree.post-doctor') }}</option>
                     </select>
+                </div>
+            </div>
+
+            <!-- All staff in any year -->
+            <div class="form-group row">
+                <label class="col-md-5 col-form-label text-md-right">
+                    {{ trans('bank.search.staffs') }}
+                </label>
+
+                <div class="col-md-2">
+                    <input type="number" class="form-control border border-primary" name="staffs" id="staffs">
+                </div>
+            </div>
+
+            <!-- All new staff in any year -->
+            <div class="form-group row">
+                <label class="col-md-5 col-form-label text-md-right">
+                    {{ trans('bank.search.new-staffs') }}
+                </label>
+
+                <div class="col-md-2">
+                    <input type="number" class="form-control border border-primary" name="new_staffs" id="newStaffs">
+                </div>
+            </div>
+
+            <!-- All staff will retire in any year -->
+            <div class="form-group row">
+                <label class="col-md-5 col-form-label text-md-right">
+                    {{ trans('bank.search.retire-staffs') }}
+                </label>
+
+                <div class="col-md-2">
+                    <input type="number" class="form-control border border-primary" name="retire_staffs" id="retireStaffs">
                 </div>
             </div>
 
@@ -142,3 +175,35 @@
         </div>
     </div>
 </form>
+
+@section('custom_js')
+<script type="text/javascript">
+    $("#staffs").keyup(function() {
+        if ($(this).val().length > 0 ) {
+            $("#newStaffs").attr("readonly", '');
+            $("#retireStaffs").attr("readonly", '');
+        } else {
+            $("#newStaffs").removeAttr("readonly");
+            $("#retireStaffs").removeAttr("readonly");
+        }
+    })
+    $("#newStaffs").keyup(function() {
+        if ($(this).val().length > 0 ) {
+            $("#staffs").attr("readonly", '');
+            $("#retireStaffs").attr("readonly", '');
+        } else {
+            $("#staffs").removeAttr("readonly");
+            $("#retireStaffs").removeAttr("readonly");
+        }
+    })
+    $("#retireStaffs").keyup(function() {
+        if ($(this).val().length > 0 ) {
+            $("#staffs").attr("readonly", '');
+            $("#newStaffs").attr("readonly", '');
+        } else {
+            $("#staffs").removeAttr("readonly");
+            $("#newStaffs").removeAttr("readonly");
+        }
+    })
+</script>
+@endsection

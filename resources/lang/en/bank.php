@@ -20,7 +20,7 @@ return [
         'position' => 'Position',
         'nochoose' => 'No choose',
         'search' => 'Search',
-        'results' => 'results',
+        'results' => ':users results, include :male males and :female females',
         'phone' => 'Phone number',
         'email' => 'Email',
         'update' => 'Update',
@@ -31,6 +31,9 @@ return [
         'export' => 'Export results',
         'age' => 'Age from',
         'to' => 'to',
+        'staffs' => 'Staff list in (year)',
+        'new-staffs' => 'New staff list in (year)',
+        'retire-staffs' => 'Staff list will retire in (year)',
     ],
     'create' => [
         'basic' => 'Basic Information',
