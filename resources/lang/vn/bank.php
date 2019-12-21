@@ -105,6 +105,7 @@ return [
     ],
     'report' => [
         'header' => 'Xuất báo cáo',
-        'staff' => 'Báo cáo danh sách nhân viên',
+        'staff' => 'Danh sách nhân viên (tới thời điểm hiện tại)',
+        'retire' => 'Dự kiến nghỉ hưu trong 5 năm tới (từ thời điểm hiện tại)',
     ],
 ];

@@ -7,8 +7,11 @@
     </div>
 
     <div class="card-body">
-        <a href="/export-staff-excel" class="text-primary font-weight-bolder">
+        <a href="/export-staff-staff" class="text-primary font-weight-bolder">
             <p><i class="fas fa-file-excel mr-2"></i>{{ trans('bank.report.staff') }}</p>
+        </a>
+        <a href="/export-staff-retire" class="text-primary font-weight-bolder">
+            <p><i class="fas fa-file-excel mr-2"></i>{{ trans('bank.report.retire') }}</p>
         </a>
     </div>
 </div>

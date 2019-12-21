@@ -16,9 +16,38 @@ class StaffReportController extends Controller implements FromCollection, WithHe
 {
     use Exportable;
 
+    public $type;
+
+    public function __construct($type = null)
+    {
+        $this->type = $type;
+    }
+
     public function collection()
     {
         $users = User::where('status', 'new')->get();
+
+        if ($this->type == 'retire') {
+            $today = date('Y-m-d');
+            $time =  mktime(0,0,0, date('m'), date('d'), (date('Y') + 5));
+            $retire_time = date('Y-m-d', $time);
+
+            $male_first = (date('Y') - 62).'-'.date('m').'-'.date('d');
+            $male_last = (date('Y') - 62 + 5).'-'.date('m').'-'.date('d');
+
+            $female_first = (date('Y') - 60).'-'.date('m').'-'.date('d');
+            $female_last = (date('Y') - 60 + 5).'-'.date('m').'-'.date('d');
+
+            $invalid_users = User::where([['status', 'new'], ['gender', 'male'], ['birthday', '>', $male_last]])
+            ->orWhere([['status', 'new'], ['gender', 'male'], ['birthday', '<', $male_first]])
+            ->orWhere([['status', 'new'], ['gender', 'female'], ['birthday', '<', $female_first]])
+            ->orWhere([['status', 'new'], ['gender', 'female'], ['birthday', '>', $female_last]])
+            ->get();
+
+            foreach ($invalid_users as $invalid_user) {
+                $users = $users->where('user_id', '!=',$invalid_user->user_id);
+            }
+        }
 
         foreach ($users as $row) {
             $user[] = array(
@@ -62,8 +91,6 @@ class StaffReportController extends Controller implements FromCollection, WithHe
 
     public function export($type)
     {
-        if ($type == 'excel') {
-            return (new StaffReportController)->download('bank-staff.xlsx', \Maatwebsite\Excel\Excel::XLSX);
-        }
+        return Excel::download(new StaffReportController($type), 'bank.xlsx');
     }
 }

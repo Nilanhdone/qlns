@@ -105,6 +105,7 @@ return [
     ],
     'report' => [
         'header' => 'Export Report',
-        'staff' => 'Staff list Report',
+        'staff' => 'Staff list (to the present time)',
+        'retire' => 'Expected retiring in the next 5 years (from the present time)',
     ],
 ];

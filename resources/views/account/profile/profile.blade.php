@@ -18,7 +18,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-2">
-                <div class="row">
+                <div class="row mb-4">
                     <img src="{{asset('img/avatar').'/'.$user->avatar}}" class="rounded mx-auto d-block" height="200" width="120">
                 </div>
 
