@@ -86,6 +86,12 @@ class EditAccountController extends Controller
                 'address' => ['required', 'string', 'max:255'],
                 'phone' => ['required', 'regex:/[0-9]/', 'min:10', 'max:11'],
                 'email' => ['required'],
+                'identity' => ['required'],
+                'passport' => ['required'],
+                'matrimony' => ['required'],
+                'party_day' => ['required'],
+                'army_day' => ['required'],
+                'health' => ['required'],
             ];
 
             // kiểm tra điều kiện đầu vào
@@ -104,6 +110,12 @@ class EditAccountController extends Controller
             $user->hometown = $request->hometown;
             $user->address = $request->address;
             $user->phone = $request->phone;
+            $user->identity = $request->identity;
+            $user->passport = $request->passport;
+            $user->matrimony = $request->matrimony;
+            $user->party_day = $request->party_day;
+            $user->army_day = $request->army_day;
+            $user->health = $request->health;
             $user->save();
 
             DB::commit();

@@ -2,7 +2,7 @@
 
 @section('custom_css')
 <style type="text/css">
-    #genderCheck, #degreeList, #submitBasicButton, #cancelBasicButton {
+    #genderCheck, #degreeList, #submitBasicButton, #cancelBasicButton , #matrimonyList {
         display: none;
     }
 </style>
@@ -26,6 +26,16 @@
 
                 <div class="col-md-8">
                     <input type="text" class="form-control border border-primary" name="user_id" value="{{ $user->user_id }}" readonly>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label text-md-right">
+                    {{ trans('bank.create.recruitment') }}
+                </label>
+
+                <div class="col-md-8">
+                    <input type="text" class="form-control border border-primary" name="recruitment_day" value="{{ $user->recruitment_day }}" readonly>
                 </div>
             </div>
 
@@ -204,6 +214,112 @@
             </div>
 
             <div class="form-group row">
+                <label class="col-md-3 col-form-label text-md-right">
+                    {{ trans('bank.create.identity') }}
+                </label>
+
+                <div class="col-md-8">
+                    <input type="text" class="form-control @error('identity') is-invalid @enderror border border-primary" name="identity" value="{{ $user->identity }}" id="identity" required readonly>
+
+                    @error('identity')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label text-md-right">
+                    {{ trans('bank.create.passport') }}
+                </label>
+
+                <div class="col-md-8">
+                    <input type="text" class="form-control @error('passport') is-invalid @enderror border border-primary" name="passport" value="{{ $user->passport }}" id="passport" required readonly>
+
+                    @error('passport')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label text-md-right">
+                    {{ trans('bank.create.matrimony') }}
+                </label>
+
+                <div class="col-md-8" id="matrimony">
+                    <input type="text" class="form-control border-primary" value="{{ trans('bank.create.'.$user->matrimony) }}" readonly>
+                </div>
+
+                <div class="col-md-8" id="matrimonyList">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="matrimony" value="married" checked>
+                        <label class="form-check-label">
+                            {{ trans('bank.create.married') }}
+                        </label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="matrimony" value="single">
+                        <label class="form-check-label">
+                            {{ trans('bank.create.single') }}
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label text-md-right">
+                    {{ trans('bank.create.party_day') }}
+                </label>
+
+                <div class="col-md-8">
+                    <input type="date" class="form-control @error('party_day') is-invalid @enderror border border-primary" name="party_day" value="{{ $user->party_day }}" id="partyDay" required readonly>
+
+                    @error('party_day')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label text-md-right">
+                    {{ trans('bank.create.army_day') }}
+                </label>
+
+                <div class="col-md-8">
+                    <input type="date" class="form-control @error('army_day') is-invalid @enderror border border-primary" name="army_day" value="{{ $user->army_day }}" id="armyDay" required readonly>
+
+                    @error('army_day')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-3 col-form-label text-md-right">
+                    {{ trans('bank.create.health') }}
+                </label>
+
+                <div class="col-md-8">
+                    <input type="text" class="form-control @error('health') is-invalid @enderror border border-primary" name="health" value="{{ $user->health }}" id="health" required readonly>
+
+                    @error('health')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <div class="col-md-8 offset-md-3">
                     <button type="submit" class="btn btn-primary" id="submitBasicButton">Edit</button>
                 </div>
@@ -224,11 +340,18 @@
         $("#hometown").removeAttr("readonly");
         $("#address").removeAttr("readonly");
         $("#phone").removeAttr("readonly");
+        $("#identity").removeAttr("readonly");
+        $("#passport").removeAttr("readonly");
+        $("#partyDay").removeAttr("readonly");
+        $("#armyDay").removeAttr("readonly");
+        $("#health").removeAttr("readonly");
 
         $("#degree").css("display", "none");
         $("#degreeList").css("display", "inline");
         $("#gender").css("display", "none");
         $("#genderCheck").css("display", "inline");
+        $("#matrimony").css("display", "none");
+        $("#matrimonyList").css("display", "inline");
 
         $("#submitBasicButton").css("display", "inline");
         $("#cancelBasicButton").css("display", "inline");
@@ -243,11 +366,18 @@
         $("#hometown").attr("readonly", '');
         $("#address").attr("readonly", '');
         $("#phone").attr("readonly", '');
+        $("#identity").attr("readonly", '');
+        $("#passport").attr("readonly", '');
+        $("#partyDay").attr("readonly", '');
+        $("#armyDay").attr("readonly", '');
+        $("#health").attr("readonly", '');
 
         $("#degree").css("display", "inline");
         $("#degreeList").css("display", "none");
         $("#gender").css("display", "inline");
         $("#genderCheck").css("display", "none");
+        $("#matrimony").css("display", "inline");
+        $("#matrimonyList").css("display", "none");
 
         $("#submitBasicButton").css("display", "none");
         $("#editBasicButton").css("display", "inline");
