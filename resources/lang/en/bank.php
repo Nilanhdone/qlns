@@ -48,7 +48,7 @@ return [
         'dis' => 'Discipline',
         'po-ro' => 'Position and Role',
         'process' => 'Work Process',
-        'application' => 'Application',
+        'application' => 'Application list',
         'start-day' => 'Start day',
         'end-day' => 'End day',
         'create' => 'Create',

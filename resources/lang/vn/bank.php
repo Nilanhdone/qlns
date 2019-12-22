@@ -48,7 +48,7 @@ return [
         'dis' => 'Kỷ luật - Vi phạm',
         'po-ro' => 'Chức vụ và quyền hạn',
         'process' => 'Quá trình công tác',
-        'application' => 'Đơn phép',
+        'application' => 'Danh sách đơn nghỉ phép',
         'start-day' => 'Ngày bắt đầu',
         'end-day' => 'Ngày kết thúc',
         'create' => 'Tạo',
