@@ -48,7 +48,9 @@
                 <td>
                     <a href="update-{{ $user->user_id }}" class="badge badge-success text-uppercase" target="_blank">{{ trans('bank.search.update') }}</a>
                     <a href="/show-app-{{ $user->user_id }}" class="badge badge-primary text-uppercase" target="_blank">{{ trans('bank.search.application') }}</a>
+                    @if($user->user_id != Auth::user()->user_id)
                     @include('account.search.delete-modal')
+                    @endif
                 </td>
             </tr>
             @endforeach

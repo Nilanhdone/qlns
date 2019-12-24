@@ -143,6 +143,7 @@ return [
         'army_day' => 'Date of enlistment',
         'health' => 'Health status',
         'recruitment' => 'Recruitment day',
+        'now' => 'now',
     ],
     'time' => [
         'header' => 'Timekeeping Calendar',
@@ -170,6 +171,9 @@ return [
     ],
     'report' => [
         'header' => 'Export Report',
+        'modal-header' => 'The report contains :results results',
+        'close' => 'Close',
+        'download' => 'Download',
         'staff' => 'Staff list (to the present time)',
         'retire' => 'Expected retiring in the next 5 years (from the present time)',
     ],

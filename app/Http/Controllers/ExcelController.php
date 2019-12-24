@@ -33,18 +33,25 @@ class ExcelController extends Controller implements FromCollection, WithHeadings
         foreach ($users as $row) {
             $user[] = array(
                 '0' => $row->user_id,
-                '1' => $row->name,
-                '2' => Lang::get('messages.profile.basic.'.$row->gender),
-                '3' => $row->birthday,
-                '4' => Lang::get('messages.degree.'.$row->degree),
-                '5' => $row->nationality,
-                '6' => $row->religion,
-                '7' => $row->hometown,
-                '8' => $row->address,
-                '9' => $row->phone,
-                '10' => $row->email,
-                '11' => Lang::get('messages.units.'.$row->unit),
-                '12' => Lang::get('messages.positions.'.$row->position),
+                '1' => $row->recruitment_day,
+                '2' => $row->name,
+                '3' => Lang::get('messages.profile.basic.'.$row->gender),
+                '4' => $row->birthday,
+                '5' => Lang::get('messages.degree.'.$row->degree),
+                '6' => $row->nationality,
+                '7' => $row->religion,
+                '8' => $row->hometown,
+                '9' => $row->address,
+                '10' => $row->phone,
+                '11' => $row->email,
+                '12' => Lang::get('messages.units.'.$row->unit),
+                '13' => Lang::get('messages.positions.'.$row->position),
+                '14' => $row->identity,
+                '15' => $row->passport,
+                '16' => Lang::get('bank.create.'.$row->matrimony),
+                '17' => $row->party_day,
+                '18' => $row->army_day,
+                '19' => $row->health,
             );
         }
 
@@ -55,6 +62,7 @@ class ExcelController extends Controller implements FromCollection, WithHeadings
     {
         return [
             Lang::get('messages.register.user-id'),
+            Lang::get('bank.create.recruitment'),
             Lang::get('messages.register.name'),
             Lang::get('messages.register.gender'),
             Lang::get('messages.register.birthday'),
@@ -67,6 +75,12 @@ class ExcelController extends Controller implements FromCollection, WithHeadings
             Lang::get('messages.register.email'),
             Lang::get('messages.register.unit'),
             Lang::get('messages.register.position'),
+            Lang::get('bank.create.identity'),
+            Lang::get('bank.create.passport'),
+            Lang::get('bank.create.matrimony'),
+            Lang::get('bank.create.party_day'),
+            Lang::get('bank.create.army_day'),
+            Lang::get('bank.create.health'),
         ];
     }
 

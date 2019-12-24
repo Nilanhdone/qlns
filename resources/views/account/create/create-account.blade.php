@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('custom_css')
+<style type="text/css">
+    #removeEduHis, #removeTrainHis, #removeComHis, #removeGovHis, #removePartyHis, #removeFamilyRela, #removeForeignerRela, #removeLaudatory, #removeDiscipline {
+        display: none;
+    }
+</style>
+@endsection
+
 @section('content')
 <div class="card">
     <div class="card-header text-uppercase text-primary font-weight-bolder">

@@ -1,11 +1,11 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">{{ trans('bank.create.name') }}</th>
-            <th scope="col">{{ trans('bank.create.year-birth') }}</th>
-            <th scope="col">{{ trans('bank.create.relationship') }}</th>
-            <th scope="col">{{ trans('bank.create.nationality') }}</th>
-            <th scope="col">{{ trans('bank.create.time') }}</th>
+            <th scope="col">{{ trans('bank.foreigner.name') }}</th>
+            <th scope="col">{{ trans('bank.foreigner.year') }}</th>
+            <th scope="col">{{ trans('bank.foreigner.relationship') }}</th>
+            <th scope="col">{{ trans('bank.foreigner.nationality') }}</th>
+            <th scope="col">{{ trans('bank.foreigner.time') }}</th>
         </tr>
     </thead>
     <tbody>

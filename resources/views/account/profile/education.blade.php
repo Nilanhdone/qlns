@@ -1,10 +1,10 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">{{ trans('bank.create.from') }}</th>
-            <th scope="col">{{ trans('bank.create.to') }}</th>
-            <th scope="col">{{ trans('bank.create.level') }}</th>
-            <th scope="col">{{ trans('bank.create.address') }}</th>
+            <th scope="col">{{ trans('bank.education.from') }}</th>
+            <th scope="col">{{ trans('bank.education.to') }}</th>
+            <th scope="col">{{ trans('bank.education.level') }}</th>
+            <th scope="col">{{ trans('bank.education.address') }}</th>
         </tr>
     </thead>
     <tbody>

@@ -35,63 +35,126 @@
             <div style="float: right; width: 60%; text-align: center; color: #DD0000;">
                 <table>
                     <tr>
-                        <td style="width: 40%">User ID</td>
-                        <td style="width: 60%">{{ $user->user_id }}</td>
+                        <td>User ID</td>
+                        <td>{{ $user->user_id }}</td>
                     </tr>
                     <tr>
-                        <td style="width: 40%">Name</td>
-                        <td style="width: 60%">{{ $user->name }}</td>
+                        <td>Name</td>
+                        <td>{{ $user->name }}</td>
                     </tr>
                     <tr>
-                        <td style="width: 40%">Gender</td>
+                        <td>Gender</td>
                         @if(($user->gender) == 'male')
-                        <td style="width: 60%">Male</td>
+                        <td>Male</td>
                         @elseif(($user->gender) == 'female')
-                        <td style="width: 60%">Female</td>
+                        <td>Female</td>
                         @endif
                     </tr>
                     <tr>
-                        <td style="width: 40%">Birthday</td>
-                        <td style="width: 60%">{{ $user->birthday }}</td>
+                        <td>Birthday</td>
+                        <td>{{ $user->birthday }}</td>
                     </tr>
                     <tr>
-                        <td style="width: 40%">Degree</td>
+                        <td>Degree</td>
                         @if(($user->degree) == 'bachelor')
-                        <td style="width: 60%">Bachelor</td>
+                        <td>Bachelor</td>
                         @elseif(($user->degree) == 'engineer')
-                        <td style="width: 60%">Engineer</td>
+                        <td>Engineer</td>
                         @elseif(($user->degree) == 'master')
-                        <td style="width: 60%">Master</td>
+                        <td>Master</td>
                         @elseif(($user->degree) == 'post-doctor')
-                        <td style="width: 60%">Post-Doctor</td>
+                        <td>Post-Doctor</td>
                         @endif
                     </tr>
                     <tr>
-                        <td style="width: 40%">Phone</td>
-                        <td style="width: 60%">{{ $user->phone }}</td>
+                        <td>Phone</td>
+                        <td>{{ $user->phone }}</td>
                     </tr>
                     <tr>
-                        <td style="width: 40%">Email</td>
-                        <td style="width: 60%">{{ $user->email }}</td>
+                        <td>Email</td>
+                        <td>{{ $user->email }}</td>
                     </tr>
                     <tr>
-                        <td style="width: 40%">Nationality</td>
-                        <td style="width: 60%">{{ $user->nationality }}</td>
+                        <td>Nationality</td>
+                        <td>{{ $user->nationality }}</td>
                     </tr>
                     <tr>
-                        <td style="width: 40%">Religion</td>
-                        <td style="width: 60%">{{ $user->religion }}</td>
+                        <td>Religion</td>
+                        <td>{{ $user->religion }}</td>
                     </tr>
                     <tr>
-                        <td style="width: 40%">Hometown</td>
-                        <td style="width: 60%">{{ $user->hometown }}</td>
+                        <td>Hometown</td>
+                        <td>{{ $user->hometown }}</td>
                     </tr>
                     <tr>
-                        <td style="width: 40%">Current address</td>
-                        <td style="width: 60%">{{ $user->address }}</td>
+                        <td>Current address</td>
+                        <td>{{ $user->address }}</td>
+                    </tr>
+                    <tr>
+                        <td>Passport</td>
+                        <td>{{ $user->passport }}</td>
+                    </tr>
+                    <tr>
+                        <td>Identity</td>
+                        <td>{{ $user->identity }}</td>
+                    </tr>
+                    <tr>
+                        <td">Matrimony</td>
+                        @if(($user->matrimony) == 'single')
+                        <td>Single</td>
+                        @elseif(($user->matrimony) == 'married')
+                        <td>Married</td>
+                        @endif
+                    </tr>
+                    <tr>
+                        <td>Day into the party</td>
+                        <td">{{ $user->party_day }}</td>
+                    </tr>
+                    <tr>
+                        <td>Date of enlistment</td>
+                        <td>{{ $user->army_day }}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%">Recruitment day</td>
+                        <td style="width: 50%">{{ $user->recruitment_day }}</td>
                     </tr>
                 </table>
             </div>
+        </div>
+
+        <!-- Horizontal line -->
+        <p style="border-top: 1px solid;"></p>
+
+        <p style="text-align: center; font-size: 1.7em;">Work Process</p>
+
+        <!-- Work process -->
+        <div>
+            <table style=" width: 100%;">
+                <tr>
+                    <th style="text-align: left; width: 15%">From</th>
+                    <th style="text-align: left; width: 15%">To</th>
+                    <th style="text-align: left; width: 15%">Bracnh</th>
+                    <th style="text-align: left; width: 25%">Unit</th>
+                    <th style="text-align: left; width: 10%">Position</th>
+                    <th style="text-align: left; width: 8%">Salary</th>
+                    <th style="text-align: left; width: 12%">Insurance Number</th>
+                </tr>
+                @foreach($processs as $process)
+                <tr>
+                    <td style="text-align: left;">{{ $process->start_day }}</td>
+                    @if($process->end_day == null)
+                    <td style="text-align: left;">now</td>
+                    @else
+                    <td style="text-align: left;">{{ $process->end_day }}</td>
+                    @endif
+                    <td style="text-align: left;">{{ trans('messages.branchs.'.$process->branch) }}</td>
+                    <td style="text-align: left;">{{ trans('messages.units.'.$process->unit) }}</td>
+                    <td style="text-align: left;">{{ trans('messages.positions.'.$process->position) }}</td>
+                    <td style="text-align: center;">{{ $process->salary }}</td>
+                    <td style="text-align: left;">{{ $process->insurance }}</td>
+                </tr>
+                @endforeach
+            </table>
         </div>
 
         <!-- Horizontal line -->
@@ -106,14 +169,14 @@
                 <tr>
                     <th style="text-align: left; width: 25%">From</th>
                     <th style="text-align: left; width: 25%">To</th>
-                    <th style="text-align: left; width: 25%">Education Unit</th>
+                    <th style="text-align: left; width: 25%">Study level</th>
                     <th style="text-align: left; width: 25%">Address</th>
                 </tr>
                 @foreach($educations as $education)
                 <tr>
                     <td style="text-align: left; width: 25%">{{ $education->start_day }}</td>
                     <td style="text-align: left; width: 25%">{{ $education->end_day }}</td>
-                    <td style="text-align: left; width: 25%">{{ $education->unit }}</td>
+                    <td style="text-align: left; width: 25%">{{ $education->level }}</td>
                     <td style="text-align: left; width: 25%">{{ $education->address }}</td>
                 </tr>
                 @endforeach
@@ -132,17 +195,17 @@
                 <tr>
                     <th style="text-align: left; width: 20%">From</th>
                     <th style="text-align: left; width: 20%">To</th>
-                    <th style="text-align: left; width: 20%">Training Unit</th>
-                    <th style="text-align: left; width: 20%">Address</th>
-                    <th style="text-align: left; width: 20%">Content</th>
+                    <th style="text-align: left; width: 20%">Training course</th>
+                    <th style="text-align: left; width: 20%">Training places</th>
+                    <th style="text-align: left; width: 20%">Training content</th>
                 </tr>
                 @foreach($trainings as $training)
                 <tr>
-                    <td style="text-align: left; width: 20%">{{ $training->start_day }}</td>
-                    <td style="text-align: left; width: 20%">{{ $training->end_day }}</td>
-                    <td style="text-align: left; width: 20%">{{ $training->unit }}</td>
-                    <td style="text-align: left; width: 20%">{{ $training->address }}</td>
-                    <td style="text-align: left; width: 20%">{{ $training->content }}</td>
+                    <td style="text-align: left;">{{ $training->start_day }}</td>
+                    <td style="text-align: left;">{{ $training->end_day }}</td>
+                    <td style="text-align: left;">{{ $training->course }}</td>
+                    <td style="text-align: left;">{{ $training->address }}</td>
+                    <td style="text-align: left;">{{ $training->content }}</td>
                 </tr>
                 @endforeach
             </table>
@@ -210,15 +273,17 @@
         <div>
             <table style=" width: 100%;">
                 <tr>
-                    <th style="text-align: left; width: 25%">Join day</th>
-                    <th style="text-align: left; width: 25%">Party Unit</th>
+                    <th style="text-align: left; width: 25%">From</th>
+                    <th style="text-align: left; width: 25%">To</th>
                     <th style="text-align: left; width: 25%">Position</th>
+                    <th style="text-align: left; width: 25%">Other information</th>
                 </tr>
                 @foreach($partys as $party)
                 <tr>
-                    <td style="text-align: left; width: 25%">{{ $party->join_day }}</td>
-                    <td style="text-align: left; width: 25%">{{ $party->unit }}</td>
+                    <td style="text-align: left; width: 25%">{{ $party->start_day }}</td>
+                    <td style="text-align: left; width: 25%">{{ $party->end_day }}</td>
                     <td style="text-align: left; width: 25%">{{ $party->position }}</td>
+                    <td style="text-align: left; width: 25%">{{ $party->other }}</td>
                 </tr>
                 @endforeach
             </table>
@@ -260,17 +325,19 @@
         <div>
             <table style=" width: 100%;">
                 <tr>
-                    <th style="text-align: left; width: 25%">Name</th>
-                    <th style="text-align: left; width: 25%">Year of birth</th>
-                    <th style="text-align: left; width: 25%">Relationship</th>
-                    <th style="text-align: left; width: 25%">Nationality</th>
+                    <th style="text-align: left; width: 20%">Name</th>
+                    <th style="text-align: left; width: 20%">Year of birth</th>
+                    <th style="text-align: left; width: 20%">Relationship</th>
+                    <th style="text-align: left; width: 20%">Nationality</th>
+                    <th style="text-align: left; width: 20%">Time</th>
                 </tr>
                 @foreach($foreigners as $foreigner)
                 <tr>
-                    <td style="text-align: left; width: 25%">{{ $foreigner->name }}</td>
-                    <td style="text-align: left; width: 25%">{{ $foreigner->year }}</td>
-                    <td style="text-align: left; width: 25%">{{ $foreigner->relationship }}</td>
-                    <td style="text-align: left; width: 25%">{{ $foreigner->nationality }}</td>
+                    <td style="text-align: left;">{{ $foreigner->name }}</td>
+                    <td style="text-align: left;">{{ $foreigner->year }}</td>
+                    <td style="text-align: left;">{{ $foreigner->relationship }}</td>
+                    <td style="text-align: left;">{{ $foreigner->nationality }}</td>
+                    <td style="text-align: left;">{{ $foreigner->time }}</td>
                 </tr>
                 @endforeach
             </table>
@@ -288,15 +355,15 @@
                 <tr>
                     <th style="text-align: left; width: 25%">Title</th>
                     <th style="text-align: left; width: 25%">Year</th>
-                    <th style="text-align: left; width: 25%">Organization</th>
-                    <th style="text-align: left; width: 25%">Content</th>
+                    <th style="text-align: left; width: 25%">Laudatory method</th>
+                    <th style="text-align: left; width: 25%">Decision number</th>
                 </tr>
                 @foreach($laudatorys as $laudatory)
                 <tr>
                     <td style="text-align: left; width: 25%">{{ $laudatory->title }}</td>
                     <td style="text-align: left; width: 25%">{{ $laudatory->year }}</td>
-                    <td style="text-align: left; width: 25%">{{ $laudatory->organization }}</td>
-                    <td style="text-align: left; width: 25%">{{ $laudatory->content }}</td>
+                    <td style="text-align: left; width: 25%">{{ $laudatory->method }}</td>
+                    <td style="text-align: left; width: 25%">{{ $laudatory->number }}</td>
                 </tr>
                 @endforeach
             </table>
@@ -314,46 +381,13 @@
                 <tr>
                     <th style="text-align: left; width: 25%">Discipline</th>
                     <th style="text-align: left; width: 25%">Year</th>
-                    <th style="text-align: left; width: 25%">Organization</th>
-                    <th style="text-align: left; width: 25%">Method</th>
+                    <th style="text-align: left; width: 25%">Discipline method</th>
                 </tr>
                 @foreach($disciplines as $discipline)
                 <tr>
-                    <td style="text-align: left; width: 25%">{{ $discipline->infringe }}</td>
+                    <td style="text-align: left; width: 25%">{{ $discipline->discipline }}</td>
                     <td style="text-align: left; width: 25%">{{ $discipline->year }}</td>
-                    <td style="text-align: left; width: 25%">{{ $discipline->organization }}</td>
                     <td style="text-align: left; width: 25%">{{ $discipline->method }}</td>
-                </tr>
-                @endforeach
-            </table>
-        </div>
-
-        <!-- Horizontal line -->
-        <p style="border-top: 1px solid;"></p>
-
-        <p style="text-align: center; font-size: 1.7em;">Work Process</p>
-
-        <!-- Work process -->
-        <div>
-            <table style=" width: 100%;">
-                <tr>
-                    <th style="text-align: left; width: 15%">From</th>
-                    <th style="text-align: left; width: 15%">To</th>
-                    <th style="text-align: left; width: 15%">Bracnh</th>
-                    <th style="text-align: left; width: 25%">Unit</th>
-                    <th style="text-align: left; width: 10%">Position</th>
-                    <th style="text-align: left; width: 8%">Salary</th>
-                    <th style="text-align: left; width: 12%">Insurance Number</th>
-                </tr>
-                @foreach($processs as $process)
-                <tr>
-                    <td style="text-align: left;">{{ $process->start_day }}</td>
-                    <td style="text-align: left;">{{ $process->end_day }}</td>
-                    <td style="text-align: left;">{{ trans('messages.branchs.'.$process->branch) }}</td>
-                    <td style="text-align: left;">{{ trans('messages.units.'.$process->unit) }}</td>
-                    <td style="text-align: left;">{{ trans('messages.positions.'.$process->position) }}</td>
-                    <td style="text-align: center;">{{ $process->salary }}</td>
-                    <td style="text-align: left;">{{ $process->insurance }}</td>
                 </tr>
                 @endforeach
             </table>

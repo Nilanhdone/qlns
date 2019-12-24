@@ -1,10 +1,10 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">{{ trans('bank.create.from') }}</th>
-            <th scope="col">{{ trans('bank.create.to') }}</th>
-            <th scope="col">{{ trans('bank.create.position') }}</th>
-            <th scope="col">{{ trans('bank.create.other') }}</th>
+            <th scope="col">{{ trans('bank.party.from') }}</th>
+            <th scope="col">{{ trans('bank.party.to') }}</th>
+            <th scope="col">{{ trans('bank.party.position') }}</th>
+            <th scope="col">{{ trans('bank.party.other') }}</th>
         </tr>
     </thead>
     <tbody>

@@ -1,5 +1,16 @@
 @extends('layouts.app')
 
+@section('custom_css')
+<style type="text/css">
+    body  {
+        background-image: url("{{asset('img/bg-bank.jpg')}}");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 1495px 600px;
+    }
+</style>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

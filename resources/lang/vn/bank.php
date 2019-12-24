@@ -143,6 +143,7 @@ return [
         'army_day' => 'Ngày nhập ngũ',
         'health' => 'Tình trạng sức khỏe',
         'recruitment' => 'Ngày tuyển dụng',
+        'now' => 'nay',
     ],
     'time' => [
         'header' => 'Lịch chấm công',
@@ -170,6 +171,9 @@ return [
     ],
     'report' => [
         'header' => 'Xuất báo cáo',
+        'modal-header' => 'Báo cáo chứa :results kết quả',
+        'close' => 'Đóng',
+        'download' => 'Tải xuống',
         'staff' => 'Danh sách nhân viên (tới thời điểm hiện tại)',
         'retire' => 'Dự kiến nghỉ hưu trong 5 năm tới (từ thời điểm hiện tại)',
     ],

@@ -1,9 +1,9 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">{{ trans('bank.create.dis') }}</th>
-            <th scope="col">{{ trans('bank.create.year') }}</th>
-            <th scope="col">{{ trans('bank.create.method') }}</th>
+            <th scope="col">{{ trans('bank.discipline.discipline') }}</th>
+            <th scope="col">{{ trans('bank.discipline.year') }}</th>
+            <th scope="col">{{ trans('bank.discipline.method') }}</th>
         </tr>
     </thead>
     <tbody>

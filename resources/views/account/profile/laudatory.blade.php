@@ -1,10 +1,10 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">{{ trans('bank.create.title') }}</th>
-            <th scope="col">{{ trans('bank.create.year') }}</th>
-            <th scope="col">{{ trans('bank.create.method') }}</th>
-            <th scope="col">{{ trans('bank.create.number') }}</th>
+            <th scope="col">{{ trans('bank.laudatory.title') }}</th>
+            <th scope="col">{{ trans('bank.laudatory.year') }}</th>
+            <th scope="col">{{ trans('bank.laudatory.method') }}</th>
+            <th scope="col">{{ trans('bank.laudatory.number') }}</th>
         </tr>
     </thead>
     <tbody>

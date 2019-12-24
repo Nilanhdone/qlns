@@ -138,6 +138,7 @@ class CalendarController extends Controller
         $month = date('m');
         $year = date('o');
         $value = $year.'-'.$month;
+        $max = date('o').'-'.date('m');
         // các tuần có trong tháng hiện tại
         $calendar = $this->getWeekCalendar($month, $year);
 
@@ -171,13 +172,13 @@ class CalendarController extends Controller
             }
 
         return view('account.timekeeping.timekeep-month',
-            compact('today', 'calendar', 'month', 'year', 'value', 'off_list'));
+            compact('today', 'calendar', 'month', 'year', 'value', 'off_list', 'max'));
     }
 
     public function getCalendar(Request $request)
     {
-        // dd($request->all()); exit();
         $value = $request->month;
+        $max = date('o').'-'.date('m');
 
         $year = explode('-', $request->month)[0];
         $month = explode('-', $request->month)[1];
@@ -255,7 +256,7 @@ class CalendarController extends Controller
         }
 
         return view('account.timekeeping.timekeep-month',
-            compact('today', 'calendar', 'month', 'year', 'value', 'off_list'));
+            compact('today', 'calendar', 'month', 'year', 'value', 'off_list', 'max'));
     }
 
     public function getTimeDay($day, $month, $year)
@@ -276,8 +277,9 @@ class CalendarController extends Controller
         $timekeeps = Timekeep::where('day', $date)->get();
         $calendar = $this->getWeekCalendar($month, $year);
         $value = $year.'-'.$month;
+        $max = date('o').'-'.date('m');
 
         return view('account.timekeeping.timekeep-day',
-            compact('day', 'today', 'calendar', 'month', 'year', 'value', 'timekeeps'));
+            compact('day', 'today', 'calendar', 'month', 'year', 'value', 'timekeeps', 'max'));
     }
 }
