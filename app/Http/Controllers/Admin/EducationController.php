@@ -16,7 +16,6 @@ use App\Model\Party;
 use App\Model\Family;
 use App\Model\Foreigner;
 use App\Model\Laudatory;
-use App\Model\Infringe;
 use Auth;
 use Session;
 use Illuminate\Http\UploadedFile;
@@ -35,7 +34,7 @@ class EducationController extends Controller
             $rules = [
                 'edu_start_day' => ['required'],
                 'edu_end_day' => ['required'],
-                'edu_unit' => ['required'],
+                'edu_level' => ['required'],
                 'edu_address' => ['required'],
             ];
 
@@ -49,7 +48,7 @@ class EducationController extends Controller
                 $education = Education::where([['user_id', $request->user_id], ['id', $request->id[$i]]])->first();
                 $education->start_day = $request->edu_start_day[$i];
                 $education->end_day = $request->edu_end_day[$i];
-                $education->unit = $request->edu_unit[$i];
+                $education->level = $request->edu_level[$i];
                 $education->address = $request->edu_address[$i];
                 $education->save();
             }
@@ -69,7 +68,7 @@ class EducationController extends Controller
         $rules = [
             'edu_start_day' => ['required'],
             'edu_end_day' => ['required'],
-            'edu_unit' => ['required'],
+            'edu_level' => ['required'],
             'edu_address' => ['required'],
         ];
 
@@ -85,7 +84,7 @@ class EducationController extends Controller
                 'user_id' => $request->user_id,
                 'start_day' => $request->edu_start_day[$i],
                 'end_day' => $request->edu_end_day[$i],
-                'unit' => $request->edu_unit[$i],
+                'level' => $request->edu_level[$i],
                 'address' => $request->edu_address[$i],
             ]);
         }

@@ -16,7 +16,7 @@ use App\Model\Party;
 use App\Model\Family;
 use App\Model\Foreigner;
 use App\Model\Laudatory;
-use App\Model\Infringe;
+use App\Model\Discipline;
 use App\Model\Process;
 use Auth;
 use Session;
@@ -58,7 +58,7 @@ class AccountController extends Controller
             'health' => ['required'],
             'edu_start_day' => ['required'],
             'edu_end_day' => ['required'],
-            'edu_unit' => ['required'],
+            'edu_level' => ['required'],
             'edu_address' => ['required'],
             'fa_name' => ['required'],
             'fa_year' => ['required'],
@@ -139,7 +139,7 @@ class AccountController extends Controller
                 'user_id' => $user_id,
                 'start_day' => $request->edu_start_day[$i],
                 'end_day' => $request->edu_end_day[$i],
-                'unit' => $request->edu_unit[$i],
+                'level' => $request->edu_level[$i],
                 'address' => $request->edu_address[$i],
             ]);
         }
@@ -151,7 +151,7 @@ class AccountController extends Controller
                     'user_id' => $user_id,
                     'start_day' => $request->train_start_day[$i],
                     'end_day' => $request->train_end_day[$i],
-                    'unit' => $request->train_unit[$i],
+                    'course' => $request->train_course[$i],
                     'address' => $request->train_address[$i],
                     'content' => $request->train_content[$i],
                 ]);
@@ -189,9 +189,10 @@ class AccountController extends Controller
             for ($i = 0; $i < count($request->join_day); $i++) {
                 Party::create([
                     'user_id' => $user_id,
-                    'join_day' => $request->join_day[$i],
-                    'unit' => $request->party_unit[$i],
+                    'start_day' => $request->party_start_day[$i],
+                    'end_day' => $request->party_end_day[$i],
                     'position' => $request->party_position[$i],
+                    'other' => $request->party_other[$i],
                 ]);
             }
         }
@@ -216,6 +217,7 @@ class AccountController extends Controller
                     'year' => $request->fore_year[$i],
                     'relationship' => $request->fore_rela[$i],
                     'nationality' => $request->fore_nation[$i],
+                    'time' => $request->fore_time[$i],
                 ]);
             }
         }
@@ -228,21 +230,20 @@ class AccountController extends Controller
                     'user_id' => $user_id,
                     'title' => $request->title[$i],
                     'year' => $request->lau_year[$i],
-                    'organization' => $request->lau_organization[$i],
-                    'content' => $request->lau_content[$i],
+                    'method' => $request->lau_method[$i],
+                    'number' => $request->lau_number[$i],
                 ]);
             }
         }
 
         // lưu các vi phạm kỉ luật
-        if ($request->infringe != null) {
-            for ($i = 0; $i < count($request->infringe); $i++) {
-                Infringe::create([
+        if ($request->discipline != null) {
+            for ($i = 0; $i < count($request->discipline); $i++) {
+                Discipline::create([
                     'user_id' => $user_id,
-                    'infringe' => $request->infringe[$i],
-                    'year' => $request->inf_year[$i],
-                    'organization' => $request->inf_organization[$i],
-                    'method' => $request->inf_method[$i],
+                    'discipline' => $request->discipline[$i],
+                    'year' => $request->dis_year[$i],
+                    'method' => $request->dis_method[$i],
                 ]);
             }
         }

@@ -17,7 +17,7 @@ use App\Model\Party;
 use App\Model\Family;
 use App\Model\Foreigner;
 use App\Model\Laudatory;
-use App\Model\Infringe;
+use App\Model\Discipline;
 use App\Model\Process;
 use App\Model\Application;
 use session;
@@ -39,10 +39,10 @@ class UserController extends Controller
         $familys = Family::where('user_id', $user_id)->get();
         $foreigners = Foreigner::where('user_id', $user_id)->get();
         $laudatorys = Laudatory::where('user_id', $user_id)->get();
-        $infringes = Infringe::where('user_id', $user_id)->get();
+        $disciplines = Discipline::where('user_id', $user_id)->get();
         $processs = Process::where('user_id', $user_id)->get();
         $applications = Application::where('user_id', $user_id)->get();
         return view('account.profile.profile',
-            compact('user', 'educations', 'trainings', 'companys', 'governments', 'partys', 'familys', 'foreigners', 'laudatorys', 'infringes', 'processs', 'applications'));
+            compact('user', 'educations', 'trainings', 'companys', 'governments', 'partys', 'familys', 'foreigners', 'laudatorys', 'disciplines', 'processs', 'applications'));
     }
 }

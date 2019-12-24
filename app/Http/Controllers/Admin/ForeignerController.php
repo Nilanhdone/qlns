@@ -16,7 +16,6 @@ use App\Model\Party;
 use App\Model\Family;
 use App\Model\Foreigner;
 use App\Model\Laudatory;
-use App\Model\Infringe;
 use Auth;
 use Session;
 use Illuminate\Support\Facades\Hash;
@@ -34,6 +33,7 @@ class ForeignerController extends Controller
                 'fore_year' => ['required'],
                 'fore_rela' => ['required'],
                 'fore_nation' => ['required'],
+                'fore_time' => ['required'],
             ];
 
             // kiểm tra điều kiện đầu vào
@@ -48,6 +48,7 @@ class ForeignerController extends Controller
                 $foreigner->year = $request->fore_year[$i];
                 $foreigner->relationship = $request->fore_rela[$i];
                 $foreigner->nationality = $request->fore_nation[$i];
+                $foreigner->time = $request->fore_time[$i];
                 $foreigner->save();
             }
 
@@ -68,6 +69,7 @@ class ForeignerController extends Controller
             'fore_year' => ['required'],
             'fore_rela' => ['required'],
             'fore_nation' => ['required'],
+            'fore_time' => ['required'],
         ];
 
         // kiểm tra điều kiện đầu vào
@@ -83,6 +85,7 @@ class ForeignerController extends Controller
                 'year' => $request->fore_year[$i],
                 'relationship' => $request->fore_rela[$i],
                 'nationality' => $request->fore_nation[$i],
+                'time' => $request->fore_time[$i],
             ]);
         }
 

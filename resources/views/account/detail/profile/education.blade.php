@@ -25,28 +25,28 @@
                 <input type="hidden" name="id[]" value="{{ $education->id }}">
                 <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.from') }}</label>
+                        <label>{{ trans('bank.education.from') }}</label>
 
-                        <input type="date" class="form-control border border-primary" name="edu_start_day[]" value="{{ $education->start_day }}" readonly required>
+                        <input type="month" class="form-control border border-primary" name="edu_start_day[]" value="{{ $education->start_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.to') }}</label>
+                        <label>{{ trans('bank.education.to') }}</label>
 
-                        <input type="date" class="form-control border border-primary" name="edu_end_day[]" value="{{ $education->end_day }}" readonly required>
+                        <input type="month" class="form-control border border-primary" name="edu_end_day[]" value="{{ $education->end_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.unit') }}</label>
+                        <label>{{ trans('bank.education.level') }}</label>
 
-                        <input type="text" class="form-control border border-primary" name="edu_unit[]" value="{{ $education->unit }}" readonly required>
+                        <input type="text" class="form-control border border-primary" name="edu_level[]" value="{{ $education->level }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.address') }}</label>
+                        <label>{{ trans('bank.education.address') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="edu_address[]" value="{{ $education->address }}" readonly required>
                     </div>
@@ -120,7 +120,7 @@
 
 @section('custom_js')
 <script type="text/javascript">
-    $("#menuList").find(".nav-link:eq(1)").attr("class", "nav-link active");
+    $("#menuList").find(".nav-link:eq(2)").attr("class", "nav-link active");
 
     $("#editEduButton").click(function() {
         $("#addNewEduHis").css("display", "none");

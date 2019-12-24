@@ -16,7 +16,6 @@ use App\Model\Party;
 use App\Model\Family;
 use App\Model\Foreigner;
 use App\Model\Laudatory;
-use App\Model\Infringe;
 use Auth;
 use Session;
 use Illuminate\Support\Facades\Hash;
@@ -32,8 +31,8 @@ class LaudatoryController extends Controller
             $rules = [
                 'title' => ['required'],
                 'lau_year' => ['required'],
-                'lau_organization' => ['required'],
-                'lau_content' => ['required'],
+                'lau_method' => ['required'],
+                'lau_number' => ['required'],
             ];
 
             // kiểm tra điều kiện đầu vào
@@ -46,8 +45,8 @@ class LaudatoryController extends Controller
                 $laudatory = Laudatory::where([['user_id', $request->user_id], ['id', $request->id[$i]]])->first();
                 $laudatory->title = $request->title[$i];
                 $laudatory->year = $request->lau_year[$i];
-                $laudatory->organization = $request->lau_organization[$i];
-                $laudatory->content = $request->lau_content[$i];
+                $laudatory->method = $request->lau_method[$i];
+                $laudatory->number = $request->lau_number[$i];
                 $laudatory->save();
             }
 
@@ -66,8 +65,8 @@ class LaudatoryController extends Controller
         $rules = [
             'title' => ['required'],
             'lau_year' => ['required'],
-            'lau_organization' => ['required'],
-            'lau_content' => ['required'],
+            'lau_method' => ['required'],
+            'lau_number' => ['required'],
         ];
 
         // kiểm tra điều kiện đầu vào
@@ -81,8 +80,8 @@ class LaudatoryController extends Controller
                 'user_id' => $request->user_id,
                 'title' => $request->title[$i],
                 'year' => $request->lau_year[$i],
-                'organization' => $request->lau_organization[$i],
-                'content' => $request->lau_content[$i],
+                'method' => $request->lau_method[$i],
+                'number' => $request->lau_number[$i],
             ]);
         }
 

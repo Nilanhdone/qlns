@@ -24,7 +24,7 @@
             </label>
 
             <div class="col-md-4">
-                <input type="date" class="form-control @error('end_day') is-invalid @enderror border-primary" name="end_day" value="{{ $process->end_day }}" required>
+                <input type="date" class="form-control @error('end_day') is-invalid @enderror border-primary" name="end_day" value="{{ $process->end_day }}">
 
                 @error('end_day')
                     <span class="invalid-feedback" role="alert"></span>

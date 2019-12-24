@@ -10,13 +10,6 @@ use App\Model\Unit;
 use App\Model\Position;
 use App\Model\Education;
 use App\Model\Training;
-use App\Model\Company;
-use App\Model\Government;
-use App\Model\Party;
-use App\Model\Family;
-use App\Model\Foreigner;
-use App\Model\Laudatory;
-use App\Model\Infringe;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -31,7 +24,7 @@ class TrainingController extends Controller
             $rules = [
                 'train_start_day' => ['required'],
                 'train_end_day' => ['required'],
-                'train_unit' => ['required'],
+                'train_course' => ['required'],
                 'train_address' => ['required'],
                 'train_content' => ['required'],
             ];
@@ -46,7 +39,7 @@ class TrainingController extends Controller
                 $training = Training::where([['user_id', $request->user_id], ['id', $request->id[$i]]])->first();
                 $training->start_day = $request->train_start_day[$i];
                 $training->end_day = $request->train_end_day[$i];
-                $training->unit = $request->train_unit[$i];
+                $training->course = $request->train_course[$i];
                 $training->address = $request->train_address[$i];
                 $training->content = $request->train_content[$i];
                 $training->save();
@@ -67,7 +60,7 @@ class TrainingController extends Controller
         $rules = [
             'train_start_day' => ['required'],
             'train_end_day' => ['required'],
-            'train_unit' => ['required'],
+            'train_course' => ['required'],
             'train_address' => ['required'],
             'train_content' => ['required'],
         ];
@@ -84,7 +77,7 @@ class TrainingController extends Controller
                 'user_id' => $request->user_id,
                 'start_day' => $request->train_start_day[$i],
                 'end_day' => $request->train_end_day[$i],
-                'unit' => $request->train_unit[$i],
+                'course' => $request->train_course[$i],
                 'address' => $request->train_address[$i],
                 'content' => $request->train_content[$i],
             ]);

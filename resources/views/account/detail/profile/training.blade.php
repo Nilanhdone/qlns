@@ -27,28 +27,28 @@
                 <input type="hidden" name="id[]" value="{{ $training->id }}">
                 <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.from') }}</label>
+                        <label>{{ trans('bank.training.from') }}</label>
 
-                        <input type="date" class="form-control border border-primary" name="train_start_day[]" value="{{ $training->start_day }}" readonly required>
+                        <input type="month" class="form-control border border-primary" name="train_start_day[]" value="{{ $training->start_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.to') }}</label>
+                        <label>{{ trans('bank.training.to') }}</label>
 
-                        <input type="date" class="form-control border border-primary" name="train_end_day[]" value="{{ $training->end_day }}" readonly required>
+                        <input type="month" class="form-control border border-primary" name="train_end_day[]" value="{{ $training->end_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.unit') }}</label>
+                        <label>{{ trans('bank.training.course') }}</label>
 
-                        <input type="text" class="form-control border border-primary" name="train_unit[]" value="{{ $training->unit }}" readonly required>
+                        <input type="text" class="form-control border border-primary" name="train_course[]" value="{{ $training->course }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.address') }}</label>
+                        <label>{{ trans('bank.training.address') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="train_address[]" value="{{ $training->address }}" readonly required>
                     </div>
@@ -60,7 +60,7 @@
             <div class="row trainingForm">
                 <div class="col-12">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.content') }}</label>
+                        <label>{{ trans('bank.training.content') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="train_content[]" value="{{ $training->content }}" readonly required>
                     </div>
@@ -135,7 +135,7 @@
 
 @section('custom_js')
 <script type="text/javascript">
-    $("#menuList").find(".nav-link:eq(2)").attr("class", "nav-link active");
+    $("#menuList").find(".nav-link:eq(3)").attr("class", "nav-link active");
 
     $("#editTrainButton").click(function() {
         $("#addNewTrainHis").css("display", "none");

@@ -34,6 +34,9 @@
                     <a class="nav-link" href="/detail-{{ $user_id }}-basic">
                         {{ trans('bank.create.basic') }}
                     </a>
+                    <a class="nav-link" href="/detail-{{ $user_id }}-processs">
+                        {{ trans('bank.create.process') }}
+                    </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-educations">
                         {{ trans('bank.create.edu') }}
                     </a>
@@ -60,9 +63,6 @@
                     </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-disciplines">
                         {{ trans('bank.create.dis') }}
-                    </a>
-                    <a class="nav-link" href="/detail-{{ $user_id }}-processs">
-                        {{ trans('bank.create.process') }}
                     </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-applications">
                         {{ trans('bank.create.application') }}

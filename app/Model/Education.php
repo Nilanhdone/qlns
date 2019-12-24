@@ -13,6 +13,6 @@ class Education extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'start_day', 'end_day', 'unit', 'address'
+        'user_id', 'start_day', 'end_day', 'level', 'address'
     ];
 }

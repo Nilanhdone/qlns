@@ -46,6 +46,6 @@
 
 @section('custom_js')
 <script type="text/javascript">
-$("#menuList").find(".nav-link:eq(10)").attr("class", "nav-link active");
+$("#menuList").find(".nav-link:eq(1)").attr("class", "nav-link active");
 </script>
 @endsection

@@ -5,6 +5,7 @@
             <th scope="col">{{ trans('bank.create.year-birth') }}</th>
             <th scope="col">{{ trans('bank.create.relationship') }}</th>
             <th scope="col">{{ trans('bank.create.nationality') }}</th>
+            <th scope="col">{{ trans('bank.create.time') }}</th>
         </tr>
     </thead>
     <tbody>
@@ -15,6 +16,7 @@
                 <td>{{ $foreigner->year }}</td>
                 <td>{{ $foreigner->relationship }}</td>
                 <td>{{ $foreigner->nationality }}</td>
+                <td>{{ $foreigner->time }}</td>
             </tr>
             @endforeach
         @else

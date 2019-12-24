@@ -16,9 +16,9 @@ class CreateEducationsTable extends Migration
         Schema::create('educations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('user_id');
-            $table->date('start_day');
-            $table->date('end_day');
-            $table->string('unit');
+            $table->string('start_day');
+            $table->string('end_day');
+            $table->string('level');
             $table->string('address');
             $table->timestamps();
         });

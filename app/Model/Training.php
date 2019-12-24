@@ -13,6 +13,6 @@ class Training extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'start_day', 'end_day', 'unit', 'address', 'content'
+        'user_id', 'start_day', 'end_day', 'course', 'address', 'content'
     ];
 }

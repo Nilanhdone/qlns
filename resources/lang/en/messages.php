@@ -2,6 +2,7 @@
 return [
     'header' => [
         'title' => 'Bank of the Lao P.D.R',
+        'subtitle' => 'Human resource management system',
         'login' => 'Login',
         'logout' => 'Logout',
     ],

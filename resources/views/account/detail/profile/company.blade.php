@@ -27,28 +27,28 @@
                 <input type="hidden" name="id[]" value="{{ $company->id }}">
                 <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.from') }}</label>
+                        <label>{{ trans('bank.company.from') }}</label>
 
                         <input type="date" class="form-control border border-primary" name="com_start_day[]" value="{{ $company->start_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.to') }}</label>
+                        <label>{{ trans('bank.company.to') }}</label>
 
                         <input type="date" class="form-control border border-primary" name="com_end_day[]" value="{{ $company->end_day }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.com-name') }}</label>
+                        <label>{{ trans('bank.company.unit') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="com_unit[]" value="{{ $company->unit }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.position') }}</label>
+                        <label>{{ trans('bank.company.position') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="com_position[]" value="{{ $company->position }}" readonly required>
                     </div>
@@ -97,7 +97,7 @@
             <div class="form-group row">
                 <div class="col-8 offset-3">
                     <button type="submit" class="btn btn-primary" id="submitComButton">
-                        {{ trans('bank.create.edit) }}
+                        {{ trans('bank.create.edit') }}
                     </button>
                 </div>
             </div>
@@ -123,7 +123,7 @@
 
 @section('custom_js')
 <script type="text/javascript">
-$("#menuList").find(".nav-link:eq(3)").attr("class", "nav-link active");
+$("#menuList").find(".nav-link:eq(4)").attr("class", "nav-link active");
 
 // Company History add
 $("#addNewComHis").click(function() {

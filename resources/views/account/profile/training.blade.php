@@ -13,8 +13,11 @@
             <tr>
                 <td>{{ $training->start_day }}</td>
                 <td>{{ $training->end_day }}</td>
-                <td>{{ $training->unit }}</td>
+                <td>{{ $training->course }}</td>
                 <td>{{ $training->address }}</td>
+            </tr>
+            <tr>
+                <td colspan="4">{{ $training->content }}</td>
             </tr>
             @endforeach
         @else

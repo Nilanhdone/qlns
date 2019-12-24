@@ -15,7 +15,7 @@ use App\Model\Party;
 use App\Model\Family;
 use App\Model\Foreigner;
 use App\Model\Laudatory;
-use App\Model\Infringe;
+use App\Model\Discipline;
 use Auth;
 use Session;
 use Illuminate\Http\UploadedFile;

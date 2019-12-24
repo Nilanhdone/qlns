@@ -25,32 +25,39 @@
             @foreach($foreigners as $foreigner)
             <div class="row foreignerForm">
                 <input type="hidden" name="id[]" value="{{ $foreigner->id }}">
-                <div class="col-4">
+                <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.name') }}</label>
+                        <label>{{ trans('bank.foreigner.name') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="fore_name[]" value="{{ $foreigner->name }}" readonly required>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.yaer-birth') }}</label>
+                        <label>{{ trans('bank.foreigner.year') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="fore_year[]" value="{{ $foreigner->year }}" readonly required>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.relationship') }}</label>
+                        <label>{{ trans('bank.foreigner.relationship') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="fore_rela[]" value="{{ $foreigner->relationship }}" readonly required>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-2">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.nationality') }}</label>
+                        <label>{{ trans('bank.foreigner.nationality') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="fore_nation[]" value="{{ $foreigner->nationality }}" readonly required>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label>{{ trans('bank.foreigner.time') }}</label>
+
+                        <input type="text" class="form-control border border-primary" name="fore_time[]" value="{{ $foreigner->time }}" readonly required>
                     </div>
                 </div>
             </div>
@@ -122,7 +129,7 @@
 
 @section('custom_js')
 <script type="text/javascript">
-$("#menuList").find(".nav-link:eq(7)").attr("class", "nav-link active");
+$("#menuList").find(".nav-link:eq(8)").attr("class", "nav-link active");
 
 // foreigner History add
 $("#addNewForeignerRela").click(function() {

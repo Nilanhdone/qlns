@@ -28,6 +28,9 @@
                     <a class="nav-link active" id="basic-info-tab" data-toggle="pill" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">
                         {{ trans('bank.create.basic') }}
                     </a>
+                    <a class="nav-link" id="process-tab" data-toggle="pill" href="#process" role="tab" aria-controls="process" aria-selected="false">
+                        {{ trans('bank.create.process') }}
+                    </a>
                     <a class="nav-link" id="edu-his-tab" data-toggle="pill" href="#edu-his" role="tab" aria-controls="edu-his" aria-selected="false">
                         {{ trans('bank.create.edu') }}
                     </a>
@@ -54,9 +57,6 @@
                     </a>
                     <a class="nav-link" id="discipline-tab" data-toggle="pill" href="#discipline" role="tab" aria-controls="discipline" aria-selected="false">
                         {{ trans('bank.create.dis') }}
-                    </a>
-                    <a class="nav-link" id="process-tab" data-toggle="pill" href="#process" role="tab" aria-controls="process" aria-selected="false">
-                        {{ trans('bank.create.process') }}
                     </a>
                     <a class="nav-link" id="application-tab" data-toggle="pill" href="#application" role="tab" aria-controls="application" aria-selected="false">
                         {{ trans('bank.create.application') }}

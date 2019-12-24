@@ -16,7 +16,6 @@ use App\Model\Party;
 use App\Model\Family;
 use App\Model\Foreigner;
 use App\Model\Laudatory;
-use App\Model\Infringe;
 use Auth;
 use Session;
 use Illuminate\Support\Facades\Hash;

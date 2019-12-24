@@ -1,7 +1,7 @@
 <div class="row familyForm">
     <div class="col-4">
         <div class="form-group">
-            <label>{{ trans('bank.create.name') }}</label>
+            <label>{{ trans('bank.family.name') }}</label>
 
             <input type="text" class="form-control @error('fa_name[]') is-invalid @enderror border border-primary" name="fa_name[]" value="{{ old('fa_name[]') }}" required>
 
@@ -14,7 +14,7 @@
     </div>
     <div class="col-2">
         <div class="form-group">
-            <label>{{ trans('bank.create.year-birth') }}</label>
+            <label>{{ trans('bank.family.year') }}</label>
 
             <input type="text" class="form-control @error('fa_year[]') is-invalid @enderror border border-primary" name="fa_year[]" value="{{ old('fa_year[]') }}" required>
 
@@ -27,7 +27,7 @@
     </div>
     <div class="col-2">
         <div class="form-group">
-            <label>{{ trans('bank.create.relationship') }}</label>
+            <label>{{ trans('bank.family.relationship') }}</label>
 
             <input type="text" class="form-control @error('fa_rela[]') is-invalid @enderror border border-primary" name="fa_rela[]" value="{{ old('fa_rela[]') }}" required>
 
@@ -40,7 +40,7 @@
     </div>
     <div class="col-4">
         <div class="form-group">
-            <label>{{ trans('bank.create.address') }}</label>
+            <label>{{ trans('bank.family.address') }}</label>
 
             <input type="text" class="form-control @error('fa_address[]') is-invalid @enderror border border-primary" name="fa_address[]" value="{{ old('fa_address[]') }}" required>
 

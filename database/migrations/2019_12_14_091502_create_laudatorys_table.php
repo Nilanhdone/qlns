@@ -18,8 +18,8 @@ class CreateLaudatorysTable extends Migration
             $table->string('user_id');
             $table->string('title');
             $table->string('year');
-            $table->string('organization');
-            $table->string('content');
+            $table->string('method');
+            $table->string('number');
             $table->timestamps();
         });
     }

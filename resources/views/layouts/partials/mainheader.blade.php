@@ -14,6 +14,9 @@
                     <h3 class="mt-3 text-uppercase text-danger font-weight-bold">
                         {{ trans('messages.header.title') }}
                     </h3>
+                    <h6 class="text-uppercase text-danger font-weight-bold">
+                        {{ trans('messages.header.subtitle') }}
+                    </h6>
                 </a>
             </div>
         </div>

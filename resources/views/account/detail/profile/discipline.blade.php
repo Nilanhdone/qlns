@@ -27,30 +27,23 @@
                 <input type="hidden" name="id[]" value="{{ $discipline->id }}">
                 <div class="col-4">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.dis') }}</label>
+                        <label>{{ trans('bank.discipline.discipline') }}</label>
 
-                        <input type="text" class="form-control border border-primary" name="infringe[]" value="{{ $discipline->infringe }}" readonly required>
+                        <input type="text" class="form-control border border-primary" name="discipline[]" value="{{ $discipline->discipline }}" readonly required>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-4">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.year') }}</label>
+                        <label>{{ trans('bank.discipline.year') }}</label>
 
-                        <input type="text" class="form-control border border-primary" name="inf_year[]" value="{{ $discipline->year }}" readonly required>
+                        <input type="text" class="form-control border border-primary" name="dis_year[]" value="{{ $discipline->year }}" readonly required>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.org') }}</label>
+                        <label>{{ trans('bank.discipline.method') }}</label>
 
-                        <input type="text" class="form-control border border-primary" name="inf_organization[]" value="{{ $discipline->organization }}" readonly required>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="form-group">
-                        <label>{{ trans('bank.create.method') }}</label>
-
-                        <input type="text" class="form-control border border-primary" name="inf_method[]" value="{{ $discipline->method }}" readonly required>
+                        <input type="text" class="form-control border border-primary" name="dis_method[]" value="{{ $discipline->method }}" readonly required>
                     </div>
                 </div>
             </div>
@@ -123,7 +116,7 @@
 
 @section('custom_js')
 <script type="text/javascript">
-$("#menuList").find(".nav-link:eq(9)").attr("class", "nav-link active");
+$("#menuList").find(".nav-link:eq(10)").attr("class", "nav-link active");
 
 $("#addNewDiscipline").click(function() {
     $("#newDiscipline").append(`@include('account.create.discipline')`);

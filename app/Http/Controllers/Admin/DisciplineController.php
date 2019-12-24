@@ -16,7 +16,7 @@ use App\Model\Party;
 use App\Model\Family;
 use App\Model\Foreigner;
 use App\Model\Laudatory;
-use App\Model\Infringe;
+use App\Model\Discipline;
 use Auth;
 use Session;
 use Illuminate\Support\Facades\Hash;
@@ -30,10 +30,9 @@ class DisciplineController extends Controller
             DB::beginTransaction();
 
             $rules = [
-                'infringe' => ['required'],
-                'inf_year' => ['required'],
-                'inf_organization' => ['required'],
-                'inf_method' => ['required'],
+                'discipline' => ['required'],
+                'dis_year' => ['required'],
+                'dis_method' => ['required'],
             ];
 
             // kiểm tra điều kiện đầu vào
@@ -42,12 +41,11 @@ class DisciplineController extends Controller
                 return redirect()->back()->withErrors($validator)->withInput();
             }
 
-            for ($i = 0; $i < count($request->infringe); $i++) {
-                $discipline = Infringe::where([['user_id', $request->user_id], ['id', $request->id[$i]]])->first();
-                $discipline->infringe = $request->infringe[$i];
-                $discipline->year = $request->inf_year[$i];
-                $discipline->organization = $request->inf_organization[$i];
-                $discipline->method = $request->inf_method[$i];
+            for ($i = 0; $i < count($request->discipline); $i++) {
+                $discipline = Discipline::where([['user_id', $request->user_id], ['id', $request->id[$i]]])->first();
+                $discipline->discipline = $request->discipline[$i];
+                $discipline->year = $request->dis_year[$i];
+                $discipline->method = $request->dis_method[$i];
                 $discipline->save();
             }
 
@@ -64,10 +62,9 @@ class DisciplineController extends Controller
     public function addDiscipline(Request $request)
     {
         $rules = [
-            'infringe' => ['required'],
-            'inf_year' => ['required'],
-            'inf_organization' => ['required'],
-            'inf_method' => ['required'],
+            'discipline' => ['required'],
+            'dis_year' => ['required'],
+            'dis_method' => ['required'],
         ];
 
         // kiểm tra điều kiện đầu vào
@@ -76,13 +73,12 @@ class DisciplineController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        for ($i = 0; $i < count($request->infringe); $i++) {
-            Infringe::create([
+        for ($i = 0; $i < count($request->discipline); $i++) {
+            discipline::create([
                 'user_id' => $request->user_id,
-                'infringe' => $request->infringe[$i],
-                'year' => $request->inf_year[$i],
-                'organization' => $request->inf_organization[$i],
-                'method' => $request->inf_method[$i],
+                'discipline' => $request->discipline[$i],
+                'year' => $request->dis_year[$i],
+                'method' => $request->dis_method[$i],
             ]);
         }
 
@@ -91,7 +87,7 @@ class DisciplineController extends Controller
 
     public function delete($id)
     {
-        $discipline = Infringe::where('id', $id)->first();
+        $discipline = discipline::where('id', $id)->first();
         $discipline->delete();
 
         return redirect()->back()->with('success', 'Delete successfully!');

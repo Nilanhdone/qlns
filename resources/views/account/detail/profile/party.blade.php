@@ -27,23 +27,30 @@
                 <input type="hidden" name="id[]" value="{{ $party->id }}">
                 <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.join') }}</label>
+                        <label>{{ trans('bank.party.from') }}</label>
 
-                        <input type="date" class="form-control border border-primary" name="join_day[]" value="{{ $party->join_day }}" readonly required>
+                        <input type="month" class="form-control border border-primary" name="party_start_day[]" value="{{ $party->start_day }}" readonly required>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.unit') }}</label>
+                        <label>{{ trans('bank.party.to') }}</label>
 
-                        <input type="text" class="form-control border border-primary" name="party_unit[]" value="{{ $party->unit }}" readonly required>
+                        <input type="month" class="form-control border border-primary" name="party_end_day[]" value="{{ $party->end_day }}" readonly required>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.position') }}</label>
+                        <label>{{ trans('bank.party.position') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="party_position[]" value="{{ $party->position }}" readonly required>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="form-group">
+                        <label>{{ trans('bank.party.other') }}</label>
+
+                        <input type="text" class="form-control border border-primary" name="party_other[]" value="{{ $party->other }}" readonly required>
                     </div>
                 </div>
             </div>
@@ -115,7 +122,7 @@
 
 @section('custom_js')
 <script type="text/javascript">
-$("#menuList").find(".nav-link:eq(5)").attr("class", "nav-link active");
+$("#menuList").find(".nav-link:eq(6)").attr("class", "nav-link active");
 
 // party History add
 $("#addNewPartyHis").click(function() {

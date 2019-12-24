@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInfringesTable extends Migration
+class CreateSalarysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateInfringesTable extends Migration
      */
     public function up()
     {
-        Schema::create('infringes', function (Blueprint $table) {
+        Schema::create('salarys', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('user_id');
-            $table->string('infringe');
-            $table->string('year');
-            $table->string('organization');
-            $table->string('method');
+            $table->string('start_day');
+            $table->string('end_day')->nullable();
+            $table->string('threshold');
+            $table->integer('level');
+            $table->double('coefficients');
+            $table->string('percent');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class CreateInfringesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('infringes');
+        Schema::dropIfExists('salarys');
     }
 }

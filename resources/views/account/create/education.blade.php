@@ -1,9 +1,9 @@
 <div class="row eduForm">
     <div class="col-3">
         <div class="form-group">
-            <label>{{ trans('bank.create.from') }}</label>
+            <label>{{ trans('bank.education.from') }}</label>
 
-            <input type="date" class="form-control @error('edu_start_day[]') is-invalid @enderror border border-primary" name="edu_start_day[]" value="{{ old('edu_start_day[]') }}" required>
+            <input type="month" class="form-control @error('edu_start_day[]') is-invalid @enderror border border-primary" name="edu_start_day[]" value="{{ old('edu_start_day[]') }}" required>
 
             @error('edu_start_day[]')
                 <span class="invalid-feedback" role="alert">
@@ -14,9 +14,9 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>{{ trans('bank.create.to') }}</label>
+            <label>{{ trans('bank.education.to') }}</label>
 
-            <input type="date" class="form-control @error('edu_end_day[]') is-invalid @enderror border border-primary" name="edu_end_day[]" value="{{ old('edu_end_day[]') }}" required>
+            <input type="month" class="form-control @error('edu_end_day[]') is-invalid @enderror border border-primary" name="edu_end_day[]" value="{{ old('edu_end_day[]') }}" required>
 
             @error('edu_end_day[]')
                 <span class="invalid-feedback" role="alert">
@@ -27,11 +27,11 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>{{ trans('bank.create.unit') }}</label>
+            <label>{{ trans('bank.education.level') }}</label>
 
-            <input type="text" class="form-control @error('edu_unit[]') is-invalid @enderror border border-primary" name="edu_unit[]" value="{{ old('edu_unit[]') }}" required>
+            <input type="text" class="form-control @error('edu_level[]') is-invalid @enderror border border-primary" name="edu_level[]" value="{{ old('edu_level[]') }}" required>
 
-            @error('edu_unit[]')
+            @error('edu_level[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -40,7 +40,7 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>{{ trans('bank.create.address') }}</label>
+            <label>{{ trans('bank.education.address') }}</label>
 
             <input type="text" class="form-control @error('edu_address[]') is-invalid @enderror border border-primary" name="edu_address[]" value="{{ old('edu_address[]') }}" required>
 
