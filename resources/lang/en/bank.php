@@ -176,5 +176,10 @@ return [
         'download' => 'Download',
         'staff' => 'Staff list (to the present time)',
         'retire' => 'Expected retiring in the next 5 years (from the present time)',
+        'degree' => 'Staff list sorted by degree (to the present time)',
+        'nationality' => 'Staff list sorted by nationality (to the present time)',
+        'religion' => 'Staff list sorted by religion (to the present time)',
+        'recruitment' => 'Staff list sorted by recruitment day (to the present time)',
+        'birthday' => 'Staff list sorted by birthday (to the present time)',
     ],
 ];

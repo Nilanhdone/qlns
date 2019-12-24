@@ -14,7 +14,7 @@ class AddArmyDayToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->date('army_day');
+            $table->date('army_day')->nullable();
         });
     }
 

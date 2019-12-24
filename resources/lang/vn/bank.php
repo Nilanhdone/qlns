@@ -176,5 +176,10 @@ return [
         'download' => 'Tải xuống',
         'staff' => 'Danh sách nhân viên (tới thời điểm hiện tại)',
         'retire' => 'Dự kiến nghỉ hưu trong 5 năm tới (từ thời điểm hiện tại)',
+        'degree' => 'Danh sách nhân viên sắp xếp theo trình độ (tới thời điểm hiện tại)',
+        'nationality' => 'Danh sách nhân viên sắp xếp theo quốc tịch (tới thời điểm hiện tại)',
+        'religion' => 'Danh sách nhân viên sắp xếp theo tôn giáo (tới thời điểm hiện tại)',
+        'recruitment' => 'Danh sách nhân viên sắp xếp theo ngày tuyển dụng (tới thời điểm hiện tại)',
+        'birthday' => 'Danh sách nhân viên sắp xếp theo ngày sinh (tới thời điểm hiện tại)',
     ],
 ];

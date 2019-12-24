@@ -12,7 +12,14 @@ class ReportController extends Controller
     {
         $staff_number = $this->getNumber('staff');
         $retire_number = $this->getNumber('retire');
-        return view('account.report.report', compact('staff_number', 'retire_number'));
+        $degree_number = $this->getNumber('degree');
+        $national_number = $this->getNumber('national');
+        $religion_number = $this->getNumber('religion');
+        $recruitment_number = $this->getNumber('recruitment');
+        $birthday_number = $this->getNumber('birthday');
+
+        return view('account.report.report',
+            compact('staff_number', 'retire_number', 'degree_number', 'national_number', 'religion_number', 'recruitment_number', 'birthday_number'));
     }
 
     public function getNumber($type)
@@ -40,6 +47,16 @@ class ReportController extends Controller
             foreach ($invalid_users as $invalid_user) {
                 $users = $users->where('user_id', '!=',$invalid_user->user_id);
             }
+        } elseif ($type == 'degree') {
+            $users = User::where('status', 'new')->orderBy('degree')->get();
+        } elseif ($type == 'national') {
+            $users = User::where('status', 'new')->orderBy('nationality')->get();
+        } elseif ($type == 'religion') {
+            $users = User::where('status', 'new')->orderBy('religion')->get();
+        } elseif ($type == 'recruitment') {
+            $users = User::where('status', 'new')->orderBy('recruitment_day')->get();
+        } elseif ($type == 'birthday') {
+            $users = User::where('status', 'new')->orderBy('birthday')->get();
         }
 
         return count($users);

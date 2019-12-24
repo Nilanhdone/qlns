@@ -48,6 +48,16 @@ class StaffReportController extends Controller implements FromCollection, WithHe
             foreach ($invalid_users as $invalid_user) {
                 $users = $users->where('user_id', '!=',$invalid_user->user_id);
             }
+        } elseif ($this->type == 'degree') {
+            $users = User::where('status', 'new')->orderBy('degree')->get();
+        } elseif ($this->type == 'national') {
+            $users = User::where('status', 'new')->orderBy('nationality')->get();
+        } elseif ($this->type == 'religion') {
+            $users = User::where('status', 'new')->orderBy('religion')->get();
+        } elseif ($this->type == 'recruitment') {
+            $users = User::where('status', 'new')->orderBy('recruitment_day')->get();
+        } elseif ($this->type == 'birthday') {
+            $users = User::where('status', 'new')->orderBy('birthday')->get();
         }
 
         foreach ($users as $row) {

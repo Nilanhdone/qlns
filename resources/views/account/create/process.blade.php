@@ -64,7 +64,6 @@
     <div class="col-md-8">
         <select class="btn border-primary" name="role" form="create">
             <option value="employee">{{ trans('messages.role.employee') }}</option>
-            <option value="manager">{{ trans('messages.role.manager') }}</option>
             <option value="admin">{{ trans('messages.role.admin') }}</option>
         </select>
     </div>

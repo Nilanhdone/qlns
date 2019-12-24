@@ -54,7 +54,6 @@ class AccountController extends Controller
             'passport' => ['required'],
             'matrimony' => ['required'],
             'party_day' => ['required'],
-            'army_day' => ['required'],
             'health' => ['required'],
             'edu_start_day' => ['required'],
             'edu_end_day' => ['required'],
@@ -249,7 +248,7 @@ class AccountController extends Controller
         }
 
         // gửi email thông báo đăng ký tài khoản, kèm theo MẬT KHẨU
-        $user->notify(new RegisterNotification($password));
+        // $user->notify(new RegisterNotification($password));
 
         // quay lại và thông báo thành công
         return redirect()->back()->with('success', 'Successfull');
