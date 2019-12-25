@@ -248,7 +248,7 @@ class AccountController extends Controller
         }
 
         // gửi email thông báo đăng ký tài khoản, kèm theo MẬT KHẨU
-        // $user->notify(new RegisterNotification($password));
+        $user->notify(new RegisterNotification($password));
 
         // quay lại và thông báo thành công
         return redirect()->back()->with('success', 'Successfull');
