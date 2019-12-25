@@ -53,7 +53,7 @@ class SearchController extends Controller
                 }
             }
 
-            return view('account.search.result', compact('users', 'units', 'positions'));
+            return view('account.search.result', compact('users', 'units', 'positions', 'male', 'female'));
         }
 
         // kiểm tra giới tính
