@@ -171,6 +171,9 @@ class CalendarController extends Controller
                 $off_list[] = $staff_off;
             }
 
+            // sắp xếp theo thứ tự giảm dần số ngày nghỉ
+            array_multisort(array_column($off_list, "numbers"), SORT_DESC, $off_list);
+
         return view('account.timekeeping.timekeep-month',
             compact('today', 'calendar', 'month', 'year', 'value', 'off_list', 'max'));
     }
@@ -254,6 +257,9 @@ class CalendarController extends Controller
                 $off_list[] = $staff_off;
             }
         }
+
+        // sắp xếp theo thứ tự giảm dần số ngày nghỉ
+        array_multisort(array_column($off_list, "numbers"), SORT_DESC, $off_list);
 
         return view('account.timekeeping.timekeep-month',
             compact('today', 'calendar', 'month', 'year', 'value', 'off_list', 'max'));
