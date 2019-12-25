@@ -163,4 +163,25 @@ class EditAccountController extends Controller
 
         return redirect()->back();
     }
+
+    public function changeImage(Request $request)
+    {
+        // kiểm tra nếu có hình ảnh thì lưu hình ảnh
+        if ($request->hasFile('image')) {
+            $image = $request->image; // lấy ảnh từ đầu vào
+
+            // tên ảnh = thời gian hiện tại + đuôi ảnh
+            $avatar = time().'.'.$image->getClientOriginalExtension();
+
+            // lưu ảnh vào thư mục public\img\avatar
+            $destinationPath = public_path('\img\avatar'); // lấy đường dẫn thư mục
+            $image->move($destinationPath, $avatar); // di chuyển ảnh vào
+        }
+
+        $user = User::where('user_id', $request->user_id)->first();
+        $user->avatar = $avatar;
+        $user->save();
+
+        return redirect()->back();
+    }
 }

@@ -30,6 +30,7 @@ Route::get('profile','Admin\UserController@showProfile')->name('profile');
 // Route::get('detail-{id}','Admin\EditAccountController@showDetailAccount')->name('detail');
 Route::get('detail-{id}-{component}','Admin\EditAccountController@showDetailAccount')->name('detail');
 Route::post('edit-basic-info','Admin\EditAccountController@editBasicInfo')->name('edit-basic-info');
+Route::post('change-image','Admin\EditAccountController@changeImage')->name('change-image');
 
 Route::post('edit-edu','Admin\EducationController@editEducation')->name('edit-edu');
 Route::post('add-edu','Admin\EducationController@addEducation')->name('add-edu');

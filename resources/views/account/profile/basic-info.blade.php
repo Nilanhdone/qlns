@@ -14,11 +14,7 @@
         </tr>
         <tr>
             <th scope="col">{{ trans('messages.register.gender') }}</th>
-            @if(($user->gender) == 'male')
-            <td>{{ trans('messages.profile.basic.male') }}</td>
-            @elseif(($user->gender) == 'female')
-            <td>{{ trans('messages.profile.basic.female') }}</td>
-            @endif
+            <td>{{ trans('messages.profile.basic.'.$user->gender) }}</td>
         </tr>
         <tr>
             <th scope="col">{{ trans('messages.register.birthday') }}</th>
@@ -26,15 +22,7 @@
         </tr>
         <tr>
             <th scope="col">{{ trans('messages.register.degree') }}</th>
-            @if(($user->degree) == 'bachelor')
-            <td>{{ trans('messages.degree.bachelor') }}</td>
-            @elseif(($user->degree) == 'engineer')
-            <td>{{ trans('messages.degree.engineer') }}</td>
-            @elseif(($user->degree) == 'master')
-            <td>{{ trans('messages.degree.master') }}</td>
-            @elseif(($user->degree) == 'post-doctor')
-            <td>{{ trans('messages.degree.post-doctor') }}</td>
-            @endif
+            <td>{{ trans('messages.degree.'.$user->degree) }}</td>
         </tr>
         <tr>
             <th scope="col">{{ trans('messages.register.nationality') }}</th>

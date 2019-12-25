@@ -9,6 +9,12 @@ return [
         'profile' => 'Profile',
         'change-pass' => 'Change password',
     ],
+    'img' => [
+        'title' => 'Click to change image',
+        'header' => 'Change image',
+        'cancel' => 'Cancel',
+        'change' => 'Change',
+    ],
     'search' => [
         'user-id' => 'User ID',
         'name' => 'Full name',

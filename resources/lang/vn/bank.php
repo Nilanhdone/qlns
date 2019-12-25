@@ -9,6 +9,12 @@ return [
         'profile' => 'Hồ sơ',
         'change-pass' => 'Đổi mật khẩu',
     ],
+    'img' => [
+        'title' => 'Nhấn để đổi ảnh',
+        'header' => 'Đổi ảnh',
+        'cancel' => 'Hủy',
+        'change' => 'Đổi',
+    ],
     'search' => [
         'user-id' => 'Số hiệu',
         'name' => 'Họ tên',

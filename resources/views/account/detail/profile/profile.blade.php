@@ -25,7 +25,37 @@
         <div class="row">
             <div class="col-2">
                 <div class="row mb-4">
-                    <img src="{{asset('img/avatar').'/'.$user->avatar}}" class="rounded mx-auto d-block" height="200" width="120">
+                    <img src="{{asset('img/avatar').'/'.$user->avatar}}" class="rounded mx-auto d-block" height="200" width="120" data-toggle="modal" data-target="#changeImage" title="{{ trans('bank.img.title') }}">
+
+                    <div class="modal fade" id="changeImage" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <form method="POST" action="{{ route('change-image') }}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalScrollableTitle">
+                                            {{ trans('bank.img.header') }}
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="hidden" name="user_id" value="{{ $user_id }}">
+                                        <input type="file" class="form-control-file" accept="image/jpeg, image/jpg, image/png" name="image" required>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                            {{ trans('bank.img.cancel') }}
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ trans('bank.img.change') }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="w-100"></div>
