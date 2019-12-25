@@ -25,7 +25,11 @@
                 @foreach($processs as $process)
                 <tr>
                     <td>{{ $process->start_day }}</td>
+                    @if($process->end_day == null)
+                    <td>{{ trans('bank.create.now') }}</td>
+                    @else
                     <td>{{ $process->end_day }}</td>
+                    @endif
                     <td>{{ trans('messages.branchs.'.$process->branch) }}</td>
                     <td>{{ trans('messages.units.'.$process->unit) }}</td>
                     <td>{{ trans('messages.positions.'.$process->position) }}</td>
@@ -46,6 +50,6 @@
 
 @section('custom_js')
 <script type="text/javascript">
-$("#menuList").find(".nav-link:eq(10)").attr("class", "nav-link active");
+$("#menuList").find(".nav-link:eq(1)").attr("class", "nav-link active");
 </script>
 @endsection

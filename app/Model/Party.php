@@ -13,6 +13,6 @@ class Party extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'join_day', 'unit', 'position'
+        'user_id', 'start_day', 'end_day', 'position', 'other'
     ];
 }

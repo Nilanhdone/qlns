@@ -5,6 +5,10 @@
             <td>{{ $user->user_id }}</td>
         </tr>
         <tr>
+            <th scope="col">{{ trans('bank.create.recruitment') }}</th>
+            <td>{{ $user->recruitment_day }}</td>
+        </tr>
+        <tr>
             <th scope="col">{{ trans('messages.register.name') }}</th>
             <td>{{ $user->name }}</td>
         </tr>
@@ -63,6 +67,30 @@
         <tr>
             <th scope="col">{{ trans('messages.register.position') }}</th>
             <td>{{ trans('messages.positions.'.$user->position) }}</td>
+        </tr>
+        <tr>
+            <th scope="col">{{ trans('bank.create.identity') }}</th>
+            <td>{{ $user->identity }}</td>
+        </tr>
+        <tr>
+            <th scope="col">{{ trans('bank.create.passport') }}</th>
+            <td>{{ $user->passport }}</td>
+        </tr>
+        <tr>
+            <th scope="col">{{ trans('bank.create.matrimony') }}</th>
+            <td>{{ trans('bank.create.'.$user->matrimony) }}</td>
+        </tr>
+        <tr>
+            <th scope="col">{{ trans('bank.create.party_day') }}</th>
+            <td>{{ $user->party_day }}</td>
+        </tr>
+        <tr>
+            <th scope="col">{{ trans('bank.create.army_day') }}</th>
+            <td>{{ $user->army_day }}</td>
+        </tr>
+        <tr>
+            <th scope="col">{{ trans('bank.create.health') }}</th>
+            <td>{{ $user->health }}</td>
         </tr>
     </tbody>
 </table>

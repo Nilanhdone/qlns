@@ -20,6 +20,7 @@ class CreateForeignersTable extends Migration
             $table->string('year');
             $table->string('relationship');
             $table->string('nationality');
+            $table->string('time');
             $table->timestamps();
         });
     }

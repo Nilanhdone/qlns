@@ -16,9 +16,9 @@ class CreateTrainingsTable extends Migration
         Schema::create('trainings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('user_id');
-            $table->date('start_day');
-            $table->date('end_day');
-            $table->string('unit');
+            $table->string('start_day');
+            $table->string('end_day');
+            $table->string('course');
             $table->string('address');
             $table->string('content');
             $table->timestamps();

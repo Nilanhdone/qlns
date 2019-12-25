@@ -1,7 +1,7 @@
 <div class="row laudatoryForm">
     <div class="col-4">
         <div class="form-group">
-            <label>{{ trans('bank.create.title') }}</label>
+            <label>{{ trans('bank.laudatory.title') }}</label>
 
             <input type="text" class="form-control @error('title[]') is-invalid @enderror border border-primary" name="title[]" value="{{ old('title[]') }}" required>
 
@@ -14,7 +14,7 @@
     </div>
     <div class="col-2">
         <div class="form-group">
-            <label>{{ trans('bank.create.year') }}</label>
+            <label>{{ trans('bank.laudatory.year') }}</label>
 
             <input type="text" class="form-control @error('lau_year[]') is-invalid @enderror border border-primary" name="lau_year[]" value="{{ old('lau_year[]') }}" required>
 
@@ -27,11 +27,11 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>{{ trans('bank.create.org') }}</label>
+            <label>{{ trans('bank.laudatory.method') }}</label>
 
-            <input type="text" class="form-control @error('lau_organization[]') is-invalid @enderror border border-primary" name="lau_organization[]" value="{{ old('lau_organization[]') }}" required>
+            <input type="text" class="form-control @error('lau_method[]') is-invalid @enderror border border-primary" name="lau_method[]" value="{{ old('lau_method[]') }}" required>
 
-            @error('lau_organization[]')
+            @error('lau_method[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -40,11 +40,11 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>{{ trans('bank.create.content') }}</label>
+            <label>{{ trans('bank.laudatory.number') }}</label>
 
-            <input type="text" class="form-control @error('lau_content[]') is-invalid @enderror border border-primary" name="lau_content[]" value="{{ old('lau_content[]') }}" required>
+            <input type="text" class="form-control @error('lau_number[]') is-invalid @enderror border border-primary" name="lau_number[]" value="{{ old('lau_number[]') }}" required>
 
-            @error('lau_content[]')
+            @error('lau_number[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

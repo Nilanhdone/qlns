@@ -16,7 +16,7 @@ use App\Model\Party;
 use App\Model\Family;
 use App\Model\Foreigner;
 use App\Model\Laudatory;
-use App\Model\Infringe;
+use App\Model\Discipline;
 use App\Model\Process;
 use App\Model\Application;
 use Auth;
@@ -60,7 +60,7 @@ class EditAccountController extends Controller
             $laudatorys = Laudatory::where('user_id', $user_id)->get();
             return view('account.detail.profile.laudatory', compact('laudatorys', 'user', 'user_id'));
         } else if ($component == 'disciplines') {
-            $disciplines = Infringe::where('user_id', $user_id)->get();
+            $disciplines = Discipline::where('user_id', $user_id)->get();
             return view('account.detail.profile.discipline', compact('disciplines', 'user', 'user_id'));
         } else if ($component == 'processs') {
             $processs = Process::where('user_id', $user_id)->get();
@@ -86,6 +86,12 @@ class EditAccountController extends Controller
                 'address' => ['required', 'string', 'max:255'],
                 'phone' => ['required', 'regex:/[0-9]/', 'min:10', 'max:11'],
                 'email' => ['required'],
+                'identity' => ['required'],
+                'passport' => ['required'],
+                'matrimony' => ['required'],
+                'party_day' => ['required'],
+                'army_day' => ['required'],
+                'health' => ['required'],
             ];
 
             // kiểm tra điều kiện đầu vào
@@ -104,6 +110,12 @@ class EditAccountController extends Controller
             $user->hometown = $request->hometown;
             $user->address = $request->address;
             $user->phone = $request->phone;
+            $user->identity = $request->identity;
+            $user->passport = $request->passport;
+            $user->matrimony = $request->matrimony;
+            $user->party_day = $request->party_day;
+            $user->army_day = $request->army_day;
+            $user->health = $request->health;
             $user->save();
 
             DB::commit();
@@ -127,7 +139,7 @@ class EditAccountController extends Controller
         $familys = Family::where('user_id', $user_id)->get();
         $foreigners = Foreigner::where('user_id', $user_id)->get();
         $laudatorys = Laudatory::where('user_id', $user_id)->get();
-        $disciplines = Infringe::where('user_id', $user_id)->get();
+        $disciplines = Discipline::where('user_id', $user_id)->get();
         $processs = Process::where('user_id', $user_id)->get();
         $applications = Application::where('user_id', $user_id)->get();
 

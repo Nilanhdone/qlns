@@ -1,10 +1,10 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">{{ trans('bank.create.title') }}</th>
-            <th scope="col">{{ trans('bank.create.year') }}</th>
-            <th scope="col">{{ trans('bank.create.org') }}</th>
-            <th scope="col">{{ trans('bank.create.content') }}</th>
+            <th scope="col">{{ trans('bank.laudatory.title') }}</th>
+            <th scope="col">{{ trans('bank.laudatory.year') }}</th>
+            <th scope="col">{{ trans('bank.laudatory.method') }}</th>
+            <th scope="col">{{ trans('bank.laudatory.number') }}</th>
         </tr>
     </thead>
     <tbody>
@@ -13,8 +13,8 @@
             <tr>
                 <td>{{ $laudatory->title }}</td>
                 <td>{{ $laudatory->year }}</td>
-                <td>{{ $laudatory->organization }}</td>
-                <td>{{ $laudatory->content }}</td>
+                <td>{{ $laudatory->method }}</td>
+                <td>{{ $laudatory->number }}</td>
             </tr>
             @endforeach
         @else

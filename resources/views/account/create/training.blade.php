@@ -1,9 +1,9 @@
 <div class="row trainingForm">
     <div class="col-3">
         <div class="form-group">
-            <label>{{ trans('bank.create.from') }}</label>
+            <label>{{ trans('bank.training.from') }}</label>
 
-            <input type="date" class="form-control @error('train_start_day[]') is-invalid @enderror border border-primary" name="train_start_day[]" value="{{ old('train_start_day[]') }}" required>
+            <input type="month" class="form-control @error('train_start_day[]') is-invalid @enderror border border-primary" name="train_start_day[]" value="{{ old('train_start_day[]') }}" required>
 
             @error('train_start_day[]')
                 <span class="invalid-feedback" role="alert">
@@ -14,9 +14,9 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>{{ trans('bank.create.to') }}</label>
+            <label>{{ trans('bank.training.to') }}</label>
 
-            <input type="date" class="form-control @error('train_end_day[]') is-invalid @enderror border border-primary" name="train_end_day[]" value="{{ old('train_end_day[]') }}" required>
+            <input type="month" class="form-control @error('train_end_day[]') is-invalid @enderror border border-primary" name="train_end_day[]" value="{{ old('train_end_day[]') }}" required>
 
             @error('train_end_day[]')
                 <span class="invalid-feedback" role="alert">
@@ -27,11 +27,11 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>{{ trans('bank.create.unit') }}</label>
+            <label>{{ trans('bank.training.course') }}</label>
 
-            <input type="text" class="form-control @error('train_unit[]') is-invalid @enderror border border-primary" name="train_unit[]" value="{{ old('train_unit[]') }}" required>
+            <input type="text" class="form-control @error('train_course[]') is-invalid @enderror border border-primary" name="train_course[]" value="{{ old('train_course[]') }}" required>
 
-            @error('train_unit[]')
+            @error('train_course[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -40,7 +40,7 @@
     </div>
     <div class="col-3">
         <div class="form-group">
-            <label>{{ trans('bank.create.address') }}</label>
+            <label>{{ trans('bank.training.address') }}</label>
 
             <input type="text" class="form-control @error('train_address[]') is-invalid @enderror border border-primary" name="train_address[]" value="{{ old('train_address[]') }}" required>
 
@@ -58,7 +58,7 @@
 <div class="row trainingForm">
     <div class="col-12">
         <div class="form-group">
-            <label>{{ trans('bank.create.content') }}</label>
+            <label>{{ trans('bank.training.content') }}</label>
 
             <input type="text" class="form-control @error('train_content[]') is-invalid @enderror border border-primary" name="train_content[]" value="{{ old('train_content[]') }}" required>
 

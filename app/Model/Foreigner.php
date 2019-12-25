@@ -13,6 +13,6 @@ class Foreigner extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'name', 'year', 'relationship', 'nationality'
+        'user_id', 'name', 'year', 'relationship', 'nationality', 'time'
     ];
 }

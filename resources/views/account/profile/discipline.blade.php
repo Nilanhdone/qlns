@@ -1,20 +1,18 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">{{ trans('bank.create.dis') }}</th>
-            <th scope="col">{{ trans('bank.create.year') }}</th>
-            <th scope="col">{{ trans('bank.create.org') }}</th>
-            <th scope="col">{{ trans('bank.create.method') }}</th>
+            <th scope="col">{{ trans('bank.discipline.discipline') }}</th>
+            <th scope="col">{{ trans('bank.discipline.year') }}</th>
+            <th scope="col">{{ trans('bank.discipline.method') }}</th>
         </tr>
     </thead>
     <tbody>
-        @if(count($infringes) > 0)
-            @foreach($infringes as $infringe)
+        @if(count($disciplines) > 0)
+            @foreach($disciplines as $discipline)
             <tr>
-                <td>{{ $infringe->infringe }}</td>
-                <td>{{ $infringe->year }}</td>
-                <td>{{ $infringe->organization }}</td>
-                <td>{{ $infringe->method }}</td>
+                <td>{{ $discipline->discipline }}</td>
+                <td>{{ $discipline->year }}</td>
+                <td>{{ $discipline->method }}</td>
             </tr>
             @endforeach
         @else

@@ -24,7 +24,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-2">
-                <div class="row">
+                <div class="row mb-4">
                     <img src="{{asset('img/avatar').'/'.$user->avatar}}" class="rounded mx-auto d-block" height="200" width="120">
                 </div>
 
@@ -33,6 +33,9 @@
                 <div class="row nav flex-column nav-pills" id="menuList">
                     <a class="nav-link" href="/detail-{{ $user_id }}-basic">
                         {{ trans('bank.create.basic') }}
+                    </a>
+                    <a class="nav-link" href="/detail-{{ $user_id }}-processs">
+                        {{ trans('bank.create.process') }}
                     </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-educations">
                         {{ trans('bank.create.edu') }}
@@ -60,9 +63,6 @@
                     </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-disciplines">
                         {{ trans('bank.create.dis') }}
-                    </a>
-                    <a class="nav-link" href="/detail-{{ $user_id }}-processs">
-                        {{ trans('bank.create.process') }}
                     </a>
                     <a class="nav-link" href="/detail-{{ $user_id }}-applications">
                         {{ trans('bank.create.application') }}

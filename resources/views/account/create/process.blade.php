@@ -17,7 +17,7 @@
     </label>
 
     <div class="col-md-4">
-        <input type="date" class="form-control @error('pr_end_day') is-invalid @enderror border-primary" name="pr_end_day" value="{{ old('pr_end_day') }}" required>
+        <input type="date" class="form-control @error('pr_end_day') is-invalid @enderror border-primary" name="pr_end_day" value="{{ old('pr_end_day') }}">
 
         @error('pr_end_day')
             <span class="invalid-feedback" role="alert"></span>
@@ -64,7 +64,6 @@
     <div class="col-md-8">
         <select class="btn border-primary" name="role" form="create">
             <option value="employee">{{ trans('messages.role.employee') }}</option>
-            <option value="manager">{{ trans('messages.role.manager') }}</option>
             <option value="admin">{{ trans('messages.role.admin') }}</option>
         </select>
     </div>

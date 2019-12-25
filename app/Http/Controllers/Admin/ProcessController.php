@@ -30,12 +30,10 @@ class ProcessController extends Controller
     public function editProcess(Request $request)
     {
         try {
-            // dd($request->all()); exit();
             DB::beginTransaction();
 
             $rules = [
                 'start_day' => ['required'],
-                'end_day' => ['required'],
                 'salary' => ['required'],
                 'insurance' => ['required'],
             ];
@@ -58,8 +56,9 @@ class ProcessController extends Controller
 
             DB::commit();
             $user_id = $process->user_id;
+            $user = User::where('user_id', $user_id)->first();
             $processs = Process::where('user_id', $user_id)->get();
-            return view('account.detail.profile.process', compact('processs', 'user_id'))->with('success', 'Edit successfully!');
+            return view('account.detail.profile.process', compact('processs', 'user', 'user_id'))->with('success', 'Edit successfully!');
         } catch (Exception $e) {
             DB::rollBack();
 

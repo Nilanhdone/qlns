@@ -2,6 +2,7 @@
 return [
     'header' => [
         'title' => 'Ngân hàng Nhà nước Lào',
+        'subtitle' => 'Hệ thống quản lý nhân sự',
         'login' => 'Đăng nhập',
         'logout' => 'Đăng xuất',
     ],

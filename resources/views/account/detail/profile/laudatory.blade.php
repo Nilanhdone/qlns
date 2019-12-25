@@ -27,30 +27,30 @@
                 <input type="hidden" name="id[]" value="{{ $laudatory->id }}">
                 <div class="col-4">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.title') }}</label>
+                        <label>{{ trans('bank.laudatory.title') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="title[]" value="{{ $laudatory->title }}" readonly required>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.year') }}</label>
+                        <label>{{ trans('bank.laudatory.year') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="lau_year[]" value="{{ $laudatory->year }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.org') }}</label>
+                        <label>{{ trans('bank.laudatory.method') }}</label>
 
-                        <input type="text" class="form-control border border-primary" name="lau_organization[]" value="{{ $laudatory->organization }}" readonly required>
+                        <input type="text" class="form-control border border-primary" name="lau_method[]" value="{{ $laudatory->method }}" readonly required>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.content') }}</label>
+                        <label>{{ trans('bank.laudatory.number') }}</label>
 
-                        <input type="text" class="form-control border border-primary" name="lau_content[]" value="{{ $laudatory->content }}" readonly required>
+                        <input type="text" class="form-control border border-primary" name="lau_number[]" value="{{ $laudatory->number }}" readonly required>
                     </div>
                 </div>
             </div>
@@ -122,7 +122,7 @@
 
 @section('custom_js')
 <script type="text/javascript">
-$("#menuList").find(".nav-link:eq(8)").attr("class", "nav-link active");
+$("#menuList").find(".nav-link:eq(9)").attr("class", "nav-link active");
 
 // laudatory History add
 $("#addNewLaudatory").click(function() {

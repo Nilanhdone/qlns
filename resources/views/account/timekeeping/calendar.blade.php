@@ -5,7 +5,7 @@
                 <form method="GET" action="{{ route('get-calendar') }}">
                     <div class="form-group row">
                         <div class="col-5 offset-5">
-                            <input type="month" class="form-control border-primary" name="month" value="{{ $value }}" required>
+                            <input type="month" class="form-control border-primary" name="month" value="{{ $value }}" max="{{ $max }}" required>
                         </div>
 
                         <div class="col-1">

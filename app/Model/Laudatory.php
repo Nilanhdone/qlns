@@ -13,6 +13,6 @@ class Laudatory extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'title', 'year', 'organization', 'content'
+        'user_id', 'title', 'year', 'method', 'number'
     ];
 }

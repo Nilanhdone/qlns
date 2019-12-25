@@ -1,7 +1,7 @@
 <div class="row foreignerForm">
-    <div class="col-4">
+    <div class="col-3">
         <div class="form-group">
-            <label>{{ trans('bank.create.name') }}</label>
+            <label>{{ trans('bank.foreigner.name') }}</label>
 
             <input type="text" class="form-control @error('fore_name[]') is-invalid @enderror border border-primary" name="fore_name[]" value="{{ old('fore_name[]') }}" required>
 
@@ -14,7 +14,7 @@
     </div>
     <div class="col-2">
         <div class="form-group">
-            <label>{{ trans('bank.create.year-birth') }}</label>
+            <label>{{ trans('bank.foreigner.year-birth') }}</label>
 
             <input type="text" class="form-control @error('fore_year[]') is-invalid @enderror border border-primary" name="fore_year[]" value="{{ old('fore_year[]') }}" required>
 
@@ -27,7 +27,7 @@
     </div>
     <div class="col-2">
         <div class="form-group">
-            <label>{{ trans('bank.create.relationship') }}</label>
+            <label>{{ trans('bank.foreigner.relationship') }}</label>
 
             <input type="text" class="form-control @error('fore_rela[]') is-invalid @enderror border border-primary" name="fore_rela[]" value="{{ old('fore_rela[]') }}" required>
 
@@ -38,13 +38,26 @@
             @enderror
         </div>
     </div>
-    <div class="col-4">
+    <div class="col-2">
         <div class="form-group">
-            <label>{{ trans('bank.create.nationality') }}</label>
+            <label>{{ trans('bank.foreigner.nationality') }}</label>
 
             <input type="text" class="form-control @error('fore_nation[]') is-invalid @enderror border border-primary" name="fore_nation[]" value="{{ old('fore_nation[]') }}" required>
 
             @error('fore_nation[]')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="form-group">
+            <label>Khoang thoi gian</label>
+
+            <input type="text" class="form-control @error('fore_time[]') is-invalid @enderror border border-primary" name="fore_time[]" value="{{ old('fore_time[]') }}" required>
+
+            @error('fore_time[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

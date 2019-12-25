@@ -11,7 +11,9 @@
 @section('component')
 <div class="card">
     <div class="card-header">
+        @if(count($applications) > 0)
         <button id="editBasicButton" class="btn btn-primary"><i class="fas fa-edit"></i></button>
+        @endif
         <button id="cancelBasicButton" class="btn btn-secondary"><i class="fas fa-times"></i></button>
     </div>
     <div class="card-body">

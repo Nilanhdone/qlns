@@ -16,7 +16,6 @@ use App\Model\Party;
 use App\Model\Family;
 use App\Model\Foreigner;
 use App\Model\Laudatory;
-use App\Model\Infringe;
 use Auth;
 use Session;
 use Illuminate\Support\Facades\Hash;
@@ -30,9 +29,10 @@ class PartyController extends Controller
             DB::beginTransaction();
 
             $rules = [
-                'join_day' => ['required'],
-                'party_unit' => ['required'],
+                'party_start_day' => ['required'],
+                'party_end_day' => ['required'],
                 'party_position' => ['required'],
+                'party_other' => ['required'],
             ];
 
             // kiểm tra điều kiện đầu vào
@@ -41,11 +41,12 @@ class PartyController extends Controller
                 return redirect()->back()->withErrors($validator)->withInput();
             }
 
-            for ($i = 0; $i < count($request->join_day); $i++) {
+            for ($i = 0; $i < count($request->party_start_day); $i++) {
                 $party = Party::where([['user_id', $request->user_id], ['id', $request->id[$i]]])->first();
-                $party->join_day = $request->join_day[$i];
-                $party->unit = $request->party_unit[$i];
+                $party->start_day = $request->party_start_day[$i];
+                $party->end_day = $request->party_end_day[$i];
                 $party->position= $request->party_position[$i];
+                $party->other = $request->party_other[$i];
                 $party->save();
             }
 
@@ -62,9 +63,10 @@ class PartyController extends Controller
     public function addParty(Request $request)
     {
         $rules = [
-            'join_day' => ['required'],
-            'party_unit' => ['required'],
+            'party_start_day' => ['required'],
+            'party_end_day' => ['required'],
             'party_position' => ['required'],
+            'party_other' => ['required'],
         ];
 
         // kiểm tra điều kiện đầu vào
@@ -74,12 +76,13 @@ class PartyController extends Controller
         }
 
         // lưu lịch sử học tập
-        for ($i = 0; $i < count($request->join_day); $i++) {
+        for ($i = 0; $i < count($request->party_start_day); $i++) {
             Party::create([
                 'user_id' => $request->user_id,
-                'join_day' => $request->join_day[$i],
-                'unit' => $request->party_unit[$i],
+                'start_day' => $request->party_start_day[$i],
+                'end_day' => $request->party_end_day[$i],
                 'position' => $request->party_position[$i],
+                'other' => $request->party_other[$i],
             ]);
         }
 

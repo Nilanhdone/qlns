@@ -1,50 +1,37 @@
 <div class="row disciplineForm">
     <div class="col-4">
         <div class="form-group">
-            <label>{{ trans('bank.create.dis') }}</label>
+            <label>{{ trans('bank.discipline.discipline') }}</label>
 
-            <input type="text" class="form-control @error('infringe[]') is-invalid @enderror border border-primary" name="infringe[]" value="{{ old('infringe[]') }}" required>
+            <input type="text" class="form-control @error('discipline[]') is-invalid @enderror border border-primary" name="discipline[]" value="{{ old('discipline[]') }}" required>
 
-            @error('infringe[]')
+            @error('discipline[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
     </div>
-    <div class="col-2">
+    <div class="col-4">
         <div class="form-group">
-            <label>{{ trans('bank.create.year') }}</label>
+            <label>{{ trans('bank.discipline.year') }}</label>
 
-            <input type="text" class="form-control @error('inf_year[]') is-invalid @enderror border border-primary" name="inf_year[]" value="{{ old('inf_year[]') }}" required>
+            <input type="text" class="form-control @error('dis_year[]') is-invalid @enderror border border-primary" name="dis_year[]" value="{{ old('dis_year[]') }}" required>
 
-            @error('inf_year[]')
+            @error('dis_year[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
     </div>
-    <div class="col-3">
+    <div class="col-4">
         <div class="form-group">
-            <label>{{ trans('bank.create.org') }}</label>
+            <label>{{ trans('bank.discipline.method') }}</label>
 
-            <input type="text" class="form-control @error('inf_organization[]') is-invalid @enderror border border-primary" name="inf_organization[]" value="{{ old('inf_organization[]') }}" required>
+            <input type="text" class="form-control @error('dis_method[]') is-invalid @enderror border border-primary" name="dis_method[]" value="{{ old('dis_method[]') }}" required>
 
-            @error('inf_organization[]')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
-    </div>
-    <div class="col-3">
-        <div class="form-group">
-            <label>{{ trans('bank.create.method') }}</label>
-
-            <input type="text" class="form-control @error('inf_method[]') is-invalid @enderror border border-primary" name="inf_method[]" value="{{ old('inf_method[]') }}" required>
-
-            @error('inf_method[]')
+            @error('dis_method[]')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

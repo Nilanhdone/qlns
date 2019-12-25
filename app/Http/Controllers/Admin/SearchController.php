@@ -15,7 +15,7 @@ use App\Model\Party;
 use App\Model\Family;
 use App\Model\Foreigner;
 use App\Model\Laudatory;
-use App\Model\Infringe;
+use App\Model\Discipline;
 use Auth;
 use Session;
 use Illuminate\Http\UploadedFile;
@@ -38,15 +38,27 @@ class SearchController extends Controller
         $units = Unit::all();
         $positions = Position::all();
 
+        $male = 0;
+        $female = 0;
+
         // kiểm tra số hiệu nhân viên
         if ($request->user_id != null) {
-            $users = User::where([['user_id', $request->user_id], ['status', 'new']])->first();
-            return view('account.search.result', compact('users', 'staffs', 'units', 'positions'));
+            $users = User::where([['user_id', $request->user_id], ['status', 'new']])->get();
+
+            foreach ($users as $user) {
+                if ($user->gender == 'male') {
+                    $male++;
+                } elseif ($user->gender == 'female') {
+                    $female++;
+                }
+            }
+
+            return view('account.search.result', compact('users', 'units', 'positions'));
         }
 
         // kiểm tra giới tính
         if ($request->gender == 'both') {
-            $users = User::where('status', 'new')->get();
+            $users = User::where('status', 'new')->orderBy('name')->get();
         } else if ($request->gender == 'male') {
             $users = User::where([['gender', 'male'], ['status', 'new']])->get();
         } else if ($request->gender == 'female') {
@@ -85,6 +97,35 @@ class SearchController extends Controller
             $users = $users->where('birthday', '>=', $age);
         }
 
+        if ($request->staffs != null && $request->new_staffs == null && $request->retire_staffs == null) {
+            $invalid_users = User::whereYear('created_at', '>', $request->staffs)->get();
+
+            foreach ($invalid_users as $invalid_user) {
+                $users = $users->where('user_id', '!=',$invalid_user->user_id);
+            }
+        } elseif ($request->staffs == null && $request->new_staffs != null && $request->retire_staffs == null) {
+            $invalid_users = User::whereYear('created_at', '!=', $request->new_staffs)->get();
+            foreach ($invalid_users as $invalid_user) {
+                $users = $users->where('user_id', '!=',$invalid_user->user_id);
+            }
+        } elseif ($request->staffs == null && $request->new_staffs == null && $request->retire_staffs != null) {
+            $male_first = ($request->retire_staffs - 62).'-01-01';
+            $male_last = ($request->retire_staffs - 62).'-12-31';
+
+            $female_first = ($request->retire_staffs - 60).'-01-01';
+            $female_last = ($request->retire_staffs - 60).'-12-31';
+
+            $invalid_users = User::where([['status', 'new'], ['gender', 'male'], ['birthday', '>', $male_last]])
+            ->orWhere([['status', 'new'], ['gender', 'male'], ['birthday', '<', $male_first]])
+            ->orWhere([['status', 'new'], ['gender', 'female'], ['birthday', '<', $female_first]])
+            ->orWhere([['status', 'new'], ['gender', 'female'], ['birthday', '>', $female_last]])
+            ->get();
+
+            foreach ($invalid_users as $invalid_user) {
+                $users = $users->where('user_id', '!=',$invalid_user->user_id);
+            }
+        }
+
         // kiểm tra tên
         if ($request->name != null) {
             $ids = array();
@@ -102,6 +143,14 @@ class SearchController extends Controller
             }
         }
 
-        return view('account.search.result', compact('users', 'units', 'positions'));
+        foreach ($users as $user) {
+            if ($user->gender == 'male') {
+                $male++;
+            } elseif ($user->gender == 'female') {
+                $female++;
+            }
+        }
+
+        return view('account.search.result', compact('users', 'male', 'female', 'units', 'positions'));
     }
 }

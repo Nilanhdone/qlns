@@ -16,9 +16,10 @@ class CreatePartysTable extends Migration
         Schema::create('partys', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('user_id');
-            $table->date('join_day');
-            $table->string('unit');
+            $table->string('start_day');
+            $table->string('end_day')->nullable();
             $table->string('position');
+            $table->string('other');
             $table->timestamps();
         });
     }

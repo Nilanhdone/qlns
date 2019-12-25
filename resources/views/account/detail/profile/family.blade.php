@@ -27,28 +27,28 @@
                 <input type="hidden" name="id[]" value="{{ $family->id }}">
                 <div class="col-4">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.name') }}</label>
+                        <label>{{ trans('bank.family.name') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="fa_name[]" value="{{ $family->name }}" readonly required>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.year-birth') }}</label>
+                        <label>{{ trans('bank.family.year') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="fa_year[]" value="{{ $family->year }}" readonly required>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.relationship') }}</label>
+                        <label>{{ trans('bank.family.relationship') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="fa_rela[]" value="{{ $family->relationship }}" readonly required>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-group">
-                        <label>{{ trans('bank.create.address') }}</label>
+                        <label>{{ trans('bank.family.address') }}</label>
 
                         <input type="text" class="form-control border border-primary" name="fa_address[]" value="{{ $family->address }}" readonly required>
                     </div>
@@ -122,7 +122,7 @@
 
 @section('custom_js')
 <script type="text/javascript">
-$("#menuList").find(".nav-link:eq(6)").attr("class", "nav-link active");
+$("#menuList").find(".nav-link:eq(7)").attr("class", "nav-link active");
 
 // family History add
 $("#addNewFamilyRela").click(function() {
