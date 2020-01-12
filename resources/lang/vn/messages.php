@@ -2,6 +2,7 @@
 return [
     'header' => [
         'title' => 'Ngân hàng Nhà nước Lào',
+        'subtitle' => 'Hệ thống quản lý nhân sự',
         'login' => 'Đăng nhập',
         'logout' => 'Đăng xuất',
     ],
@@ -337,7 +338,7 @@ return [
         'repassword' => 'Xác nhận mật khẩu mới',
         'button' => 'Đổi mật khẩu',
     ],
-    'reset-password' => [
+    'reset' => [
         'header' => 'Đặt lại mật khẩu',
         'email' => 'Thư điện tử',
         'password' => 'Mật khẩu mới',

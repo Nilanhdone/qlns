@@ -78,15 +78,21 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             $user = User::where('email', $email)->first();
             $first_login = $user->first_login;
-            if ($first_login == 1) {
-                return redirect()->route('home');
+            if ($user->status == 'new') {
+                if ($first_login == 1) {
+                    return redirect()->route('home');
+                } else {
+                    Auth::logout();
+                    Session::flash('success', 'First login, please change your default password to login.');
+                    return view('user.first-login', compact('email'));
+                }
             } else {
-                Auth::logout();
-                Session::flash('success', 'First login, please change your default password to login.');
-                return view('user.first-login', compact('email'));
+                $errors = "Inactive account! You can not login with this account!";
+                return redirect()->back()->withErrors($errors)->withInput();
             }
         } else {
-            return redirect()->back();
+            $errors = "Email or password is incorrect, try again!";
+            return redirect()->back()->withErrors($errors)->withInput();
         }
     }
 

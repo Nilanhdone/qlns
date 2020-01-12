@@ -2,6 +2,7 @@
 return [
     'header' => [
         'title' => 'Bank of the Lao P.D.R',
+        'subtitle' => 'Human resource management system',
         'login' => 'Login',
         'logout' => 'Logout',
     ],
@@ -337,7 +338,7 @@ return [
         'repassword' => 'Confirm new password',
         'button' => 'Change password',
     ],
-    'reset-password' => [
+    'reset' => [
         'header' => 'Reset password',
         'email' => 'Email',
         'password' => 'New password',

@@ -1,5 +1,16 @@
 @extends('layouts.app')
 
+@section('custom_css')
+<style type="text/css">
+    body  {
+        background-image: url("{{asset('img/bg-bank.jpg')}}");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 98% 80%;
+    }
+</style>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -8,6 +19,14 @@
                 <div class="card-header text-primary text-uppercase">
                     {{ trans('messages.login.header') }}
                 </div>
+ 
+                @if($errors->any())
+                    <ul class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <li><i class="fa fa-exclamation-circle mr-2"></i>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                @endif
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
