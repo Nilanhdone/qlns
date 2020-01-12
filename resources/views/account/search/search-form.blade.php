@@ -2,14 +2,14 @@
     @csrf
 
     <div class="row">
-        <div class="col-4">
+        <div class="col-3">
             <!-- User ID -->
             <div class="form-group row">
                 <label class="col-md-3 col-form-label text-md-right">
                     {{ trans('bank.search.user-id') }}
                 </label>
 
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <input type="text" class="form-control border border-primary" name="user_id">
                 </div>
             </div>
@@ -20,7 +20,7 @@
                     {{ trans('bank.search.name') }}
                 </label>
 
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <input type="text" class="form-control border border-primary" name="name">
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     {{ trans('bank.search.gender') }}
                 </label>
 
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="gender" id="both" value="both" checked>
                         <label class="form-check-label">
@@ -64,7 +64,7 @@
                 <div class="col-md-3">
                     <input type="number" class="form-control border border-primary" name="agefrom">
                 </div>
-                <label class="col-md-2 col-form-label text-center">
+                <label class="col-md-3 col-form-label text-center">
                     {{ trans('bank.search.to') }}
                 </label>
                 <div class="col-md-3">
@@ -73,7 +73,7 @@
             </div>
         </div>
 
-        <div class="col-8">
+        <div class="col-9">
             <!-- Unit -->
             <div class="form-group row">
                 <label class="col-md-5 col-form-label text-md-right">
@@ -87,7 +87,7 @@
                         </option>
                         @foreach ($units as $unit)
                         <option value="{{ $unit->unit }}">
-                            {{ trans('messages.branchs.'.$unit->branch) }} / {{ trans('messages.units.'.$unit->unit) }}
+                            {{ trans('messages.branchs.'.$unit->branch) }}/{{ trans('messages.units.'.$unit->unit) }}
                         </option>
                         @endforeach
                     </select>

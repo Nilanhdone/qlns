@@ -11,9 +11,9 @@
             <a href="/"><img src="{{ asset('img/logo.png') }}" class="mr-3" width="80" height="80"></a>
             <div class="media-body">
                 <a href="/">
-                    <h3 class="mt-3 text-uppercase text-danger font-weight-bold">
+                    <h5 class="mt-3 text-uppercase text-danger font-weight-bold">
                         {{ trans('messages.header.title') }}
-                    </h3>
+                    </h5>
                     <h6 class="text-uppercase text-danger font-weight-bold">
                         {{ trans('messages.header.subtitle') }}
                     </h6>

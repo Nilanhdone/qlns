@@ -6,7 +6,7 @@
         background-image: url("{{asset('img/bg-bank.jpg')}}");
         background-repeat: no-repeat;
         background-position: center;
-        background-size: 1495px 600px;
+        background-size: 98% 80%;
     }
 </style>
 @endsection

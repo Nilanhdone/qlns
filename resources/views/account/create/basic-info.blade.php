@@ -270,7 +270,7 @@
             </label>
 
             <div class="col-md-7">
-                <input type="date" class="form-control @error('party_day') is-invalid @enderror border border-primary" name="party_day" value="{{ old('party_day') }}" required>
+                <input type="date" class="form-control @error('party_day') is-invalid @enderror border border-primary" name="party_day" max="2999-12-31" value="{{ old('party_day') }}" required>
 
                 @error('party_day')
                     <span class="invalid-feedback" role="alert">
@@ -286,7 +286,7 @@
             </label>
 
             <div class="col-md-7">
-                <input type="date" class="form-control @error('army_day') is-invalid @enderror border border-primary" name="army_day" value="{{ old('army_day') }}">
+                <input type="date" class="form-control @error('army_day') is-invalid @enderror border border-primary" name="army_day" max="2999-12-31" value="{{ old('army_day') }}">
 
                 @error('army_day')
                     <span class="invalid-feedback" role="alert">

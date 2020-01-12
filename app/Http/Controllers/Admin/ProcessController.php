@@ -77,7 +77,6 @@ class ProcessController extends Controller
     {
         $rules = [
             'pr_start_day' => ['required'],
-            'pr_end_day' => ['required'],
             'salary' => ['required'],
             'insurance' => ['required'],
         ];
